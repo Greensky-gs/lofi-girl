@@ -32,7 +32,8 @@ export default new LofiCommand({
         const found = `:white_check_mark: | Music found`;
         await interaction.editReply(found);
 
-        await queue.play(search.tracks[0])
+        queue.addTrack(search.tracks[0])
+        queue.skip();
         interaction.editReply(`${found}\n🎧 | Playing music\n${station.emoji} | Switched to ${station.name}`).catch(() => {});
     }
 })
