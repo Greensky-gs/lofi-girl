@@ -1,2 +1,2 @@
 # lofi-girl
-Lofi girl bot's code source
+Lofi girl bot's source code
