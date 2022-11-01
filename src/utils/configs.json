@@ -10,7 +10,18 @@
         { "url": "https://www.youtube.com/watch?v=1fueZCTYkpA", "name": "Morning coffee (lofi hip hop/study beats)", "type": "playlist" , "emoji": "☕" },
         { "url": "https://www.youtube.com/watch?v=rHh1uQndXJ4", "name": "Purrple Cat - Distant worlds (lofi hip hop/relaxing beats)", "type": "playlist" , "emoji": "🪐" },
         { "url": "https://www.youtube.com/watch?v=gnZImHvA0ME", "name": "Soothing breeze (asian hip hop)", "type": "playlist" , "emoji": "🍃" },
-        { "url": "https://www.youtube.com/watch?v=l98w9OSKVNA", "name": "12 A.M Study session (lofi hip hop/chill beats)", "type": "playlist", "emoji":"📚" }
+        { "url": "https://www.youtube.com/watch?v=l98w9OSKVNA", "name": "12 A.M Study session (lofi hip hop/chill beats)", "type": "playlist", "emoji":"📚" },
+        { "url": "https://www.youtube.com/watch?v=EvVIjeJch-c", "name": "No one's perfect - Discrete Landscapes (lofi hip hop/relaxing beats", "type": "playlist" , "emoji": "🥀" },
+        { "url": "https://www.youtube.com/watch?v=Nyx6SBixRE8", "name": "Sleepless Night (lofi hip hop/study beats)", "type":"playlist", "emoji": "🌙" },
+        { "url": "https://www.youtube.com/watch?v=qdU7RgF8exI", "name": "Kyu - until we meet again (sad lofi hip hop)", "type": "playlist", "emoji": "🎆" },
+        { "url": "https://www.youtube.com/watch?v=FkgGD0O5pPM", "name": "Bcalm - For you (lofi hip hop/relaxing beats)", "type": "playlist", "emoji": "🏮" },
+        { "url": "https://www.youtube.com/watch?v=QU_1o5j2PhU", "name": "Yasumu - until forever (lofi hip hop/relaxing beats)", "type": "playlist" , "emoji": "🏔️"},
+        { "url": "https://www.youtube.com/watch?v=fCtr6SSGlFc", "name": "Dimension 32 - mutations (sad lofi hip hop/relaxing beats)", "type": "playlist", "emoji": "🦉" },
+        { "url": "https://www.youtube.com/watch?v=RmMogihQids", "name": "aMess - Tales from Babylon (lofi hip hop/relaxing beats)", "type": "playlist", "emoji": "🐪" },
+        { "url": "https://www.youtube.com/watch?v=gZGLnxVrzD0", "name": "Teaù astro - Hidden treasure (lofi hip hop/relaxing beats)", "type":"playlist", "emoji": "☄️" },
+        { "url": "https://www.youtube.com/watch?v=Gn92YKpDHfU", "name": "Casiio x Sleepermane - Unexplored (lofi hip hop/relaxing beats)", "type": "playlist", "emoji": "💤" },
+        { "url": "https://www.youtube.com/watch?v=A_boxjmXyfY", "name": "DaniSogen -  The gate of serenity (lofi hip hop/relaxing beats)", "type": "playlist", "emoji": "🌉" },
+        { "url": "https://www.youtube.com/watch?v=-R0UYHS8A_A", "name": "Afternoon Jazz (lofi hop hop/study beats)", "type": "playlist", "emoji": "🎺" }
     ],
     "emojis": {
         "online": "<:Enligne:862050145419919410>",
