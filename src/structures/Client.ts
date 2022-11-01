@@ -49,5 +49,6 @@ declare module 'discord.js' {
     interface Client {
         commands: commandOptions[];
         CooldownManager: CooldownManager;
+        inviteLink: string;
     }
 }

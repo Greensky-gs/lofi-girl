@@ -1,0 +1,14 @@
+{
+    "stations": [
+        { "url": "https://www.youtube.com/watch?v=jfKfPfyJRdk", "name": "Lofi hip hop radio - beats to relax/study to", "type": "station", "emoji": "💫" },
+        { "url": "https://www.youtube.com/watch?v=rUxyKA_-grg", "name": "Lofi hip hop radio - beats to sleep/chill to", "type": "station", "emoji": "🎶" },
+        { "url": "https://www.youtube.com/watch?v=lTRiuFIWV54", "name": "1 A.M Study session (lofi hip hop/chill beats)", "type": "playlist", "emoji": "📚" },
+        { "url": "https://www.youtube.com/watch?v=wAPCSnAhhC8", "name":"2 A.M Study session (lofi hip hop/chill beats)", "type": "playlist", "emoji": "📚" },
+        { "url": "https://www.youtube.com/watch?v=_tV5LEBDs7w", "name": "Cozy winter (lifi hip hop/study beats)", "type": "playlist", "emoji": "❄️"},
+        { "url": "https://www.youtube.com/watch?v=BTYAsjAVa3I", "name":"3 A.M Study session (lofi hip hop/chill beats)", "type":"playlist", "emoji": "📚" }
+    ],
+    "emojis": {
+        "online": "<:Enligne:862050145419919410>",
+        "dnd": "<:Npd:862050125970014298>"
+    }
+}

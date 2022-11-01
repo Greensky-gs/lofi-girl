@@ -1,5 +1,7 @@
 import { CommandInteraction, CommandInteractionOptionResolver } from "discord.js";
 import { LofiEvent } from "../structures/Event";
+import { stations } from '../../configs.json';
+import { station } from "../typings/station";
 
 export default new LofiEvent('interactionCreate', (interaction) => {
     if (interaction.isCommand()) {
@@ -28,5 +30,15 @@ export default new LofiEvent('interactionCreate', (interaction) => {
                 content: `:x: | An error occurend while running the command`
             }).catch(() => {});
         });
+    }
+    if (interaction.isAutocomplete()) {
+        const focused = interaction.options.getFocused(true);
+
+        if (focused.name === 'command') {
+            return interaction.respond(interaction.client.commands.filter(c => c.name.includes(focused.value) || focused.value.includes(c.name)).map(x => ({ name: x.name, value: x.name }))).catch(() => {});
+        }
+        if (focused.name === 'station') {
+            return interaction.respond((stations as station[]).filter(s => s.name.includes(focused.name) || focused.name.includes(s.name) || s.type.includes(focused.value) || focused.value.includes(s.type)).map((x) => ({ name: `${x.emoji} ${x.name} - ${x.type}`, value: x.url }))).catch(() => {});
+        }
     }
 })
