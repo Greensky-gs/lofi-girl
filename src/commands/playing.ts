@@ -1,4 +1,4 @@
-import { EmbedBuilder } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from "discord.js";
 import { LofiCommand } from "../structures/Command";
 import { station } from "../typings/station";
 import { stations } from '../utils/configs.json';
@@ -24,5 +24,13 @@ export default new LofiCommand({
                     inline: false
                 }
             )
+            .setDescription(`You are listening to [${station.name}](${station.url})${station.type === 'playlist' ? '\n' + queue.createProgressBar() : ''}`)
+            .setColor('DarkGreen')
+            .setTimestamp()
+        
+        interaction.reply({
+            embeds: [ em ],
+            components: [ new ActionRowBuilder({ components: [ new ButtonBuilder({ label: 'Link', url: station.url, style: ButtonStyle.Link }) ] }) as ActionRowBuilder<ButtonBuilder> ]
+        }).catch(() => {});
     }
 })
