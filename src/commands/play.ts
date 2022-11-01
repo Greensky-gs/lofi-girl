@@ -21,22 +21,38 @@ export default new LofiCommand({
     cooldown: 5,
     execute: async({ interaction, options }) => {
         const station = (stations.find(x => x.url === options.getString('station')) ?? stations[0]) as station;
-        const queue = interaction.client.player.getQueue(interaction.guild) || interaction.client.player.createQueue(interaction.guild);
+        let queue = interaction.client.player.getQueue(interaction.guild);
+        if (!queue) {
+            interaction.client.player.createQueue(interaction.guild, {
+                metadata: {
+                    channel: interaction.channel
+                },
+                ytdlOptions: {
+                    quality: 'highestaudio',
+                    dlChunkSize: 0,
+                    filter: 'audioonly',
+                    highWaterMark: 1 << 30
+                }
+            });
+            queue = interaction.client.player.getQueue(interaction.guild);
+        };
 
         const channel = (interaction.member as GuildMember)?.voice?.channel;
         if (!channel) return interaction.reply(`:x: | You're not connected to a voice channel`).catch(() => {});
         if (queue.connection && !(interaction.member as GuildMember).permissions.has('Administrator')) return interaction.reply(`:x: | Sorry, only administrators can, change the music or the music channel`).catch(() => {});
 
         await interaction.deferReply();
-        if (!queue.connection) await queue.connect(channel);
-
-        const music = await interaction.client.player.search(station.url, {
+        
+        const tracks = await interaction.client.player.search(station.url, {
             requestedBy: interaction.user
         }).catch(console.log);
-        console.log(music);
 
-        if (!music || !(music || { tracks: [] })?.tracks[0]) return interaction.editReply(`:x: | An error occured, I can't find the music.\n> Please contact my developper if it happens again.`).catch(() => {});
-        await queue.play(music.tracks[0]);
+        if (!tracks || tracks.tracks.length === 0) return interaction.editReply(`:x: | An error occured, I can't find the music.\n> Please contact my developper if it happens again.`).catch(() => {});
+        console.log(tracks.tracks[0]);
+        if (!queue.connection) await queue.connect(channel);
+        await queue.play(tracks.tracks[0], {
+            immediate: true
+        });
 
         interaction.editReply(`${station.emoji} | Playing ${station.name}`).catch(() => {});
     }
