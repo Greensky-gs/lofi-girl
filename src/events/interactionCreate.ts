@@ -1,6 +1,6 @@
 import { CommandInteraction, CommandInteractionOptionResolver } from "discord.js";
 import { LofiEvent } from "../structures/Event";
-import { stations } from '../../configs.json';
+import { stations } from '../utils/configs.json';
 import { station } from "../typings/station";
 
 export default new LofiEvent('interactionCreate', (interaction) => {
