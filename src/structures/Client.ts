@@ -1,12 +1,14 @@
 import { Client, ClientEvents, Partials } from "discord.js";
 import { config } from "dotenv";
 import { readdirSync } from "fs";
+import { CooldownManager } from "../managers/cooldownsManager";
 import { commandOptions } from "../typings/command";
 import { LofiEvent } from "./Event";
 config();
 
 export class LofiClient extends Client {
     private fileName: string = __filename.endsWith('.ts') ? 'src':'dist';
+    public CooldownManager: CooldownManager = new CooldownManager();
     public commands: commandOptions[] = [];
 
     constructor() {
@@ -45,6 +47,7 @@ export class LofiClient extends Client {
 
 declare module 'discord.js' {
     interface Client {
-        commands: commandOptions[]
+        commands: commandOptions[];
+        CooldownManager: CooldownManager;
     }
 }

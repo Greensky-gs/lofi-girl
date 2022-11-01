@@ -5,7 +5,8 @@ type runFunction = (options: {
     options: CommandInteractionOptionResolver
 }) => void;
 export type commandOptions = {
-    cooldown: number,
-    admin: boolean,
+    cooldown: number;
+    admin: boolean;
+    dm: boolean;
     execute: runFunction;
 } & ChatInputApplicationCommandData;
