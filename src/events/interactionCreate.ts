@@ -27,7 +27,7 @@ export default new LofiEvent('interactionCreate', (interaction) => {
             interaction[(interaction.deferred || interaction.replied) ? 'editReply' : 'reply']({
                 components: [],
                 embeds: [],
-                content: `:x: | An error occurend while running the command`
+                content: `:x: | An error occured while running the command`
             }).catch(() => {});
         });
     }
@@ -38,7 +38,9 @@ export default new LofiEvent('interactionCreate', (interaction) => {
             return interaction.respond(interaction.client.commands.filter(c => c.name.includes(focused.value) || focused.value.includes(c.name)).map(x => ({ name: x.name, value: x.name }))).catch(() => {});
         }
         if (focused.name === 'station') {
-            return interaction.respond((stations as station[]).filter(s => s.name.includes(focused.name) || focused.name.includes(s.name) || s.type.includes(focused.value) || focused.value.includes(s.type)).map((x) => ({ name: `${x.emoji} ${x.name} - ${x.type}`, value: x.url }))).catch(() => {});
+            const response = (stations as station[]).filter(s => s.name.toLowerCase().includes(focused.value.toLowerCase()) || focused.value.toLowerCase().includes(s.name.toLowerCase()) || s.type.includes(focused.value.toLowerCase()) || focused.value.toLowerCase().includes(s.type));
+            
+            return interaction.respond(response.map((x) => ({ name: `${x.emoji} ${x.name} - ${x.type}`, value: x.url }))).catch(() => {});
         }
     }
 })
