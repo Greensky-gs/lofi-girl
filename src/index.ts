@@ -1,4 +1,4 @@
-import { LofiClient } from "./structures/Client";
+import { LofiClient } from './structures/Client';
 
 export const LofiGirl = new LofiClient();
 LofiGirl.start();

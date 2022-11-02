@@ -1,4 +1,4 @@
-import { commandOptions } from "../typings/command";
+import { commandOptions } from '../typings/command';
 
 export class LofiCommand {
     constructor(opts: commandOptions) {

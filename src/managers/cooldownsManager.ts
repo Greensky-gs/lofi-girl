@@ -7,7 +7,7 @@ type cdOptions = {
 
 export class CooldownManager {
     private cooldowns: Collection<string, number>;
-    
+
     constructor() {
         this.cooldowns = new Collection();
     }
@@ -33,5 +33,4 @@ export class CooldownManager {
     private code({ id, cmd }: cdOptions) {
         return id + '.' + cmd;
     }
-    
 }
