@@ -68,7 +68,7 @@ export default new LofiEvent('interactionCreate', (interaction) => {
                 .catch(() => {});
         }
         if (focused.name === 'station') {
-            const response = (stations as station[])
+            const RawResponse = (stations as station[])
                 .filter(
                     (s) =>
                         s.name.toLowerCase().includes(focused.value.toLowerCase()) ||
@@ -76,7 +76,19 @@ export default new LofiEvent('interactionCreate', (interaction) => {
                         s.type.includes(focused.value.toLowerCase()) ||
                         focused.value.toLowerCase().includes(s.type)
                 )
-                .splice(0, 24);
+            
+            let response: station[] = [];
+            if (RawResponse.length > 25) {
+                // Here we are going to randomise the response to display differents musics everytime
+                for (let i = 0; i < 25; i++) {
+                    const arr = RawResponse.filter(x => !response.map(y => y.url).includes(x.url));
+                    const selected = arr[Math.floor(Math.random() * arr.length)];
+
+                    response.push(selected);
+                }
+            } else {
+                response = RawResponse;
+            }
 
             return interaction
                 .respond(response.map((x) => ({ name: `${x.emoji} ${x.name} - ${x.type}`, value: x.url })))
