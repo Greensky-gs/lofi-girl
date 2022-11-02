@@ -23,6 +23,7 @@ Create a `.env` file that includes :
 
 ```env
 token=Your bot's token
+feedback=feedback webhook URL
 ```
 
 Compile the project : `yarn run build`
