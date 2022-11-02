@@ -21,7 +21,7 @@ export default new LofiCommand({
         const queue = interaction.client.player.getQueue(interaction.guild);
         if (!queue) return interaction.reply(`:x: | I'm not playing music in a channel`).catch(() => {});
 
-        if (queue.nowPlaying().duration === '0:00' || queue.tracks[queue.tracks.length - 1].duration === '0:00')
+        if (queue.nowPlaying().duration === '0:00' || queue.tracks[queue.tracks.length - 1]?.duration === '0:00')
             return interaction.reply(`:x: | You can't add a station to play it after a station (live)`).catch(() => {});
 
         const station = stations.find((x) => x.url === options.getString('station'));
