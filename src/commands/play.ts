@@ -58,7 +58,6 @@ export default new LofiCommand({
                     `:x: | An error occured, I can't find the music.\n> Please contact my developper if it happens again.`
                 )
                 .catch(() => {});
-        console.log(tracks.tracks[0]);
         if (!queue.connection) await queue.connect(channel);
         await queue.play(tracks.tracks[0], {
             immediate: true

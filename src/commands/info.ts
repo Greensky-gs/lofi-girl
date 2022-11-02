@@ -79,7 +79,7 @@ export default new LofiCommand({
                     },
                     {
                         name: 'Uptime',
-                        value: 'Last connected ' + moment(interaction.client.uptime).fromNow(),
+                        value: 'Last connected ' + moment(Date.now() - interaction.client.uptime).fromNow(),
                         inline: false
                     },
                     {
@@ -88,6 +88,11 @@ export default new LofiCommand({
                         inline: false
                     }
                 )
+                .setColor('DarkGreen')
+
+            interaction.editReply({
+                embeds: [ em ]
+            }).catch(() => {});
         }
     }
 })
