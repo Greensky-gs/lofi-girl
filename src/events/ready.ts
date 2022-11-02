@@ -28,9 +28,9 @@ export default new LofiEvent('ready', (c) => {
             }
         }
     ];
-    let index = 0 ;
+    let index = 0;
     const setPresence = async() => {
-        c.user.setActivity(await statuses[index % 4]());
+        c.user.setActivity(await statuses[index % 3]());
     };
     setPresence();
     setInterval(async() => {
