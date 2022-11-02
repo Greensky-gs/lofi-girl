@@ -131,6 +131,66 @@
             "name": "Afternoon Jazz (lofi hop hop/study beats)",
             "type": "playlist",
             "emoji": "🎺"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=_sQ_BlnGBIE",
+            "name": "Tenno - Mind temple (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "⛩️"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=zuvyVD0jtA8",
+            "name": "Yasumu - Escaping reality (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌳"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=HV6OlMPn5sI",
+            "name": "Raimu - The spirit within (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🍃"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=EmxRSH_-CUM",
+            "name": "No spirit - Between worlds (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "✨"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=4DwxVMU7S0w",
+            "name": "Hoogway - Equation of time (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🪐"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=NqWUGUNwXuU",
+            "name": "Mondo loops - Forest Kingdom (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌿"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=OE5FPbr8F6c",
+            "name": "Krynoze - Pawmises (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🐾"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=arJVAbv5yBc",
+            "name": "Nothingtosay - Cold toughts (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "❄️"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=y--847NiTQw",
+            "name": "Osali - Evergarden (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌱"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=TURbeWK2wwg",
+            "name":"4 A.M Study session (lofi hip hop/chill beats)",
+            "type": "playlist",
+            "emoji": "📚"
         }
     ],
     "emojis": {
