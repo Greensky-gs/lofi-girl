@@ -1,19 +1,19 @@
-import { ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
-import moment from "moment";
-import { LofiCommand } from "../structures/Command";
-import { station as st } from "../typings/station";
+import { ApplicationCommandOptionType, EmbedBuilder } from 'discord.js';
+import moment from 'moment';
+import { LofiCommand } from '../structures/Command';
+import { station as st } from '../typings/station';
 import { stations } from '../utils/configs.json';
 
 export default new LofiCommand({
     name: 'info',
-    description: "Displays some informations",
+    description: 'Displays some informations',
     dm: true,
     admin: false,
     cooldown: 5,
     options: [
         {
             name: 'bot',
-            description: "Displays bot informations",
+            description: 'Displays bot informations',
             type: ApplicationCommandOptionType.Subcommand
         },
         {
@@ -25,16 +25,16 @@ export default new LofiCommand({
                     name: 'station',
                     autocomplete: true,
                     required: true,
-                    description: "Station to display",
+                    description: 'Station to display',
                     type: ApplicationCommandOptionType.String
                 }
             ]
         }
     ],
-    execute: async({ interaction, options }) => {
+    execute: async ({ interaction, options }) => {
         const cmd = options.getSubcommand(true);
         if (cmd === 'station') {
-            const station = stations.find(x => x.url === options.getString('station')) as st;
+            const station = stations.find((x) => x.url === options.getString('station')) as st;
             await interaction.deferReply();
             const track = await interaction.client.player.search(station.url, {
                 requestedBy: interaction.user
@@ -45,20 +45,22 @@ export default new LofiCommand({
                 .setURL(station.url)
                 .setFields({
                     name: 'Duration',
-                    value: ((station.type === 'station' ? 'Live' : track.tracks[0]?.duration)) ?? 'Unknown',
+                    value: (station.type === 'station' ? 'Live' : track.tracks[0]?.duration) ?? 'Unknown',
                     inline: false
                 })
                 .setColor('DarkGreen')
-                .setThumbnail(track.tracks[0].thumbnail ?? interaction.client.user.displayAvatarURL({ forceStatic: false }))
+                .setThumbnail(
+                    track.tracks[0].thumbnail ?? interaction.client.user.displayAvatarURL({ forceStatic: false })
+                );
 
-            interaction.editReply({ embeds: [ em ] }).catch(() => {});
+            interaction.editReply({ embeds: [em] }).catch(() => {});
         }
         if (cmd === 'bot') {
-            await Promise.all([ interaction.deferReply(), interaction.client.guilds.fetch() ]);
+            await Promise.all([interaction.deferReply(), interaction.client.guilds.fetch()]);
             const members = interaction.client.guilds.cache.map((g) => g.memberCount).reduce((a, b) => a + b);
 
             const em = new EmbedBuilder()
-                .setTitle("Bot informations")
+                .setTitle('Bot informations')
                 .setURL('https://github.com/Greensky-gs/lofi-girl')
                 .setDescription(`Here are some informations about me`)
                 .setFields(
@@ -73,7 +75,7 @@ export default new LofiCommand({
                         inline: true
                     },
                     {
-                        name: "Stations",
+                        name: 'Stations',
                         value: `${stations.length} music stations`,
                         inline: true
                     },
@@ -88,11 +90,13 @@ export default new LofiCommand({
                         inline: false
                     }
                 )
-                .setColor('DarkGreen')
+                .setColor('DarkGreen');
 
-            interaction.editReply({
-                embeds: [ em ]
-            }).catch(() => {});
+            interaction
+                .editReply({
+                    embeds: [em]
+                })
+                .catch(() => {});
         }
     }
-})
+});

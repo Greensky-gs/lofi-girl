@@ -68,9 +68,17 @@ export default new LofiEvent('interactionCreate', (interaction) => {
                 .catch(() => {});
         }
         if (focused.name === 'station') {
-            const response = (stations as station[]).filter(s => s.name.toLowerCase().includes(focused.value.toLowerCase()) || focused.value.toLowerCase().includes(s.name.toLowerCase()) || s.type.includes(focused.value.toLowerCase()) || focused.value.toLowerCase().includes(s.type)).splice(0, 24);
+            const response = (stations as station[])
+                .filter(
+                    (s) =>
+                        s.name.toLowerCase().includes(focused.value.toLowerCase()) ||
+                        focused.value.toLowerCase().includes(s.name.toLowerCase()) ||
+                        s.type.includes(focused.value.toLowerCase()) ||
+                        focused.value.toLowerCase().includes(s.type)
+                )
+                .splice(0, 24);
 
-                return interaction
+            return interaction
                 .respond(response.map((x) => ({ name: `${x.emoji} ${x.name} - ${x.type}`, value: x.url })))
                 .catch(() => {});
         }

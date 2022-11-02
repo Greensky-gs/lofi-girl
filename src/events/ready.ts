@@ -7,33 +7,33 @@ export default new LofiEvent('ready', (c) => {
 
     type st = () => Promise<ActivityOptions>;
     const statuses: st[] = [
-        async() => {
+        async () => {
             return {
                 name: `${stations.length} musics`,
                 type: ActivityType.Listening
-            }
+            };
         },
-        async() => {
+        async () => {
             await c.guilds.fetch();
             return {
                 name: `${c.guilds.cache.size} servers`,
                 type: ActivityType.Listening
-            }
+            };
         },
-        async() => {
+        async () => {
             return {
                 name: 'Lofi music',
                 type: ActivityType.Listening,
                 url: 'https://youtube.com/c/LofiGirl'
-            }
+            };
         }
     ];
     let index = 0;
-    const setPresence = async() => {
+    const setPresence = async () => {
         c.user.setActivity(await statuses[index % 3]());
     };
     setPresence();
-    setInterval(async() => {
+    setInterval(async () => {
         index++;
         setPresence();
     }, 20000);
