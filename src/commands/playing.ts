@@ -1,4 +1,5 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js';
+import voice from '../maps/voice';
 import { LofiCommand } from '../structures/Command';
 import { station } from '../typings/station';
 import { stations } from '../utils/configs.json';
@@ -11,10 +12,11 @@ export default new LofiCommand({
     cooldown: 10,
     execute: ({ interaction }) => {
         const queue = interaction.client.player.getQueue(interaction.guild);
-        if (!queue || !queue.playing)
+        const v = voice.get(interaction.guild.id);
+        if ((!queue || !queue.playing) && !v)
             return interaction.reply(`:x: | I'm not playing any music in a channel`).catch(() => {});
 
-        const station = stations.find((x) => x.url === queue.nowPlaying().url) as station;
+        const station = stations.find((x) => x.url === (queue?.nowPlaying() || v).url) as station;
         let bar: string;
         if (station.type === 'playlist') {
             bar = queue.createProgressBar();
@@ -25,21 +27,20 @@ export default new LofiCommand({
         const em = new EmbedBuilder()
             .setTitle(`${station.emoji} ${station.name}`)
             .setURL(station.url)
-            .setFields({
-                name: station.emoji + ' Type',
-                value: station.type === 'playlist' ? 'Music' : 'Live',
-                inline: true
-            },
-            {
-                name: '🎧 Volume',
-                value: `${queue.volume}%`,
-                inline: true
-
-            })
+            .setFields(
+                {
+                    name: station.emoji + ' Type',
+                    value: station.type === 'playlist' ? 'Music' : 'Live',
+                    inline: true
+                },
+                {
+                    name: '🎧 Volume',
+                    value: `${queue?.volume ?? v.ressource.volume.volume * 100}%`,
+                    inline: true
+                }
+            )
             .setDescription(
-                `You are listening to [${station.name}](${station.url})${
-                    station.type === 'playlist' ? '\n' + bar : ''
-                }`
+                `You are listening to [${station.name}](${station.url})${station.type === 'playlist' ? '\n' + bar : ''}`
             )
             .setColor('DarkGreen')
             .setTimestamp();

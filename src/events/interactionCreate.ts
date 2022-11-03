@@ -56,7 +56,6 @@ export default new LofiEvent('interactionCreate', (interaction) => {
     }
     if (interaction.isAutocomplete()) {
         const focused = interaction.options.getFocused(true);
-        console.log(focused);
 
         if (focused.name === 'command') {
             return interaction

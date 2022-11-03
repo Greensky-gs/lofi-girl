@@ -1,4 +1,5 @@
 import { ApplicationCommandOptionType } from 'discord.js';
+import voice from '../maps/voice';
 import { LofiCommand } from '../structures/Command';
 import { stations } from '../utils/configs.json';
 
@@ -19,14 +20,16 @@ export default new LofiCommand({
     ],
     execute: async ({ interaction, options }) => {
         const queue = interaction.client.player.getQueue(interaction.guild);
+        const v = voice.get(interaction.guild.id);
+
+        if (v) return interaction.reply(`:x: | You can't add a music after an infinite one`).catch(() => {});
         if (!queue) return interaction.reply(`:x: | I'm not playing music in a channel`).catch(() => {});
 
-        if (queue.nowPlaying().duration === '0:00' || queue.tracks[queue.tracks.length - 1]?.duration === '0:00')
-            return interaction.reply(`:x: | You can't add a station to play it after a station (live)`).catch(() => {});
-
+        
         const station = stations.find((x) => x.url === options.getString('station'));
         let reply: string = '🔊 | Searching station';
 
+        if (station.type === 'station') return interaction.reply(`:x: | You can't add a station in the queue for now\n:sparkles: | My developper will soon make this feature`).catch(() => {});
         const getRep = (rep: string) => {
             reply += `\n${rep}`;
             return reply;
