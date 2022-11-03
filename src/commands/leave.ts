@@ -10,7 +10,7 @@ export default new LofiCommand({
     dm: false,
     execute: async ({ interaction }) => {
         const queue = getQueue(interaction.guild.id);
-        if (!queue) return interaction.reply(`:x: | I'm not playing music in a channel`)
+        if (!queue) return interaction.reply(`:x: | I'm not playing music in a channel`);
 
         queue.connection.disconnect();
         voice.delete(interaction.guild.id);

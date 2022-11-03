@@ -12,10 +12,10 @@ export default new LofiCommand({
     dm: false,
     admin: false,
     cooldown: 10,
-    execute: async({ interaction }) => {
+    execute: async ({ interaction }) => {
         const queue = getQueue(interaction.guild.id);
         if (!queue) return interaction.reply(`:x: | I'm not playing music in a channel`).catch(() => {});
-        const station = stations.find(x => x.url === queue.url);
+        const station = stations.find((x) => x.url === queue.url);
 
         await interaction.deferReply();
         const info = await getBasicInfo(station.url);
@@ -27,7 +27,10 @@ export default new LofiCommand({
             .setFields(
                 {
                     name: station.emoji + ' Duration',
-                    value: station.type === 'playlist' ? `~${Math.floor(parseInt(info.videoDetails.lengthSeconds))} minutes` : 'Live',
+                    value:
+                        station.type === 'playlist'
+                            ? `~${Math.floor(parseInt(info.videoDetails.lengthSeconds))} minutes`
+                            : 'Live',
                     inline: true
                 },
                 {
@@ -37,11 +40,24 @@ export default new LofiCommand({
                 }
             )
             .setColor('DarkGreen')
-            .setThumbnail(info.thumbnail_url ?? interaction.client.user.displayAvatarURL({ forceStatic: true }))
+            .setThumbnail(info.thumbnail_url ?? interaction.client.user.displayAvatarURL({ forceStatic: true }));
 
-        interaction.editReply({
-            embeds: [ em ],
-            components: [ new ActionRowBuilder({ components: [ new ButtonBuilder({ label: 'View on youtube', url: station.url, emoji: station.emoji, style: ButtonStyle.Link }) ] }) as ActionRowBuilder<ButtonBuilder> ]
-        }).catch(() => {});
+        interaction
+            .editReply({
+                embeds: [em],
+                components: [
+                    new ActionRowBuilder({
+                        components: [
+                            new ButtonBuilder({
+                                label: 'View on youtube',
+                                url: station.url,
+                                emoji: station.emoji,
+                                style: ButtonStyle.Link
+                            })
+                        ]
+                    }) as ActionRowBuilder<ButtonBuilder>
+                ]
+            })
+            .catch(() => {});
     }
 });

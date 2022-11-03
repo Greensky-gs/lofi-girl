@@ -24,10 +24,16 @@ export default new LofiCommand({
         const station = getStation(options);
 
         if (!queue) return interaction.reply(`:x: | I'm not connected to a voice channel`).catch(() => {});
-        if (findStation(queue.url).type === 'station') return interaction.reply(`:x: | You can't add a music after an infinite one`).catch(() => {});
+        if (findStation(queue.url).type === 'station')
+            return interaction.reply(`:x: | You can't add a music after an infinite one`).catch(() => {});
 
         const trackList: station[] = tracks.get(interaction.guild.id) || [];
-        if (trackList[trackList.length - 1]?.type === 'station') return interaction.reply(`:x: | The last music station of the playlist is a live. You can't add a music after an infinite one`).catch(() => {});
+        if (trackList[trackList.length - 1]?.type === 'station')
+            return interaction
+                .reply(
+                    `:x: | The last music station of the playlist is a live. You can't add a music after an infinite one`
+                )
+                .catch(() => {});
 
         trackList.push(station);
         tracks.set(interaction.guild.id, trackList);

@@ -1,7 +1,12 @@
-import { ChatInputApplicationCommandData, CommandInteraction, CommandInteractionOptionResolver, GuildMember } from 'discord.js';
+import {
+    ChatInputApplicationCommandData,
+    CommandInteraction,
+    CommandInteractionOptionResolver,
+    GuildMember
+} from 'discord.js';
 
 export interface cmdInteraction extends CommandInteraction {
-    member: GuildMember
+    member: GuildMember;
 }
 type runFunction = (options: { interaction: cmdInteraction; options: CommandInteractionOptionResolver }) => void;
 export type commandOptions = {

@@ -45,13 +45,14 @@ export default new LofiCommand({
                 .setURL(station.url)
                 .setFields({
                     name: 'Duration',
-                    value: (station.type === 'station' ? 'Live' : `~${Math.floor(parseInt(track.videoDetails.lengthSeconds) / 1000)} minutes`) ?? 'Unknown',
+                    value:
+                        (station.type === 'station'
+                            ? 'Live'
+                            : `~${Math.floor(parseInt(track.videoDetails.lengthSeconds) / 1000)} minutes`) ?? 'Unknown',
                     inline: false
                 })
                 .setColor('DarkGreen')
-                .setThumbnail(
-                    track.thumbnail_url ?? interaction.client.user.displayAvatarURL({ forceStatic: false })
-                );
+                .setThumbnail(track.thumbnail_url ?? interaction.client.user.displayAvatarURL({ forceStatic: false }));
 
             interaction.editReply({ embeds: [em] }).catch(() => {});
         }
