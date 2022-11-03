@@ -47,6 +47,8 @@ export default new LofiCommand({
         const rs = createAudioResource(ytdl(station.url), {
             inlineVolume: true
         });
+        rs.volume.setVolume(1);
+
         let connection: VoiceConnection = queue?.connection;
 
         if (!queue) {
@@ -79,7 +81,10 @@ export default new LofiCommand({
             const next = trackList.splice(0, 1)[0];
             tracks.set(interaction.guild.id, trackList);
 
-            const rse = createAudioResource(ytdl(next.url));
+            const rse = createAudioResource(ytdl(next.url), {
+                inlineVolume: true
+            });
+            rse.volume.setVolume(1);
             queue.player.play(rse);
 
             queue.ressource = rse;
