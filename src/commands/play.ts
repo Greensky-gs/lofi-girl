@@ -5,7 +5,7 @@ import {
     joinVoiceChannel,
     VoiceConnection
 } from '@discordjs/voice';
-import { ApplicationCommandOptionType, CommandInteraction } from 'discord.js';
+import { ApplicationCommandOptionType } from 'discord.js';
 import ytdl from 'ytdl-core';
 import tracks from '../maps/tracks';
 import voice from '../maps/voice';
@@ -14,7 +14,7 @@ import { defaultStation, getQueue, getStation } from '../utils/functions';
 
 export default new LofiCommand({
     name: 'play',
-    description: '💫 Play music in your current voice channel',
+    description: 'Play music in your current voice channel',
     dm: false,
     cooldown: 5,
     admin: false,

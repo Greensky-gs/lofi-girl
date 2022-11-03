@@ -1,4 +1,3 @@
-import { Player } from 'discord-player';
 import { Client, ClientEvents, Partials } from 'discord.js';
 import { config } from 'dotenv';
 import { readdirSync } from 'fs';
@@ -11,14 +10,12 @@ export class LofiClient extends Client {
     private fileName: string = __filename.endsWith('.ts') ? 'src' : 'dist';
     public CooldownManager: CooldownManager = new CooldownManager();
     public commands: commandOptions[] = [];
-    public player: Player;
 
     constructor() {
         super({
             intents: ['GuildVoiceStates', 'Guilds'],
             partials: [Partials.Channel]
         });
-        this.player = new Player(this);
     }
     public get inviteLink() {
         return `https://discord.com/api/oauth2/authorize?client_id=${this.user.id}&permissions=2184464640&scope=bot%20applications.commands`;
@@ -53,6 +50,5 @@ declare module 'discord.js' {
         commands: commandOptions[];
         CooldownManager: CooldownManager;
         inviteLink: string;
-        player: Player;
     }
 }
