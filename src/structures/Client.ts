@@ -21,7 +21,7 @@ export class LofiClient extends Client {
         this.player = new Player(this);
     }
     public get inviteLink() {
-        return `https://discord.com/api/oauth2/authorize?client_id=${this.user.id}&permissions=277028554752&scope=bot%20applications.commands`;
+        return `https://discord.com/api/oauth2/authorize?client_id=${this.user.id}&permissions=2184464640&scope=bot%20applications.commands`;
     }
     public start() {
         this.login(process.env.token);

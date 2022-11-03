@@ -2,6 +2,7 @@ import { CommandInteraction, CommandInteractionOptionResolver } from 'discord.js
 import { LofiEvent } from '../structures/Event';
 import { stations } from '../utils/configs.json';
 import { station } from '../typings/station';
+import { cmdInteraction } from '../typings/command';
 
 export default new LofiEvent('interactionCreate', (interaction) => {
     if (interaction.isCommand()) {
@@ -40,7 +41,7 @@ export default new LofiEvent('interactionCreate', (interaction) => {
         const run = new Promise((resolve) =>
             resolve(
                 cmd.execute({
-                    interaction,
+                    interaction: interaction as cmdInteraction,
                     options: interaction.options as CommandInteractionOptionResolver
                 })
             )

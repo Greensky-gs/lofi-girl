@@ -1,5 +1,6 @@
 import { ApplicationCommandOptionType, EmbedBuilder } from 'discord.js';
 import moment from 'moment';
+import { getBasicInfo } from 'ytdl-core';
 import { LofiCommand } from '../structures/Command';
 import { station as st } from '../typings/station';
 import { stations } from '../utils/configs.json';
@@ -35,23 +36,21 @@ export default new LofiCommand({
     execute: async ({ interaction, options }) => {
         const cmd = options.getSubcommand(true);
         if (cmd === 'station') {
-            const station = getStation(options.getString('station')) as st;
+            const station = getStation(options) as st;
             await interaction.deferReply();
-            const track = await interaction.client.player.search(station.url, {
-                requestedBy: interaction.user
-            });
+            const track = await getBasicInfo(station.url);
 
             const em = new EmbedBuilder()
                 .setTitle(`${station.emoji} ${station.name}`)
                 .setURL(station.url)
                 .setFields({
                     name: 'Duration',
-                    value: (station.type === 'station' ? 'Live' : track.tracks[0]?.duration) ?? 'Unknown',
+                    value: (station.type === 'station' ? 'Live' : `~${Math.floor(parseInt(track.videoDetails.lengthSeconds) / 1000)} minutes`) ?? 'Unknown',
                     inline: false
                 })
                 .setColor('DarkGreen')
                 .setThumbnail(
-                    track.tracks[0].thumbnail ?? interaction.client.user.displayAvatarURL({ forceStatic: false })
+                    track.thumbnail_url ?? interaction.client.user.displayAvatarURL({ forceStatic: false })
                 );
 
             interaction.editReply({ embeds: [em] }).catch(() => {});

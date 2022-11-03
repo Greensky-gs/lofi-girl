@@ -1,6 +1,9 @@
-import { ChatInputApplicationCommandData, CommandInteraction, CommandInteractionOptionResolver } from 'discord.js';
+import { ChatInputApplicationCommandData, CommandInteraction, CommandInteractionOptionResolver, GuildMember } from 'discord.js';
 
-type runFunction = (options: { interaction: CommandInteraction; options: CommandInteractionOptionResolver }) => void;
+export interface cmdInteraction extends CommandInteraction {
+    member: GuildMember
+}
+type runFunction = (options: { interaction: cmdInteraction; options: CommandInteractionOptionResolver }) => void;
 export type commandOptions = {
     cooldown: number;
     admin: boolean;

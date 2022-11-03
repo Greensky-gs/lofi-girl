@@ -1,5 +1,6 @@
 import voice from '../maps/voice';
 import { LofiCommand } from '../structures/Command';
+import { getQueue } from '../utils/functions';
 
 export default new LofiCommand({
     name: 'leave',
@@ -8,17 +9,12 @@ export default new LofiCommand({
     cooldown: 5,
     dm: false,
     execute: async ({ interaction }) => {
-        const queue = interaction.client.player.getQueue(interaction.guild);
-        const v = voice.get(interaction.guild.id);
-        if (!queue && !v) return interaction.reply(`:x: | I'm actually not connected to a voice channel`);
+        const queue = getQueue(interaction.guild.id);
+        if (!queue) return interaction.reply(`:x: | I'm not playing music in a channel`)
 
-        if (queue) {
-            queue.destroy(true);
-        } else {
-            v.connection.destroy();
-            voice.delete(interaction.guild.id);
-        }
+        queue.connection.disconnect();
+        voice.delete(interaction.guild.id);
 
-        interaction.reply(`:white_check_mark: | Disconnected from voice channel`).catch(() => {});
+        interaction.reply(`🎧 | Disconnected from voice channel`).catch(() => {});
     }
 });

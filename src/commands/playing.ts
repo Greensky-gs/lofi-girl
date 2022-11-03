@@ -1,8 +1,10 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js';
+import { getBasicInfo } from 'ytdl-core';
 import voice from '../maps/voice';
 import { LofiCommand } from '../structures/Command';
 import { station } from '../typings/station';
 import { stations } from '../utils/configs.json';
+import { getQueue, getRandomStation, getStation, getVidId } from '../utils/functions';
 
 export default new LofiCommand({
     name: 'playing',
@@ -10,50 +12,36 @@ export default new LofiCommand({
     dm: false,
     admin: false,
     cooldown: 10,
-    execute: ({ interaction }) => {
-        const queue = interaction.client.player.getQueue(interaction.guild);
-        const v = voice.get(interaction.guild.id);
-        if ((!queue || !queue.playing) && !v)
-            return interaction.reply(`:x: | I'm not playing any music in a channel`).catch(() => {});
+    execute: async({ interaction }) => {
+        const queue = getQueue(interaction.guild.id);
+        if (!queue) return interaction.reply(`:x: | I'm not playing music in a channel`).catch(() => {});
+        const station = stations.find(x => x.url === queue.url);
 
-        const station = stations.find((x) => x.url === (queue?.nowPlaying() || v).url) as station;
-        let bar: string;
-        if (station.type === 'playlist') {
-            bar = queue.createProgressBar();
-            let arr = bar.split('🔘');
+        await interaction.deferReply();
+        const info = await getBasicInfo(station.url);
 
-            bar = arr[0] + '🔘' + arr[1].replace(/▬/g, '-');
-        }
         const em = new EmbedBuilder()
-            .setTitle(`${station.emoji} ${station.name}`)
+            .setTitle(station.name)
             .setURL(station.url)
+            .setDescription(`You are listening to [${station.emoji} ${station.name}](${station.url})`)
             .setFields(
                 {
-                    name: station.emoji + ' Type',
-                    value: station.type === 'playlist' ? 'Music' : 'Live',
+                    name: station.emoji + ' Duration',
+                    value: station.type === 'playlist' ? `~${Math.floor(parseInt(info.videoDetails.lengthSeconds))} minutes` : 'Live',
                     inline: true
                 },
                 {
                     name: '🎧 Volume',
-                    value: `${queue?.volume ?? v.ressource.volume.volume * 100}%`,
+                    value: `${Math.floor(queue.ressource.volume.volume / 100)}%`,
                     inline: true
                 }
             )
-            .setDescription(
-                `You are listening to [${station.name}](${station.url})${station.type === 'playlist' ? '\n' + bar : ''}`
-            )
             .setColor('DarkGreen')
-            .setTimestamp();
+            .setThumbnail(info.thumbnail_url ?? interaction.client.user.displayAvatarURL({ forceStatic: true }))
 
-        interaction
-            .reply({
-                embeds: [em],
-                components: [
-                    new ActionRowBuilder({
-                        components: [new ButtonBuilder({ label: 'Link', url: station.url, style: ButtonStyle.Link })]
-                    }) as ActionRowBuilder<ButtonBuilder>
-                ]
-            })
-            .catch(() => {});
+        interaction.editReply({
+            embeds: [ em ],
+            components: [ new ActionRowBuilder({ components: [ new ButtonBuilder({ label: 'View on youtube', url: station.url, emoji: station.emoji, style: ButtonStyle.Link }) ] }) as ActionRowBuilder<ButtonBuilder> ]
+        }).catch(() => {});
     }
 });
