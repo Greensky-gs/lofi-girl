@@ -8,6 +8,9 @@ export const boolEmojis = (b: boolean): string => emojis[b ? 'online' : 'dnd'];
 export const getRandomStation = (): station => {
     return (stations as station[])[Math.floor(Math.random() * stations.length)];
 }
+export const findStation = (url: string): station=> {
+    return stations.find(x => x.url === url) as station;
+}
 export const getStation = (options: CommandInteractionOptionResolver): station => {
     const s = options.getString('station');
     if (s === 'random') return getRandomStation();

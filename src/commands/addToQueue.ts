@@ -1,8 +1,8 @@
 import { ApplicationCommandOptionType } from 'discord.js';
-import voice from '../maps/voice';
+import tracks from '../maps/tracks';
 import { LofiCommand } from '../structures/Command';
-import { stations } from '../utils/configs.json';
-import { getStation } from '../utils/functions';
+import { station } from '../typings/station';
+import { findStation, getQueue, getStation } from '../utils/functions';
 
 export default new LofiCommand({
     name: 'add',
@@ -20,33 +20,17 @@ export default new LofiCommand({
         }
     ],
     execute: async ({ interaction, options }) => {
-        const queue = interaction.client.player.getQueue(interaction.guild);
-        const v = voice.get(interaction.guild.id);
-
-        if (v) return interaction.reply(`:x: | You can't add a music after an infinite one`).catch(() => {});
-        if (!queue) return interaction.reply(`:x: | I'm not playing music in a channel`).catch(() => {});
-
-        
+        const queue = getQueue(interaction.guild);
         const station = getStation(options);
-        let reply: string = '🔊 | Searching station';
 
-        if (station.type === 'station') return interaction.reply(`:x: | You can't add a station in the queue for now\n:sparkles: | My developper will soon make this feature`).catch(() => {});
-        const getRep = (rep: string) => {
-            reply += `\n${rep}`;
-            return reply;
-        };
-        await interaction.reply(reply).catch(() => {});
-        const track = await interaction.client.player.search(station.url, {
-            requestedBy: interaction.user
-        });
+        if (!queue) return interaction.reply(`:x: | I'm not connected to a voice channel`).catch(() => {});
+        if (findStation(queue.url).type === 'station') return interaction.reply(`:x: | You can't add a music after an infinite one`).catch(() => {});
 
-        if (!track || track.tracks.length === 0)
-            return interaction.editReply(getRep(`:x: | Music station not found`)).catch(() => {});
-        await interaction.editReply(getRep(`:white_check_mark: | Music station found`)).catch(() => {});
+        const trackList: station[] = tracks.get(interaction.guild.id) || [];
+        if (trackList[trackList.length - 1]?.type === 'station') return interaction.reply(`:x: | The last music station of the playlist is a live. You can't add a music after an infinite one`).catch(() => {});
 
-        queue.addTrack(track.tracks[0]);
-        setTimeout(() => {
-            interaction.editReply(getRep(`${station.emoji} | Added ${station.name} to queue`)).catch(() => {});
-        }, 2000);
+        trackList.push(station);
+        tracks.set(interaction.guild.id, trackList);
+        interaction.reply(`${station.emoji} | Added ${station.name} to the queue`).catch(() => {});
     }
 });
