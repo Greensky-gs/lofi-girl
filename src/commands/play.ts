@@ -68,13 +68,13 @@ export default new LofiCommand({
             url: station.url
         });
 
-        interaction.reply(`${station.emoji} | Playing ${station.name} in <#${channel.id}>`).catch(() => {});
+        interaction.reply(`${station.emoji} | Playing ${station.name}`).catch(() => {});
 
         player.on(AudioPlayerStatus.Idle, (od, ne) => {
             const trackList = tracks.get(interaction.guild.id);
             const queue = getQueue(interaction.guild);
 
-            if (trackList.length === 0 || !queue) return;
+            if (!trackList || trackList?.length === 0 || !queue) return;
 
             const next = trackList.splice(0, 1)[0];
             tracks.set(interaction.guild.id, trackList);

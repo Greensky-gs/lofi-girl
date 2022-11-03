@@ -48,7 +48,7 @@ export default new LofiCommand({
                     value:
                         (station.type === 'station'
                             ? 'Live'
-                            : `~${Math.floor(parseInt(track.videoDetails.lengthSeconds) / 1000)} minutes`) ?? 'Unknown',
+                            : `~${Math.floor(parseInt(track.videoDetails.lengthSeconds) / 60)} minutes`) ?? 'Unknown',
                     inline: false
                 })
                 .setColor('DarkGreen')
