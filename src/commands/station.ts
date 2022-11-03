@@ -1,4 +1,4 @@
-import { createAudioResource } from "@discordjs/voice";
+import { AudioPlayerStatus, createAudioResource } from "@discordjs/voice";
 import { ApplicationCommandOptionType } from "discord.js";
 import ytdl from "ytdl-core";
 import voice from "../maps/voice";
@@ -23,6 +23,9 @@ export default new LofiCommand({
     execute: async({ interaction, options }) => {
         const queue = getQueue(interaction);
         const station = getStation(options);
+
+        if (!queue) return interaction.reply(`:x: | To switch stations, I first need to be connected in a voice channel and playing some music`).catch(() => {});
+
         if (queue.channel.members.filter(x => !x.user.bot).size > 1 && !interaction.member.permissions.has('Administrator')) return interaction.reply(`:x: | Since you're not alone in the voice channel, only administrators can change the music`).catch(() => {});
 
         if (queue.url === station.url) return interaction.reply(`${station.emoji} | The music played is already **${station.name}**`).catch(() => {});
