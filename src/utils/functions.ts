@@ -1,4 +1,4 @@
-import { CommandInteractionOptionResolver } from 'discord.js';
+import { CommandInteraction, CommandInteractionOptionResolver, Guild } from 'discord.js';
 import voice from '../maps/voice';
 import { station } from '../typings/station';
 import { stations } from './configs.json';
@@ -16,8 +16,8 @@ export const getStation = (options: CommandInteractionOptionResolver): station =
 export const defaultStation = (): station => {
     return (stations as station[])[0];
 }
-export const getQueue = (guild: string) => {
-    return voice.get(guild);
+export const getQueue = (guild: string | Guild | CommandInteraction) => {
+    return voice.get(typeof guild === 'string' ? guild : (guild as Guild)?.ownerId ? guild.id : (guild as CommandInteraction).guild.id);
 }
 export const getVidId = (url: string) => {
     return url.slice(32)
