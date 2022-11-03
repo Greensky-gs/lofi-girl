@@ -15,6 +15,13 @@ export default new LofiCommand({
             return interaction.reply(`:x: | I'm not playing any music in a channel`).catch(() => {});
 
         const station = stations.find((x) => x.url === queue.nowPlaying().url) as station;
+        let bar: string;
+        if (station.type === 'playlist') {
+            bar = queue.createProgressBar();
+            let arr = bar.split('🔘');
+
+            bar = arr[0] + '🔘' + arr[1].replace(/▬/g, '-');
+        }
         const em = new EmbedBuilder()
             .setTitle(`${station.emoji} ${station.name}`)
             .setURL(station.url)
@@ -31,7 +38,7 @@ export default new LofiCommand({
             })
             .setDescription(
                 `You are listening to [${station.name}](${station.url})${
-                    station.type === 'playlist' ? '\n' + queue.createProgressBar() : ''
+                    station.type === 'playlist' ? '\n' + bar : ''
                 }`
             )
             .setColor('DarkGreen')
