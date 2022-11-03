@@ -6,6 +6,7 @@ import { Player } from 'discord-player';
 import { createAudioPlayer, createAudioResource, joinVoiceChannel } from '@discordjs/voice';
 import ytdl from 'ytdl-core';
 import voice from '../maps/voice';
+import { getStation } from '../utils/functions';
 
 export default new LofiCommand({
     name: 'play',
@@ -23,7 +24,7 @@ export default new LofiCommand({
     dm: false,
     cooldown: 5,
     execute: async ({ interaction, options }) => {
-        const station = (stations.find((x) => x.url === options.getString('station')) ?? stations[0]) as station;
+        const station = (getStation(options.getString('station')) ?? stations[0]) as station;
 
         const channel = (interaction.member as GuildMember)?.voice?.channel;
         if (!channel) return interaction.reply(`:x: | You're not connected to a voice channel`).catch(() => {});

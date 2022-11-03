@@ -3,6 +3,7 @@ import moment from 'moment';
 import { LofiCommand } from '../structures/Command';
 import { station as st } from '../typings/station';
 import { stations } from '../utils/configs.json';
+import { getStation } from '../utils/functions';
 
 export default new LofiCommand({
     name: 'info',
@@ -34,7 +35,7 @@ export default new LofiCommand({
     execute: async ({ interaction, options }) => {
         const cmd = options.getSubcommand(true);
         if (cmd === 'station') {
-            const station = stations.find((x) => x.url === options.getString('station')) as st;
+            const station = getStation(options.getString('station')) as st;
             await interaction.deferReply();
             const track = await interaction.client.player.search(station.url, {
                 requestedBy: interaction.user

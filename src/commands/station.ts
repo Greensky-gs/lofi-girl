@@ -4,6 +4,7 @@ import ytdl from 'ytdl-core';
 import voice from '../maps/voice';
 import { LofiCommand } from '../structures/Command';
 import { stations } from '../utils/configs.json';
+import { getStation } from '../utils/functions';
 
 export default new LofiCommand({
     name: 'station',
@@ -21,7 +22,7 @@ export default new LofiCommand({
         }
     ],
     execute: async ({ interaction, options }) => {
-        const station = stations.find((x) => x.url === options.getString('station'));
+        const station = getStation(options.getString('station'));
         let queue = interaction.client.player.getQueue(interaction.guild);
         const v = voice.get(interaction.guild.id);
 

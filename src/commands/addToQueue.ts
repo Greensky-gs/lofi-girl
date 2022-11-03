@@ -2,6 +2,7 @@ import { ApplicationCommandOptionType } from 'discord.js';
 import voice from '../maps/voice';
 import { LofiCommand } from '../structures/Command';
 import { stations } from '../utils/configs.json';
+import { getStation } from '../utils/functions';
 
 export default new LofiCommand({
     name: 'add',
@@ -26,7 +27,7 @@ export default new LofiCommand({
         if (!queue) return interaction.reply(`:x: | I'm not playing music in a channel`).catch(() => {});
 
         
-        const station = stations.find((x) => x.url === options.getString('station'));
+        const station = getStation(options.getString('station'));
         let reply: string = '🔊 | Searching station';
 
         if (station.type === 'station') return interaction.reply(`:x: | You can't add a station in the queue for now\n:sparkles: | My developper will soon make this feature`).catch(() => {});

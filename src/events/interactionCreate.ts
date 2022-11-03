@@ -67,7 +67,7 @@ export default new LofiEvent('interactionCreate', (interaction) => {
                 .catch(() => {});
         }
         if (focused.name === 'station') {
-            const RawResponse = (stations as station[]).filter(
+            const RawResponse = ((stations as station[]).concat({ name: 'random', url: 'random', emoji: '🎲', type: 'get a random station' })).filter(
                 (s) =>
                     s.name.toLowerCase().includes(focused.value.toLowerCase()) ||
                     focused.value.toLowerCase().includes(s.name.toLowerCase()) ||
