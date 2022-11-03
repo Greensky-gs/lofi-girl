@@ -19,9 +19,15 @@ export default new LofiCommand({
             .setTitle(`${station.emoji} ${station.name}`)
             .setURL(station.url)
             .setFields({
-                name: 'Type',
+                name: station.emoji + ' Type',
                 value: station.type === 'playlist' ? 'Music' : 'Live',
-                inline: false
+                inline: true
+            },
+            {
+                name: '🎧 Volume',
+                value: `${queue.volume}%`,
+                inline: true
+
             })
             .setDescription(
                 `You are listening to [${station.name}](${station.url})${
