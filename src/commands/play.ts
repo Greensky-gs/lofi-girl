@@ -1,6 +1,7 @@
-import { createAudioPlayer, createAudioResource, joinVoiceChannel, VoiceConnection } from "@discordjs/voice";
+import { AudioPlayerStatus, createAudioPlayer, createAudioResource, joinVoiceChannel, VoiceConnection } from "@discordjs/voice";
 import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
 import ytdl from "ytdl-core";
+import tracks from "../maps/tracks";
 import voice from "../maps/voice";
 import { LofiCommand } from "../structures/Command";
 import { defaultStation, getQueue, getStation } from "../utils/functions";
@@ -54,5 +55,23 @@ export default new LofiCommand({
         });
 
         interaction.reply(`${station.emoji} | Playing ${station.name} in <#${channel.id}>`).catch(() => {});
+
+        player.on(AudioPlayerStatus.Idle, (od, ne) => {
+            const trackList = tracks.get(interaction.guild.id);
+            const queue = getQueue(interaction.guild)
+
+            if (trackList.length === 0 || !queue) return;
+
+            const next = trackList.splice(0, 1)[0];
+            tracks.set(interaction.guild.id, trackList);
+
+            const rse = createAudioResource(ytdl(next.url));
+            queue.player.play(rse);
+
+            queue.ressource = rse;
+            queue.url = next.url;
+
+            voice.set(interaction.guild.id, queue);
+        })
     }
 })
