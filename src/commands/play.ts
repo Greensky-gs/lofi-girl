@@ -72,25 +72,27 @@ export default new LofiCommand({
 
         interaction.reply(`${station.emoji} | Playing ${station.name}`).catch(() => {});
 
-        player.on(AudioPlayerStatus.Idle, (od, ne) => {
-            const trackList = tracks.get(interaction.guild.id);
-            const queue = getQueue(interaction.guild);
-
-            if (!trackList || trackList?.length === 0 || !queue) return;
-
-            const next = trackList.splice(0, 1)[0];
-            tracks.set(interaction.guild.id, trackList);
-
-            const rse = createAudioResource(ytdl(next.url), {
-                inlineVolume: true
+        setTimeout(() => {
+            player.on(AudioPlayerStatus.Idle, (od, ne) => {
+                const trackList = tracks.get(interaction.guild.id);
+                const queue = getQueue(interaction.guild);
+    
+                if (!trackList || trackList?.length === 0 || !queue) return;
+    
+                const next = trackList.splice(0, 1)[0];
+                tracks.set(interaction.guild.id, trackList);
+    
+                const rse = createAudioResource(ytdl(next.url), {
+                    inlineVolume: true
+                });
+                rse.volume.setVolume(1);
+                queue.player.play(rse);
+    
+                queue.ressource = rse;
+                queue.url = next.url;
+    
+                voice.set(interaction.guild.id, queue);
             });
-            rse.volume.setVolume(1);
-            queue.player.play(rse);
-
-            queue.ressource = rse;
-            queue.url = next.url;
-
-            voice.set(interaction.guild.id, queue);
-        });
+        }, 10000)
     }
 });
