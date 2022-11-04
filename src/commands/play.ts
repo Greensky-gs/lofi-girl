@@ -32,6 +32,7 @@ export default new LofiCommand({
 
         const channel = interaction.member?.voice?.channel;
         if (!channel) return interaction.reply(`:x: | You need to be connected to a voice channel`).catch(() => {});
+        if (!channel.joinable) return interaction.reply(`:x: | I cannot connect to this channel. Please check my permissions and try again`).catch(() => {});
 
         const queue = getQueue(interaction.guild.id);
         if (
