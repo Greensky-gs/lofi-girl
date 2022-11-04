@@ -44,20 +44,26 @@ export const formatTime = (timeInSeconds: number): string => {
             minutes = 0;
             hours++;
         }
-    };
+    }
     let res = '';
     const values: string[] = [];
-    [{ x: hours, y: 'hours' }, { x: minutes, y: 'minutes' }, { x: seconds, y: 'seconds' }].filter(x => x.x > 0).forEach((x) => {
-        values.push(`${x.x} ${x.y}`);
-    });
+    [
+        { x: hours, y: 'hours' },
+        { x: minutes, y: 'minutes' },
+        { x: seconds, y: 'seconds' }
+    ]
+        .filter((x) => x.x > 0)
+        .forEach((x) => {
+            values.push(`${x.x} ${x.y}`);
+        });
 
     values.forEach((v, i) => {
-        res+= `${v}`;
+        res += `${v}`;
         const next = values[i + 1];
         if (!next) return;
         const dnext = values[i + 2];
         let sep = dnext ? ',' : ' and';
-        res+= sep + ' ';
-    })
+        res += sep + ' ';
+    });
     return res;
-}
+};
