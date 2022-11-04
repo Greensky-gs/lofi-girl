@@ -36,7 +36,7 @@ export default new LofiCommand({
                 },
                 {
                     name: '🎧 Volume',
-                    value: `${Math.floor(queue.ressource.volume.volume / 100)}%`,
+                    value: `${Math.floor(queue.ressource.volume.volume * 100)}%`,
                     inline: true
                 }
             )
