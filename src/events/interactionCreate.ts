@@ -190,6 +190,9 @@ export default new LofiEvent('interactionCreate', async (interaction) => {
                     ephemeral: true
                 })
                 .catch(() => {});
+            const user = interaction.client.users.cache.get(interaction.message.components[0].components[2].customId);
+            user.send(`🎧 | Your [suggestion](${data.url}) has been accepted !\nThank you for submitting a music`).catch(() => {});
+
             interaction.message.edit({ components: [], content: `Music added` }).catch(() => {});
         }
         if (interaction.customId === 'refuse') {
