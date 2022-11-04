@@ -5,7 +5,7 @@ import voice from '../maps/voice';
 import { LofiCommand } from '../structures/Command';
 import { station } from '../typings/station';
 import { stations } from '../utils/configs.json';
-import { getQueue, getRandomStation, getStation, getVidId } from '../utils/functions';
+import { formatTime, getQueue, getRandomStation, getStation, getVidId } from '../utils/functions';
 
 export default new LofiCommand({
     name: 'playing',
@@ -30,7 +30,7 @@ export default new LofiCommand({
                     name: station.emoji + ' Duration',
                     value:
                         station.type === 'playlist'
-                            ? `~${Math.floor(parseInt(info.videoDetails.lengthSeconds))} minutes`
+                            ? `~${formatTime(parseInt(info.videoDetails.lengthSeconds))} minutes`
                             : 'Live',
                     inline: true
                 },

@@ -32,3 +32,32 @@ export const getVidId = (url: string) => {
     return url.slice(32);
 };
 export const getVidLink = (id: string) => `https://www.youtube.com/watch?v=${id}`;
+export const formatTime = (timeInSeconds: number): string => {
+    let seconds = timeInSeconds;
+    let minutes = 0;
+    let hours = 0;
+
+    while (seconds >= 60) {
+        seconds--;
+        minutes++;
+        if (minutes === 60) {
+            minutes = 0;
+            hours++;
+        }
+    };
+    let res = '';
+    const values: string[] = [];
+    [{ x: hours, y: 'hours' }, { x: minutes, y: 'minutes' }, { x: seconds, y: 'seconds' }].filter(x => x.x > 0).forEach((x) => {
+        values.push(`${x.x} ${x.y}`);
+    });
+
+    values.forEach((v, i) => {
+        res+= `${v}`;
+        const next = values[i + 1];
+        if (!next) return;
+        const dnext = values[i + 2];
+        let sep = dnext ? ',' : ' and';
+        res+= sep + ' ';
+    })
+    return res;
+}

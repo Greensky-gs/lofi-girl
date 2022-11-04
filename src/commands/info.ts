@@ -4,7 +4,7 @@ import { getBasicInfo } from 'ytdl-core';
 import { LofiCommand } from '../structures/Command';
 import { station as st } from '../typings/station';
 import { stations } from '../utils/configs.json';
-import { getStation } from '../utils/functions';
+import { formatTime, getStation } from '../utils/functions';
 
 export default new LofiCommand({
     name: 'info',
@@ -48,7 +48,7 @@ export default new LofiCommand({
                     value:
                         (station.type === 'station'
                             ? 'Live'
-                            : `~${Math.floor(parseInt(track.videoDetails.lengthSeconds) / 60)} minutes`) ?? 'Unknown',
+                            : `~${formatTime(parseInt(track.videoDetails.lengthSeconds))}`) ?? 'Unknown',
                     inline: false
                 })
                 .setColor('DarkGreen')
