@@ -6,7 +6,7 @@ import {
     EmbedBuilder,
     TextChannel
 } from 'discord.js';
-import { getBasicInfo } from 'ytdl-core';
+import { getBasicInfo, getVideoID, validateURL, videoInfo } from 'ytdl-core';
 import { LofiCommand } from '../structures/Command';
 import { lofiGirlID, stations } from '../utils/configs.json';
 import { boolEmojis, getVidLink } from '../utils/functions';
@@ -28,9 +28,11 @@ export default new LofiCommand({
     execute: async ({ interaction, options }) => {
         const url = options.getString('url');
         await interaction.deferReply();
-        const info = await getBasicInfo(url);
+        
+        if (!validateURL(url)) return interaction.editReply(`:x: | You didn't sent a valid video url`).catch(() => {});
+        const id = getVideoID(url);
+        const info = await getBasicInfo(`https://www.youtube.com/watch?=${id}`).catch(() => {}) as videoInfo;
 
-        if (!info) return interaction.editReply(`:x: | You didn't sent a valid video url`).catch(() => {});
         if (info.videoDetails.author.id !== lofiGirlID)
             return interaction
                 .editReply(`:x: | You can sugest only videos from [Lofi Girl](https://youtube.com/c/LofiGirl)`)
