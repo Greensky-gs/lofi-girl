@@ -82,7 +82,7 @@ export default new LofiCommand({
                     const { resource } = error;
                     player.play(resource);
                 }
-            })
+            });
             player.on('stateChange', (od, ne) => {
                 if (od.status === AudioPlayerStatus.Playing && ne.status === AudioPlayerStatus.Idle) {
                     const trackList = tracks.get(interaction.guild.id);
