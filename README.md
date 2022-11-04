@@ -32,6 +32,14 @@ Compile the project : `yarn run build`
 
 And start the bot : `yarn run start`
 
+## Get configs file
+
+The bot can add songs by a suggestions system.
+
+However, if you want to get the `configs.json` file, send a message where you mention the bot.
+
+This will tell him to send you the config file in direct messages
+
 ## Developement
 
 As the bot still in developement, some features doesn't work very well like playing a live

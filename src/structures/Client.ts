@@ -13,7 +13,7 @@ export class LofiClient extends Client {
 
     constructor() {
         super({
-            intents: ['GuildVoiceStates', 'Guilds'],
+            intents: ['GuildVoiceStates', 'Guilds', 'GuildMessages'],
             partials: [Partials.Channel]
         });
     }
