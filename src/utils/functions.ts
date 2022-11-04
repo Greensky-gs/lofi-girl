@@ -33,16 +33,19 @@ export const getVidId = (url: string) => {
 };
 export const getVidLink = (id: string) => `https://www.youtube.com/watch?v=${id}`;
 export const formatTime = (timeInSeconds: number): string => {
-    let seconds = timeInSeconds;
+    let seconds = 0;
     let minutes = 0;
     let hours = 0;
 
-    while (seconds >= 60) {
-        seconds--;
-        minutes++;
-        if (minutes === 60) {
-            minutes = 0;
-            hours++;
+    for (let i = 0; i < timeInSeconds; i++) {
+        seconds++;
+        if (seconds === 60) {
+            minutes++;
+            seconds = 0;
+            if (minutes === 60) {
+                hours++;
+                minutes = 0;
+            }
         }
     }
     let res = '';
@@ -54,7 +57,7 @@ export const formatTime = (timeInSeconds: number): string => {
     ]
         .filter((x) => x.x > 0)
         .forEach((x) => {
-            values.push(`${x.x} ${x.y}`);
+            values.push(`${x.x} ${x.x === 1 ? x.y.substring(0, x.y.length - 1) : x.y}`);
         });
 
     values.forEach((v, i) => {
