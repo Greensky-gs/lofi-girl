@@ -3,6 +3,8 @@ declare global {
         interface ProcessEnv {
             token: string;
             feedback: string;
+            botOwner: string;
+            suggestChannel: string;
         }
     }
 }

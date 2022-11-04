@@ -24,6 +24,8 @@ Create a `.env` file that includes :
 ```env
 token=Your bot's token
 feedback=feedback webhook URL
+botOwner=your discord ID
+suggestChannel=music suggestions channel (for bot Owner)
 ```
 
 Compile the project : `yarn run build`

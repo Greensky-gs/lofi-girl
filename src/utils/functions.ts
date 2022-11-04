@@ -31,3 +31,4 @@ export const getQueue = (guild: string | Guild | CommandInteraction) => {
 export const getVidId = (url: string) => {
     return url.slice(32);
 };
+export const getVidLink = (id: string) => `https://www.youtube.com/watch?v=${id}`;

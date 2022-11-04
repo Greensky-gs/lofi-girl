@@ -448,5 +448,13 @@
     "emojis": {
         "online": "<:Enligne:862050145419919410>",
         "dnd": "<:Npd:862050125970014298>"
-    }
+    },
+    "lofiGirlID": "UCSJ4gkVC6NrvII8umztf0Ow",
+    "refuseTemplates": [
+        {
+            "label": "Already exists",
+            "value": "This music has been already suggested",
+            "reply": "Hello, your suggestion has been refused because it already has been suggested and viewed by the bot owner.\nHave a nice day ^^"
+        }
+    ]
 }
