@@ -80,7 +80,12 @@ export default new LofiCommand({
                 console.log(error);
                 if (error.name === 'arborted') {
                     const { resource } = error;
-                    player.play(resource);
+
+                    const data = getQueue(interaction);
+
+                    data.connection.subscribe(data.player);
+                    data.player.play(resource);
+                    voice.set(interaction.guild.id, data);
                 }
             });
             player.on('stateChange', (od, ne) => {
