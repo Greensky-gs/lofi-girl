@@ -581,6 +581,24 @@
             "name": "Tatami Construct - Hidden World (lofi hip hop/relaxing beats)",
             "emoji": "🌷",
             "type": "playlist"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=9oHxtPf_5RE",
+            "name": "Kanisan - mist, shadows & i (sad lofi hip hop)",
+            "type": "playlist",
+            "emoji": "🔮"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=ke5S8NNoJy8",
+            "name": "cxlt. - Your Light (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌱"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=QAKNR945cVk",
+            "name": "Phlocalyst x Mr Käfer - Roadwalks (lofi hip hop/relaxing beats",
+            "type": "playlist",
+            "emoji": "🌲"
         }
     ],
     "emojis": {
@@ -593,6 +611,11 @@
             "label": "Already exists",
             "value": "This music has been already suggested",
             "reply": "Hello, your suggestion has been refused because it already has been suggested and viewed by the bot owner.\nHave a nice day ^^"
+        },
+        {
+            "label": "Invalid beats type",
+            "value": "You can't put automatically the beats type",
+            "reply": "Hello, your suggestion can't be added because the beats type (something like \"lofi hip hop/relaxing beats\" in the title) can't be added.\nThank you for submitting this suggestion, maybe my owner will add it manually.\nHave a cool day !"
         }
     ]
 }
