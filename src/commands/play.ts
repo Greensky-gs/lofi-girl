@@ -89,6 +89,7 @@ export default new LofiCommand({
                         inlineVolume: true
                     });
                     rse.volume.setVolume(1);
+                    queue.connection.subscribe(queue.player);
                     queue.player.play(rse);
 
                     queue.ressource = rse;
