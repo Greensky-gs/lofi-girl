@@ -35,7 +35,7 @@ export default new LofiCommand({
 
         if (info.videoDetails.author.id !== lofiGirlID)
             return interaction
-                .editReply(`:x: | You can sugest only videos from [Lofi Girl](https://youtube.com/c/LofiGirl)`)
+                .editReply(`:x: | You can suggest only videos from [Lofi Girl](https://youtube.com/c/LofiGirl)`)
                 .catch(() => {});
         if (stations.find((x) => x.url === getVidLink(info.videoDetails.videoId)))
             return interaction.editReply(`🎧 | This station already exists in my song list`).catch(() => {});
