@@ -191,7 +191,9 @@ export default new LofiEvent('interactionCreate', async (interaction) => {
                 })
                 .catch(() => {});
             const user = interaction.client.users.cache.get(interaction.message.components[0].components[2].customId);
-            user.send(`🎧 | Your [suggestion](${data.url}) has been accepted !\nThank you for submitting a music`).catch(() => {});
+            user.send(
+                `🎧 | Your [suggestion](${data.url}) has been accepted !\nThank you for submitting a music`
+            ).catch(() => {});
 
             interaction.message.edit({ components: [], content: `Music added` }).catch(() => {});
         }
@@ -224,7 +226,7 @@ export default new LofiEvent('interactionCreate', async (interaction) => {
 
             if (!mode) return msg.edit({ content: `:bulb: | Command canceled`, components: [] }).catch(() => {});
             let reply: string;
-            
+
             if (mode.customId === 'template') {
                 await mode.deferUpdate();
                 await interaction.editReply({
@@ -263,7 +265,7 @@ export default new LofiEvent('interactionCreate', async (interaction) => {
                 await template.message.edit({
                     content: `:white_check_mark: | Template used`,
                     components: []
-                })
+                });
             } else {
                 const modal = new ModalBuilder()
                     .setTitle('Reply')

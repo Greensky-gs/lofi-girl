@@ -44,11 +44,14 @@ export default new LofiCommand({
                 .reply(`${station.emoji} | The music played is already **${station.name}**`)
                 .catch(() => {});
 
-        const rs = createAudioResource(ytdl(station.url, {
-            filter: 'audioonly'
-        }), {
-            inlineVolume: true
-        });
+        const rs = createAudioResource(
+            ytdl(station.url, {
+                filter: 'audioonly'
+            }),
+            {
+                inlineVolume: true
+            }
+        );
         rs.volume.setVolume(1);
 
         queue.player.play(rs);
