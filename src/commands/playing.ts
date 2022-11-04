@@ -1,5 +1,6 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js';
 import { getBasicInfo } from 'ytdl-core';
+import tracks from '../maps/tracks';
 import voice from '../maps/voice';
 import { LofiCommand } from '../structures/Command';
 import { station } from '../typings/station';
@@ -42,6 +43,11 @@ export default new LofiCommand({
             .setColor('DarkGreen')
             .setThumbnail(info.thumbnail_url ?? interaction.client.user.displayAvatarURL({ forceStatic: true }));
 
+        if (tracks.get(interaction.guild.id) && tracks.get(interaction.guild.id).length > 0) em.addFields({
+            name: '🎹 Following stations',
+            value: `${tracks.get(interaction.guild.id).length} station(s) next`,
+            inline: true
+        })
         interaction
             .editReply({
                 embeds: [em],
