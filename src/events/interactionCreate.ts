@@ -126,7 +126,7 @@ export default new LofiEvent('interactionCreate', async (interaction) => {
                 url: interaction.message.embeds[0].url
             };
 
-            const beats = data.title.split('lofi hip hop/')[1] ?? 'no beats found';
+            const beats = data.title.split(/lofi( +)hip( +)hop( +)/i)[1] ?? 'no beats found)';
             const modal = new ModalBuilder()
                 .setCustomId('accept-modal')
                 .setTitle('Station data')
@@ -141,6 +141,13 @@ export default new LofiEvent('interactionCreate', async (interaction) => {
                                 .setRequired(true)
                         ]
                     }),
+                    new ActionRowBuilder({ components: [ new TextInputBuilder()
+                        .setCustomId('a.author')
+                        .setLabel('Music author(s)')
+                        .setValue(data.title.split('-')[0] ?? 'No author found')
+                        .setRequired(true)
+                        .setStyle(TextInputStyle.Short)
+                    ] }),
                     new ActionRowBuilder({
                         components: [
                             new TextInputBuilder()
@@ -148,7 +155,7 @@ export default new LofiEvent('interactionCreate', async (interaction) => {
                                 .setLabel('Beats')
                                 .setRequired(true)
                                 .setStyle(TextInputStyle.Short)
-                                .setValue(beats.substring(0, beats.length - 2))
+                                .setValue(beats.substring(0, beats.length - 1))
                         ]
                     }),
                     new ActionRowBuilder({
@@ -169,13 +176,15 @@ export default new LofiEvent('interactionCreate', async (interaction) => {
             });
 
             if (!reply) return;
-            const title = reply.fields.getTextInputValue('a.name');
-            const beatsV = `(lofi hip hop/${reply.fields.getTextInputValue('a.beats')})`;
-            const emoji = reply.fields.getTextInputValue('a.emoji');
+            const g = reply.fields.getTextInputValue;
+            const title = g('a.name');
+            const beatsV = `(lofi hip hop/${g('a.beats')})`;
+            const emoji = g('a.emoji');
+            const authors = g('a.author')
 
             confs.stations.push({
                 url: data.url,
-                name: `${title} - ${beatsV}`,
+                name: `${authors} - ${title} ${beatsV}`,
                 emoji,
                 type: 'playlist'
             });
