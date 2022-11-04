@@ -5,6 +5,7 @@ declare global {
             feedback: string;
             botOwner: string;
             suggestChannel: string;
+            beta_token?: string;
         }
     }
 }

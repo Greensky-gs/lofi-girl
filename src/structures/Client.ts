@@ -21,7 +21,7 @@ export class LofiClient extends Client {
         return `https://discord.com/api/oauth2/authorize?client_id=${this.user.id}&permissions=2184464640&scope=bot%20applications.commands`;
     }
     public start() {
-        this.login(process.env.token);
+        this.login(process.env.beta_token ? process.env.beta_token : process.env.token);
         this.loadCommands();
         this.loadEvents();
     }
