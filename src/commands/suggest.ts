@@ -31,7 +31,7 @@ export default new LofiCommand({
 
         if (!validateURL(url)) return interaction.editReply(`:x: | You didn't sent a valid video url`).catch(() => {});
         const id = getVideoID(url);
-        const info = (await getBasicInfo(`https://www.youtube.com/watch?=${id}`).catch(() => {})) as videoInfo;
+        const info = (await getBasicInfo(`https://www.youtube.com/watch?v=${id}`).catch(() => {})) as videoInfo;
 
         if (info.videoDetails.author.id !== lofiGirlID)
             return interaction
