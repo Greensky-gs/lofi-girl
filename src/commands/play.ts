@@ -44,6 +44,8 @@ export default new LofiCommand({
                 .catch(() => {});
 
         const player = queue?.player ?? createAudioPlayer();
+        player.removeAllListeners();
+
         const rs = createAudioResource(ytdl(station.url, { filter: 'audioonly' }), {
             inlineVolume: true
         });
