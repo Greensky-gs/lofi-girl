@@ -75,6 +75,14 @@ export default new LofiCommand({
             console.log(e);
         });
         setTimeout(() => {
+            player.on('error', (error) => {
+                console.log('error detected');
+                console.log(error);
+                if (error.name === 'arborted') {
+                    const { resource } = error;
+                    player.play(resource);
+                }
+            })
             player.on('stateChange', (od, ne) => {
                 if (od.status === AudioPlayerStatus.Playing && ne.status === AudioPlayerStatus.Idle) {
                     const trackList = tracks.get(interaction.guild.id);
