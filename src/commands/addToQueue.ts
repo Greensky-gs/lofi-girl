@@ -1,3 +1,4 @@
+import { AudioPlayerStatus } from '@discordjs/voice';
 import { ApplicationCommandOptionType } from 'discord.js';
 import tracks from '../maps/tracks';
 import { LofiCommand } from '../structures/Command';
@@ -37,6 +38,7 @@ export default new LofiCommand({
 
         trackList.push(station);
         tracks.set(interaction.guild.id, trackList);
+
         interaction.reply(`${station.emoji} | Added ${station.name} to the queue`).catch(() => {});
     }
 });

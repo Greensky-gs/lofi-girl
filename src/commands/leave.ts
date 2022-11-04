@@ -1,3 +1,4 @@
+import tracks from '../maps/tracks';
 import voice from '../maps/voice';
 import { LofiCommand } from '../structures/Command';
 import { getQueue } from '../utils/functions';
@@ -14,6 +15,7 @@ export default new LofiCommand({
 
         queue.connection.disconnect();
         voice.delete(interaction.guild.id);
+        if (tracks.has(interaction.guild.id)) tracks.delete(interaction.guild.id);
 
         interaction.reply(`🎧 | Disconnected from voice channel`).catch(() => {});
     }
