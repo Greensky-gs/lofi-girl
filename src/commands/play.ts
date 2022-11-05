@@ -81,17 +81,27 @@ export default new LofiCommand({
         interaction.reply(`${station.emoji} | Playing ${station.name}`).catch(() => {});
         setTimeout(() => {
             player.on('error', (error) => {
-                console.log('error detected');
-                console.log(error);
-                if (error.name === 'arborted') {
-                    console.log('detected');
+                if (error.message === 'aborted') {
                     const { resource } = error;
+                    const q = getQueue(interaction);
 
-                    const data = getQueue(interaction);
+                    const rs = createAudioResource(ytdl(q.url, {
+                        begin: resource.playbackDuration,
+                        filter: 'audioonly'
+                    }), {
+                        inlineVolume: true
+                    });
+                    rs.volume.setVolume(resource.volume.volume)
+                    q.connection.subscribe(q.player);
+                    q.player.play(rs);
 
-                    data.connection.subscribe(data.player);
-                    data.player.play(resource);
-                    voice.set(interaction.guild.id, data);
+                    voice.set(interaction.guild.id, {
+                        ressource: rs,
+                        connection: q.connection,
+                        channel: q.channel,
+                        url: q.url,
+                        player: q.player
+                    });
                 }
             });
             connection.on('stateChange', (o, n) => {
