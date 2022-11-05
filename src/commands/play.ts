@@ -34,7 +34,10 @@ export default new LofiCommand({
 
         const channel = interaction.member?.voice?.channel;
         if (!channel) return interaction.reply(`:x: | You need to be connected to a voice channel`).catch(() => {});
-        if (!channel.joinable) return interaction.reply(`:x: | I cannot connect to this channel. Please check my permissions and try again`).catch(() => {});
+        if (!channel.joinable)
+            return interaction
+                .reply(`:x: | I cannot connect to this channel. Please check my permissions and try again`)
+                .catch(() => {});
 
         const queue = getQueue(interaction.guild.id);
         if (
@@ -81,18 +84,21 @@ export default new LofiCommand({
                 console.log('error detected');
                 console.log(error);
                 if (error.name === 'arborted') {
-                    console.log('detected')
+                    console.log('detected');
                     const { resource } = error;
-    
+
                     const data = getQueue(interaction);
-    
+
                     data.connection.subscribe(data.player);
                     data.player.play(resource);
                     voice.set(interaction.guild.id, data);
                 }
             });
             connection.on('stateChange', (o, n) => {
-                if (o.status !== VoiceConnectionStatus.Disconnected && n.status === VoiceConnectionStatus.Disconnected) {
+                if (
+                    o.status !== VoiceConnectionStatus.Disconnected &&
+                    n.status === VoiceConnectionStatus.Disconnected
+                ) {
                     voice.delete(interaction.guild.id);
                     tracks.delete(interaction.guild.id);
                 }
