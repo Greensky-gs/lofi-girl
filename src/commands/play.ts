@@ -1,9 +1,11 @@
 import {
+    AudioPlayerError,
     AudioPlayerStatus,
     createAudioPlayer,
     createAudioResource,
     joinVoiceChannel,
-    VoiceConnection
+    VoiceConnection,
+    VoiceConnectionStatus
 } from '@discordjs/voice';
 import { ApplicationCommandOptionType } from 'discord.js';
 import ytdl from 'ytdl-core';
@@ -74,21 +76,25 @@ export default new LofiCommand({
         });
 
         interaction.reply(`${station.emoji} | Playing ${station.name}`).catch(() => {});
-        player.on('error', (e) => {
-            console.log(e);
-        });
         setTimeout(() => {
             player.on('error', (error) => {
                 console.log('error detected');
                 console.log(error);
                 if (error.name === 'arborted') {
+                    console.log('detected')
                     const { resource } = error;
-
+    
                     const data = getQueue(interaction);
-
+    
                     data.connection.subscribe(data.player);
                     data.player.play(resource);
                     voice.set(interaction.guild.id, data);
+                }
+            });
+            connection.on('stateChange', (o, n) => {
+                if (o.status !== VoiceConnectionStatus.Disconnected && n.status === VoiceConnectionStatus.Disconnected) {
+                    voice.delete(interaction.guild.id);
+                    tracks.delete(interaction.guild.id);
                 }
             });
             player.on('stateChange', (od, ne) => {
