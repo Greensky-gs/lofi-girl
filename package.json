@@ -16,7 +16,7 @@
     "prettier": "^2.7.1"
   },
   "dependencies": {
-    "amethystjs": "^1.0.51",
+    "amethystjs": "^1.1.1",
     "discord-player": "^5.3.2",
     "dotenv": "^16.0.3",
     "soundcloud-scraper": "5.x",
