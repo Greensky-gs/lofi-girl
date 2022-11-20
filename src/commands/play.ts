@@ -29,7 +29,7 @@ export default new AmethystCommand({
     if (!search || search.tracks.length === 0) return interaction.editReply(`:x: | Station not found`);
     interaction.editReply(`🎧 | Playing [${station.emoji} ${station.name}](${station.url}) in <#${(interaction.member as GuildMember).voice.channel.id}>`)
     const queue =  interaction.client.player.getQueue(interaction.guild) ?? interaction.client.player.createQueue(interaction.guild, {
-        initialVolume: 100,
+        initialVolume: 90,
         autoSelfDeaf: true,
         leaveOnEnd: false,
         leaveOnStop: false,
