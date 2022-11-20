@@ -18,6 +18,7 @@
   "dependencies": {
     "amethystjs": "^1.0.51",
     "discord-player": "^5.3.2",
+    "dotenv": "^16.0.3",
     "soundcloud-scraper": "5.x",
     "spotify-url-info": "3.x",
     "youtube-sr": "4.x",
