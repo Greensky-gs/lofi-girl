@@ -17,7 +17,7 @@
     "prettier": "^2.7.1"
   },
   "dependencies": {
-    "amethystjs": "^1.x",
+    "amethystjs": "^1.1.4",
     "discord-player": "^5.3.2",
     "discord.js": "^14.6.0",
     "dotenv": "^16.0.3",
