@@ -1,7 +1,7 @@
 import { AmethystCommand } from "amethystjs";
 import { ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
 import { stations } from '../utils/configs.json';
-import { inviteLink } from "../utils/functions";
+import { formatTime, getStationByUrl, inviteLink } from "../utils/functions";
 
 module.exports = new AmethystCommand({
     name: 'info',
@@ -38,6 +38,7 @@ module.exports = new AmethystCommand({
             .setTimestamp()
             .setThumbnail(interaction.client.user.displayAvatarURL({ forceStatic: true }))
             .setTitle("Bot informations")
+            .setColor('Orange')
             .setDescription(`I'm a bot that can play lofi music in your server`)
             .setFields(
                 {
@@ -66,6 +67,40 @@ module.exports = new AmethystCommand({
                     inline: false
                 }
             )
+
+        interaction.editReply({ embeds: [ embed ] }).catch(() => {});
+    }
+    if (cmd === 'station') {
+        const station = getStationByUrl(options.getString('station'));
+
+        const embed = new EmbedBuilder()
+            .setThumbnail(interaction.client.user.displayAvatarURL({ forceStatic: true }))
+            .setTitle(`${station.emoji} ${station.name}`)
+            .setColor('Orange')
+            .setFields(
+                {
+                    name: "🔗 Link",
+                    value: `[${station.name}](${station.url})`,
+                    inline: true
+                }
+            )
+            .setURL(station.url)
+        interaction.reply({ embeds: [ embed ] }).catch(() => {});
+
+        const data = await interaction.client.player.search(station.url, {
+            requestedBy: interaction.user
+        });
+        const video = data.tracks[0];
+        if (!video) return;
+
+        if (video.thumbnail) embed.setImage(video.thumbnail ?? interaction.client.user.displayAvatarURL({ forceStatic: true }))
+        embed.addFields(
+            {
+                name: "🎧 Duration",
+                value: `${formatTime(Math.floor(video.durationMS / 1000))}`,
+                inline: true
+            }
+        )
 
         interaction.editReply({ embeds: [ embed ] }).catch(() => {});
     }

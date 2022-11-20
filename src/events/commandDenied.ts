@@ -1,5 +1,5 @@
 import { AmethystEvent } from "amethystjs";
-import { commandDeniedCode } from "amethystjs/dist/typings/Client";
+import { commandDeniedCode } from "amethystjs";
 
 module.exports = new AmethystEvent('commandDenied', (command, reason) => {
     const includedReplies = [
