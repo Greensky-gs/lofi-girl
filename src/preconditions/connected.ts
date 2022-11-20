@@ -1,7 +1,7 @@
 import { Precondition } from "amethystjs";
 import { GuildMember } from "discord.js";
 
-module.exports = new Precondition('inVoiceChannel')
+export default new Precondition('inVoiceChannel')
 .setChatInputRun(({ interaction }) => {
     if (!interaction.guild) return {
         ok: false,

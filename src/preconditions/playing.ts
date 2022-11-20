@@ -1,6 +1,6 @@
 import { Precondition } from "amethystjs";
 
-module.exports = new Precondition('playing')
+export default new Precondition('playing')
 .setChatInputRun(({ interaction }) => {
     const queue = interaction.client.player.getQueue(interaction.guild);
     if (!interaction.guild !|| interaction.guild.members.me?.voice?.channel || !queue || !queue.playing) {

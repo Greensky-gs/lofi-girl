@@ -1,7 +1,7 @@
 import { AmethystEvent } from "amethystjs";
 import { commandDeniedCode } from "amethystjs";
 
-module.exports = new AmethystEvent('commandDenied', (command, reason) => {
+export default new AmethystEvent('commandDenied', (command, reason) => {
     const includedReplies = [
         { x: commandDeniedCode.GuildOnly, y: "This command is not usable in direct messages" },
         { x: commandDeniedCode.UnderCooldown, y: `You have a cooldown of ${Math.floor((reason.metadata?.remainingCooldownTime ?? 1000) / 1000)} seconds on this command` },

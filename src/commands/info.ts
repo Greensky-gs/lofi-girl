@@ -3,7 +3,7 @@ import { ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
 import { stations } from '../utils/configs.json';
 import { formatTime, getStationByUrl, inviteLink } from "../utils/functions";
 
-module.exports = new AmethystCommand({
+export default new AmethystCommand({
     name: 'info',
     description: "Display's informations",
     options: [
