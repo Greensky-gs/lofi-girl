@@ -1,4 +1,4 @@
-import { Client } from 'discord.js';
+import { Client, VoiceChannel } from 'discord.js';
 import { station } from '../typings/station';
 import { stations } from './configs.json';
 
@@ -57,3 +57,6 @@ export const formatTime = (timeInSeconds: number): string => {
     });
     return res;
 };
+export const isUserAlone = (channel: VoiceChannel) => {
+    return channel.members.filter(x => !x.user.bot).size === 1;
+}
