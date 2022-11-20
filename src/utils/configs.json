@@ -815,6 +815,12 @@
             "name": "Pandrezz - Feelin Better (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "✨"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=Mu3BfD6wmPg",
+            "name": "Kupla - Kingdom in Blue (lofi hip hop/relaxing beats)",
+            "type": "station",
+            "emoji": "👑"
         }
     ],
     "emojis": {
