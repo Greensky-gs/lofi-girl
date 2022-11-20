@@ -19,7 +19,7 @@ export default new AmethystCommand({
     ]
 })
 .setChatInputRun(async ({ interaction, options }) => {
-    const station = getStationByUrl(options.getString('station') ?? 'random');
+    const station = getStationByUrl(options.getString('station'));
 
     await interaction.deferReply();
     const search = await interaction.client.player.search(station.url, {
