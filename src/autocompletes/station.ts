@@ -3,7 +3,7 @@ import { station } from "../typings/station";
 import stations from '../utils/configs.json';
 
 module.exports = new AutocompleteListener({
-    commandName: ['info'],
+    commandName: ['info', 'play'],
     run: ({ options }) => {
         const name = options.getFocused().toLowerCase();
         const list: station[] = (stations.stations as station[]).concat({ name: 'random', type: 'get a random station', url: 'random', emoji: '🎲' }).filter(x => name.includes(x.emoji) || name.includes(x.name) || x.name.toLowerCase().includes(name) || x.type.toLowerCase().includes(name) || name.includes(x.type.toLowerCase()));
