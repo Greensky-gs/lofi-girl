@@ -1,12 +1,13 @@
 import { AmethystCommand, preconditions } from "amethystjs";
 import { ApplicationCommandOptionType, GuildMember } from "discord.js";
+import adminIfNotAlone from "../preconditions/adminIfNotAlone";
 import connected from '../preconditions/connected';
 import { getStationByUrl } from "../utils/functions";
 
 export default new AmethystCommand({
     name: 'play',
     description: "Plays a lofi music",
-    preconditions: [ preconditions.GuildOnly, connected ],
+    preconditions: [ preconditions.GuildOnly, connected, adminIfNotAlone ],
     options: [
         {
             name: 'station',
