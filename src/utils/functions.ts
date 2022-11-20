@@ -4,8 +4,8 @@ import { stations } from './configs.json';
 
 export const getStationByUrl = (value: string) => {
     if (!value || value === 'random') return stations[Math.floor(Math.random() * stations.length)];
-    return stations.find(x => x.url === value);
-}
+    return stations.find((x) => x.url === value);
+};
 export const checkForDuplicates = (): station[] => {
     const tests: station[] = [];
     const duplicated: station[] = [];
@@ -15,10 +15,10 @@ export const checkForDuplicates = (): station[] => {
         else tests.push(st);
     }
     return duplicated;
-}
+};
 export const inviteLink = (client: Client) => {
     return `https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=2184464640&scope=bot%20applications.commands`;
-}
+};
 export const formatTime = (timeInSeconds: number): string => {
     let seconds = 0;
     let minutes = 0;
@@ -58,5 +58,5 @@ export const formatTime = (timeInSeconds: number): string => {
     return res;
 };
 export const isUserAlone = (channel: VoiceChannel) => {
-    return channel.members.filter(x => !x.user.bot).size === 1;
-}
+    return channel.members.filter((x) => !x.user.bot).size === 1;
+};

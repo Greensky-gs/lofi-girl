@@ -1,7 +1,7 @@
-import { AmethystCommand } from "amethystjs";
-import { ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
+import { AmethystCommand } from 'amethystjs';
+import { ApplicationCommandOptionType, EmbedBuilder } from 'discord.js';
 import { stations } from '../utils/configs.json';
-import { formatTime, getStationByUrl, inviteLink } from "../utils/functions";
+import { formatTime, getStationByUrl, inviteLink } from '../utils/functions';
 
 export default new AmethystCommand({
     name: 'info',
@@ -9,12 +9,12 @@ export default new AmethystCommand({
     options: [
         {
             name: 'bot',
-            description: 'Display bot\'s informations',
+            description: "Display bot's informations",
             type: ApplicationCommandOptionType.Subcommand
         },
         {
             name: 'station',
-            description: "Displays a station informations",
+            description: 'Displays a station informations',
             type: ApplicationCommandOptionType.Subcommand,
             options: [
                 {
@@ -22,13 +22,12 @@ export default new AmethystCommand({
                     autocomplete: true,
                     required: true,
                     type: ApplicationCommandOptionType.String,
-                    description: "Station to display"
+                    description: 'Station to display'
                 }
             ]
         }
     ]
-})
-.setChatInputRun(async ({ interaction, options }) => {
+}).setChatInputRun(async ({ interaction, options }) => {
     const cmd = options.getSubcommand();
     if (cmd === 'bot') {
         await interaction.deferReply();
@@ -37,7 +36,7 @@ export default new AmethystCommand({
         const embed = new EmbedBuilder()
             .setTimestamp()
             .setThumbnail(interaction.client.user.displayAvatarURL({ forceStatic: true }))
-            .setTitle("Bot informations")
+            .setTitle('Bot informations')
             .setColor('Orange')
             .setDescription(`I'm a bot that can play lofi music in your server`)
             .setFields(
@@ -48,27 +47,32 @@ export default new AmethystCommand({
                 },
                 {
                     name: 'Members',
-                    value: interaction.client.guilds.cache.map(x => x.memberCount).reduce((a, b) => a + b).toString(),
+                    value: interaction.client.guilds.cache
+                        .map((x) => x.memberCount)
+                        .reduce((a, b) => a + b)
+                        .toString(),
                     inline: true
                 },
                 {
-                    name: "Playing in",
-                    value: interaction.client.player.queues.filter(x => x.playing).size + ' servers',
+                    name: 'Playing in',
+                    value: interaction.client.player.queues.filter((x) => x.playing).size + ' servers',
                     inline: true
                 },
                 {
-                    name: "Stations",
+                    name: 'Stations',
                     value: stations.length.toString(),
                     inline: false
                 },
                 {
                     name: 'Links',
-                    value: `[Invite me](${inviteLink(interaction.client)})\n[Lofi Girl channel](https://youtube.com/c/LofiGirl)\n[Source code](https://github.com/Greensky-gs/lofi-girl)`,
+                    value: `[Invite me](${inviteLink(
+                        interaction.client
+                    )})\n[Lofi Girl channel](https://youtube.com/c/LofiGirl)\n[Source code](https://github.com/Greensky-gs/lofi-girl)`,
                     inline: false
                 }
-            )
+            );
 
-        interaction.editReply({ embeds: [ embed ] }).catch(() => {});
+        interaction.editReply({ embeds: [embed] }).catch(() => {});
     }
     if (cmd === 'station') {
         const station = getStationByUrl(options.getString('station'));
@@ -77,15 +81,13 @@ export default new AmethystCommand({
             .setThumbnail(interaction.client.user.displayAvatarURL({ forceStatic: true }))
             .setTitle(`${station.emoji} ${station.name}`)
             .setColor('Orange')
-            .setFields(
-                {
-                    name: "🔗 Link",
-                    value: `[${station.name}](${station.url})`,
-                    inline: true
-                }
-            )
-            .setURL(station.url)
-        interaction.reply({ embeds: [ embed ] }).catch(() => {});
+            .setFields({
+                name: '🔗 Link',
+                value: `[${station.name}](${station.url})`,
+                inline: true
+            })
+            .setURL(station.url);
+        interaction.reply({ embeds: [embed] }).catch(() => {});
 
         const data = await interaction.client.player.search(station.url, {
             requestedBy: interaction.user
@@ -93,15 +95,14 @@ export default new AmethystCommand({
         const video = data.tracks[0];
         if (!video) return;
 
-        if (video.thumbnail) embed.setImage(video.thumbnail ?? interaction.client.user.displayAvatarURL({ forceStatic: true }))
-        embed.addFields(
-            {
-                name: "🎧 Duration",
-                value: `${formatTime(Math.floor(video.durationMS / 1000))}`,
-                inline: true
-            }
-        )
+        if (video.thumbnail)
+            embed.setImage(video.thumbnail ?? interaction.client.user.displayAvatarURL({ forceStatic: true }));
+        embed.addFields({
+            name: '🎧 Duration',
+            value: `${formatTime(Math.floor(video.durationMS / 1000))}`,
+            inline: true
+        });
 
-        interaction.editReply({ embeds: [ embed ] }).catch(() => {});
+        interaction.editReply({ embeds: [embed] }).catch(() => {});
     }
-})
+});

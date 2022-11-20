@@ -5,4 +5,4 @@ export type station = {
     name: string;
     emoji: string;
     url: string;
-}
+};

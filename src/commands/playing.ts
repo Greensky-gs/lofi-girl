@@ -1,16 +1,15 @@
-import { EmbedBuilder } from "@discordjs/builders";
-import { AmethystCommand, preconditions } from "amethystjs";
-import { Colors } from "discord.js";
-import playingPrecondition from "../preconditions/playing";
-import { getStationByUrl } from "../utils/functions";
+import { EmbedBuilder } from '@discordjs/builders';
+import { AmethystCommand, preconditions } from 'amethystjs';
+import { Colors } from 'discord.js';
+import playingPrecondition from '../preconditions/playing';
+import { getStationByUrl } from '../utils/functions';
 
 export default new AmethystCommand({
     name: 'playing',
-    description: "Shows the current music",
-    preconditions: [ preconditions.GuildOnly, playingPrecondition ],
-})
-.setChatInputRun(async({ interaction }) => {
-    const queue = interaction.client.player.getQueue(interaction.guild)
+    description: 'Shows the current music',
+    preconditions: [preconditions.GuildOnly, playingPrecondition]
+}).setChatInputRun(async ({ interaction }) => {
+    const queue = interaction.client.player.getQueue(interaction.guild);
     interaction.client.player.getQueue(interaction.guild);
 
     const playing = queue.nowPlaying();
@@ -34,12 +33,13 @@ export default new AmethystCommand({
                 value: `${queue.volume}%`,
                 inline: true
             }
-        )
-    if (queue.tracks.length > 0) embed.addFields({
-        name: '🎹 Following',
-        value: `${queue.tracks.length} following${queue.tracks.length > 1 ? 's':''}`,
-        inline: true
-    })
+        );
+    if (queue.tracks.length > 0)
+        embed.addFields({
+            name: '🎹 Following',
+            value: `${queue.tracks.length} following${queue.tracks.length > 1 ? 's' : ''}`,
+            inline: true
+        });
 
-    interaction.reply({ embeds: [ embed ] }).catch(() => {});
-})
+    interaction.reply({ embeds: [embed] }).catch(() => {});
+});
