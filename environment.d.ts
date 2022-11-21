@@ -2,9 +2,9 @@ declare global {
     namespace NodeJS {
         interface ProcessEnv {
             token: string;
-            feedback: string;
+            feedback?: string;
             botOwner: string;
-            suggestChannel: string;
+            suggestChannel?: string;
             beta_token?: string;
         }
     }

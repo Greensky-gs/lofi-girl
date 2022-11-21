@@ -61,3 +61,10 @@ export const formatTime = (timeInSeconds: number): string => {
 export const isUserAlone = (channel: VoiceChannel) => {
     return channel.members.filter((x) => !x.user.bot).size === 1;
 };
+export const checkForEnv = () => {
+    ['token', 'botOwner'].forEach((x) => {
+        if (!process.env[x]) {
+            throw new Error("Token or botOwner is missing in .env file")
+        }
+    })
+}
