@@ -1,6 +1,7 @@
 import { AmethystCommand } from 'amethystjs';
 import { ApplicationCommandOptionType, EmbedBuilder } from 'discord.js';
-import { stations } from '../utils/configs.json';
+import { station } from '../typings/station';
+import { stations, recommendation } from '../utils/configs.json';
 import { formatTime, getStationByUrl, inviteLink } from '../utils/functions';
 
 export default new AmethystCommand({
@@ -72,6 +73,14 @@ export default new AmethystCommand({
                 }
             );
 
+        if (recommendation && Object.keys(recommendation).length === 4) {
+            const { name, url, emoji } = recommendation as station;
+            embed.addFields({
+                name: '❤️ Recommendation of the day',
+                value: `[${name} ${emoji}](${url})`,
+                inline: false
+            })
+        }
         interaction.editReply({ embeds: [embed] }).catch(() => {});
     }
     if (cmd === 'station') {
