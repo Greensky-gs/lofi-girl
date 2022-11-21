@@ -79,7 +79,7 @@ export default new AmethystCommand({
                 name: '❤️ Recommendation of the day',
                 value: `[${name} ${emoji}](${url})`,
                 inline: false
-            })
+            });
         }
         interaction.editReply({ embeds: [embed] }).catch(() => {});
     }

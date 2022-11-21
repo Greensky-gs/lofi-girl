@@ -3,7 +3,8 @@ import { station } from '../typings/station';
 import { stations, emojis } from './configs.json';
 
 export const getStationByUrl = (value?: string, getRandomIfNotProvided?: boolean) => {
-    if ((!value || value === 'random') && getRandomIfNotProvided !== false) return stations[Math.floor(Math.random() * stations.length)];
+    if ((!value || value === 'random') && getRandomIfNotProvided !== false)
+        return stations[Math.floor(Math.random() * stations.length)];
 
     return stations.find((x) => x.url === value);
 };
@@ -64,8 +65,8 @@ export const isUserAlone = (channel: VoiceChannel) => {
 export const checkForEnv = () => {
     ['token', 'botOwner'].forEach((x) => {
         if (!process.env[x]) {
-            throw new Error("Token or botOwner is missing in .env file")
+            throw new Error('Token or botOwner is missing in .env file');
         }
-    })
-}
+    });
+};
 export const boolEmojis = (b: boolean) => emojis[b ? 'online' : 'dnd'];
