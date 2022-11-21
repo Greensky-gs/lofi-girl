@@ -1,6 +1,6 @@
 import { Client, VoiceChannel } from 'discord.js';
 import { station } from '../typings/station';
-import { stations } from './configs.json';
+import { stations, emojis } from './configs.json';
 
 export const getStationByUrl = (value?: string, getRandomIfNotProvided?: boolean) => {
     if ((!value || value === 'random') && getRandomIfNotProvided !== false) return stations[Math.floor(Math.random() * stations.length)];
@@ -68,3 +68,4 @@ export const checkForEnv = () => {
         }
     })
 }
+export const boolEmojis = (b: boolean) => emojis[b ? 'online' : 'dnd'];
