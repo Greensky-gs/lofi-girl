@@ -6,6 +6,7 @@ declare global {
             botOwner: string;
             suggestChannel?: string;
             beta_token?: string;
+            botPrefix?: string;
         }
     }
 }

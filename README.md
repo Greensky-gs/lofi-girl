@@ -26,7 +26,7 @@ token=Your bot's token
 feedback=feedback webhook URL
 botOwner=your discord ID
 suggestChannel=music suggestions channel (for bot Owner)
-botPrefix=bot prefix
+botPrefix=bot prefix (default is lf!)
 ```
 
 Compile the project : `yarn run build`
