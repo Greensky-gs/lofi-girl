@@ -14,8 +14,8 @@ if (duplicated.length > 0) {
 
 export const client = new AmethystClient(
     {
-        intents: ['Guilds', 'GuildVoiceStates'],
-        partials: [Partials.Channel]
+        intents: ['Guilds', 'GuildVoiceStates', 'GuildMessages', 'MessageContent', 'DirectMessages'],
+        partials: [Partials.Channel, Partials.Message]
     },
     {
         commandsFolder: './dist/commands',
@@ -23,7 +23,12 @@ export const client = new AmethystClient(
         eventsFolder: './dist/events',
         debug: true,
         preconditionsFolder: './dist/preconditions',
-        autocompleteListenersFolder: './dist/autocompletes'
+        autocompleteListenersFolder: './dist/autocompletes',
+        prefix: 'lf!',
+        strictPrefix: false,
+        botName: 'lofigirl',
+        botNameWorksAsPrefix: true,
+        mentionWorksAsPrefix: false
     }
 );
 

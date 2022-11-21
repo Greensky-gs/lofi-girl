@@ -2,8 +2,9 @@ import { Client, VoiceChannel } from 'discord.js';
 import { station } from '../typings/station';
 import { stations } from './configs.json';
 
-export const getStationByUrl = (value: string) => {
-    if (!value || value === 'random') return stations[Math.floor(Math.random() * stations.length)];
+export const getStationByUrl = (value?: string, getRandomIfNotProvided?: boolean) => {
+    if ((!value || value === 'random') && getRandomIfNotProvided !== false) return stations[Math.floor(Math.random() * stations.length)];
+
     return stations.find((x) => x.url === value);
 };
 export const checkForDuplicates = (): station[] => {
