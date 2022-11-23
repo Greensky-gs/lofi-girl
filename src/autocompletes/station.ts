@@ -1,13 +1,24 @@
 import { AutocompleteListener } from 'amethystjs';
 import { station } from '../typings/station';
-import stations from '../utils/configs.json';
+import { stations, recommendation } from '../utils/configs.json';
 
 module.exports = new AutocompleteListener({
     commandName: ['info', 'play', 'switch', 'add'],
     run: ({ options }) => {
         const name = options.getFocused().toLowerCase();
-        const list: station[] = (stations.stations as station[])
-            .concat({ name: 'random', type: 'get a random station', url: 'random', emoji: '🎲' })
+
+        const concatenated: station[] = [{ name: 'random', type: 'get a random station', url: 'random', emoji: '🎲' }]
+
+        if (Object.keys(recommendation).length > 0) {
+            concatenated.push({
+                name: 'recommendation',
+                type: 'get the recommendation of the day',
+                emoji: '❤️',
+                url: 'recommendation'
+            })
+        }
+        const list: station[] = (stations as station[])
+            .concat(concatenated)
             .filter(
                 (x) =>
                     name.includes(x.emoji) ||

@@ -1,12 +1,13 @@
 import { Client, VoiceChannel } from 'discord.js';
 import { station } from '../typings/station';
-import { stations, emojis } from './configs.json';
+import { stations, emojis, recommendation } from './configs.json';
 
-export const getStationByUrl = (value?: string, getRandomIfNotProvided?: boolean) => {
+export const getStationByUrl = (value?: string, getRandomIfNotProvided?: boolean): station => {
     if ((!value || value === 'random') && getRandomIfNotProvided !== false)
-        return stations[Math.floor(Math.random() * stations.length)];
+        return (stations as station[])[Math.floor(Math.random() * stations.length)];
 
-    return stations.find((x) => x.url === value);
+    if (value === 'recommendation') return recommendation as station
+    return (stations as station[]).find((x) => x.url === value);
 };
 export const checkForDuplicates = (): station[] => {
     const urls = [];
