@@ -819,8 +819,26 @@
         {
             "url": "https://www.youtube.com/watch?v=Mu3BfD6wmPg",
             "name": "Kupla - Kingdom in Blue (lofi hip hop/relaxing beats)",
-            "type": "station",
+            "type": "playlist",
             "emoji": "👑"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=O7RG-B6N1Vw",
+            "name": "Lonely days (sad lofi hip hop)",
+            "type": "playlist",
+            "emoji": "☔"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=M1j7EQsXPcc",
+            "name": "Purrple Cat - Distant worlds III (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🪐"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=HPQJk6kLE-I",
+            "name": "xander. - Cabin Fever, Pt.3 (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🍄"
         }
     ],
     "emojis": {
