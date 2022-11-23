@@ -7,14 +7,17 @@ export const getStationByUrl = (value: string) => {
     return stations.find((x) => x.url === value);
 };
 export const checkForDuplicates = (): station[] => {
-    const tests: station[] = [];
-    const duplicated: station[] = [];
+    const urls = [];
+    const duplicatedURLS: string[] = [];
 
-    for (const st of stations as station[]) {
-        if (tests.includes(st)) duplicated.push(st);
-        else tests.push(st);
-    }
-    return duplicated;
+    stations.forEach((st: station) => {
+        if (urls.includes(st.url)) {
+            duplicatedURLS.push(st.url);
+        } else {
+            urls.push(st.url)
+        }
+    })
+    return (stations as station[]).filter(x => duplicatedURLS.includes(x.url));
 };
 export const inviteLink = (client: Client) => {
     return `https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=2184464640&scope=bot%20applications.commands`;
