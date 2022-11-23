@@ -66,10 +66,11 @@ export const isUserAlone = (channel: VoiceChannel) => {
     return channel.members.filter((x) => !x.user.bot).size === 1;
 };
 export const checkForEnv = () => {
-    ['token', 'botOwner'].forEach((x) => {
-        if (!process.env[x]) {
-            throw new Error('Token or botOwner is missing in .env file');
-        }
-    });
+    if (!process.env.token && !process.env.beta_token) {
+        throw new Error("Token or beta_token is missing in .env file")
+    }
+    if (!process.env.botOwner) {
+        throw new Error("botOwner is missing in .env file");
+    }
 };
 export const boolEmojis = (b: boolean) => emojis[b ? 'online' : 'dnd'];
