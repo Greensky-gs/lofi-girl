@@ -26,11 +26,22 @@ token=Your bot's token
 feedback=feedback webhook URL
 botOwner=your discord ID
 suggestChannel=music suggestions channel (for bot Owner)
+botPrefix=bot prefix (default is lf!)
 ```
 
 Compile the project : `yarn run build`
 
 And start the bot : `yarn run start`
+
+## Special command for owner
+
+If you're the bot owner, you can set a station recommendation by using the command `{botPrefix}recommendation <station url>`
+
+*Exemple :*
+
+```cmd
+!recommendation https://www.youtube.com/watch?v=Mu3BfD6wmPg
+```
 
 ## Get configs file
 

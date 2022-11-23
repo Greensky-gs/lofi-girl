@@ -1,9 +1,11 @@
 import { Client, VoiceChannel } from 'discord.js';
 import { station } from '../typings/station';
-import { stations } from './configs.json';
+import { stations, emojis } from './configs.json';
 
-export const getStationByUrl = (value: string) => {
-    if (!value || value === 'random') return stations[Math.floor(Math.random() * stations.length)];
+export const getStationByUrl = (value?: string, getRandomIfNotProvided?: boolean) => {
+    if ((!value || value === 'random') && getRandomIfNotProvided !== false)
+        return stations[Math.floor(Math.random() * stations.length)];
+
     return stations.find((x) => x.url === value);
 };
 export const checkForDuplicates = (): station[] => {
@@ -63,3 +65,11 @@ export const formatTime = (timeInSeconds: number): string => {
 export const isUserAlone = (channel: VoiceChannel) => {
     return channel.members.filter((x) => !x.user.bot).size === 1;
 };
+export const checkForEnv = () => {
+    ['token', 'botOwner'].forEach((x) => {
+        if (!process.env[x]) {
+            throw new Error('Token or botOwner is missing in .env file');
+        }
+    });
+};
+export const boolEmojis = (b: boolean) => emojis[b ? 'online' : 'dnd'];

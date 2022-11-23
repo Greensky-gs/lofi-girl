@@ -3,7 +3,7 @@ import { station } from '../typings/station';
 import stations from '../utils/configs.json';
 
 module.exports = new AutocompleteListener({
-    commandName: ['info', 'play', 'switch'],
+    commandName: ['info', 'play', 'switch', 'add'],
     run: ({ options }) => {
         const name = options.getFocused().toLowerCase();
         const list: station[] = (stations.stations as station[])
