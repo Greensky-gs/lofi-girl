@@ -14,10 +14,10 @@ export const checkForDuplicates = (): station[] => {
         if (urls.includes(st.url)) {
             duplicatedURLS.push(st.url);
         } else {
-            urls.push(st.url)
+            urls.push(st.url);
         }
-    })
-    return (stations as station[]).filter(x => duplicatedURLS.includes(x.url));
+    });
+    return (stations as station[]).filter((x) => duplicatedURLS.includes(x.url));
 };
 export const inviteLink = (client: Client) => {
     return `https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=2184464640&scope=bot%20applications.commands`;
