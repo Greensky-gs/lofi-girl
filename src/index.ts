@@ -19,18 +19,21 @@ export const client = new AmethystClient(
         partials: [Partials.Channel, Partials.Message]
     },
     {
+        // Folders
         commandsFolder: './dist/commands',
-        token: process.env.beta_token ? process.env.beta_token : process.env.token,
         eventsFolder: './dist/events',
-        debug: true,
         preconditionsFolder: './dist/preconditions',
         autocompleteListenersFolder: './dist/autocompletes',
         buttonsFolder: './dist/buttons',
-        prefix: process.env.botPrefix ?? 'lf!',
+        // Booleans
+        debug: true,
         strictPrefix: false,
-        botName: 'lofigirl',
         botNameWorksAsPrefix: true,
-        mentionWorksAsPrefix: false
+        mentionWorksAsPrefix: false,
+        // Client data
+        token: process.env.beta_token ? process.env.beta_token : process.env.token,
+        prefix: process.env.botPrefix ?? 'lf!',
+        botName: 'lofigirl',
     }
 );
 
