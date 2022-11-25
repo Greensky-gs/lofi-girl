@@ -2,8 +2,8 @@ import { AutocompleteListener } from 'amethystjs';
 import { station } from '../typings/station';
 import { stations, recommendation } from '../utils/configs.json';
 
-module.exports = new AutocompleteListener({
-    commandName: ['info', 'play', 'switch', 'add'],
+export default new AutocompleteListener({
+    commandName: [{ commandName: 'info' }, { commandName: 'play' }, { commandName: 'switch' }, { commandName: 'add' }],
     run: ({ options }) => {
         const name = options.getFocused().toLowerCase();
 
