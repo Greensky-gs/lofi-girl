@@ -25,6 +25,7 @@ export const client = new AmethystClient(
         debug: true,
         preconditionsFolder: './dist/preconditions',
         autocompleteListenersFolder: './dist/autocompletes',
+        buttonsFolder: './dist/buttons',
         prefix: process.env.botPrefix ?? 'lf!',
         strictPrefix: false,
         botName: 'lofigirl',
