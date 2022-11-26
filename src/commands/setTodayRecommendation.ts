@@ -3,11 +3,13 @@ import { getStationByUrl } from '../utils/functions';
 import configs from '../utils/configs.json';
 import { station } from '../typings/station';
 import { writeFileSync } from 'fs';
+import deleteCommand from '../preconditions/deleteCommand';
 
 export default new AmethystCommand({
     name: 'recommendation',
     description: 'Set the today recommendation',
-    cooldown: 0
+    cooldown: 0,
+    preconditions: [deleteCommand]
 }).setMessageRun(({ message, options }) => {
     if (message.author.id !== process.env.botOwner) return;
 
