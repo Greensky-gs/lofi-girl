@@ -3,6 +3,7 @@ import { ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle } from
 import { writeFileSync } from 'fs';
 import botOwner from '../preconditions/botOwner';
 import confs from '../utils/configs.json';
+import { findEmoji } from '../utils/functions';
 
 export default new ButtonHandler({
     customId: 'accept',
@@ -13,7 +14,7 @@ export default new ButtonHandler({
         url: button.message.embeds[0].url
     };
 
-    const beats = data.title.split(/lofi( +)hip( +)hop( {0,})/i)[1] ?? 'no beats found)';
+    const beats = data.title.split('lofi hip hop/')[1] ?? 'no beats found)';
     const modal = new ModalBuilder()
         .setCustomId('accept-modal')
         .setTitle('Station data')
@@ -24,7 +25,7 @@ export default new ButtonHandler({
                         .setCustomId('a.name')
                         .setLabel('Name')
                         .setStyle(TextInputStyle.Short)
-                        .setValue(data.title.split('-')[1] ?? data.title)
+                        .setValue((data.title.split('-')[1] ?? data.title).split('[')[0] ?? data.title)
                         .setRequired(true)
                 ]
             }),
@@ -45,7 +46,7 @@ export default new ButtonHandler({
                         .setLabel('Beats')
                         .setRequired(true)
                         .setStyle(TextInputStyle.Short)
-                        .setValue(beats.substring(0, beats.length - 1))
+                        .setValue(beats.substring(0, beats.length - 1).split(' ')[0] ?? beats.substring(0, beats.length - 1))
                 ]
             }),
             new ActionRowBuilder({
@@ -55,7 +56,7 @@ export default new ButtonHandler({
                         .setLabel('Emoji')
                         .setRequired(true)
                         .setStyle(TextInputStyle.Short)
-                        .setPlaceholder('Emoji')
+                        .setValue(findEmoji(data.title) ?? 'Emoji')
                 ]
             })
         );

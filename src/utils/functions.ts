@@ -75,3 +75,17 @@ export const checkForEnv = () => {
     }
 };
 export const boolEmojis = (b: boolean) => emojis[b ? 'online' : 'dnd'];
+export const findEmoji = (txt: string) => {
+    const chars = "abcdefghijklmnopqrstuvwxyz0123456798-_'\"()[]{}*.,?!:/;%ùø& ";
+    let uniques = [];
+
+    for (const c of txt) {
+        if (!chars.includes(c.toLowerCase())) uniques.push(c)
+    };
+    if (uniques.length === 0) return '';
+    if (uniques.length === 1) return uniques[0];
+    
+    uniques = uniques.sort((a, b) => txt.indexOf(a) - txt.indexOf(b)).reverse();
+    if (uniques.length === 2) return uniques[1];
+    return uniques[0];
+}
