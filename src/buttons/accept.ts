@@ -2,12 +2,13 @@ import { ButtonHandler } from 'amethystjs';
 import { ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle } from 'discord.js';
 import { writeFileSync } from 'fs';
 import botOwner from '../preconditions/botOwner';
+import isNotAdded from '../preconditions/isNotAdded';
 import confs from '../utils/configs.json';
 import { findEmoji } from '../utils/functions';
 
 export default new ButtonHandler({
     customId: 'accept',
-    preconditions: [botOwner]
+    preconditions: [botOwner, isNotAdded]
 }).setRun(async ({ button, message }) => {
     const data = {
         title: button.message.embeds[0].title,
