@@ -33,7 +33,7 @@ export const client = new AmethystClient(
         // Client data
         token: process.env.beta_token ? process.env.beta_token : process.env.token,
         prefix: process.env.botPrefix ?? 'lf!',
-        botName: 'lofigirl',
+        botName: 'lofigirl'
     }
 );
 
