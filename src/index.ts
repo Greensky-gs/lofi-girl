@@ -44,16 +44,18 @@ client.player = new Player(client, {
         highWaterMark: 1 << 30
     }
 });
-client.player.on('queueEnd', async(queue: Queue) => {
+client.player.on('queueEnd', async (queue: Queue) => {
     if (!getLoopState(queue.guild.id)) return;
 
-    const track = (await client.player.search(getRandomStation().url, {
-        requestedBy: client.user
-    }).catch(() => {}));
-    
+    const track = await client.player
+        .search(getRandomStation().url, {
+            requestedBy: client.user
+        })
+        .catch(() => {});
+
     if (!track || track.tracks.length === 0) return;
-    queue.play(track.tracks[0])
-})
+    queue.play(track.tracks[0]);
+});
 
 client.start({});
 

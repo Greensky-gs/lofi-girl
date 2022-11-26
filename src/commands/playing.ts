@@ -40,11 +40,12 @@ export default new AmethystCommand({
             value: `${queue.tracks.length} following${queue.tracks.length > 1 ? 's' : ''}`,
             inline: true
         });
-    if (getLoopState(interaction.guild.id)) embed.addFields({
-        name: '🔁 Loop',
-        value: 'Auto add is **enabled**',
-        inline: false
-    })
+    if (getLoopState(interaction.guild.id))
+        embed.addFields({
+            name: '🔁 Loop',
+            value: 'Auto add is **enabled**',
+            inline: false
+        });
 
     interaction.reply({ embeds: [embed] }).catch(() => {});
 });
