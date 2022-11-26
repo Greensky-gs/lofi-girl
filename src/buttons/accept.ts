@@ -72,7 +72,7 @@ export default new ButtonHandler({
     if (!reply) return;
     const g = (x: string) => reply.fields.getTextInputValue(`a.${x}`);
     const title = g('name');
-    const beatsV = g('beats') === 'sad' ? '(sad lofi hip hop)' : g('beats') === 'asian' ? '(asian lofi hip jop)' : `(lofi hip hop/${g('beats')})`;
+    const beatsV = g('beats') === 'sad' ? '(sad lofi hip hop)' : g('beats') === 'asian' ? '(asian lofi hip hop)' : `(lofi hip hop/${g('beats')})`;
     const emoji = g('emoji');
     const authors = g('author');
 
