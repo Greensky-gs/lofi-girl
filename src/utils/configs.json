@@ -1384,6 +1384,11 @@
             "label": "Invalid beats type",
             "value": "You can't put automatically the beats type",
             "reply": "Hello, your suggestion can't be added because the beats type (something like \"lofi hip hop/relaxing beats\" in the title) can't be added.\nThank you for submitting this suggestion, maybe my owner will add it manually.\nHave a cool day !"
+        },
+        {
+            "label": "Too short",
+            "value": "The music playlist is too short to be added",
+            "reply": "Hello, you've suggested a music to add it in my songs, unfortunately, I think that this music is too short to be added.\nYou always can try to resubmit it, maybe my owner will accept it.\nI hope you to have a good day !"
         }
     ],
     "recommendation": {
