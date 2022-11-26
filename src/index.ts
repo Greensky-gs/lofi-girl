@@ -1,8 +1,8 @@
 import { AmethystClient } from 'amethystjs';
-import { Player } from 'discord-player';
+import { Player, Queue } from 'discord-player';
 import { Partials, Client } from 'discord.js';
 import { config } from 'dotenv';
-import { checkForDuplicates, checkForEnv } from './utils/functions';
+import { checkForDuplicates, checkForEnv, getLoopState, getRandomStation, getStationByUrl } from './utils/functions';
 
 config();
 
@@ -40,9 +40,20 @@ export const client = new AmethystClient(
 client.player = new Player(client, {
     ytdlOptions: {
         filter: 'audioonly',
-        quality: 'highestaudio'
+        quality: 'highestaudio',
+        highWaterMark: 1 << 30
     }
 });
+client.player.on('queueEnd', async(queue: Queue) => {
+    if (!getLoopState(queue.guild.id)) return;
+
+    const track = (await client.player.search(getRandomStation().url, {
+        requestedBy: client.user
+    }).catch(() => {}));
+    
+    if (!track || track.tracks.length === 0) return;
+    queue.play(track.tracks[0])
+})
 
 client.start({});
 

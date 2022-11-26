@@ -1,6 +1,7 @@
 import { Client, VoiceChannel } from 'discord.js';
 import { station } from '../typings/station';
 import { stations, emojis, recommendation } from './configs.json';
+import { loops } from './maps';
 
 export const getStationByUrl = (value?: string, getRandomIfNotProvided?: boolean): station => {
     if ((!value || value === 'random') && getRandomIfNotProvided !== false)
@@ -88,4 +89,14 @@ export const findEmoji = (txt: string) => {
     uniques = uniques.sort((a, b) => txt.indexOf(a) - txt.indexOf(b)).reverse();
     if (uniques.length === 2) return uniques[1];
     return uniques[0];
+}
+export const getLoopState = (guildId: string) => {
+    return loops.get(guildId) ?? false;
+}
+export const setLoopState = (guildId: string, state: boolean) => {
+    return loops.set(guildId, state);
+}
+export const getRandomStation = (): station => {
+    const availables = stations.filter(x => x.type !== 'station');
+    return availables[Math.floor(Math.random() * availables.length)] as station;
 }
