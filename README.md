@@ -47,9 +47,15 @@ If you're the bot owner, you can set a station recommendation by using the comma
 
 The bot can add songs by a suggestions system.
 
-However, if you want to get the `configs.json` file, send a message where you mention the bot.
+However, if you want to get the `configs.json` file, use the command `{botPrefix}configfile`.
 
-This will tell him to send you the config file in direct messages
+*Exemple :*
+
+```cmd
+!configfile
+```
+
+This will tell him to send you the config file in direct messages and delete the message command
 
 ## Developement
 
