@@ -5,6 +5,8 @@
 
 This repository is the source code of [Lofi Girl](https://discord.com/oauth2/authorize?client_id=1037028318404419596&permissions=277028554752&scope=bot%20applications.commands) bot
 
+The bot uses [Amethyst JS framework](https://npmjs.com/package/amethystjs)
+
 ## Important informations
 
 There's some important informations you need to know :
@@ -18,6 +20,8 @@ There's some important informations you need to know :
 If you want to use it in a personnal usage, first download yarn (if you don't have, run `npm i -g yarn`)
 
 Then you need to install the dependencies : `yarn install`
+
+See [`./env.example`](./.env.example) to see what the `.env` file should look like
 
 Create a `.env` file that includes :
 
