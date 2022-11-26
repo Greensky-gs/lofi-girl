@@ -96,6 +96,11 @@ export default new AmethystCommand({
                 inline: true
             })
             .setURL(station.url);
+
+        if (recommendation && Object.keys(recommendation).length > 0 && station.url === recommendation.url) embed.setFooter({
+            text: "Recommendation of the day",
+            iconURL: interaction.client.user.displayAvatarURL()
+        });
         interaction.reply({ embeds: [embed] }).catch(() => {});
 
         const data = await interaction.client.player.search(station.url, {
