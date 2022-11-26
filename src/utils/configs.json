@@ -833,6 +833,60 @@
             "name": "Purrple Cat - Adventure Island (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🌈"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=_y571ET8QBk",
+            "name": "l'Outlander  - One Way Ticket (lofi hip hop/relaxing)",
+            "type": "playlist",
+            "emoji": "✈️"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=eL1S7NMHA1A",
+            "name": "Kainbeats - Blindsighted (lofi hip hop/releaxing)",
+            "type": "playlist",
+            "emoji": "🌻"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=cOUoWAaGqJY",
+            "name": "Mujo x Sweet Medicine  - Better Days (lofi hip hop/relaxing)",
+            "type": "playlist",
+            "emoji": "⛩️"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=v68ZGCIDTvI",
+            "name": "Leavv  - Cloud Shapes (lofi hip hop/relaxing)",
+            "type": "playlist",
+            "emoji": "🌠"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=Rkm2vYSESrQ",
+            "name": "WYS x Sweet Medicine  - The Way Back (lofi hip hop/relaxing)",
+            "type": "playlist",
+            "emoji": "🏜️"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=zDK2KJ8k-cs",
+            "name": "Squeeda  - Lost World (lofi hip hop/relaxing)",
+            "type": "playlist",
+            "emoji": "⛰️"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=p2JHOJCuRds",
+            "name": "mell-ø - Time To Go (lofi hip hop/relaxing)",
+            "type": "playlist",
+            "emoji": "🪁"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=Zw_dR6my7rc",
+            "name": "Hoogway x softy  - Alley Of Trees (lofi hip hop/relaxing)",
+            "type": "playlist",
+            "emoji": "🍂"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=ucRQph70hmc",
+            "name": "Hoogway x softy  - Alley Of Trees (lofi hip hop/relaxing)",
+            "type": "playlist",
+            "emoji": "🍂"
         }
     ],
     "emojis": {
@@ -852,5 +906,10 @@
             "reply": "Hello, your suggestion can't be added because the beats type (something like \"lofi hip hop/relaxing beats\" in the title) can't be added.\nThank you for submitting this suggestion, maybe my owner will add it manually.\nHave a cool day !"
         }
     ],
-    "recommendation": {}
+    "recommendation": {
+        "url": "https://www.youtube.com/watch?v=-JhKm4xoXA4",
+        "name": "Spencer Hunt - Windy City (lofi hip hop/relaxing beats)",
+        "type": "playlist",
+        "emoji": "☁️"
+    }
 }
