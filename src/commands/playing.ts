@@ -2,7 +2,7 @@ import { EmbedBuilder } from '@discordjs/builders';
 import { AmethystCommand, preconditions } from 'amethystjs';
 import { Colors } from 'discord.js';
 import playingPrecondition from '../preconditions/playing';
-import { getStationByUrl } from '../utils/functions';
+import { getLoopState, getStationByUrl } from '../utils/functions';
 
 export default new AmethystCommand({
     name: 'playing',
@@ -40,6 +40,11 @@ export default new AmethystCommand({
             value: `${queue.tracks.length} following${queue.tracks.length > 1 ? 's' : ''}`,
             inline: true
         });
+    if (getLoopState(interaction.guild.id)) embed.addFields({
+        name: '🔁 Loop',
+        value: 'Auto add is **enabled**',
+        inline: false
+    })
 
     interaction.reply({ embeds: [embed] }).catch(() => {});
 });
