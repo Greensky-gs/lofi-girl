@@ -13,7 +13,7 @@ export default new ButtonHandler({
         url: button.message.embeds[0].url
     };
 
-    const beats = data.title.split(/lofi( +)hip( +)hop( +)/i)[1] ?? 'no beats found)';
+    const beats = data.title.split(/lofi( +)hip( +)hop( {0,})/i)[1] ?? 'no beats found)';
     const modal = new ModalBuilder()
         .setCustomId('accept-modal')
         .setTitle('Station data')
@@ -24,7 +24,7 @@ export default new ButtonHandler({
                         .setCustomId('a.name')
                         .setLabel('Name')
                         .setStyle(TextInputStyle.Short)
-                        .setPlaceholder(data.title)
+                        .setValue(data.title.split('-')[1] ?? data.title)
                         .setRequired(true)
                 ]
             }),
@@ -71,7 +71,7 @@ export default new ButtonHandler({
     if (!reply) return;
     const g = (x: string) => reply.fields.getTextInputValue(`a.${x}`);
     const title = g('name');
-    const beatsV = `(lofi hip hop/${g('beats')})`;
+    const beatsV = g('beats') === 'sad' ? '(sad lofi hip hop)' : g('beats') === 'asian' ? '(asian lofi hip jop)' : `(lofi hip hop/${g('beats')})`;
     const emoji = g('emoji');
     const authors = g('author');
 
