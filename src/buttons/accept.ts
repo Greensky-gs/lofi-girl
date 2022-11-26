@@ -77,7 +77,7 @@ export default new ButtonHandler({
 
     confs.stations.push({
         url: data.url,
-        name: `${authors} - ${title} ${beatsV}`,
+        name: `${authors} - ${title} ${beatsV}`.replace(/ +/g, ' '),
         type: 'playlist',
         emoji
     });
