@@ -80,7 +80,7 @@ export default new ButtonHandler({
             ? '(sad lofi hip hop)'
             : g('beats') === 'asian'
             ? '(asian lofi hip hop)'
-            : `(lofi hip hop/${g('beats')})`;
+            : `(lofi hip hop/${g('beats')} beats)`;
     const emoji = g('emoji');
     const authors = g('author');
 
