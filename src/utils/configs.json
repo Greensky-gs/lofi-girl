@@ -547,12 +547,6 @@
             "type": "playlist"
         },
         {
-            "url": "https://www.youtube.com/watch?v=g4_bl8Y_C6U",
-            "name": "kokoro - The Way Home (lofi hip hop/relaxing beats)",
-            "emoji": "🌳",
-            "type": "playlist"
-        },
-        {
             "url": "https://www.youtube.com/watch?v=rgq_Q9418cg",
             "name": "Sleepermane - In Between Cycles (lofi hip hop/relaxing beats)",
             "emoji": "🌫",
@@ -562,12 +556,6 @@
             "url": "https://www.youtube.com/watch?v=O_x6gERAhnE",
             "name": "stream_error - polaris (lofi hip hop/relaxing beats)",
             "emoji": "🌌",
-            "type": "playlist"
-        },
-        {
-            "url": "https://www.youtube.com/watch?v=XTYgwZeDNyQ",
-            "name": "H.1 x Hevi - Indigo Night (lofi hip hop/relaxing beats)",
-            "emoji": "💫",
             "type": "playlist"
         },
         {
@@ -770,7 +758,7 @@
         },
         {
             "url": "https://www.youtube.com/watch?v=bRCtbLGb2as",
-            "name": "Blurred Figures x another silent weekend - Finding Comfort (lofi hip hop/relaxing beats)",
+            "name": "Blurred Figures x another silent weekend - Finding Comfort (relaxing beats)",
             "type": "playlist",
             "emoji": "❄️"
         },
@@ -815,6 +803,36 @@
             "name": "Pandrezz - Feelin Better (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "✨"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=Mu3BfD6wmPg",
+            "name": "Kupla - Kingdom in Blue (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "👑"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=O7RG-B6N1Vw",
+            "name": "Lonely days (sad lofi hip hop)",
+            "type": "playlist",
+            "emoji": "☔"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=M1j7EQsXPcc",
+            "name": "Purrple Cat - Distant worlds III (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🪐"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=HPQJk6kLE-I",
+            "name": "xander. - Cabin Fever, Pt.3 (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🍄"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=C68Q-z2UkI8",
+            "name": "Purrple Cat - Adventure Island (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌈"
         }
     ],
     "emojis": {
@@ -833,5 +851,6 @@
             "value": "You can't put automatically the beats type",
             "reply": "Hello, your suggestion can't be added because the beats type (something like \"lofi hip hop/relaxing beats\" in the title) can't be added.\nThank you for submitting this suggestion, maybe my owner will add it manually.\nHave a cool day !"
         }
-    ]
+    ],
+    "recommendation": {}
 }

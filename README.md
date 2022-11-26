@@ -5,6 +5,8 @@
 
 This repository is the source code of [Lofi Girl](https://discord.com/oauth2/authorize?client_id=1037028318404419596&permissions=277028554752&scope=bot%20applications.commands) bot
 
+The bot uses [Amethyst JS framework](https://npmjs.com/package/amethystjs)
+
 ## Important informations
 
 There's some important informations you need to know :
@@ -19,6 +21,8 @@ If you want to use it in a personnal usage, first download yarn (if you don't ha
 
 Then you need to install the dependencies : `yarn install`
 
+See [`./env.example`](./.env.example) to see what the `.env` file should look like
+
 Create a `.env` file that includes :
 
 ```env
@@ -26,19 +30,36 @@ token=Your bot's token
 feedback=feedback webhook URL
 botOwner=your discord ID
 suggestChannel=music suggestions channel (for bot Owner)
+botPrefix=bot prefix (default is lf!)
 ```
 
 Compile the project : `yarn run build`
 
 And start the bot : `yarn run start`
 
+## Special command for owner
+
+If you're the bot owner, you can set a station recommendation by using the command `{botPrefix}recommendation <station url>`
+
+*Exemple :*
+
+```cmd
+!recommendation https://www.youtube.com/watch?v=Mu3BfD6wmPg
+```
+
 ## Get configs file
 
 The bot can add songs by a suggestions system.
 
-However, if you want to get the `configs.json` file, send a message where you mention the bot.
+However, if you want to get the `configs.json` file, use the command `{botPrefix}configfile`.
 
-This will tell him to send you the config file in direct messages
+*Exemple :*
+
+```cmd
+!configfile
+```
+
+This will tell him to send you the config file in direct messages and delete the message command
 
 ## Developement
 

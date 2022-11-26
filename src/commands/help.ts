@@ -1,68 +1,61 @@
-import { LofiCommand } from '../structures/Command';
+import { AmethystCommand } from 'amethystjs';
 import { ApplicationCommandOptionType, EmbedBuilder } from 'discord.js';
 import { boolEmojis } from '../utils/functions';
 
-export default new LofiCommand({
+export default new AmethystCommand({
     name: 'help',
     description: 'Displays help page',
-    admin: false,
-    cooldown: 5,
-    dm: true,
     options: [
         {
             name: 'command',
-            description: 'Command to display',
-            autocomplete: true,
+            description: 'Command to show help',
             required: false,
+            autocomplete: true,
             type: ApplicationCommandOptionType.String
         }
     ],
-    execute: ({ interaction, options }) => {
-        const cmdName = options.getString('command');
-        const em = new EmbedBuilder()
-            .setTimestamp()
-            .setColor(interaction.guild?.members?.me?.displayHexColor ?? 'DarkAqua')
-            .setThumbnail(interaction.user.avatarURL({ forceStatic: false }));
-
-        if (cmdName) {
-            const cmd = interaction.client.commands.find((x) => x.name === cmdName);
-            em.setDescription(`Here are informations about ${cmd.name} command`)
-                .setFields(
-                    {
-                        name: 'Description',
-                        value: cmd.description,
-                        inline: false
-                    },
-                    {
-                        name: 'Admin only',
-                        value: boolEmojis(cmd.admin),
-                        inline: true
-                    },
-                    {
-                        name: 'Cooldown',
-                        value: cmd.cooldown + ' seconds',
-                        inline: true
-                    },
-                    {
-                        name: 'Executable in PM',
-                        value: boolEmojis(cmd.dm),
-                        inline: true
-                    }
-                )
-                .setTitle('Help command');
-        } else {
-            em.setDescription(
-                `Here is the list of my commands :\n${interaction.client.commands
-                    .sort((a, b) => (b.admin ? 0 : 1) - (a.admin ? 0 : 1))
-                    .map((c) => `\`/${c.name}\` ${c.description}${c.admin ? ' **- admins only**' : ''}`)
-                    .join('\n')}`
-            ).setTitle('Help page');
-        }
-        em.addFields({
-            name: 'links',
-            value: `[**Invite Lofi Girl**](${interaction.client.inviteLink})\n[**Source code**](https://github.com/Greensky-gs/lofi-girl)\n[**Lofi Girl channel**](https://www.youtube.com/c/LofiGirl/)`
+    cooldown: 5
+}).setChatInputRun(({ interaction, options }) => {
+    const cmd: AmethystCommand = interaction.client.chatInputCommands.find(
+        (x) => x.options.name === options.getString('command')
+    );
+    if (cmd) {
+        return interaction.reply({
+            embeds: [
+                new EmbedBuilder()
+                    .setTitle(`${cmd.options.name} command`)
+                    .setDescription(cmd.options.description)
+                    .setFields(
+                        {
+                            name: 'Permissions',
+                            value: cmd.options.preconditions?.find((x) => x.name === 'adminIfNotAlone')
+                                ? 'Administrator if user is not alone in the channel'
+                                : '',
+                            inline: false
+                        },
+                        {
+                            name: 'Usable in direct messages',
+                            value: boolEmojis(
+                                !(cmd.options.preconditions?.find((x) => x.name === 'GuildOnly') ?? false)
+                            ),
+                            inline: true
+                        }
+                    )
+                    .setColor('Orange')
+                    .setThumbnail(interaction.client.user.displayAvatarURL({ forceStatic: true }))
+            ]
         });
-
-        interaction.reply({ embeds: [em] }).catch(() => {});
     }
+    const commands = interaction.client.chatInputCommands.map((x) => x.options);
+
+    const embed = new EmbedBuilder()
+        .setTitle('Help page')
+        .setDescription(
+            `Here is the list of my commands :\n${commands.map((c) => `\`/${c.name}\` : ${c.description}`).join('\n')}`
+        )
+        .setThumbnail(interaction.client.user.displayAvatarURL())
+        .setColor(interaction.client.user.hexAccentColor ?? 'Orange')
+        .setTimestamp();
+
+    interaction.reply({ embeds: [embed] }).catch(() => {});
 });

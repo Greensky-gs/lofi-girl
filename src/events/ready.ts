@@ -1,12 +1,24 @@
+import { AmethystEvent } from 'amethystjs';
 import { ActivityOptions, ActivityType } from 'discord.js';
-import { LofiEvent } from '../structures/Event';
-import { stations } from '../utils/configs.json';
+import { station } from '../typings/station';
+import { stations, recommendation } from '../utils/configs.json';
 
-export default new LofiEvent('ready', (c) => {
-    console.log(`Logged as ${c.user.tag}`);
-
-    type st = () => Promise<ActivityOptions>;
-    const statuses: st[] = [
+export default new AmethystEvent('ready', async (client) => {
+    const statuses: (() => Promise<ActivityOptions>)[] = [
+        async () => {
+            return {
+                name: 'Lofi music',
+                type: ActivityType.Listening,
+                url: 'https://youtube.com/c/LofiGirl'
+            };
+        },
+        async () => {
+            await client.guilds.fetch();
+            return {
+                name: `${client.guilds.cache.size} servers`,
+                type: ActivityType.Listening
+            };
+        },
         async () => {
             return {
                 name: `${stations.length} musics`,
@@ -14,27 +26,26 @@ export default new LofiEvent('ready', (c) => {
             };
         },
         async () => {
-            await c.guilds.fetch();
-            return {
-                name: `${c.guilds.cache.size} servers`,
-                type: ActivityType.Listening
-            };
-        },
-        async () => {
-            return {
-                name: 'Lofi music',
-                type: ActivityType.Listening,
-                url: 'https://youtube.com/c/LofiGirl'
-            };
+            if (Object.keys(recommendation).length > 0) {
+                return {
+                    name: `${(recommendation as station).emoji} ${(recommendation as station).name}`,
+                    type: ActivityType.Listening,
+                    url: (recommendation as station).url
+                };
+            } else {
+                return {
+                    name: `music in ${client.player.queues.size} servers`,
+                    type: ActivityType.Playing
+                };
+            }
         }
     ];
     let index = 0;
-    const setPresence = async () => {
-        c.user.setActivity(await statuses[index % 3]());
-    };
-    setPresence();
+    client.user.setActivity(await statuses[index]());
+    index++;
+
     setInterval(async () => {
         index++;
-        setPresence();
+        client.user.setActivity(await statuses[index % statuses.length]());
     }, 20000);
 });

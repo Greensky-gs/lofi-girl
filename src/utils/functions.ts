@@ -1,37 +1,30 @@
-import { CommandInteraction, CommandInteractionOptionResolver, Guild } from 'discord.js';
-import voice from '../maps/voice';
+import { Client, VoiceChannel } from 'discord.js';
 import { station } from '../typings/station';
-import { stations } from './configs.json';
-import { emojis } from './configs.json';
+import { stations, emojis, recommendation } from './configs.json';
 
-export const boolEmojis = (b: boolean): string => emojis[b ? 'online' : 'dnd'];
-export const getRandomStation = (): station => {
-    return (stations as station[])[Math.floor(Math.random() * stations.length)];
+export const getStationByUrl = (value?: string, getRandomIfNotProvided?: boolean): station => {
+    if ((!value || value === 'random') && getRandomIfNotProvided !== false)
+        return (stations as station[])[Math.floor(Math.random() * stations.length)];
+
+    if (value === 'recommendation') return recommendation as station;
+    return (stations as station[]).find((x) => x.url === value);
 };
-export const findStation = (url: string): station => {
-    return stations.find((x) => x.url === url) as station;
+export const checkForDuplicates = (): station[] => {
+    const urls = [];
+    const duplicatedURLS: string[] = [];
+
+    stations.forEach((st: station) => {
+        if (urls.includes(st.url)) {
+            duplicatedURLS.push(st.url);
+        } else {
+            urls.push(st.url);
+        }
+    });
+    return (stations as station[]).filter((x) => duplicatedURLS.includes(x.url));
 };
-export const getStation = (options: CommandInteractionOptionResolver): station => {
-    const s = options.getString('station');
-    if (s === 'random') return getRandomStation();
-    return (stations as station[]).find((x) => x.url === s);
+export const inviteLink = (client: Client) => {
+    return `https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=2184464640&scope=bot%20applications.commands`;
 };
-export const defaultStation = (): station => {
-    return (stations as station[])[0];
-};
-export const getQueue = (guild: string | Guild | CommandInteraction) => {
-    return voice.get(
-        typeof guild === 'string'
-            ? guild
-            : (guild as Guild)?.ownerId
-            ? guild.id
-            : (guild as CommandInteraction).guild.id
-    );
-};
-export const getVidId = (url: string) => {
-    return url.slice(32);
-};
-export const getVidLink = (id: string) => `https://www.youtube.com/watch?v=${id}`;
 export const formatTime = (timeInSeconds: number): string => {
     let seconds = 0;
     let minutes = 0;
@@ -70,3 +63,15 @@ export const formatTime = (timeInSeconds: number): string => {
     });
     return res;
 };
+export const isUserAlone = (channel: VoiceChannel) => {
+    return channel.members.filter((x) => !x.user.bot).size === 1;
+};
+export const checkForEnv = () => {
+    if (!process.env.token && !process.env.beta_token) {
+        throw new Error('Token or beta_token is missing in .env file');
+    }
+    if (!process.env.botOwner) {
+        throw new Error('botOwner is missing in .env file');
+    }
+};
+export const boolEmojis = (b: boolean) => emojis[b ? 'online' : 'dnd'];

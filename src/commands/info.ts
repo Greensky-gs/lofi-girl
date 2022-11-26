@@ -1,103 +1,117 @@
+import { AmethystCommand } from 'amethystjs';
 import { ApplicationCommandOptionType, EmbedBuilder } from 'discord.js';
-import moment from 'moment';
-import { getBasicInfo } from 'ytdl-core';
-import { LofiCommand } from '../structures/Command';
-import { station as st } from '../typings/station';
-import { stations } from '../utils/configs.json';
-import { formatTime, getStation } from '../utils/functions';
+import { station } from '../typings/station';
+import { stations, recommendation } from '../utils/configs.json';
+import { formatTime, getStationByUrl, inviteLink } from '../utils/functions';
 
-export default new LofiCommand({
+export default new AmethystCommand({
     name: 'info',
-    description: 'Displays some informations',
-    dm: true,
-    admin: false,
-    cooldown: 5,
+    description: "Display's informations",
     options: [
         {
             name: 'bot',
-            description: 'Displays bot informations',
+            description: "Display bot's informations",
             type: ApplicationCommandOptionType.Subcommand
         },
         {
             name: 'station',
-            description: "Show a station's informations",
+            description: 'Displays a station informations',
             type: ApplicationCommandOptionType.Subcommand,
             options: [
                 {
                     name: 'station',
                     autocomplete: true,
                     required: true,
-                    description: 'Station to display',
-                    type: ApplicationCommandOptionType.String
+                    type: ApplicationCommandOptionType.String,
+                    description: 'Station to display'
                 }
             ]
         }
-    ],
-    execute: async ({ interaction, options }) => {
-        const cmd = options.getSubcommand(true);
-        if (cmd === 'station') {
-            const station = getStation(options) as st;
-            await interaction.deferReply();
-            const track = await getBasicInfo(station.url);
+    ]
+}).setChatInputRun(async ({ interaction, options }) => {
+    const cmd = options.getSubcommand();
+    if (cmd === 'bot') {
+        await interaction.deferReply();
+        await interaction.client.guilds.fetch();
 
-            const em = new EmbedBuilder()
-                .setTitle(`${station.emoji} ${station.name}`)
-                .setURL(station.url)
-                .setFields({
-                    name: 'Duration',
-                    value:
-                        (station.type === 'station'
-                            ? 'Live'
-                            : `~${formatTime(parseInt(track.videoDetails.lengthSeconds))}`) ?? 'Unknown',
+        const embed = new EmbedBuilder()
+            .setTimestamp()
+            .setThumbnail(interaction.client.user.displayAvatarURL({ forceStatic: true }))
+            .setTitle('Bot informations')
+            .setColor('Orange')
+            .setDescription(`I'm a bot that can play lofi music in your server`)
+            .setFields(
+                {
+                    name: 'Servers',
+                    value: interaction.client.guilds.cache.size.toString(),
+                    inline: true
+                },
+                {
+                    name: 'Members',
+                    value: interaction.client.guilds.cache
+                        .map((x) => x.memberCount)
+                        .reduce((a, b) => a + b)
+                        .toString(),
+                    inline: true
+                },
+                {
+                    name: 'Playing in',
+                    value: interaction.client.player.queues.filter((x) => x.playing).size + ' servers',
+                    inline: true
+                },
+                {
+                    name: 'Stations',
+                    value: stations.length.toString(),
                     inline: false
-                })
-                .setColor('DarkGreen')
-                .setThumbnail(track.thumbnail_url ?? interaction.client.user.displayAvatarURL({ forceStatic: false }));
+                },
+                {
+                    name: 'Links',
+                    value: `[Invite me](${inviteLink(
+                        interaction.client
+                    )})\n[Lofi Girl channel](https://youtube.com/c/LofiGirl)\n[Source code](https://github.com/Greensky-gs/lofi-girl)`,
+                    inline: false
+                }
+            );
 
-            interaction.editReply({ embeds: [em] }).catch(() => {});
+        if (recommendation && Object.keys(recommendation).length === 4) {
+            const { name, url, emoji } = recommendation as station;
+            embed.addFields({
+                name: '❤️ Recommendation of the day',
+                value: `[${name} ${emoji}](${url})`,
+                inline: false
+            });
         }
-        if (cmd === 'bot') {
-            await Promise.all([interaction.deferReply(), interaction.client.guilds.fetch()]);
-            const members = interaction.client.guilds.cache.map((g) => g.memberCount).reduce((a, b) => a + b);
+        interaction.editReply({ embeds: [embed] }).catch(() => {});
+    }
+    if (cmd === 'station') {
+        const station = getStationByUrl(options.getString('station'));
 
-            const em = new EmbedBuilder()
-                .setTitle('Bot informations')
-                .setURL('https://github.com/Greensky-gs/lofi-girl')
-                .setDescription(`Here are some informations about me`)
-                .setFields(
-                    {
-                        name: 'Servers',
-                        value: interaction.client.guilds.cache.size.toString(),
-                        inline: true
-                    },
-                    {
-                        name: 'Members',
-                        value: members.toString(),
-                        inline: true
-                    },
-                    {
-                        name: 'Stations',
-                        value: `${stations.length} music stations`,
-                        inline: true
-                    },
-                    {
-                        name: 'Uptime',
-                        value: 'Last connected ' + moment(Date.now() - interaction.client.uptime).fromNow(),
-                        inline: false
-                    },
-                    {
-                        name: 'Links',
-                        value: `[Source code](https://github.com/Greensky-gs/lofi-girl)\n[Invite me](${interaction.client.inviteLink})\n[Lofi Girl Channel](https://youtube.com/c/LofiGirl)`,
-                        inline: false
-                    }
-                )
-                .setColor('DarkGreen');
+        const embed = new EmbedBuilder()
+            .setThumbnail(interaction.client.user.displayAvatarURL({ forceStatic: true }))
+            .setTitle(`${station.emoji} ${station.name}`)
+            .setColor('Orange')
+            .setFields({
+                name: '🔗 Link',
+                value: `[${station.name}](${station.url})`,
+                inline: true
+            })
+            .setURL(station.url);
+        interaction.reply({ embeds: [embed] }).catch(() => {});
 
-            interaction
-                .editReply({
-                    embeds: [em]
-                })
-                .catch(() => {});
-        }
+        const data = await interaction.client.player.search(station.url, {
+            requestedBy: interaction.user
+        });
+        const video = data.tracks[0];
+        if (!video) return;
+
+        if (video.thumbnail)
+            embed.setImage(video.thumbnail ?? interaction.client.user.displayAvatarURL({ forceStatic: true }));
+        embed.addFields({
+            name: '🎧 Duration',
+            value: `${formatTime(Math.floor(video.durationMS / 1000))}`,
+            inline: true
+        });
+
+        interaction.editReply({ embeds: [embed] }).catch(() => {});
     }
 });
