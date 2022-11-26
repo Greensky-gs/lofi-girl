@@ -13,4 +13,9 @@ export default new Precondition('isNotAdded')
         isChatInput: false,
         isButton: true
     }
+    return {
+        ok: true,
+        isChatInput: false,
+        button       
+    }
 })
