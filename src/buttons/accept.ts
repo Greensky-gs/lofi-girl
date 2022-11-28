@@ -71,7 +71,6 @@ export default new ButtonHandler({
         })
         .catch(() => {});
 
-    console.log(reply);
     if (!reply) return;
     const g = (x: string) => reply.fields.getTextInputValue(`a.${x}`);
     const title = g('name');
