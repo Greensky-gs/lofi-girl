@@ -37,6 +37,16 @@ Compile the project : `yarn run build`
 
 And start the bot : `yarn run start`
 
+### Command
+
+There's a npm script that you can use to check if the `configs.json` file contains duplicated files
+
+Use `node run duplicates` in the command prompt to run the script.
+
+The script will build the project and check for duplicates.
+
+If a station is duplicated, it will throw an error.
+
 ## Special command for owner
 
 If you're the bot owner, you can set a station recommendation by using the command `{botPrefix}recommendation <station url>`
