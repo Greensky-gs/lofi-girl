@@ -77,7 +77,7 @@ export const checkForEnv = () => {
 };
 export const boolEmojis = (b: boolean) => emojis[b ? 'online' : 'dnd'];
 export const findEmoji = (txt: string) => {
-    const chars = 'abcdefghijklmnopqrstuvwxyz0123456798-_\'"()[]{}*.,?!:/;%ùø& ';
+    const chars = "'" + 'abcdefghijklmnopqrstuvwxyz0123456798-_"()[]{}*.,?!:/;%ùø&éà@^\\|è~ ';
     let uniques = [];
 
     for (const c of txt) {
