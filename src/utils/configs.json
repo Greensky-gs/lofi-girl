@@ -1589,6 +1589,12 @@
             "name": "xander. - Cabin Fever (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🏙️"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=OYfO6NnT6w4",
+            "name": "Kanisan ft. Dario Lessing x Claudia Lessing - Edda (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌓"
         }
     ],
     "emojis": {
@@ -1614,9 +1620,9 @@
         }
     ],
     "recommendation": {
-        "url": "https://www.youtube.com/watch?v=agTYiuAEH_s",
-        "name": "Ornithology - Ornithology (lofi hip hop/relaxing beats)",
+        "url": "https://www.youtube.com/watch?v=vLqTRzobidk",
+        "name": "Kupla - Melody Mountain (lofi hip hop/relaxing beats)",
         "type": "playlist",
-        "emoji": "🐦"
+        "emoji": "❄️"
     }
 }
