@@ -33,7 +33,7 @@ export default new AmethystEvent('ready', async (client) => {
         }
     ];
     const initialLength = statuses.length;
-    const actualRecommendation: station | {url: undefined} = {url: undefined};
+    const actualRecommendation: station | { url: undefined } = { url: undefined };
 
     let index = 0;
     client.user.setActivity(await statuses[index]());
@@ -43,14 +43,18 @@ export default new AmethystEvent('ready', async (client) => {
         index++;
         client.user.setActivity(await statuses[index % statuses.length]());
 
-        if (Object.keys(recommendation).length > 0 && actualRecommendation?.url !== recommendation.url && actualRecommendation.url) {
-            const fnt = async(): Promise<ActivityOptions> => {
+        if (
+            Object.keys(recommendation).length > 0 &&
+            actualRecommendation?.url !== recommendation.url &&
+            actualRecommendation.url
+        ) {
+            const fnt = async (): Promise<ActivityOptions> => {
                 return {
                     name: `${(recommendation as station).emoji} ${(recommendation as station).name}`,
                     type: ActivityType.Listening,
                     url: (recommendation as station).url
                 };
-            }
+            };
             if (statuses.length > initialLength) {
                 statuses[4] = fnt;
             } else {

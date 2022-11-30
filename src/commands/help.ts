@@ -56,13 +56,11 @@ export default new AmethystCommand({
         .setThumbnail(interaction.client.user.displayAvatarURL())
         .setColor(interaction.client.user.hexAccentColor ?? 'Orange')
         .setTimestamp()
-        .addFields(
-            {
-                name: 'More help',
-                value: `If you need more help, use the command \`/guide\``,
-                inline: false
-            }
-        )
+        .addFields({
+            name: 'More help',
+            value: `If you need more help, use the command \`/guide\``,
+            inline: false
+        });
 
     interaction.reply({ embeds: [embed] }).catch(() => {});
 });
