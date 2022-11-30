@@ -7,11 +7,11 @@ import { checkForDuplicates, checkForEnv, getLoopState, getRandomStation, getSta
 config();
 
 const duplicated = checkForDuplicates();
-checkForEnv();
 if (duplicated.length > 0) {
     console.log(duplicated);
     throw new Error('Some musics are duplicated');
 }
+checkForEnv();
 
 export const client = new AmethystClient(
     {
