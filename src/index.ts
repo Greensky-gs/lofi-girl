@@ -2,7 +2,7 @@ import { AmethystClient } from 'amethystjs';
 import { Player, Queue } from 'discord-player';
 import { Partials, Client } from 'discord.js';
 import { config } from 'dotenv';
-import { checkForDuplicates, checkForEnv, getLoopState, getRandomStation, getStationByUrl } from './utils/functions';
+import { checkForDuplicates, checkForEnv, getLoopState, getRandomStation, getStationByUrl, setLoopState } from './utils/functions';
 
 config();
 
@@ -55,6 +55,10 @@ client.player.on('queueEnd', async (queue: Queue) => {
 
     if (!track || track.tracks.length === 0) return;
     queue.play(track.tracks[0]);
+});
+client.player.on('botDisconnect', (queue: Queue) => {
+    if (!getLoopState(queue.guild.id)) return;
+    setLoopState(queue.guild.id, false);
 });
 
 client.start({});
