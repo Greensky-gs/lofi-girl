@@ -1,13 +1,12 @@
 import { AmethystClient } from 'amethystjs';
 import { Player, Queue } from 'discord-player';
-import { Partials, Client } from 'discord.js';
+import { Partials } from 'discord.js';
 import { config } from 'dotenv';
 import {
     checkForDuplicates,
     checkForEnv,
     getLoopState,
     getRandomStation,
-    getStationByUrl,
     setLoopState
 } from './utils/functions';
 
