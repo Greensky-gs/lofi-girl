@@ -8,7 +8,7 @@ export default new Precondition('suggestChannel').setChatInputRun(({ interaction
             isChatInput: true,
             interaction,
             metadata: {
-                message: 'Suggest channel is not configured by the bot owner'
+                message: '⚙️ | Suggest channel is not configured by the bot owner'
             }
         };
     }

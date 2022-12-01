@@ -9,7 +9,7 @@ export default new Precondition('botOwner').setButtonRun(({ button, user }) => {
             button,
             message: 'Bot owner only',
             metadata: {
-                message: "You're not allowed to interact with this message"
+                message: ":x: | You're not allowed to interact with this message"
             }
         };
     return {

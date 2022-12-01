@@ -21,5 +21,5 @@ export default new AmethystCommand({
     const amount = options.get('volume').value as number;
     interaction.client.player.getQueue(interaction.guild).setVolume(amount);
 
-    interaction.reply(`🎧 | Volume set to **${amount}%**`).catch(() => {});
+    interaction.reply(`🔊 | Volume set to **${amount}%**`).catch(() => {});
 });

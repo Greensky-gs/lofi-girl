@@ -31,5 +31,5 @@ export default new AmethystCommand({
     configs.recommendation = station;
     writeFileSync(`./dist/utils/configs.json`, JSON.stringify(configs, null, 4));
 
-    message.channel.send(`Set ${station.emoji} ${station.name} as the recommendation of the day`);
+    message.channel.send(`❤️ | Set ${station.emoji} ${station.name} as the recommendation of the day`);
 });
