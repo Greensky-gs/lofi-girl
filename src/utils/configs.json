@@ -1595,6 +1595,12 @@
             "name": "Kanisan ft. Dario Lessing x Claudia Lessing - Edda (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🌓"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=Hmq7Nvd-g84",
+            "name": "Cosmic Koala x Lucid Keys - The Tale of the Druids (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🍃"
         }
     ],
     "emojis": {
@@ -1620,9 +1626,9 @@
         }
     ],
     "recommendation": {
-        "url": "https://www.youtube.com/watch?v=vLqTRzobidk",
-        "name": "Kupla - Melody Mountain (lofi hip hop/relaxing beats)",
+        "url": "https://www.youtube.com/watch?v=MnHTL9Rl_4o",
+        "name": "DaniSogen - Enchantments (asian lofi hip jop)",
         "type": "playlist",
-        "emoji": "❄️"
+        "emoji": "⛩️"
     }
 }
