@@ -15,7 +15,7 @@ export default new ButtonHandler({
         url: button.message.embeds[0].url
     };
 
-    const beats = data.title.split('lofi hip hop/')[1] ?? data.title.split('lofi hiphop/')[1] ?? 'no beats found)';
+    const beats = data.title.split(/lofi {0,}hip {0,}hop {0,}\//i)[1] ?? 'no beats found)';
     const modal = new ModalBuilder()
         .setCustomId('accept-modal')
         .setTitle('Station data')
