@@ -119,9 +119,9 @@ export default new ButtonHandler({
         modalResult.deferUpdate();
         reply = modalResult.fields.getTextInputValue('reply-input-content');
     }
-    const sender = button.client.users.cache.get(button.message.components[0].components[2].customId);
+    const sender = button.client.users.cache.get(button.message?.components[0]?.components[2]?.customId);
 
-    sender.send(reply).catch(() => {});
+    if (sender) sender.send(reply).catch(() => {});
     button.message
         .edit({
             components: [],

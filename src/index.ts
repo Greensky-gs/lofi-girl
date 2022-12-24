@@ -22,7 +22,7 @@ checkForEnv();
 export const client = new AmethystClient(
     {
         intents: ['Guilds', 'GuildVoiceStates', 'GuildMessages', 'MessageContent', 'DirectMessages'],
-        partials: [Partials.Channel, Partials.Message]
+        partials: [Partials.Channel, Partials.Message, Partials.Reaction]
     },
     {
         // Folders

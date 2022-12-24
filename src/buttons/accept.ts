@@ -100,8 +100,8 @@ export default new ButtonHandler({
             ephemeral: true
         })
         .catch(() => {});
-    const sender = button.client.users.cache.get(button.message.components[0].components[2].customId);
-    sender
+    const sender = button.client.users.cache.get(button.message?.components[0]?.components[2]?.customId);
+    if (sender) sender
         .send(`🎧 | Your [suggestion](${data.url}) has been accepted !\nThank you for submitting a music`)
         .catch(() => {});
 
