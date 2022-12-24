@@ -7,6 +7,14 @@ This repository is the source code of [Lofi Girl](https://discord.com/oauth2/aut
 
 The bot uses [Amethyst JS framework](https://npmjs.com/package/amethystjs)
 
+## Links
+
+Here are the usefull links for [Lofi Girl](https://top.gg/bot/1037028318404419596) :
+
+* [Top.gg page](https://top.gg/bot/1037028318404419596/)
+* [Bot invitation](https://discord.com/oauth2/authorize?client_id=1037028318404419596&permissions=277028554752&scope=bot%20applications.commands)
+* [Support server](https://discord.gg/fHyN5w84g6)
+
 ## Important informations
 
 There's some important informations you need to know :

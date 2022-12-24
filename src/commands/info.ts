@@ -68,7 +68,7 @@ export default new AmethystCommand({
                     name: 'Links',
                     value: `[Invite me](${inviteLink(
                         interaction.client
-                    )})\n[Lofi Girl channel](https://youtube.com/c/LofiGirl)\n[Source code](https://github.com/Greensky-gs/lofi-girl)`,
+                    )})\n[Lofi Girl channel](https://youtube.com/c/LofiGirl)\n[Source code](https://github.com/Greensky-gs/lofi-girl)\n[Top.gg](https://top.gg/bot/1037028318404419596/)`,
                     inline: false
                 }
             );
