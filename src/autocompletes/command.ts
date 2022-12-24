@@ -1,7 +1,8 @@
 import { AutocompleteListener } from 'amethystjs';
 
 export default new AutocompleteListener({
-    commandName: 'help',
+    commandName: [{ commandName: 'help' }],
+    listenerName: 'commande',
     run: ({ interaction, options }) => {
         const focused = options.getFocused().toLowerCase();
         return interaction.client.chatInputCommands

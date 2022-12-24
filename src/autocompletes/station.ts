@@ -4,6 +4,7 @@ import { stations, recommendation } from '../utils/configs.json';
 
 export default new AutocompleteListener({
     commandName: [{ commandName: 'info' }, { commandName: 'play' }, { commandName: 'switch' }, { commandName: 'add' }],
+    listenerName: 'station',
     run: ({ options }) => {
         const name = options.getFocused().toLowerCase();
 
