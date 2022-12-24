@@ -1601,6 +1601,12 @@
             "name": "Cosmic Koala x Lucid Keys - The Tale of the Druids (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🍃"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=9Q7m4PJlQuE",
+            "name": "Tibeauthetraveler - Moving On (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌄"
         }
     ],
     "emojis": {
@@ -1626,9 +1632,9 @@
         }
     ],
     "recommendation": {
-        "url": "https://www.youtube.com/watch?v=MnHTL9Rl_4o",
-        "name": "DaniSogen - Enchantments (asian lofi hip jop)",
+        "url": "https://www.youtube.com/watch?v=rHh1uQndXJ4",
+        "name": "Purrple Cat - Distant worlds (lofi hip hop/relaxing beats)",
         "type": "playlist",
-        "emoji": "⛩️"
+        "emoji": "🪐"
     }
 }
