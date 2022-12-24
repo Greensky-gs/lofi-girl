@@ -33,7 +33,7 @@ export default new AmethystCommand({
     const roboURL = `https://www.youtube.com/watch?v=${id}`;
     const info = (await getBasicInfo(roboURL).catch(() => {})) as videoInfo;
 
-    if (!info || info.videoDetails.author.id !== lofiGirlID)
+    if (!info || info.videoDetails.author.id !== lofiGirlID || info.videoDetails.author.id !== 'UCuw1VDsmOWOldKGLYq6AkVg')
         return interaction
             .editReply(`:x: | You can suggest only videos from [Lofi Girl](https://youtube.com/c/LofiGirl) channel`)
             .catch(() => {});
