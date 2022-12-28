@@ -1663,12 +1663,6 @@
             "emoji": "🚝"
         },
         {
-            "url": "https://www.youtube.com/watch?v=LIhDDFuFIXI",
-            "name": "noni - momentary (lofi hip hop/relaxing beats)",
-            "type": "playlist",
-            "emoji": "🚝"
-        },
-        {
             "url": "https://www.youtube.com/watch?v=WHTjyAaS-9E",
             "name": "Eugenio Izzi - Feel Free To Imagine (lofi hip hop/relaxing beats)",
             "type": "playlist",
@@ -1883,6 +1877,12 @@
             "name": "Sebastian Kamae, Aylior - Vondelpark (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🏞️"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=bDlEVfWZKzU",
+            "name": "Two Scents - Lately (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🎷"
         }
     ],
     "emojis": {
@@ -1908,9 +1908,9 @@
         }
     ],
     "recommendation": {
-        "url": "https://www.youtube.com/watch?v=rHh1uQndXJ4",
-        "name": "Purrple Cat - Distant worlds (lofi hip hop/relaxing beats)",
+        "url": "https://www.youtube.com/watch?v=bDlEVfWZKzU",
+        "name": "Two Scents - Lately (lofi hip hop/relaxing beats)",
         "type": "playlist",
-        "emoji": "🪐"
+        "emoji": "🎷"
     }
 }
