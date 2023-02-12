@@ -1883,6 +1883,54 @@
             "name": "Two Scents - Lately (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🎷"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=NvB54rswG8s",
+            "name": "Hevi x H.1 - Winter Getaway (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🧣"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=MqMM1dDbVVc",
+            "name": "Juliàn - Eternal Youth (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌅"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=ui4k51d5MBE",
+            "name": "Laffey - Out Of Orbit (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🪐"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=qZ33uiARMtE",
+            "name": "Lucid Keys - Fantasia (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌹"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=ZK956iTVgm4",
+            "name": "Dosi x Wishes and Dreams - Arodasio (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🏰"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=5wlKT2iOc_Q",
+            "name": "Krynoze x Juliàn - Finding Answers (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌌"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=a6QqkEsGxNY",
+            "name": "Lenny Loops x stream_error - Noctilucent (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🪐"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=8bPGOcnCj9g",
+            "name": "Lawrence Walther x Solar Body - Back to Nature (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🍃"
         }
     ],
     "emojis": {
@@ -1908,9 +1956,9 @@
         }
     ],
     "recommendation": {
-        "url": "https://www.youtube.com/watch?v=bDlEVfWZKzU",
-        "name": "Two Scents - Lately (lofi hip hop/relaxing beats)",
+        "url": "https://www.youtube.com/watch?v=L4UFS-00Y0o",
+        "name": "Hoogway - Thin Lines (lofi hip hop/relaxing beats)",
         "type": "playlist",
-        "emoji": "🎷"
+        "emoji": "🌾"
     }
 }
