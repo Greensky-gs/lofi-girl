@@ -1931,6 +1931,12 @@
             "name": "Lawrence Walther x Solar Body - Back to Nature (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🍃"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=E1L1I292WWY",
+            "name": "squeeda - Transform (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🦌"
         }
     ],
     "emojis": {
@@ -1956,9 +1962,9 @@
         }
     ],
     "recommendation": {
-        "url": "https://www.youtube.com/watch?v=L4UFS-00Y0o",
-        "name": "Hoogway - Thin Lines (lofi hip hop/relaxing beats)",
+        "url": "https://www.youtube.com/watch?v=E1L1I292WWY",
+        "name": "squeeda - Transform (lofi hip hop/relaxing beats)",
         "type": "playlist",
-        "emoji": "🌾"
+        "emoji": "🦌"
     }
 }
