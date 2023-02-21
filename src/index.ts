@@ -65,6 +65,9 @@ client.player.on('queueEnd', async (queue: Queue) => {
 client.player.on('botDisconnect', (queue: Queue) => {
     if (!getLoopState(queue.guild.id)) return;
     setLoopState(queue.guild.id, false);
+
+    queue.previousTracks = [];
+    queue.tracks = [];
 });
 client.player.on('trackEnd', (queue) => {
     queue.previousTracks = [];
