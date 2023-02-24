@@ -2296,5 +2296,9 @@
         "name": "Living Room - Calm Land (lofi hip hop/relaxing beats)",
         "type": "playlist",
         "emoji": "🌴"
-    }
+    },
+    "testers": [],
+    "testKeywords": [
+        "sleep", "study", "work", "chill", "relax", "background", "calm", "lazy"
+    ]
 }

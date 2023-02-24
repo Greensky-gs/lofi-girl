@@ -1,7 +1,8 @@
-import { Client, VoiceChannel } from 'discord.js';
+import { ActionRowBuilder, AnyComponentBuilder, ButtonBuilder, Client, VoiceChannel } from 'discord.js';
 import { station } from '../typings/station';
-import { stations, emojis, recommendation } from './configs.json';
+import { stations, emojis, recommendation, testers } from './configs.json';
 import { loops } from './maps';
+import { tester } from '../typings/tester';
 
 export const getStationByUrl = (value?: string, getRandomIfNotProvided?: boolean): station => {
     if ((!value || value === 'random') && getRandomIfNotProvided !== false)
@@ -100,3 +101,11 @@ export const getRandomStation = (): station => {
     const availables = stations.filter((x) => x.type !== 'station');
     return availables[Math.floor(Math.random() * availables.length)] as station;
 };
+export const getTester = (userId: string): tester => {
+    return testers.find(x => x.id === userId);
+}
+export const row = <T extends AnyComponentBuilder = ButtonBuilder>(...components: T[]) => {
+    return new ActionRowBuilder({
+        components: components
+    }) as ActionRowBuilder<T>;
+}

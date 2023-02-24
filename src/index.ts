@@ -1,14 +1,19 @@
 import { AmethystClient } from 'amethystjs';
 import { Player, Queue } from 'discord-player';
-import { Partials } from 'discord.js';
+import { ButtonBuilder, ButtonStyle, EmbedBuilder, Partials } from 'discord.js';
 import { config } from 'dotenv';
 import {
+    boolEmojis,
     checkForDuplicates,
     checkForEnv,
     getLoopState,
     getRandomStation,
+    getStationByUrl,
+    getTester,
+    row,
     setLoopState
 } from './utils/functions';
+import { TesterButtons } from './typings/tester';
 
 config();
 
@@ -69,7 +74,35 @@ client.player.on('botDisconnect', (queue: Queue) => {
     queue.previousTracks = [];
     queue.tracks = [];
 });
-client.player.on('trackEnd', (queue) => {
+client.player.on('trackEnd', (queue, track) => {
+    if (getTester(track.requestedBy.id)) {
+        const data = getTester(track.requestedBy.id);
+        if (data.when === 'everytime' || data.when === 'songend') {
+            const station = getStationByUrl(track.url);
+            if (station && !station.feedbacks.find(x => x.user_id === track.requestedBy.id)) {
+                track.requestedBy.send({
+                    embeds: [
+                        new EmbedBuilder()
+                            .setTitle(`${station.emoji} ${station.name}`)
+                            .setURL(station.url)
+                            .setImage(track.thumbnail ?? undefined)
+                            .setDescription(`Do you want to send your feedback about [${station.emoji} ${station.name}](${station.url}) ?`)
+                            .setColor('#F4554B')
+                    ],
+                    components: [
+                        row(
+                            new ButtonBuilder({
+                                label: 'Send feedback',
+                                emoji: boolEmojis(true),
+                                customId: TesterButtons.SendFeedback,
+                                style: ButtonStyle.Success
+                            })
+                        )
+                    ]
+                }).catch(() => {});
+            }
+        }
+    }
     queue.previousTracks = [];
 });
 
