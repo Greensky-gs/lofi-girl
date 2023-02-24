@@ -14,6 +14,7 @@ import {
     setLoopState
 } from './utils/functions';
 import { TesterButtons } from './typings/tester';
+import { queuesUsers } from './utils/maps';
 
 config();
 
@@ -60,7 +61,7 @@ client.player.on('queueEnd', async (queue: Queue) => {
 
     const track = await client.player
         .search(getRandomStation().url, {
-            requestedBy: client.user
+            requestedBy: queuesUsers.get(queue.guild.id) ?? client.user
         })
         .catch(() => {});
 
@@ -73,6 +74,7 @@ client.player.on('botDisconnect', (queue: Queue) => {
 
     queue.previousTracks = [];
     queue.tracks = [];
+    queuesUsers.delete(queue.guild.id);
 });
 client.player.on('trackEnd', (queue, track) => {
     if (getTester(track.requestedBy.id)) {

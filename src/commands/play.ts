@@ -3,6 +3,7 @@ import { ApplicationCommandOptionType, GuildMember } from 'discord.js';
 import adminIfNotAlone from '../preconditions/adminIfNotAlone';
 import connected from '../preconditions/connected';
 import { getStationByUrl } from '../utils/functions';
+import { queuesUsers } from '../utils/maps';
 
 export default new AmethystCommand({
     name: 'play',
@@ -43,4 +44,6 @@ export default new AmethystCommand({
 
     if (!queue.connection) await queue.connect((interaction.member as GuildMember).voice.channel);
     queue.play(search.tracks[0]);
+
+    queuesUsers.set(interaction.guild.id, interaction.user);
 });
