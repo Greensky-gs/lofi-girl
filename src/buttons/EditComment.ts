@@ -5,7 +5,7 @@ import { getStationByUrl, row } from '../utils/functions';
 import { ButtonBuilder, ButtonStyle, EmbedBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from 'discord.js';
 
 export default new ButtonHandler({
-    customId: TesterButtons.AddComment,
+    customId: TesterButtons.EditComment,
     preconditions: [isTester]
 }).setRun(async ({ button, user, message }) => {
     const station = getStationByUrl(message.embeds[0].url);
@@ -24,7 +24,7 @@ export default new ButtonHandler({
                         .setStyle(TextInputStyle.Paragraph)
                         .setMaxLength(1000)
                         .setRequired(true)
-                        .setPlaceholder(`Write your comment about ${station.emoji} ${station.name} here`)
+                        .setPlaceholder(`Edit your comment about ${station.emoji} ${station.name} here`)
                         .setCustomId('comment')
                 )
             )

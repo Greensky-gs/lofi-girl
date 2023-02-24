@@ -87,7 +87,8 @@ export default new ButtonHandler({
         url: data.url,
         name: `${authors} - ${title} ${beatsV}`.replace(/ +/g, ' '),
         type: 'playlist',
-        emoji
+        emoji,
+        feedbacks: []
     });
     writeFileSync(
         `./${__filename.endsWith('.ts') ? 'src' : 'dist'}/utils/configs.json`,
