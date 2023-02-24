@@ -4,7 +4,7 @@ export type feedback = {
     user_id: string;
     keywords: string[];
     comments: string;
-}
+};
 export type station = {
     type: stationType;
     name: string;

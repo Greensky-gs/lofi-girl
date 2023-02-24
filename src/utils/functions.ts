@@ -102,10 +102,10 @@ export const getRandomStation = (): station => {
     return availables[Math.floor(Math.random() * availables.length)] as station;
 };
 export const getTester = (userId: string): tester => {
-    return testers.find(x => x.id === userId);
-}
+    return testers.find((x) => x.id === userId);
+};
 export const row = <T extends AnyComponentBuilder = ButtonBuilder>(...components: T[]) => {
     return new ActionRowBuilder({
         components: components
     }) as ActionRowBuilder<T>;
-}
+};

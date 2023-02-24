@@ -2298,7 +2298,5 @@
         "emoji": "🌴"
     },
     "testers": [],
-    "testKeywords": [
-        "sleep", "study", "work", "chill", "relax", "background", "calm", "lazy"
-    ]
+    "testKeywords": ["sleep", "study", "work", "chill", "relax", "background", "calm", "lazy"]
 }

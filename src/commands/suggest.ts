@@ -35,7 +35,9 @@ export default new AmethystCommand({
 
     if (!info || !['UCuw1VDsmOWOldKGLYq6AkVg', lofiGirlID].includes(info.videoDetails.author.id))
         return interaction
-            .editReply(`:x: | You can suggest only videos from [Lofi Girl](https://youtube.com/c/LofiGirl) or [Lofi Records](https://www.youtube.com/@LofiRecords) channel`)
+            .editReply(
+                `:x: | You can suggest only videos from [Lofi Girl](https://youtube.com/c/LofiGirl) or [Lofi Records](https://www.youtube.com/@LofiRecords) channel`
+            )
             .catch(() => {});
 
     const station = getStationByUrl(url, false);

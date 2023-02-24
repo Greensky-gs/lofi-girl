@@ -3,7 +3,7 @@ import { Precondition } from 'amethystjs';
 export default new Precondition('waitTwentySeconds').setButtonRun(({ button, message }) => {
     const diff = Date.now() - message.createdTimestamp;
     if (diff < 20000) {
-        const list = "🕐🕑🕒🕓🕔🕕🕖🕗🕘🕙🕚🕛🕜🕝🕞🕟🕠🕡🕢🕣🕤🕥🕦🕧";
+        const list = '🕐🕑🕒🕓🕔🕕🕖🕗🕘🕙🕚🕛🕜🕝🕞🕟🕠🕡🕢🕣🕤🕥🕦🕧';
         const emoji = list[Math.floor(Math.random() * list.length)];
 
         return {

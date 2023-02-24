@@ -1,5 +1,5 @@
-import { Precondition } from "amethystjs";
-import { getTester } from "../utils/functions";
+import { Precondition } from 'amethystjs';
+import { getTester } from '../utils/functions';
 
 export default new Precondition('isTester').setButtonRun(({ button, user }) => {
     if (!getTester(user.id)) {
@@ -8,11 +8,11 @@ export default new Precondition('isTester').setButtonRun(({ button, user }) => {
             ok: false,
             isChatInput: false,
             isButton: true
-        }
+        };
     }
     return {
         ok: true,
         isChatInput: false,
         isButton: true
-    }
-})
+    };
+});

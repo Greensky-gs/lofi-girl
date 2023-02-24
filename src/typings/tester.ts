@@ -1,7 +1,7 @@
 export type tester = {
     id: string;
-    when: 'songend' | 'onstationinfo' | 'onplayinginfo' | 'oninfo' | 'everytime'
-}
+    when: 'songend' | 'onstationinfo' | 'onplayinginfo' | 'oninfo' | 'everytime';
+};
 export enum TesterButtons {
     SendFeedback = 'tester.send-feedback',
     TesterValidate = 'tester.validate',

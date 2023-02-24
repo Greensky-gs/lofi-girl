@@ -79,27 +79,31 @@ client.player.on('trackEnd', (queue, track) => {
         const data = getTester(track.requestedBy.id);
         if (data.when === 'everytime' || data.when === 'songend') {
             const station = getStationByUrl(track.url);
-            if (station && !station.feedbacks.find(x => x.user_id === track.requestedBy.id)) {
-                track.requestedBy.send({
-                    embeds: [
-                        new EmbedBuilder()
-                            .setTitle(`${station.emoji} ${station.name}`)
-                            .setURL(station.url)
-                            .setImage(track.thumbnail ?? undefined)
-                            .setDescription(`Do you want to send your feedback about [${station.emoji} ${station.name}](${station.url}) ?`)
-                            .setColor('#F4554B')
-                    ],
-                    components: [
-                        row(
-                            new ButtonBuilder({
-                                label: 'Send feedback',
-                                emoji: boolEmojis(true),
-                                customId: TesterButtons.SendFeedback,
-                                style: ButtonStyle.Success
-                            })
-                        )
-                    ]
-                }).catch(() => {});
+            if (station && !station.feedbacks.find((x) => x.user_id === track.requestedBy.id)) {
+                track.requestedBy
+                    .send({
+                        embeds: [
+                            new EmbedBuilder()
+                                .setTitle(`${station.emoji} ${station.name}`)
+                                .setURL(station.url)
+                                .setImage(track.thumbnail ?? undefined)
+                                .setDescription(
+                                    `Do you want to send your feedback about [${station.emoji} ${station.name}](${station.url}) ?`
+                                )
+                                .setColor('#F4554B')
+                        ],
+                        components: [
+                            row(
+                                new ButtonBuilder({
+                                    label: 'Send feedback',
+                                    emoji: boolEmojis(true),
+                                    customId: TesterButtons.SendFeedback,
+                                    style: ButtonStyle.Success
+                                })
+                            )
+                        ]
+                    })
+                    .catch(() => {});
             }
         }
     }
