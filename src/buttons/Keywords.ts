@@ -71,6 +71,7 @@ export default new ButtonHandler({
         inline: true
     });
 
+    reply.deferUpdate().catch(() => {});
     msg?.delete().catch(() => {});
     message
         .edit({

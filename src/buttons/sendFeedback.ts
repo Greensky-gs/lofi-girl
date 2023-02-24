@@ -31,6 +31,7 @@ export default new ButtonHandler({
                             inline: false
                         }
                     )
+                    .setImage(message.embeds[0]?.data?.image?.url)
             ],
             components: [
                 row(

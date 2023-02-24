@@ -104,7 +104,9 @@ export default new AmethystCommand({
                     ? station.feedbacks.filter((x) => x.comments.length)[
                           Math.floor(Math.random() * station.feedbacks.filter((x) => x.comments).length)
                       ].comments + '\n'
-                    : '') + [...new Set(station.feedbacks.map((x) => x.keywords).flat())].join(' ')
+                    : '') +
+                    "People's opinion :" +
+                    [...new Set(station.feedbacks.map((x) => x.keywords).flat())].join(', ')
             );
         }
         if (recommendation && Object.keys(recommendation).length > 0 && station.url === recommendation.url)

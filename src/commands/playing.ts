@@ -72,7 +72,8 @@ export default new AmethystCommand({
                           Math.floor(Math.random() * station.feedbacks.filter((x) => x.comments).length)
                       ].comments + '\n'
                     : '') +
-                [...new Set(station.feedbacks.map((x) => x.keywords).flat())].join(' ')
+                "People's opinion :" +
+                [...new Set(station.feedbacks.map((x) => x.keywords).flat())].join(', ')
         );
     }
     interaction.reply({ embeds: [embed], components }).catch(() => {});

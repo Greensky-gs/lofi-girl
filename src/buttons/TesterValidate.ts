@@ -49,7 +49,8 @@ export default new ButtonHandler({
                             inline: false
                         }
                     )
-                    .setImage(embed.data.image.url)
+                    .setImage(embed.data?.image?.url)
+                    .setThumbnail(button.client.user.displayAvatarURL({ forceStatic: true }))
             ],
             components: [
                 row(
