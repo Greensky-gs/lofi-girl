@@ -49,17 +49,31 @@ export default new AmethystCommand({
         });
 
     const components = [];
-    if (getTester(interaction.user.id) && ['everytime', 'oninfo', 'onplayinginfo'].includes(getTester(interaction.user.id).when) && !station.feedbacks.find(x => x.user_id === interaction.user.id)) {
+    if (
+        getTester(interaction.user.id) &&
+        ['everytime', 'oninfo', 'onplayinginfo'].includes(getTester(interaction.user.id).when) &&
+        !station.feedbacks.find((x) => x.user_id === interaction.user.id)
+    ) {
         components.push(
-            row(new ButtonBuilder()
-                .setLabel('Send feedback')
-                .setCustomId(TesterButtons.SendFeedback)
-                .setStyle(ButtonStyle.Success)
+            row(
+                new ButtonBuilder()
+                    .setLabel('Send feedback')
+                    .setCustomId(TesterButtons.SendFeedback)
+                    .setStyle(ButtonStyle.Success)
             )
-        )
+        );
     }
     if (station.feedbacks.length > 0) {
-        embed.setDescription(embed.data.description + '\n\n' + (station.feedbacks.filter(x => x.comments).length > 0 ? station.feedbacks.filter(x => x.comments.length)[Math.floor(Math.random() * station.feedbacks.filter(x => x.comments).length)].comments + '\n' : '') + [...new Set(station.feedbacks.map(x => x.keywords).flat())].join(' '))
+        embed.setDescription(
+            embed.data.description +
+                '\n\n' +
+                (station.feedbacks.filter((x) => x.comments).length > 0
+                    ? station.feedbacks.filter((x) => x.comments.length)[
+                          Math.floor(Math.random() * station.feedbacks.filter((x) => x.comments).length)
+                      ].comments + '\n'
+                    : '') +
+                [...new Set(station.feedbacks.map((x) => x.keywords).flat())].join(' ')
+        );
     }
     interaction.reply({ embeds: [embed], components }).catch(() => {});
 });

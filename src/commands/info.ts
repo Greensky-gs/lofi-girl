@@ -99,7 +99,13 @@ export default new AmethystCommand({
             .setURL(station.url);
 
         if (station.feedbacks.length > 0) {
-            embed.setDescription((station.feedbacks.filter(x => x.comments).length > 0 ? station.feedbacks.filter(x => x.comments.length)[Math.floor(Math.random() * station.feedbacks.filter(x => x.comments).length)].comments + '\n' : '') + [...new Set(station.feedbacks.map(x => x.keywords).flat())].join(' '))
+            embed.setDescription(
+                (station.feedbacks.filter((x) => x.comments).length > 0
+                    ? station.feedbacks.filter((x) => x.comments.length)[
+                          Math.floor(Math.random() * station.feedbacks.filter((x) => x.comments).length)
+                      ].comments + '\n'
+                    : '') + [...new Set(station.feedbacks.map((x) => x.keywords).flat())].join(' ')
+            );
         }
         if (recommendation && Object.keys(recommendation).length > 0 && station.url === recommendation.url)
             embed.setFooter({
@@ -123,13 +129,19 @@ export default new AmethystCommand({
         });
 
         const components = [];
-        if (getTester(interaction.user.id) && (['everytime', 'oninfo', 'onstationinfo'].includes(getTester(interaction.user.id).when)) && !station.feedbacks.find(x => x.user_id === interaction.user.id)) {
+        if (
+            getTester(interaction.user.id) &&
+            ['everytime', 'oninfo', 'onstationinfo'].includes(getTester(interaction.user.id).when) &&
+            !station.feedbacks.find((x) => x.user_id === interaction.user.id)
+        ) {
             components.push(
-                row(new ButtonBuilder()
-                .setLabel("Send feedback")
-                .setStyle(ButtonStyle.Primary)
-                .setCustomId(TesterButtons.SendFeedback)
-            ))
+                row(
+                    new ButtonBuilder()
+                        .setLabel('Send feedback')
+                        .setStyle(ButtonStyle.Primary)
+                        .setCustomId(TesterButtons.SendFeedback)
+                )
+            );
         }
         interaction.editReply({ embeds: [embed], components }).catch(() => {});
     }
