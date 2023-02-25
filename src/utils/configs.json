@@ -2338,6 +2338,27 @@
             "type": "playlist",
             "emoji": "🌴",
             "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=lT5lFeaInl4",
+            "name": "WYS - South Pole (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "❄️",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=Bksv9OEj1j8",
+            "name": "WYS - North Pole (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "❄️",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=8OPipsAjlqQ",
+            "name": "drkmnd x Ambulo - Meteor Shower (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🚿",
+            "feedbacks": []
         }
     ],
     "emojis": {
