@@ -35,6 +35,6 @@ export default new AmethystCommand({
     }
 
     queue.skip();
-    
+
     interaction.editReply(`🎧 | Switched to [${station.emoji} ${station.name}](<${station.url}>)`).catch(() => {});
 });

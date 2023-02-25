@@ -74,8 +74,11 @@ export default new AmethystEvent('ready', async (client) => {
     if (!panelChannel) {
         throw new Error('Panel channel is unfoundable');
     }
-    const pinned = await panelChannel.messages.fetchPinned()
-    pinned.first()?.delete().catch(() => {});
+    const pinned = await panelChannel.messages.fetchPinned();
+    pinned
+        .first()
+        ?.delete()
+        .catch(() => {});
 
     const panel = await panelChannel
         .send({
@@ -151,11 +154,15 @@ export default new AmethystEvent('ready', async (client) => {
     process.on('unhandledRejection', (error, promise) => {
         panelChannel
             .send({
-                embeds: [embed().setDescription('```json\n' + JSON.stringify(error, null, 4) + '\n```').setFields({
-                    name: "Promise",
-                    value: `\`\`\`json\n${JSON.stringify(promise, null, 4)}\`\`\``,
-                    inline: false
-                })]
+                embeds: [
+                    embed()
+                        .setDescription('```json\n' + JSON.stringify(error, null, 4) + '\n```')
+                        .setFields({
+                            name: 'Promise',
+                            value: `\`\`\`json\n${JSON.stringify(promise, null, 4)}\`\`\``,
+                            inline: false
+                        })
+                ]
             })
             .catch(() => {});
     });
