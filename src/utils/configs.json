@@ -75,7 +75,21 @@
             "name": "12 A.M Study session (lofi hip hop/chill beats)",
             "type": "playlist",
             "emoji": "📚",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A nice song to play to study or work in the day",
+                    "keywords": [
+                        "study",
+                        "work",
+                        "chill",
+                        "relax",
+                        "calm",
+                        "long",
+                        "quiet"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=EvVIjeJch-c",
@@ -299,7 +313,18 @@
             "name": "Slo Loris - Riverside (lofi hip hop/guitar beats)",
             "type": "playlist",
             "emoji": "🎸",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A nice song to play while working or playing games like chess or programming",
+                    "keywords": [
+                        "work",
+                        "chill",
+                        "background",
+                        "slow"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=Y2NxKdbXlwM",
@@ -1174,7 +1199,19 @@
             "name": "Kinissue - Sea Beams (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🌊",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A song to play when you want to relax and just chill after an exhausting day",
+                    "keywords": [
+                        "relax",
+                        "chill",
+                        "background",
+                        "calm",
+                        "slow"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=jpVG4oTa3Fk",
@@ -1230,7 +1267,17 @@
             "name": "goodnyght - Sleep cycles (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "💤",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A nice song to play in background while doing something else, or play it the evening at bed",
+                    "keywords": [
+                        "chill",
+                        "slow",
+                        "relax"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=U5mJ7o_AQmQ",
@@ -2056,14 +2103,38 @@
             "name": "Hoogway - Forever Ago (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🌄",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A song to play to relax and enjoy your memories",
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "calm",
+                        "slow"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=iunocgt3c3E",
             "name": "Softy - Sometimes I Wait For You (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🌇",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "An enjoyable music when you want to find yourself in your memories",
+                    "keywords": [
+                        "sleep",
+                        "chill",
+                        "relax",
+                        "calm",
+                        "long",
+                        "quiet"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=IauSZrpfgLI",
@@ -2292,12 +2363,31 @@
         }
     ],
     "recommendation": {
-        "url": "https://www.youtube.com/watch?v=ixuuitBJazY",
-        "name": "Living Room - Calm Land (lofi hip hop/relaxing beats)",
+        "url": "https://www.youtube.com/watch?v=iunocgt3c3E",
+        "name": "Softy - Sometimes I Wait For You (lofi hip hop/relaxing beats)",
         "type": "playlist",
-        "emoji": "🌴"
+        "emoji": "🌇",
+        "feedbacks": [
+            {
+                "user_id": "386479065307152384",
+                "comments": "An enjoyable music when you want to find yourself in your memories",
+                "keywords": [
+                    "sleep",
+                    "chill",
+                    "relax",
+                    "calm",
+                    "long",
+                    "quiet"
+                ]
+            }
+        ]
     },
-    "testers": [{ "id": "386479065307152384", "when": "everytime" }],
+    "testers": [
+        {
+            "id": "386479065307152384",
+            "when": "everytime"
+        }
+    ],
     "testKeywords": [
         "sleep",
         "study",
