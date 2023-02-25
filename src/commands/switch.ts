@@ -18,7 +18,7 @@ export default new AmethystCommand({
         }
     ]
 }).setChatInputRun(async ({ interaction, options }) => {
-    interaction.deferReply();
+    await interaction.deferReply();
     const station = getStationByUrl(options.getString('station'));
 
     const tracks = await interaction.client.player.search(station.url, {
@@ -27,6 +27,14 @@ export default new AmethystCommand({
     if (!tracks || tracks.tracks.length === 0)
         return interaction.editReply(`:x: | Music station not found`).catch(() => {});
 
-    interaction.client.player.getQueue(interaction.guild).play(tracks.tracks[0]);
+    const queue = interaction.client.player.getQueue(interaction.guild);
+    queue.addTrack(tracks.tracks[0]);
+    if (queue.tracks.length > 0) {
+        const removed = queue.tracks.splice(0, queue.tracks.length - 1);
+        queue.addTracks(removed);
+    }
+
+    queue.skip();
+    
     interaction.editReply(`🎧 | Switched to [${station.emoji} ${station.name}](<${station.url}>)`).catch(() => {});
 });
