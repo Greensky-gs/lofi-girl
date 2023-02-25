@@ -1,7 +1,9 @@
 import { AmethystEvent } from 'amethystjs';
-import { ActivityOptions, ActivityType } from 'discord.js';
+import { ActivityOptions, ActivityType, ButtonBuilder, ButtonStyle, EmbedBuilder, TextChannel } from 'discord.js';
 import { station } from '../typings/station';
 import { stations, recommendation } from '../utils/configs.json';
+import { row } from '../utils/functions';
+import { PanelIds } from '../typings/bot';
 
 export default new AmethystEvent('ready', async (client) => {
     const statuses: (() => Promise<ActivityOptions>)[] = [
@@ -66,4 +68,67 @@ export default new AmethystEvent('ready', async (client) => {
     client.user.setPresence({
         status: 'idle'
     });
+
+    // Panel
+    const panelChannel = await client.channels.fetch(process.env.panelChannel) as TextChannel;
+    if (!panelChannel) {
+        throw new Error("Panel channel is unfoundable");
+    }
+    await panelChannel.bulkDelete(100).catch(() => {});
+    await panelChannel.send({
+        embeds: [ new EmbedBuilder()
+            .setTitle("Lofi Girl Panel")
+            .setDescription(`This is the control panel of <@${client.user.id}>\nUse the buttons below to interact with the panel`)
+            .setColor(panelChannel.guild.members.me.displayHexColor)
+            .setTimestamp()
+            .setThumbnail(client.user.displayAvatarURL({ forceStatic: false }))
+        ],
+        components: [
+            row(
+                new ButtonBuilder()
+                    .setLabel('Instant informations')
+                    .setStyle(ButtonStyle.Secondary)
+                    .setCustomId(PanelIds.InstantInfo),
+                new ButtonBuilder()
+                    .setLabel('Restart bot')
+                    .setStyle(ButtonStyle.Danger)
+                    .setCustomId(PanelIds.Reboot)
+            )
+        ]
+    }).catch(() => {});
+    const embed = () => {
+        return new EmbedBuilder()
+            .setTitle("Error")
+            .setTimestamp()
+            .setColor('#ff0000')
+    }
+    process.on('uncaughtExceptionMonitor', (error, origin) => {
+        panelChannel.send({
+            embeds: [embed()
+                .setDescription(`Name: ${error.name}\nMessage: ${error.message}${error.cause ? `\nCause: ${error.cause}` : ''}${error.stack ? `\nStack: ${error.stack}` : ''}`)
+                .setFields({
+                    name: 'Origin',
+                    value: `${origin}`
+                })
+            ]
+        }).catch(() => {});
+    })
+    process.on('uncaughtException', (error, origin) => {
+        panelChannel.send({
+            embeds: [embed()
+                .setDescription(`Name: ${error.name}\nMessage: ${error.message}${error.cause ? `\nCause: ${error.cause}` : ''}${error.stack ? `\nStack: ${error.stack}` : ''}`)
+                .setFields({
+                    name: 'Origin',
+                    value: `${origin}`
+                })
+            ]
+        }).catch(() => {});
+    })
+    process.on('unhandledRejection', (error) => {
+        panelChannel.send({
+            embeds: [embed()
+                .setDescription(JSON.stringify(error) ?? 'N/A')
+            ]
+        }).catch(() => {});
+    })
 });
