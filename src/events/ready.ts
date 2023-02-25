@@ -70,65 +70,81 @@ export default new AmethystEvent('ready', async (client) => {
     });
 
     // Panel
-    const panelChannel = await client.channels.fetch(process.env.panelChannel) as TextChannel;
+    const panelChannel = (await client.channels.fetch(process.env.panelChannel)) as TextChannel;
     if (!panelChannel) {
-        throw new Error("Panel channel is unfoundable");
+        throw new Error('Panel channel is unfoundable');
     }
     await panelChannel.bulkDelete(100).catch(() => {});
-    await panelChannel.send({
-        embeds: [ new EmbedBuilder()
-            .setTitle("Lofi Girl Panel")
-            .setDescription(`This is the control panel of <@${client.user.id}>\nUse the buttons below to interact with the panel`)
-            .setColor(panelChannel.guild.members.me.displayHexColor)
-            .setTimestamp()
-            .setThumbnail(client.user.displayAvatarURL({ forceStatic: false }))
-        ],
-        components: [
-            row(
-                new ButtonBuilder()
-                    .setLabel('Instant informations')
-                    .setStyle(ButtonStyle.Secondary)
-                    .setCustomId(PanelIds.InstantInfo),
-                new ButtonBuilder()
-                    .setLabel('Restart bot')
-                    .setStyle(ButtonStyle.Danger)
-                    .setCustomId(PanelIds.Reboot)
-            )
-        ]
-    }).catch(() => {});
+    await panelChannel
+        .send({
+            embeds: [
+                new EmbedBuilder()
+                    .setTitle('Lofi Girl Panel')
+                    .setDescription(
+                        `This is the control panel of <@${client.user.id}>\nUse the buttons below to interact with the panel`
+                    )
+                    .setColor(panelChannel.guild.members.me.displayHexColor)
+                    .setTimestamp()
+                    .setThumbnail(client.user.displayAvatarURL({ forceStatic: false }))
+            ],
+            components: [
+                row(
+                    new ButtonBuilder()
+                        .setLabel('Instant informations')
+                        .setStyle(ButtonStyle.Secondary)
+                        .setCustomId(PanelIds.InstantInfo),
+                    new ButtonBuilder()
+                        .setLabel('Restart bot')
+                        .setStyle(ButtonStyle.Danger)
+                        .setCustomId(PanelIds.Reboot)
+                )
+            ]
+        })
+        .catch(() => {});
     const embed = () => {
-        return new EmbedBuilder()
-            .setTitle("Error")
-            .setTimestamp()
-            .setColor('#ff0000')
-    }
+        return new EmbedBuilder().setTitle('Error').setTimestamp().setColor('#ff0000');
+    };
     process.on('uncaughtExceptionMonitor', (error, origin) => {
-        panelChannel.send({
-            embeds: [embed()
-                .setDescription(`Name: ${error.name}\nMessage: ${error.message}${error.cause ? `\nCause: ${error.cause}` : ''}${error.stack ? `\nStack: ${error.stack}` : ''}`)
-                .setFields({
-                    name: 'Origin',
-                    value: `${origin}`
-                })
-            ]
-        }).catch(() => {});
-    })
+        panelChannel
+            .send({
+                embeds: [
+                    embed()
+                        .setDescription(
+                            `Name: ${error.name}\nMessage: ${error.message}${
+                                error.cause ? `\nCause: ${error.cause}` : ''
+                            }${error.stack ? `\nStack: ${error.stack}` : ''}`
+                        )
+                        .setFields({
+                            name: 'Origin',
+                            value: `${origin}`
+                        })
+                ]
+            })
+            .catch(() => {});
+    });
     process.on('uncaughtException', (error, origin) => {
-        panelChannel.send({
-            embeds: [embed()
-                .setDescription(`Name: ${error.name}\nMessage: ${error.message}${error.cause ? `\nCause: ${error.cause}` : ''}${error.stack ? `\nStack: ${error.stack}` : ''}`)
-                .setFields({
-                    name: 'Origin',
-                    value: `${origin}`
-                })
-            ]
-        }).catch(() => {});
-    })
+        panelChannel
+            .send({
+                embeds: [
+                    embed()
+                        .setDescription(
+                            `Name: ${error.name}\nMessage: ${error.message}${
+                                error.cause ? `\nCause: ${error.cause}` : ''
+                            }${error.stack ? `\nStack: ${error.stack}` : ''}`
+                        )
+                        .setFields({
+                            name: 'Origin',
+                            value: `${origin}`
+                        })
+                ]
+            })
+            .catch(() => {});
+    });
     process.on('unhandledRejection', (error) => {
-        panelChannel.send({
-            embeds: [embed()
-                .setDescription(JSON.stringify(error) ?? 'N/A')
-            ]
-        }).catch(() => {});
-    })
+        panelChannel
+            .send({
+                embeds: [embed().setDescription(JSON.stringify(error) ?? 'N/A')]
+            })
+            .catch(() => {});
+    });
 });
