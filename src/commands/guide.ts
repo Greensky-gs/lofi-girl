@@ -25,7 +25,7 @@ export default new AmethystCommand({
                 'autoadd'
             )} to toggle the auto-song addition system.\n\n:bulb: *pro tip*\nWhen you are listening to a music, you may want to know what I'm playing. Use ${getCmd(
                 'playing'
-            )} to see it`
+            )} to see it\n\n**Feedback system :**\nIf you want to get a feedback on a song, you can see it by using the ${getCmd('info')} command (using the \`/station sub-command\`), or the ${getCmd('playing')} command, and if a feedback has been set, it will appear.\nIf you want to make your own, you can become a song tester by contact my owner. You can do it by joining the [support server](https://discord.gg/fHyN5w84g6), or getting the link by our [top.gg page](https://top.gg/bot/1037028318404419596)`
         )
         .addFields({
             name: 'Suggestions',
