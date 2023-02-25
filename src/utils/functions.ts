@@ -75,6 +75,9 @@ export const checkForEnv = () => {
     if (!process.env.botOwner) {
         throw new Error('botOwner is missing in .env file');
     }
+    if (!process.env.panelChannel) {
+        throw new Error('panelChannel is missing in .env file');
+    }
 };
 export const boolEmojis = (b: boolean) => emojis[b ? 'online' : 'dnd'];
 export const findEmoji = (txt: string) => {

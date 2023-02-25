@@ -7,6 +7,7 @@ declare global {
             suggestChannel?: string;
             beta_token?: string;
             botPrefix?: string;
+            panelChannel: string;
         }
     }
 }
