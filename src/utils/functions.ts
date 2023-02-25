@@ -112,3 +112,8 @@ export const row = <T extends AnyComponentBuilder = ButtonBuilder>(...components
         components: components
     }) as ActionRowBuilder<T>;
 };
+export const resizeStr = (str: string, size?: number) => {
+    const max = size ?? 100;
+    if (str.length <= max) return str;
+    return str.substring(0, size - 3) + '...';
+}

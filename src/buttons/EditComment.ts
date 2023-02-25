@@ -1,7 +1,7 @@
 import { ButtonHandler } from 'amethystjs';
 import { TesterButtons } from '../typings/tester';
 import isTester from '../preconditions/isTester';
-import { getStationByUrl, row } from '../utils/functions';
+import { getStationByUrl, resizeStr, row } from '../utils/functions';
 import { ButtonBuilder, ButtonStyle, EmbedBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from 'discord.js';
 
 export default new ButtonHandler({
@@ -26,7 +26,7 @@ export default new ButtonHandler({
                                 .setStyle(TextInputStyle.Paragraph)
                                 .setMaxLength(1000)
                                 .setRequired(true)
-                                .setPlaceholder(`Edit your comment about ${station.emoji} ${station.name} here`)
+                                .setPlaceholder(resizeStr(`Edit your comment about ${station.emoji} ${station.name} here`))
                                 .setCustomId('comment')
                         )
                     )
