@@ -74,8 +74,10 @@ export default new AmethystEvent('ready', async (client) => {
     if (!panelChannel) {
         throw new Error('Panel channel is unfoundable');
     }
-    await panelChannel.bulkDelete(100).catch(() => {});
-    await panelChannel
+    const pinned = await panelChannel.messages.fetchPinned()
+    pinned.first()?.delete().catch(() => {});
+
+    const panel = await panelChannel
         .send({
             embeds: [
                 new EmbedBuilder()
@@ -94,6 +96,10 @@ export default new AmethystEvent('ready', async (client) => {
                         .setStyle(ButtonStyle.Secondary)
                         .setCustomId(PanelIds.InstantInfo),
                     new ButtonBuilder()
+                        .setLabel('Clear channel')
+                        .setStyle(ButtonStyle.Primary)
+                        .setCustomId(PanelIds.ClearChannel),
+                    new ButtonBuilder()
                         .setLabel('Restart bot')
                         .setStyle(ButtonStyle.Danger)
                         .setCustomId(PanelIds.Reboot)
@@ -101,6 +107,8 @@ export default new AmethystEvent('ready', async (client) => {
             ]
         })
         .catch(() => {});
+
+    if (panel) panel.pin().catch(() => {});
     const embed = () => {
         return new EmbedBuilder().setTitle('Error').setTimestamp().setColor('#ff0000');
     };
@@ -140,10 +148,14 @@ export default new AmethystEvent('ready', async (client) => {
             })
             .catch(() => {});
     });
-    process.on('unhandledRejection', (error) => {
+    process.on('unhandledRejection', (error, promise) => {
         panelChannel
             .send({
-                embeds: [embed().setDescription(JSON.stringify(error) ?? 'N/A')]
+                embeds: [embed().setDescription('```json\n' + JSON.stringify(error, null, 4) + '\n```').setFields({
+                    name: "Promise",
+                    value: `\`\`\`json\n${JSON.stringify(promise, null, 4)}\`\`\``,
+                    inline: false
+                })]
             })
             .catch(() => {});
     });
