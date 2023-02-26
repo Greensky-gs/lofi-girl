@@ -103,13 +103,13 @@ export default new AmethystEvent('ready', async (client) => {
                         .setStyle(ButtonStyle.Secondary)
                         .setCustomId(PanelIds.ClearChannel),
                     new ButtonBuilder()
-                        .setLabel("Remove a station")
+                        .setLabel('Remove a station')
                         .setStyle(ButtonStyle.Secondary)
                         .setCustomId(PanelIds.RemoveStation),
                     new ButtonBuilder()
                         .setLabel('Restart bot')
                         .setStyle(ButtonStyle.Danger)
-                        .setCustomId(PanelIds.Reboot),
+                        .setCustomId(PanelIds.Reboot)
                 )
             ]
         })
