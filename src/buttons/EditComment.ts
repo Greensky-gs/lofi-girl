@@ -26,7 +26,9 @@ export default new ButtonHandler({
                                 .setStyle(TextInputStyle.Paragraph)
                                 .setMaxLength(1000)
                                 .setRequired(true)
-                                .setPlaceholder(resizeStr(`Edit your comment about ${station.emoji} ${station.name} here`))
+                                .setPlaceholder(
+                                    resizeStr(`Edit your comment about ${station.emoji} ${station.name} here`)
+                                )
                                 .setCustomId('comment')
                         )
                     )
