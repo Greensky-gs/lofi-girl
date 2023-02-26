@@ -25,7 +25,7 @@ export default new AmethystCommand({
     if (queue.nowPlaying().duration === '0:00' || queue.tracks.filter((x) => x.duration === '0:00').length > 0)
         return interaction.reply(`:x: | You can't add a station after a never-ending station`).catch(() => {});
 
-    interaction.deferReply();
+    await interaction.deferReply();
     const search = await interaction.client.player.search(station.url, {
         requestedBy: interaction.user
     });
