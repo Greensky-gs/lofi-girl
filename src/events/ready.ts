@@ -96,16 +96,20 @@ export default new AmethystEvent('ready', async (client) => {
                 row(
                     new ButtonBuilder()
                         .setLabel('Instant informations')
-                        .setStyle(ButtonStyle.Secondary)
+                        .setStyle(ButtonStyle.Primary)
                         .setCustomId(PanelIds.InstantInfo),
                     new ButtonBuilder()
                         .setLabel('Clear channel')
-                        .setStyle(ButtonStyle.Primary)
+                        .setStyle(ButtonStyle.Secondary)
                         .setCustomId(PanelIds.ClearChannel),
+                    new ButtonBuilder()
+                        .setLabel("Remove a station")
+                        .setStyle(ButtonStyle.Secondary)
+                        .setCustomId(PanelIds.RemoveStation),
                     new ButtonBuilder()
                         .setLabel('Restart bot')
                         .setStyle(ButtonStyle.Danger)
-                        .setCustomId(PanelIds.Reboot)
+                        .setCustomId(PanelIds.Reboot),
                 )
             ]
         })
