@@ -13,4 +13,5 @@ export type station = {
     feedbacks: feedback[];
     likes: number;
     dislikes: number;
+    votes: string[];
 };
