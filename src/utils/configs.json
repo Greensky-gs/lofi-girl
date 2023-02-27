@@ -54,7 +54,21 @@
             "name": "Morning coffee (lofi hip hop/study beats)",
             "type": "playlist",
             "emoji": "☕",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A nice song to play while studying or working. You also can listen it to chill and relax",
+                    "keywords": [
+                        "study",
+                        "work",
+                        "chill",
+                        "relax",
+                        "background",
+                        "calm",
+                        "slow"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=rHh1uQndXJ4",
@@ -68,7 +82,17 @@
             "name": "Soothing breeze (asian hip hop)",
             "type": "playlist",
             "emoji": "🍃",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A long song to play to relax or meditate on your feelings. Take a cup of tea or coffee and enjoy this asian songs",
+                    "keywords": [
+                        "long",
+                        "chill",
+                        "relax"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=l98w9OSKVNA",
@@ -79,7 +103,15 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A nice song to play to study or work in the day",
-                    "keywords": ["study", "work", "chill", "relax", "calm", "long", "quiet"]
+                    "keywords": [
+                        "study",
+                        "work",
+                        "chill",
+                        "relax",
+                        "calm",
+                        "long",
+                        "quiet"
+                    ]
                 }
             ]
         },
@@ -277,7 +309,18 @@
             "name": "Purrple Cat - Sweat Dreams (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "💤",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "Incredible song. I strongly recommend it. Personnaly, it relax and make me think about my memories",
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "calm",
+                        "cool"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=S6zSCQskYl4",
@@ -291,7 +334,19 @@
             "name": "Blue Wednesday - After hours (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🏔️",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A relaxing music to play after being stressed or under preassure",
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "sleep",
+                        "slow",
+                        "quiet"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=oPwdPTBABiQ",
@@ -309,7 +364,12 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A nice song to play while working or playing games like chess or programming",
-                    "keywords": ["work", "chill", "background", "slow"]
+                    "keywords": [
+                        "work",
+                        "chill",
+                        "background",
+                        "slow"
+                    ]
                 }
             ]
         },
@@ -696,7 +756,18 @@
             "name": "Phlocalyst x Mr Käfer - Roadwalks (lofi hip hop/relaxing beats",
             "type": "playlist",
             "emoji": "🌲",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A song to play in background while working or having fun like play a game of chess",
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "calm",
+                        "background"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=cl2l2Y4_hYs",
@@ -1190,7 +1261,13 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A song to play when you want to relax and just chill after an exhausting day",
-                    "keywords": ["relax", "chill", "background", "calm", "slow"]
+                    "keywords": [
+                        "relax",
+                        "chill",
+                        "background",
+                        "calm",
+                        "slow"
+                    ]
                 }
             ]
         },
@@ -1252,7 +1329,11 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A nice song to play in background while doing something else, or play it the evening at bed",
-                    "keywords": ["chill", "slow", "relax"]
+                    "keywords": [
+                        "chill",
+                        "slow",
+                        "relax"
+                    ]
                 }
             ]
         },
@@ -2084,7 +2165,12 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A song to play to relax and enjoy your memories",
-                    "keywords": ["chill", "relax", "calm", "slow"]
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "calm",
+                        "slow"
+                    ]
                 }
             ]
         },
@@ -2097,7 +2183,14 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "An enjoyable music when you want to find yourself in your memories",
-                    "keywords": ["sleep", "chill", "relax", "calm", "long", "quiet"]
+                    "keywords": [
+                        "sleep",
+                        "chill",
+                        "relax",
+                        "calm",
+                        "long",
+                        "quiet"
+                    ]
                 }
             ]
         },
@@ -2316,13 +2409,101 @@
             "name": "WYS - North Pole (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "❄️",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A calm music to play in background to relax when you enjoy a nice warm drink",
+                    "keywords": [
+                        "quiet",
+                        "slow",
+                        "calm",
+                        "background"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=8OPipsAjlqQ",
             "name": "drkmnd x Ambulo - Meteor Shower (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🚿",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=wVgj3o9k7eY",
+            "name": "C4C x kokoro - L'aventure (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌲",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=YqcN2xmPngc",
+            "name": "Chris Mazuera x tender spring - Perspective (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌨️",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=j9ziXYpFs1I",
+            "name": "WYS - Snowman (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "☃️",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=nXKDQflDgTo",
+            "name": "Dontcry x Glimlip - Jiro Dreams (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🍣",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=Lsr7bJk4zAY",
+            "name": "BluntOne - Cloud Surfing (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌤️",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=kHI9hnC-pnI",
+            "name": "less.people - Online Mall Music (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "💿",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=eEXEEuSLjEo",
+            "name": "DLJ - Night Emotions (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌆",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=guhAfOxt5gg",
+            "name": "mell - ø x Ambulo (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "⛵",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=-0o37zLDsWo",
+            "name": "goosetaf - Perpetual (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "⛰️",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=XoX6zS5-jOY",
+            "name": "dryhope - Contrasts (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🐟",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=gl5DYoxkI20",
+            "name": "a[way] - frosen roses (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌹",
             "feedbacks": []
         }
     ],
@@ -2349,15 +2530,20 @@
         }
     ],
     "recommendation": {
-        "url": "https://www.youtube.com/watch?v=iunocgt3c3E",
-        "name": "Softy - Sometimes I Wait For You (lofi hip hop/relaxing beats)",
+        "url": "https://www.youtube.com/watch?v=RY89j1qdKvo",
+        "name": "Purrple Cat - Sweat Dreams (lofi hip hop/relaxing beats)",
         "type": "playlist",
-        "emoji": "🌇",
+        "emoji": "💤",
         "feedbacks": [
             {
                 "user_id": "386479065307152384",
-                "comments": "An enjoyable music when you want to find yourself in your memories",
-                "keywords": ["sleep", "chill", "relax", "calm", "long", "quiet"]
+                "comments": "Incredible song. I strongly recommend it. Personnaly, it relax and make me think about my memories",
+                "keywords": [
+                    "chill",
+                    "relax",
+                    "calm",
+                    "cool"
+                ]
             }
         ]
     },
