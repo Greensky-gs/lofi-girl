@@ -9,7 +9,7 @@ export default new AutocompleteListener({
         const name = options.getFocused().toLowerCase();
 
         const concatenated: station[] = [
-            { name: 'random', type: 'get a random station', url: 'random', emoji: '🎲', feedbacks: [] }
+            { name: 'random', type: 'get a random station', url: 'random', emoji: '🎲', feedbacks: [], likes: 0, dislikes: 0 }
         ];
 
         if (Object.keys(recommendation).length > 0) {
@@ -18,7 +18,9 @@ export default new AutocompleteListener({
                 type: 'get the recommendation of the day',
                 emoji: '❤️',
                 url: 'recommendation',
-                feedbacks: []
+                feedbacks: [],
+                likes: 0,
+                dislikes: 0
             });
         }
         const list: station[] = (stations as station[])

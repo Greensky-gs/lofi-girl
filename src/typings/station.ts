@@ -11,4 +11,6 @@ export type station = {
     emoji: string;
     url: string;
     feedbacks: feedback[];
+    likes: number;
+    dislikes: number;
 };
