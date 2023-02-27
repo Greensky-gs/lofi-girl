@@ -107,10 +107,19 @@ export default new AmethystEvent('ready', async (client) => {
                         .setStyle(ButtonStyle.Secondary)
                         .setCustomId(PanelIds.RemoveStation),
                     new ButtonBuilder()
+                        .setLabel('Keywords')
+                        .setStyle(ButtonStyle.Secondary)
+                        .setCustomId(PanelIds.Keywords),
+                    new ButtonBuilder()
                         .setLabel('Restart bot')
                         .setStyle(ButtonStyle.Danger)
                         .setCustomId(PanelIds.Reboot)
                 )
+                // Note for Dev :
+                /* 
+                    If you add another row here, you have to edit the `panelKeyword.ts`
+                    Otherwise, once the `Keywords` button is pressed, only the first row will be kept
+                */
             ]
         })
         .catch(() => {});
