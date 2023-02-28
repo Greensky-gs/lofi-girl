@@ -6,5 +6,9 @@ export enum PanelIds {
     Keywords = 'panel.keywords',
     KeywordsList = 'panel.keywords.list',
     AddKeyword = 'panel.keywords.add',
-    RemoveKeyword = 'panel.keywords.remove'
+    RemoveKeyword = 'panel.keywords.remove',
+    Testers = 'panel.testers',
+    AddTester = 'panel.testers.add',
+    RemoveTester = 'panel.testers.remove',
+    ListTester = 'panel.testers.list'
 }

@@ -114,12 +114,13 @@ export default new AmethystEvent('ready', async (client) => {
                         .setLabel('Restart bot')
                         .setStyle(ButtonStyle.Danger)
                         .setCustomId(PanelIds.Reboot)
+                ),
+                row(
+                    new ButtonBuilder()
+                        .setLabel('Testers')
+                        .setCustomId(PanelIds.Testers)
+                        .setStyle(ButtonStyle.Primary)
                 )
-                // Note for Dev :
-                /* 
-                    If you add another row here, you have to edit the `panelKeyword.ts`
-                    Otherwise, once the `Keywords` button is pressed, only the first row will be kept
-                */
             ]
         })
         .catch(() => {});

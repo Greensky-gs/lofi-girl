@@ -2,7 +2,7 @@ import { ButtonHandler, waitForInteraction, waitForMessage } from "amethystjs";
 import { PanelIds } from "../typings/bot";
 import botOwner from "../preconditions/botOwner";
 import { boolEmojis, row } from "../utils/functions";
-import { ButtonBuilder, ButtonStyle, ComponentType, EmbedBuilder, Message, StringSelectMenuBuilder, TextChannel } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType, EmbedBuilder, Message, StringSelectMenuBuilder, TextChannel } from "discord.js";
 import configs from '../utils/configs.json'
 import { writeFileSync } from "fs";
 
@@ -10,13 +10,18 @@ export default new ButtonHandler({
     customId: PanelIds.Keywords,
     preconditions: [botOwner]
 }).setRun(async ({ button, message, user }) => {
-    const components = message.components[0].components.map(x => new ButtonBuilder(x.toJSON()));
-    components[3].setDisabled(true);
+    const rows = [];
+    message.components.forEach((component) => {
+        const actionRow = new ActionRowBuilder();
+        component.components.forEach((components) => {
+            actionRow.addComponents(new ButtonBuilder(components.data))
+        });
+        rows.push(actionRow);
+    })
+    rows[0].components[3].setDisabled(true);
 
     message.edit({
-        components: [
-            row(...components)
-        ]
+        components: rows
     }).catch(() => {});
 
     const msg = await button.reply({
@@ -51,10 +56,10 @@ export default new ButtonHandler({
     }).catch(() => {});
 
     const reedit = () => {
-        components[3].setDisabled(false);
+        rows[0].components[3].setDisabled(false);
         message.edit({
-            components: [ row(...components) ]
-        })
+            components: rows
+        }).catch(() => {});
     }
     if (!rep || rep.customId === 'cancel') {
         reedit();
