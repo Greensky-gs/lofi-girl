@@ -37,4 +37,4 @@ export default new AmethystEvent('commandDenied', (command, reason) => {
         components: [],
         ephemeral: true
     }).catch(() => {});
-});
+})
