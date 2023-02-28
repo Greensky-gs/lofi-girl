@@ -18,4 +18,23 @@ export default new Precondition('botOwner').setButtonRun(({ button, user }) => {
         isButton: true,
         button
     };
+}).setMessageRun(({ message }) => {
+    if (message.author.id !== process.env.botOwner) {
+        return {
+            ok: false,
+            isChatInput: false,
+            isButton: false,
+            channelMessage: message,
+            message: "Bot owner only",
+            metadata: {
+                message: `:x: | You are not allowed to interact with this message`
+            }
+        }
+    }
+    return {
+        ok: true,
+        isButton: false,
+        isChatInput: false,
+        channelMessage: message
+    }
 });
