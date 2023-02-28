@@ -2505,6 +2505,28 @@
             "type": "playlist",
             "emoji": "🌹",
             "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=n61ULEU7CO0",
+            "name": "Lofi Girl - Best of Lofi hip hop 2021 (lofi hip hop/study beats)",
+            "type": "playlist",
+            "emoji": "✨",
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A bit long, but the music is cool and relaxing. You can listen to it to study or relax with your cat",
+                    "keywords": [
+                        "long"
+                    ]
+                }
+            ]
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=i43tkaTXtwI",
+            "name": "Lofi Girl - Best of lofi hip hop 2022 (lofi hip hop/relax beats)",
+            "type": "playlist",
+            "emoji": "🎆",
+            "feedbacks": []
         }
     ],
     "emojis": {
