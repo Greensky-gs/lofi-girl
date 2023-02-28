@@ -126,7 +126,7 @@ export default new AmethystCommand({
             embed.setImage(video.thumbnail ?? interaction.client.user.displayAvatarURL({ forceStatic: true }));
         embed.addFields({
             name: '🎧 Duration',
-            value: `${formatTime(Math.floor(video.durationMS / 1000))}`,
+            value:  station.type === 'station' ?  "Live" : `${formatTime(Math.floor(video.durationMS / 1000))}`,
             inline: true
         });
 
