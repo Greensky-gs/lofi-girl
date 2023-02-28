@@ -61,6 +61,14 @@ export default new ButtonHandler({
         return msg.delete().catch(() => {});
     }
     if (rep.customId === PanelIds.AddKeyword) {
+        if (configs.testKeywords.length === 25) {
+            reedit();
+            msg.edit({
+                content: `:x: | You can't add more keywords, because there are already 25 keywords, wich is the maximum available`,
+                components: []
+            }).catch(() => {});
+            return;
+        }
         rep.deferUpdate().catch(() => {});
         await msg.edit({
             content: `What is the keyword you want to add ?\nReply in the chat\nReply by \`cancel\` to cancel`,
