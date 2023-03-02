@@ -1,9 +1,7 @@
 import { AmethystEvent } from 'amethystjs';
 import { ButtonIds } from '../typings/bot';
-import { formatTime, getStationByUrl, getTester, row } from '../utils/functions';
-import { EmbedBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
-import { TesterButtons } from '../typings/tester';
-import { recommendation } from '../utils/configs.json';
+import { formatTime, getStationByUrl } from '../utils/functions';
+import { EmbedBuilder } from 'discord.js';
 
 export default new AmethystEvent('stringSelectInteraction', async (selector) => {
     if (selector.customId === ButtonIds.FindStationSelector) {
@@ -67,7 +65,7 @@ export default new AmethystEvent('stringSelectInteraction', async (selector) => 
             embed.setImage(video.thumbnail ?? selector.client.user.displayAvatarURL({ forceStatic: true }));
         embed.addFields({
             name: '🎧 Duration',
-            value: station.type === 'station' ? 'Live' : `${formatTime(Math.floor(video.durationMS / 1000))}`,
+            value: station.type === 'radio' ? 'Live' : `${formatTime(Math.floor(video.durationMS / 1000))}`,
             inline: true
         });
 

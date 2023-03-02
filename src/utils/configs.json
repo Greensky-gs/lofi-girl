@@ -3,14 +3,14 @@
         {
             "url": "https://www.youtube.com/watch?v=jfKfPfyJRdk",
             "name": "Lofi hip hop radio - beats to relax/study to",
-            "type": "station",
+            "type": "radio",
             "emoji": "💫",
             "feedbacks": []
         },
         {
             "url": "https://www.youtube.com/watch?v=rUxyKA_-grg",
             "name": "Lofi hip hop radio - beats to sleep/chill to",
-            "type": "station",
+            "type": "radio",
             "emoji": "🎶",
             "feedbacks": []
         },

@@ -26,7 +26,7 @@ export default new AmethystCommand({
         .setFields(
             {
                 name: station.emoji + ' Duration',
-                value: station.type === 'station' ? 'Live' : queue.createProgressBar(),
+                value: station.type === 'radio' ? 'Live' : queue.createProgressBar(),
                 inline: true
             },
             {

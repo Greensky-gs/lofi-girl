@@ -1,4 +1,4 @@
-export type stationType = 'playlist' | 'station' | 'get a random station' | 'get the recommendation of the day';
+export type stationType = 'playlist' | 'radio' | 'get a random station' | 'get the recommendation of the day';
 
 export type feedback = {
     user_id: string;
