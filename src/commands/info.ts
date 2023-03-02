@@ -105,7 +105,7 @@ export default new AmethystCommand({
                           Math.floor(Math.random() * station.feedbacks.filter((x) => x.comments).length)
                       ].comments + '\n'
                     : '') +
-                    "People's opinion :" +
+                    "People's opinion: " +
                     [...new Set(station.feedbacks.map((x) => x.keywords).flat())].join(', ')
             );
         }
