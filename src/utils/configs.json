@@ -58,7 +58,15 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A nice song to play while studying or working. You also can listen it to chill and relax",
-                    "keywords": ["study", "work", "chill", "relax", "background", "calm", "slow"]
+                    "keywords": [
+                        "study",
+                        "work",
+                        "chill",
+                        "relax",
+                        "background",
+                        "calm",
+                        "slow"
+                    ]
                 }
             ]
         },
@@ -78,7 +86,11 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A long song to play to relax or meditate on your feelings. Take a cup of tea or coffee and enjoy this asian songs",
-                    "keywords": ["long", "chill", "relax"]
+                    "keywords": [
+                        "long",
+                        "chill",
+                        "relax"
+                    ]
                 }
             ]
         },
@@ -91,7 +103,15 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A nice song to play to study or work in the day",
-                    "keywords": ["study", "work", "chill", "relax", "calm", "long", "quiet"]
+                    "keywords": [
+                        "study",
+                        "work",
+                        "chill",
+                        "relax",
+                        "calm",
+                        "long",
+                        "quiet"
+                    ]
                 }
             ]
         },
@@ -293,7 +313,12 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "Incredible song. I strongly recommend it. Personnaly, it relax and make me think about my memories",
-                    "keywords": ["chill", "relax", "calm", "cool"]
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "calm",
+                        "cool"
+                    ]
                 }
             ]
         },
@@ -313,7 +338,13 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A relaxing music to play after being stressed or under preassure",
-                    "keywords": ["chill", "relax", "sleep", "slow", "quiet"]
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "sleep",
+                        "slow",
+                        "quiet"
+                    ]
                 }
             ]
         },
@@ -333,7 +364,12 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A nice song to play while working or playing games like chess or programming",
-                    "keywords": ["work", "chill", "background", "slow"]
+                    "keywords": [
+                        "work",
+                        "chill",
+                        "background",
+                        "slow"
+                    ]
                 }
             ]
         },
@@ -724,7 +760,12 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A song to play in background while working or having fun like play a game of chess",
-                    "keywords": ["chill", "relax", "calm", "background"]
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "calm",
+                        "background"
+                    ]
                 }
             ]
         },
@@ -1220,7 +1261,13 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A song to play when you want to relax and just chill after an exhausting day",
-                    "keywords": ["relax", "chill", "background", "calm", "slow"]
+                    "keywords": [
+                        "relax",
+                        "chill",
+                        "background",
+                        "calm",
+                        "slow"
+                    ]
                 }
             ]
         },
@@ -1282,7 +1329,11 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A nice song to play in background while doing something else, or play it the evening at bed",
-                    "keywords": ["chill", "slow", "relax"]
+                    "keywords": [
+                        "chill",
+                        "slow",
+                        "relax"
+                    ]
                 }
             ]
         },
@@ -2114,7 +2165,12 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A song to play to relax and enjoy your memories",
-                    "keywords": ["chill", "relax", "calm", "slow"]
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "calm",
+                        "slow"
+                    ]
                 }
             ]
         },
@@ -2127,7 +2183,14 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "An enjoyable music when you want to find yourself in your memories",
-                    "keywords": ["sleep", "chill", "relax", "calm", "long", "quiet"]
+                    "keywords": [
+                        "sleep",
+                        "chill",
+                        "relax",
+                        "calm",
+                        "long",
+                        "quiet"
+                    ]
                 }
             ]
         },
@@ -2350,7 +2413,12 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A calm music to play in background to relax when you enjoy a nice warm drink",
-                    "keywords": ["quiet", "slow", "calm", "background"]
+                    "keywords": [
+                        "quiet",
+                        "slow",
+                        "calm",
+                        "background"
+                    ]
                 }
             ]
         },
@@ -2447,7 +2515,9 @@
                 {
                     "user_id": "386479065307152384",
                     "comments": "A bit long, but the music is cool and relaxing. You can listen to it to study or relax with your cat",
-                    "keywords": ["long"]
+                    "keywords": [
+                        "long"
+                    ]
                 }
             ]
         },
@@ -2490,13 +2560,22 @@
             {
                 "user_id": "386479065307152384",
                 "comments": "Incredible song. I strongly recommend it. Personnaly, it relax and make me think about my memories",
-                "keywords": ["chill", "relax", "calm", "cool"]
+                "keywords": [
+                    "chill",
+                    "relax",
+                    "calm",
+                    "cool"
+                ]
             }
         ]
     },
     "testers": [
         {
             "id": "386479065307152384",
+            "when": "everytime"
+        },
+        {
+            "id": "235864790679945217",
             "when": "everytime"
         }
     ],
