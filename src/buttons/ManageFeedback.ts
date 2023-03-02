@@ -383,43 +383,47 @@ export default new ButtonHandler({
             }).catch(() => {});
         }
         if (interaction.customId === ids.DeleteFeedback) {
-            interaction.deferUpdate().catch(() => {})
+            interaction.deferUpdate().catch(() => {});
             feedback.comments = ids.NoComment;
             feedback.keywords = [];
 
             msg.edit({
-                embeds: [
-                    embed()
-                ],
+                embeds: [embed()],
                 components: buttons()
             }).catch(() => {});
         }
         if (interaction.customId === ids.EditComment) {
-            await interaction.showModal(new ModalBuilder()
-                .setTitle("Comment edition")
-                .setCustomId('comment.edition')
-                .setComponents(
-                    row<TextInputBuilder>(new TextInputBuilder()
-                        .setLabel('Comment')
-                        .setMaxLength(1000)
-                        .setCustomId('comment')
-                        .setRequired(true)
-                        .setPlaceholder('Write your comment here')
-                        .setStyle(TextInputStyle.Paragraph)
-                    )
+            await interaction
+                .showModal(
+                    new ModalBuilder()
+                        .setTitle('Comment edition')
+                        .setCustomId('comment.edition')
+                        .setComponents(
+                            row<TextInputBuilder>(
+                                new TextInputBuilder()
+                                    .setLabel('Comment')
+                                    .setMaxLength(1000)
+                                    .setCustomId('comment')
+                                    .setRequired(true)
+                                    .setPlaceholder('Write your comment here')
+                                    .setStyle(TextInputStyle.Paragraph)
+                            )
+                        )
                 )
-            ).catch(() => {})
-            const modal = await interaction.awaitModalSubmit({
-                time: 60000
-            }).catch(() => {});
+                .catch(() => {});
+            const modal = await interaction
+                .awaitModalSubmit({
+                    time: 60000
+                })
+                .catch(() => {});
 
             if (!modal) return;
             modal.deferUpdate().catch(() => {});
 
-            feedback.comments = modal.fields.getTextInputValue('comment')
+            feedback.comments = modal.fields.getTextInputValue('comment');
             msg.edit({
                 components: buttons(),
-                embeds: [ embed() ]
+                embeds: [embed()]
             }).catch(() => {});
         }
         if (interaction.customId === ids.RemoveKeyword) {
@@ -427,52 +431,69 @@ export default new ButtonHandler({
                 components: buttons(true)
             }).catch(() => {});
 
-            const keywordSelection = await interaction.reply({
-                content: `Wich keyword(s) do you want to remove ?`,
-                components: [ row<StringSelectMenuBuilder>(new StringSelectMenuBuilder()
-                        .setCustomId('keyword.selection')
-                        .setOptions(feedback.keywords.map((k) => ({ label: k[0].toUpperCase() + k.slice(1), value: k, description: `Remove the keyword ${k}` })).concat({
-                            label: 'Cancel',
-                            value: 'cancel',
-                            description: 'Cancel the selection'
-                        }))
-                        .setMaxValues(feedback.keywords.length + 1)
-                    ) ],
-                fetchReply: true
-            }).catch(() => {}) as Message<true>
+            const keywordSelection = (await interaction
+                .reply({
+                    content: `Wich keyword(s) do you want to remove ?`,
+                    components: [
+                        row<StringSelectMenuBuilder>(
+                            new StringSelectMenuBuilder()
+                                .setCustomId('keyword.selection')
+                                .setOptions(
+                                    feedback.keywords
+                                        .map((k) => ({
+                                            label: k[0].toUpperCase() + k.slice(1),
+                                            value: k,
+                                            description: `Remove the keyword ${k}`
+                                        }))
+                                        .concat({
+                                            label: 'Cancel',
+                                            value: 'cancel',
+                                            description: 'Cancel the selection'
+                                        })
+                                )
+                                .setMaxValues(feedback.keywords.length + 1)
+                        )
+                    ],
+                    fetchReply: true
+                })
+                .catch(() => {})) as Message<true>;
             const keyword = await waitForInteraction({
                 message: keywordSelection,
                 user,
                 componentType: ComponentType.StringSelect
-            }).catch(() => {})
+            }).catch(() => {});
 
             keywordSelection.delete().catch(() => {});
             if (!keyword || keyword.values.includes('cancel')) {
                 msg.edit({
                     components: buttons()
-                }).catch(( )=> {});
-                return
+                }).catch(() => {});
+                return;
             }
-            feedback.keywords = feedback.keywords.filter(k => !keyword.values.includes(k));
+            feedback.keywords = feedback.keywords.filter((k) => !keyword.values.includes(k));
             msg.edit({
-                embeds: [
-                    embed()
-                ],
+                embeds: [embed()],
                 components: buttons()
             }).catch(() => {});
         }
         if (interaction.customId === ids.Save) {
-            station.feedbacks.splice(0, station.feedbacks.indexOf(station.feedbacks.find(x => x.user_id === feedback.user_id)), feedback)
-            stations.splice(0, stations.indexOf(stations.find(x => x.url === station.url)), station)
+            station.feedbacks.splice(
+                0,
+                station.feedbacks.indexOf(station.feedbacks.find((x) => x.user_id === feedback.user_id)),
+                feedback
+            );
+            stations.splice(0, stations.indexOf(stations.find((x) => x.url === station.url)), station);
 
             msg.edit({
-                content: `${boolEmojis(true)} | The station [${station.emoji} ${station.name}](<${station.url}>) has been edited`,
+                content: `${boolEmojis(true)} | The station [${station.emoji} ${station.name}](<${
+                    station.url
+                }>) has been edited`,
                 embeds: [],
                 components: []
             }).catch(() => {});
             setTimeout(() => {
-                msg.delete().catch(() => {})
-            }, 5000)
+                msg.delete().catch(() => {});
+            }, 5000);
             reedit();
             collector.stop('saved');
 
