@@ -161,6 +161,7 @@ export default new AmethystEvent('ready', async (client) => {
             .catch(() => {});
     });
     process.on('unhandledRejection', (error, promise) => {
+        console.log(error);
         panelChannel
             .send({
                 embeds: [

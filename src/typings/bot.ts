@@ -12,3 +12,6 @@ export enum PanelIds {
     RemoveTester = 'panel.testers.remove',
     ListTester = 'panel.testers.list'
 }
+export enum ButtonIds {
+    FindStationSelector = 'find.station.selector'
+}
