@@ -115,7 +115,13 @@ export default new AmethystEvent('ready', async (client) => {
                         .setStyle(ButtonStyle.Danger)
                         .setCustomId(PanelIds.Reboot)
                 ),
-                row(new ButtonBuilder().setLabel('Testers').setCustomId(PanelIds.Testers).setStyle(ButtonStyle.Primary))
+                row(
+                    new ButtonBuilder().setLabel('Testers').setCustomId(PanelIds.Testers).setStyle(ButtonStyle.Primary),
+                    new ButtonBuilder()
+                        .setLabel('Manage feedback')
+                        .setStyle(ButtonStyle.Secondary)
+                        .setCustomId(PanelIds.ManageFeedback)
+                )
             ]
         })
         .catch(() => {});
