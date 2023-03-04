@@ -10,7 +10,7 @@ export default new AmethystCommand({
     preconditions: [preconditions.GuildOnly, playingPrecondition]
 }).setChatInputRun(async ({ interaction }) => {
     const queue = interaction.client.player.nodes.get(interaction.guild);
-    
+
     const playing = queue.currentTrack;
     const station = getStationByUrl(playing.url);
 

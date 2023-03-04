@@ -29,7 +29,7 @@ export default new AmethystCommand({
 
     const queue = interaction.client.player.nodes.get(interaction.guild);
     if (queue.tracks.size > 0) {
-        const toAdd = queue.tracks.toArray().splice(0)
+        const toAdd = queue.tracks.toArray().splice(0);
         queue.tracks.add([tracks.tracks[0], ...toAdd]);
     } else {
         queue.tracks.add(tracks.tracks[0]);
