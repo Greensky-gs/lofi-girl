@@ -1,6 +1,5 @@
-import { EmbedBuilder } from '@discordjs/builders';
 import { AmethystCommand, preconditions } from 'amethystjs';
-import { ButtonBuilder, ButtonStyle, Colors } from 'discord.js';
+import { ButtonBuilder, ButtonStyle, Colors, EmbedBuilder } from 'discord.js';
 import playingPrecondition from '../preconditions/playing';
 import { getLoopState, getStationByUrl, getTester, row } from '../utils/functions';
 import { TesterButtons } from '../typings/tester';
