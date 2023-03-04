@@ -7,6 +7,6 @@ export default new AmethystCommand({
     description: 'Leave the voice channel',
     preconditions: [preconditions.GuildOnly, connected, adminIfNotAlone]
 }).setChatInputRun(({ interaction }) => {
-    interaction.client.player.getQueue(interaction.guild).destroy(true);
+    interaction.client.player.nodes.get(interaction.guild).delete();
     interaction.reply(`🎧 | I left the voice channel`).catch(() => {});
 });

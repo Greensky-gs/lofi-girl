@@ -10,10 +10,9 @@ export default new AmethystCommand({
     description: 'Shows the current music',
     preconditions: [preconditions.GuildOnly, playingPrecondition]
 }).setChatInputRun(async ({ interaction }) => {
-    const queue = interaction.client.player.getQueue(interaction.guild);
-    interaction.client.player.getQueue(interaction.guild);
-
-    const playing = queue.nowPlaying();
+    const queue = interaction.client.player.nodes.get(interaction.guild);
+    
+    const playing = queue.currentTrack;
     const station = getStationByUrl(playing.url);
 
     const embed = new EmbedBuilder()
@@ -26,19 +25,19 @@ export default new AmethystCommand({
         .setFields(
             {
                 name: station.emoji + ' Duration',
-                value: station.type === 'radio' ? 'Live' : queue.createProgressBar(),
+                value: station.type === 'radio' ? 'Live' : queue.node.createProgressBar(),
                 inline: true
             },
             {
                 name: '🎧 Volume',
-                value: `${queue.volume}%`,
+                value: `${queue.node.volume}%`,
                 inline: true
             }
         );
-    if (queue.tracks.length > 0)
+    if (queue.tracks.size > 0)
         embed.addFields({
             name: '🎹 Following',
-            value: `${queue.tracks.length} following${queue.tracks.length > 1 ? 's' : ''}`,
+            value: `${queue.tracks.size} following${queue.tracks.size > 1 ? 's' : ''}`,
             inline: true
         });
     if (getLoopState(interaction.guild.id))

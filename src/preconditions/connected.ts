@@ -16,7 +16,7 @@ export default new Precondition('inVoiceChannel').setChatInputRun(({ interaction
         };
     if (
         !(interaction.member as GuildMember).voice?.channel &&
-        interaction.client.player.getQueue(interaction.guild) &&
+        interaction.client.player.nodes.get(interaction.guild) &&
         interaction.guild.members.me?.voice?.channel?.members?.filter((x) => !x.user.bot).size === 0
     )
         return {

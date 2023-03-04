@@ -57,7 +57,7 @@ export default new AmethystCommand({
                 },
                 {
                     name: 'Playing in',
-                    value: interaction.client.player.queues.filter((x) => x.playing).size + ' servers',
+                    value: interaction.client.player.queues.cache.filter((x) => x.node.isPlaying()).size + ' servers',
                     inline: true
                 },
                 {

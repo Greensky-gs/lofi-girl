@@ -32,18 +32,28 @@ export default new AmethystCommand({
             (interaction.member as GuildMember).voice.channel.id
         }>`
     );
-    const queue =
-        interaction.client.player.getQueue(interaction.guild) ??
-        interaction.client.player.createQueue(interaction.guild, {
-            initialVolume: 90,
-            autoSelfDeaf: true,
+    if (interaction.client.player.nodes.get(interaction.guild.id)) {
+        const queue = interaction.client.player.nodes.get(interaction.guild.id)
+        if (queue.tracks.size > 0) {
+            const toAdd = queue.tracks.toArray().splice(0)
+            queue.tracks.add([search.tracks[0], ...toAdd]);
+        } else {
+            queue.tracks.add(search.tracks[0]);
+        }
+        queue.node.skip();
+        return
+    }
+    const queue = (await interaction.client.player.play((interaction.member as GuildMember).voice.channel, search.tracks[0], {
+        nodeOptions: {
+            selfDeaf: true,
+            leaveOnEmpty: false,
             leaveOnEnd: false,
             leaveOnStop: false,
-            leaveOnEmpty: false
-        });
+            volume: 90
+        }
+    })).queue
 
-    if (!queue.connection) await queue.connect((interaction.member as GuildMember).voice.channel);
-    queue.play(search.tracks[0]);
+    if (!queue.connection) queue.connect((interaction.member as GuildMember).voice.channel)
 
     queuesUsers.set(interaction.guild.id, interaction.user);
 });

@@ -17,7 +17,7 @@ export default new ButtonHandler({
         guildSize: button.client.guilds.cache.size,
         memberCount: button.client.guilds.cache.map((x) => x.memberCount).reduce((a, b) => a + b),
         uptime: ((Date.now() - button.client.uptime) / 1000).toFixed(0),
-        playingIn: button.client.player.queues.size,
+        playingIn: button.client.player.nodes.cache.size,
         stationsCount: stations.length,
         testerCount: testers.length,
         keywords: testKeywords.length

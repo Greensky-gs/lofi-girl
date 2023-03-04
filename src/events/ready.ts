@@ -29,7 +29,7 @@ export default new AmethystEvent('ready', async (client) => {
         },
         async () => {
             return {
-                name: `music in ${client.player.queues.size} servers`,
+                name: `music in ${client.player.nodes.cache.size} servers`,
                 type: ActivityType.Playing
             };
         }

@@ -20,9 +20,9 @@ export default new AmethystCommand({
     ]
 }).setChatInputRun(async ({ interaction, options }) => {
     const station = getStationByUrl(options.getString('station'));
-    const queue = interaction.client.player.getQueue(interaction.guild);
+    const queue = interaction.client.player.nodes.get(interaction.guild);
 
-    if (queue.nowPlaying().duration === '0:00' || queue.tracks.filter((x) => x.duration === '0:00').length > 0)
+    if (queue.currentTrack.duration === '0:00' || queue.tracks.filter((x) => x.duration === '0:00').length > 0)
         return interaction.reply(`:x: | You can't add a station after a never-ending station`).catch(() => {});
 
     await interaction.deferReply();

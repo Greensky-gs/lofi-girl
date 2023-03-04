@@ -1,5 +1,5 @@
 import { AmethystClient } from 'amethystjs';
-import { Player, Queue } from 'discord-player';
+import { GuildQueue, Player } from 'discord-player';
 import { ButtonBuilder, ButtonStyle, EmbedBuilder, Partials } from 'discord.js';
 import { config } from 'dotenv';
 import {
@@ -56,7 +56,7 @@ client.player = new Player(client, {
         highWaterMark: 1 << 30
     }
 });
-client.player.on('queueEnd', async (queue: Queue) => {
+client.player.events.on('emptyQueue', async (queue: GuildQueue) => {
     if (!getLoopState(queue.guild.id)) return;
 
     const track = await client.player
@@ -66,17 +66,16 @@ client.player.on('queueEnd', async (queue: Queue) => {
         .catch(() => {});
 
     if (!track || track.tracks.length === 0) return;
-    queue.play(track.tracks[0]);
+    queue.node.play(track.tracks[0]);
 });
-client.player.on('botDisconnect', (queue: Queue) => {
+client.player.events.on('disconnect', (queue: GuildQueue) => {
     if (!getLoopState(queue.guild.id)) return;
     setLoopState(queue.guild.id, false);
 
-    queue.previousTracks = [];
-    queue.tracks = [];
+    queue.tracks.clear();
     queuesUsers.delete(queue.guild.id);
 });
-client.player.on('trackEnd', (queue, track) => {
+client.player.events.on('playerFinish', (queue, track) => {
     if (getTester(track.requestedBy.id)) {
         const data = getTester(track.requestedBy.id);
         if (data.when === 'everytime' || data.when === 'songend') {
@@ -109,7 +108,6 @@ client.player.on('trackEnd', (queue, track) => {
             }
         }
     }
-    queue.previousTracks = [];
 });
 
 client.start({});

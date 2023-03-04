@@ -27,14 +27,14 @@ export default new AmethystCommand({
     if (!tracks || tracks.tracks.length === 0)
         return interaction.editReply(`:x: | Music station not found`).catch(() => {});
 
-    const queue = interaction.client.player.getQueue(interaction.guild);
-    queue.addTrack(tracks.tracks[0]);
-    if (queue.tracks.length > 0) {
-        const removed = queue.tracks.splice(0, queue.tracks.length - 1);
-        queue.addTracks(removed);
+    const queue = interaction.client.player.nodes.get(interaction.guild);
+    if (queue.tracks.size > 0) {
+        const toAdd = queue.tracks.toArray().splice(0)
+        queue.tracks.add([tracks.tracks[0], ...toAdd]);
+    } else {
+        queue.tracks.add(tracks.tracks[0]);
     }
-
-    queue.skip();
+    queue.node.skip();
 
     interaction.editReply(`🎧 | Switched to [${station.emoji} ${station.name}](<${station.url}>)`).catch(() => {});
 });
