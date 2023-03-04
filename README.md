@@ -79,6 +79,9 @@ However, if you want to get the `configs.json` file, use the command `{botPrefix
 
 This will tell him to send you the config file in direct messages and delete the message command
 
-## Developement
+## Panel
 
-As the bot still in developement, some features doesn't work very well like playing a live
+There is a panel to control the bot
+
+It will be sent in the channel defined by the `panelChannel` field in [`.env`](./.env.example) file
+![panel](https://media.discordapp.net/attachments/1062408280191807581/1081569481589014649/image.png)
