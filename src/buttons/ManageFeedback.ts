@@ -1,4 +1,4 @@
-import { ButtonHandler, waitForInteraction, waitForMessage } from 'amethystjs';
+import { ButtonHandler, waitForInteraction } from 'amethystjs';
 import { PanelIds } from '../typings/bot';
 import botOwner from '../preconditions/botOwner';
 import { boolEmojis, getStationByUrl, resizeStr, row } from '../utils/functions';
@@ -44,26 +44,38 @@ export default new ButtonHandler({
             })
             .catch(() => {});
     };
-    const msg = (await button
-        .reply({
-            content: `Please choose a station. Reply by \`cancel\` to cancel`,
-            fetchReply: true
-        })
-        .catch(() => {})) as Message<true>;
-    const stationName = await waitForMessage({
-        channel: message.channel as TextChannel,
-        user
+    await button.showModal(
+        new ModalBuilder()
+            .setTitle("Station")
+            .setCustomId('station-selection')
+            .setComponents(
+                row<TextInputBuilder>(new TextInputBuilder()
+                    .setCustomId('stationName')
+                    .setLabel('Station name')
+                    .setStyle(TextInputStyle.Short)
+                    .setRequired(true)
+                    .setPlaceholder('Please enter a station name')
+                    .setMaxLength(100)
+                )
+            )
+    );
+    const stationName = await button.awaitModalSubmit({
+        time: 60000
     }).catch(() => {});
 
-    if (stationName) stationName.delete().catch(() => {});
-    if (!stationName || stationName.content?.toLowerCase() === 'cancel') {
+    if (!stationName) {
         reedit();
-        return msg.delete().catch(() => {});
+        return;
     }
+    
+    const msg = stationName ? await stationName.reply({
+        fetchReply: true,
+        content: `...thinking`
+    }).catch(() => {}) as Message<true> : undefined;
     const stations = confs.stations.filter(
         (x) =>
-            x.name.toLowerCase().includes(stationName.content?.toLowerCase()) ||
-            stationName.content?.toLowerCase().includes(x.name.toLowerCase())
+            x.name.toLowerCase().includes(stationName.fields.getTextInputValue('stationName').toLowerCase()) ||
+            stationName.fields.getTextInputValue('stationName').toLowerCase().includes(x.name.toLowerCase())
     );
     if (stations.length === 0) {
         reedit();

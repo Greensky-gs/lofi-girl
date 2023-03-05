@@ -1,4 +1,4 @@
-import { ButtonHandler, waitForInteraction, waitForMessage } from 'amethystjs';
+import { ButtonHandler, waitForInteraction } from 'amethystjs';
 import { PanelIds } from '../typings/bot';
 import botOwner from '../preconditions/botOwner';
 import { boolEmojis, row } from '../utils/functions';
@@ -9,8 +9,11 @@ import {
     ComponentType,
     EmbedBuilder,
     Message,
+    ModalBuilder,
     StringSelectMenuBuilder,
-    TextChannel
+    TextChannel,
+    TextInputBuilder,
+    TextInputStyle
 } from 'discord.js';
 import configs from '../utils/configs.json';
 import { writeFileSync } from 'fs';
@@ -83,25 +86,30 @@ export default new ButtonHandler({
             }).catch(() => {});
             return;
         }
-        rep.deferUpdate().catch(() => {});
-        await msg
-            .edit({
-                content: `What is the keyword you want to add ?\nReply in the chat\nReply by \`cancel\` to cancel`,
-                components: []
-            })
-            .catch(() => {});
-
-        const keyword = await waitForMessage({
-            channel: message.channel as TextChannel,
-            user
+        await rep.showModal(new ModalBuilder()
+            .setTitle('Keyword')
+            .setCustomId('keywordModal')
+            .setComponents(
+                row<TextInputBuilder>(
+                    new TextInputBuilder()
+                        .setLabel('Keyword')
+                        .setPlaceholder('Keyword you want to add')
+                        .setRequired(true)
+                        .setStyle(TextInputStyle.Short)
+                        .setCustomId('keyword')
+                )
+            )
+        )
+        const keyword = await rep.awaitModalSubmit({
+            time: 60000
         }).catch(() => {});
 
-        if (keyword) keyword.delete().catch(() => {});
-        if (!keyword || keyword.content?.toLowerCase() === 'cancel') {
+        if (!keyword) {
             reedit();
             return msg.delete().catch(() => {});
         }
-        const word = keyword.content.split(/ +/)[0];
+        keyword.deferUpdate().catch(() => {});
+        const word = keyword.fields.getTextInputValue('keyword').split(/ +/)[0];
         if (!word) {
             reedit();
             msg.edit(`:x: | No keyword found`).catch(() => {});
