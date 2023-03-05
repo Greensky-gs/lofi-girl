@@ -39,6 +39,7 @@ feedback=feedback webhook URL
 botOwner=your discord ID
 suggestChannel=music suggestions channel (for bot Owner)
 botPrefix=bot prefix (default is lf!)
+panelChannel=ID of panel channel for the owner
 ```
 
 Compile the project : `yarn run build`
