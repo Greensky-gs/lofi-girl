@@ -56,33 +56,9 @@ The script will build the project and check for duplicates.
 
 If a station is duplicated, it will throw an error.
 
-## Special command for owner
-
-If you're the bot owner, you can set a station recommendation by using the command `{botPrefix}recommendation <station url>`
-
-*Exemple :*
-
-```cmd
-!recommendation https://www.youtube.com/watch?v=Mu3BfD6wmPg
-```
-
-## Get configs file
-
-The bot can add songs by a suggestions system.
-
-However, if you want to get the `configs.json` file, use the command `{botPrefix}configfile`.
-
-*Exemple :*
-
-```cmd
-!configfile
-```
-
-This will tell him to send you the config file in direct messages and delete the message command
-
 ## Panel
 
 There is a panel to control the bot
 
 It will be sent in the channel defined by the `panelChannel` field in [`.env`](./.env.example) file
-![panel](https://media.discordapp.net/attachments/1062408280191807581/1081569481589014649/image.png)
+![panel](https://media.discordapp.net/attachments/1062408280191807581/1082330474485137528/image.png)

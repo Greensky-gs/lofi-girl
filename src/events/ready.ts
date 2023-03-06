@@ -120,7 +120,12 @@ export default new AmethystEvent('ready', async (client) => {
                     new ButtonBuilder()
                         .setLabel('Manage feedback')
                         .setStyle(ButtonStyle.Secondary)
-                        .setCustomId(PanelIds.ManageFeedback)
+                        .setCustomId(PanelIds.ManageFeedback),
+                    new ButtonBuilder()
+                        .setLabel('Recommendation')
+                        .setEmoji('❤️')
+                        .setStyle(ButtonStyle.Secondary)
+                        .setCustomId(PanelIds.Recommendation)
                 )
             ]
         })

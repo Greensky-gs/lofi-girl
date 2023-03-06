@@ -8,8 +8,11 @@ import {
     ComponentType,
     EmbedBuilder,
     Message,
+    ModalBuilder,
     StringSelectMenuBuilder,
-    TextChannel
+    TextChannel,
+    TextInputBuilder,
+    TextInputStyle
 } from 'discord.js';
 import { boolEmojis, row } from '../utils/functions';
 import configs from '../utils/configs.json';
@@ -74,22 +77,32 @@ export default new ButtonHandler({
     }
 
     if (action.customId === PanelIds.AddTester) {
-        action.deferUpdate().catch(() => {});
-        msg.edit({
-            content: `What is the ID of the user ?\nReply in the chat.\nType \`cancel\` to cancel`,
-            components: []
+        await action.showModal(new  ModalBuilder()
+            .setTitle('Tester informations')
+            .setCustomId('tester-info')
+            .setComponents(
+                row<TextInputBuilder>(new TextInputBuilder()
+                    .setLabel('Identifier')
+                    .setPlaceholder([button.client.user.id, user.id][Math.floor(Math.random() * 2)])
+                    .setRequired(true)
+                    .setStyle(TextInputStyle.Short)
+                    .setCustomId('id')
+                )
+            )
+        ).catch(() => {
+        })
+        const modalReply = await action.awaitModalSubmit({
+            time: 60000
         }).catch(() => {});
-        const id = await waitForMessage({
-            channel: msg.channel as TextChannel,
-            user
-        }).catch(() => {});
-        if (id) id.delete().catch(() => {});
-        if (!id || id.content.toLowerCase() === 'cancel') {
+
+        if (modalReply) modalReply.deferUpdate().catch(() => {});
+        if (!modalReply) {
             reedit();
             return msg.delete().catch(() => {});
         }
+        const id = modalReply.fields.getTextInputValue('id');
 
-        if (configs.testers.find((x) => x.id === id.content)) {
+        if (configs.testers.find((x) => x.id === id)) {
             reedit();
             msg.edit({
                 content: `:x: | This tester already exists`
@@ -154,13 +167,13 @@ export default new ButtonHandler({
             return msg.delete().catch(() => {});
         }
         configs.testers.push({
-            id: id.content,
+            id: id,
             when: mode.values[0]
         });
         writeFileSync(`./dist/utils/configs.json`, JSON.stringify(configs, null, 4));
         reedit();
         msg.edit({
-            content: `${boolEmojis(true)} | \`${id.content}\` added with \`${mode.values[0]}\``,
+            content: `${boolEmojis(true)} | \`${id}\` added with \`${mode.values[0]}\``,
             components: []
         }).catch(() => {});
         return setTimeout(() => {
@@ -198,36 +211,42 @@ export default new ButtonHandler({
         return;
     }
     if (action.customId === PanelIds.RemoveTester) {
-        action.deferUpdate().catch(() => {});
-        await msg
-            .edit({
-                content: `What is the ID of the tester you want to remove ?\nReply by \`cancel\` to cancel`,
-                components: []
-            })
-            .catch(() => {});
-        const id = await waitForMessage({
-            channel: message.channel as TextChannel,
-            user
+        await action.showModal(new ModalBuilder()
+            .setTitle("Tester informations")
+            .setCustomId('id')
+            .setComponents(row<TextInputBuilder>(new TextInputBuilder()
+                .setLabel('Identifier')
+                .setPlaceholder([button.client.user.id, message.id, msg.id, user.id][Math.floor(Math.random() * 4)])
+                .setRequired(true)
+                .setCustomId('id')
+                .setStyle(TextInputStyle.Short)
+            ))
+        ).catch(() => {
+
+        })
+        const modalReply = await action.awaitModalSubmit({
+            time: 60000
         }).catch(() => {});
-        if (id) id.delete().catch(() => {});
-        if (!id || id.content.toLowerCase() === 'cancel') {
+        if (modalReply) modalReply.deferUpdate().catch(() => {});
+        if (!modalReply) {
             reedit();
             msg.delete().catch(() => {});
             return;
         }
-        if (!configs.testers.find((x) => x.id === id.content)) {
+        const id = modalReply.fields.getTextInputValue('id');
+        if (!configs.testers.find((x) => x.id === id)) {
             reedit();
             msg.edit({
                 content: `:x: | I can't find this tester`
             }).catch(() => {});
             setTimeout(() => {
                 msg.delete().catch(() => {});
-            });
+            }, 5000);
             return;
         }
         await msg
             .edit({
-                content: `Are you sure to remove the tester \`${id.content}\` ( <@${id.content}> ) ?`,
+                content: `Are you sure to remove the tester \`${id}\` ( <@${id}> ) ?`,
                 components: [
                     row(
                         new ButtonBuilder().setLabel('Yes').setCustomId('yes').setStyle(ButtonStyle.Success),
@@ -247,12 +266,12 @@ export default new ButtonHandler({
             msg.delete().catch(() => {});
             return;
         }
-        configs.testers = configs.testers.filter((x) => x.id !== id.content);
+        configs.testers = configs.testers.filter((x) => x.id !== id);
         writeFileSync('./dist/utils/configs.json', JSON.stringify(configs, null, 4));
 
         reedit();
         msg.edit({
-            content: `${boolEmojis(true)} | Tester \`${id.content}\` ( <@${id.content}> ) has been removed`,
+            content: `${boolEmojis(true)} | Tester \`${id}\` ( <@${id}> ) has been removed`,
             components: []
         }).catch(() => {});
         setTimeout(() => {

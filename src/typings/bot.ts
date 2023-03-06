@@ -11,7 +11,8 @@ export enum PanelIds {
     AddTester = 'panel.testers.add',
     RemoveTester = 'panel.testers.remove',
     ListTester = 'panel.testers.list',
-    ManageFeedback = 'panel.manage.feedback'
+    ManageFeedback = 'panel.manage.feedback',
+    Recommendation = 'panel.recommendation'
 }
 export enum ButtonIds {
     FindStationSelector = 'find.station.selector'
