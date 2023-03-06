@@ -77,23 +77,28 @@ export default new ButtonHandler({
     }
 
     if (action.customId === PanelIds.AddTester) {
-        await action.showModal(new  ModalBuilder()
-            .setTitle('Tester informations')
-            .setCustomId('tester-info')
-            .setComponents(
-                row<TextInputBuilder>(new TextInputBuilder()
-                    .setLabel('Identifier')
-                    .setPlaceholder([button.client.user.id, user.id][Math.floor(Math.random() * 2)])
-                    .setRequired(true)
-                    .setStyle(TextInputStyle.Short)
-                    .setCustomId('id')
-                )
+        await action
+            .showModal(
+                new ModalBuilder()
+                    .setTitle('Tester informations')
+                    .setCustomId('tester-info')
+                    .setComponents(
+                        row<TextInputBuilder>(
+                            new TextInputBuilder()
+                                .setLabel('Identifier')
+                                .setPlaceholder([button.client.user.id, user.id][Math.floor(Math.random() * 2)])
+                                .setRequired(true)
+                                .setStyle(TextInputStyle.Short)
+                                .setCustomId('id')
+                        )
+                    )
             )
-        ).catch(() => {
-        })
-        const modalReply = await action.awaitModalSubmit({
-            time: 60000
-        }).catch(() => {});
+            .catch(() => {});
+        const modalReply = await action
+            .awaitModalSubmit({
+                time: 60000
+            })
+            .catch(() => {});
 
         if (modalReply) modalReply.deferUpdate().catch(() => {});
         if (!modalReply) {
@@ -211,22 +216,30 @@ export default new ButtonHandler({
         return;
     }
     if (action.customId === PanelIds.RemoveTester) {
-        await action.showModal(new ModalBuilder()
-            .setTitle("Tester informations")
-            .setCustomId('id')
-            .setComponents(row<TextInputBuilder>(new TextInputBuilder()
-                .setLabel('Identifier')
-                .setPlaceholder([button.client.user.id, message.id, msg.id, user.id][Math.floor(Math.random() * 4)])
-                .setRequired(true)
-                .setCustomId('id')
-                .setStyle(TextInputStyle.Short)
-            ))
-        ).catch(() => {
-
-        })
-        const modalReply = await action.awaitModalSubmit({
-            time: 60000
-        }).catch(() => {});
+        await action
+            .showModal(
+                new ModalBuilder()
+                    .setTitle('Tester informations')
+                    .setCustomId('id')
+                    .setComponents(
+                        row<TextInputBuilder>(
+                            new TextInputBuilder()
+                                .setLabel('Identifier')
+                                .setPlaceholder(
+                                    [button.client.user.id, message.id, msg.id, user.id][Math.floor(Math.random() * 4)]
+                                )
+                                .setRequired(true)
+                                .setCustomId('id')
+                                .setStyle(TextInputStyle.Short)
+                        )
+                    )
+            )
+            .catch(() => {});
+        const modalReply = await action
+            .awaitModalSubmit({
+                time: 60000
+            })
+            .catch(() => {});
         if (modalReply) modalReply.deferUpdate().catch(() => {});
         if (!modalReply) {
             reedit();

@@ -13,11 +13,7 @@ export default new ButtonHandler({
             fetchReply: true,
             content: `Reboot <t:${((Date.now() + 10000) / 1000).toFixed(0)}:R>.`,
             components: [
-                row(new ButtonBuilder()
-                    .setLabel('Cancel')
-                    .setStyle(ButtonStyle.Danger)
-                    .setCustomId('cancel-reboot')
-                )
+                row(new ButtonBuilder().setLabel('Cancel').setStyle(ButtonStyle.Danger).setCustomId('cancel-reboot'))
             ]
         })
         .catch(() => {})) as Message<true>;

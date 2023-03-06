@@ -86,23 +86,26 @@ export default new ButtonHandler({
             }).catch(() => {});
             return;
         }
-        await rep.showModal(new ModalBuilder()
-            .setTitle('Keyword')
-            .setCustomId('keywordModal')
-            .setComponents(
-                row<TextInputBuilder>(
-                    new TextInputBuilder()
-                        .setLabel('Keyword')
-                        .setPlaceholder('Keyword you want to add')
-                        .setRequired(true)
-                        .setStyle(TextInputStyle.Short)
-                        .setCustomId('keyword')
+        await rep.showModal(
+            new ModalBuilder()
+                .setTitle('Keyword')
+                .setCustomId('keywordModal')
+                .setComponents(
+                    row<TextInputBuilder>(
+                        new TextInputBuilder()
+                            .setLabel('Keyword')
+                            .setPlaceholder('Keyword you want to add')
+                            .setRequired(true)
+                            .setStyle(TextInputStyle.Short)
+                            .setCustomId('keyword')
+                    )
                 )
-            )
-        )
-        const keyword = await rep.awaitModalSubmit({
-            time: 60000
-        }).catch(() => {});
+        );
+        const keyword = await rep
+            .awaitModalSubmit({
+                time: 60000
+            })
+            .catch(() => {});
 
         if (!keyword) {
             reedit();

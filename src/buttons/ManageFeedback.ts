@@ -46,32 +46,39 @@ export default new ButtonHandler({
     };
     await button.showModal(
         new ModalBuilder()
-            .setTitle("Station")
+            .setTitle('Station')
             .setCustomId('station-selection')
             .setComponents(
-                row<TextInputBuilder>(new TextInputBuilder()
-                    .setCustomId('stationName')
-                    .setLabel('Station name')
-                    .setStyle(TextInputStyle.Short)
-                    .setRequired(true)
-                    .setPlaceholder('Please enter a station name')
-                    .setMaxLength(100)
+                row<TextInputBuilder>(
+                    new TextInputBuilder()
+                        .setCustomId('stationName')
+                        .setLabel('Station name')
+                        .setStyle(TextInputStyle.Short)
+                        .setRequired(true)
+                        .setPlaceholder('Please enter a station name')
+                        .setMaxLength(100)
                 )
             )
     );
-    const stationName = await button.awaitModalSubmit({
-        time: 60000
-    }).catch(() => {});
+    const stationName = await button
+        .awaitModalSubmit({
+            time: 60000
+        })
+        .catch(() => {});
 
     if (!stationName) {
         reedit();
         return;
     }
-    
-    const msg = stationName ? await stationName.reply({
-        fetchReply: true,
-        content: `...thinking`
-    }).catch(() => {}) as Message<true> : undefined;
+
+    const msg = stationName
+        ? ((await stationName
+              .reply({
+                  fetchReply: true,
+                  content: `...thinking`
+              })
+              .catch(() => {})) as Message<true>)
+        : undefined;
     const stations = confs.stations.filter(
         (x) =>
             x.name.toLowerCase().includes(stationName.fields.getTextInputValue('stationName').toLowerCase()) ||

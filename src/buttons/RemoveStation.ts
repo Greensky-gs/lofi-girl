@@ -1,7 +1,17 @@
 import { ButtonHandler, waitForInteraction, waitForMessage } from 'amethystjs';
 import { PanelIds } from '../typings/bot';
 import botOwner from '../preconditions/botOwner';
-import { Message, StringSelectMenuBuilder, TextChannel, ComponentType, ButtonBuilder, ButtonStyle, ModalBuilder, TextInputBuilder, TextInputStyle } from 'discord.js';
+import {
+    Message,
+    StringSelectMenuBuilder,
+    TextChannel,
+    ComponentType,
+    ButtonBuilder,
+    ButtonStyle,
+    ModalBuilder,
+    TextInputBuilder,
+    TextInputStyle
+} from 'discord.js';
 import confs from '../utils/configs.json';
 import { boolEmojis, getRandomStation, getStationByUrl, resizeStr, row } from '../utils/functions';
 import { writeFileSync } from 'fs';
@@ -11,35 +21,42 @@ export default new ButtonHandler({
     preconditions: [botOwner]
 }).setRun(async ({ button, message, user }) => {
     const random = getRandomStation();
-    await button.showModal(new ModalBuilder()
-    .setTitle("Station name")
-    .setCustomId('stationName')
-    .setComponents(
-        row<TextInputBuilder>(new TextInputBuilder()
-            .setLabel('Name')
+    await button.showModal(
+        new ModalBuilder()
+            .setTitle('Station name')
             .setCustomId('stationName')
-            .setRequired(true)
-            .setStyle(TextInputStyle.Short)
-            .setPlaceholder(resizeStr(`${random.emoji} ${random.name}`))
-        )
-    )
-    )
-    const stationName = await button.awaitModalSubmit({
-        time: 60000
-    }).catch(() => {})
+            .setComponents(
+                row<TextInputBuilder>(
+                    new TextInputBuilder()
+                        .setLabel('Name')
+                        .setCustomId('stationName')
+                        .setRequired(true)
+                        .setStyle(TextInputStyle.Short)
+                        .setPlaceholder(resizeStr(`${random.emoji} ${random.name}`))
+                )
+            )
+    );
+    const stationName = await button
+        .awaitModalSubmit({
+            time: 60000
+        })
+        .catch(() => {});
     if (!stationName) return;
-    
+
     const choice = confs.stations.filter(
         (x) =>
             x.name.toLowerCase().includes(stationName.fields.getTextInputValue('stationName').toLowerCase()) ||
             stationName.fields.getTextInputValue('stationName').toLowerCase().includes(x.name.toLowerCase())
     );
 
-    const msg = await stationName.deferReply({
-        fetchReply: true
-    }).catch(() => {}) as Message<true>;
+    const msg = (await stationName
+        .deferReply({
+            fetchReply: true
+        })
+        .catch(() => {})) as Message<true>;
     if (choice.length === 0) {
-        stationName.editReply({
+        stationName
+            .editReply({
                 content: `No station found`
             })
             .catch(() => {});
@@ -50,7 +67,8 @@ export default new ButtonHandler({
     }
     let url: string;
     if (choice.length > 1) {
-        await stationName.editReply({
+        await stationName
+            .editReply({
                 content: `Few stations have been found. Wich one is the correct ?`,
                 components: [
                     row<StringSelectMenuBuilder>(
@@ -69,7 +87,8 @@ export default new ButtonHandler({
             user
         }).catch(() => {});
         if (!ctx) {
-            stationName.editReply({
+            stationName
+                .editReply({
                     content: `Canceled`,
                     components: []
                 })
@@ -86,7 +105,8 @@ export default new ButtonHandler({
     }
 
     const station = getStationByUrl(url);
-    await stationName.editReply({
+    await stationName
+        .editReply({
             content: `Are you sure to delete [${station.emoji} ${station.name}](${station.url}) ?`,
             components: [
                 row(
@@ -102,7 +122,8 @@ export default new ButtonHandler({
         message: msg
     }).catch(() => {});
     if (!confirm || confirm.customId === 'no') {
-        stationName.editReply({
+        stationName
+            .editReply({
                 content: `Canceled`,
                 components: []
             })
@@ -112,7 +133,8 @@ export default new ButtonHandler({
         }, 5000);
         return;
     }
-    await stationName.editReply({
+    await stationName
+        .editReply({
             content: `Deleting [${station.emoji} ${station.name}](${station.url})`,
             components: []
         })
@@ -120,7 +142,8 @@ export default new ButtonHandler({
     confs.stations.splice(confs.stations.indexOf(station), 1);
     writeFileSync('./dist/utils/configs.json', JSON.stringify(confs, null, 4));
 
-    stationName.editReply({
+    stationName
+        .editReply({
             content: `${boolEmojis(true)} ${station.name} deleted`
         })
         .catch(() => {});
