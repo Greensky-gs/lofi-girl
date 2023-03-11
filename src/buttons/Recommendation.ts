@@ -73,14 +73,12 @@ export default new ButtonHandler({
                             .setMaxValues(1)
                             .setOptions(
                                 ...[
-                                    ...stations
-                                        .splice(0, 24)
-                                        .map((st) => ({
-                                            label: st.name,
-                                            emoji: st.emoji,
-                                            value: st.url,
-                                            description: `Station ${resizeStr(st.name, 80)}`
-                                        })),
+                                    ...stations.splice(0, 24).map((st) => ({
+                                        label: st.name,
+                                        emoji: st.emoji,
+                                        value: st.url,
+                                        description: `Station ${resizeStr(st.name, 80)}`
+                                    })),
                                     {
                                         label: 'Cancel',
                                         value: 'cancel',
