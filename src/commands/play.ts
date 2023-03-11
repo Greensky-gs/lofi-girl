@@ -27,11 +27,11 @@ export default new AmethystCommand({
     });
 
     if (!search || search.tracks.length === 0) return interaction.editReply(`:x: | Station not found`);
-    interaction.editReply(
+    await interaction.editReply(
         `🎧 | Playing [${station.emoji} ${station.name}](<${station.url}>) in <#${
             (interaction.member as GuildMember).voice.channel.id
         }>`
-    );
+    ).catch(() => {});
     if (interaction.client.player.nodes.get(interaction.guild.id)) {
         const queue = interaction.client.player.nodes.get(interaction.guild.id);
         if (queue.tracks.size > 0) {
@@ -55,6 +55,7 @@ export default new AmethystCommand({
         })
     ).queue;
 
+    if (!queue) return interaction.editReply(`:x: | An error occured while connecting to the voice channel. Please try again later. If the error keeps showing, contact my support server`).catch(() => {})
     if (!queue.connection) queue.connect((interaction.member as GuildMember).voice.channel);
 
     queuesUsers.set(interaction.guild.id, interaction.user);

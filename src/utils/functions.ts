@@ -66,7 +66,7 @@ export const formatTime = (timeInSeconds: number): string => {
     return res;
 };
 export const isUserAlone = (channel: VoiceChannel) => {
-    return channel.members.filter((x) => !x.user.bot).size === 1;
+    return (channel?.members?.filter((x) => !x.user.bot)?.size ?? 0) === 1;
 };
 export const checkForEnv = () => {
     if (!process.env.token && !process.env.beta_token) {
@@ -101,7 +101,7 @@ export const setLoopState = (guildId: string, state: boolean) => {
     return loops.set(guildId, state);
 };
 export const getRandomStation = (): station => {
-    const availables = stations.filter((x) => x.type !== 'station');
+    const availables = stations.filter((x) => x.type !== 'radio');
     return availables[Math.floor(Math.random() * availables.length)] as station;
 };
 export const getTester = (userId: string): tester => {
