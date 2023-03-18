@@ -64,7 +64,7 @@ export default new AmethystCommand({
                 list: commands
                     .map(
                         (c) =>
-                            `${c.nameLocalizations[interaction.locale] ?? c.name}\` : ${
+                            `\`${c.nameLocalizations[interaction.locale] ?? c.name}\` : ${
                                 c.descriptionLocalizations[interaction.locale] ?? c.description
                             }`
                     )
