@@ -65,7 +65,7 @@ export default new AmethystEvent('stringSelectInteraction', async (selector) => 
             embed.setImage(video.thumbnail ?? selector.client.user.displayAvatarURL({ forceStatic: true }));
         embed.addFields({
             name: '🎧 Duration',
-            value: station.type === 'radio' ? 'Live' : `${formatTime(Math.floor(video.durationMS / 1000))}`,
+            value: station.type === 'radio' ? 'Live' : `${formatTime(Math.floor(video.durationMS / 1000), selector)}`,
             inline: true
         });
 

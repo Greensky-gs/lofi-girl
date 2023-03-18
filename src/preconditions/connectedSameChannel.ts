@@ -7,7 +7,7 @@ export default new Precondition('connectedSameChannel').setChatInputRun(({ inter
             ok: false,
             message: 'User not connected in the same channel than the bot',
             metadata: {
-                message: ':x: | You are not connected in the same channel than me'
+                message: interaction.client.langs.getText(interaction, 'preconditions', 'connectedSameChannel')
             },
             isChatInput: true,
             interaction

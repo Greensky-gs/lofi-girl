@@ -8,5 +8,103 @@
                 "description": "Musique à jouer"
             }
         }
+    },
+    "add": {
+        "name": "ajouter",
+        "description": "Ajoute une musique à la liste",
+        "options": {
+            "station": {
+                "name": "station",
+                "description": "Station à ajouter à la liste"
+            }
+        }
+    },
+    "autoadd": {
+        "name": "autoajout",
+        "description": "Active l'ajout automatique de musique",
+        "options": {}
+    },
+    "find": {
+        "name": "trouver",
+        "description": "Trouve des stations que vous aimez en utilisant des tags",
+        "options": {
+            "tags": {
+                "name": "tags",
+                "description": "Tags avec lesquels vous voulez chercher"
+            }
+        }
+    },
+    "help": {
+        "name": "aide",
+        "description": "Affiche la page d'aide",
+        "options": {
+            "command": {
+                "name": "commande",
+                "description": "Commande à afficher"
+            }
+        }
+    },
+    "info": {
+        "name": "info",
+        "description": "Affiche des informations",
+        "options": {
+            "bot": {
+                "name": "bot",
+                "description": "Affiche les informations du bot"
+            },
+            "station": {
+                "name": "station",
+                "description": "Affiche les informations d'une station"
+            },
+            "stationOption": {
+                "name": "station",
+                "description": "Station à afficher"
+            }
+        }
+    },
+    "leave": {
+        "name": "quitter",
+        "description": "Quitte le salon vocal",
+        "options": {}
+    },
+    "playing": {
+        "name": "musique",
+        "description": "Affiche la musique en cours",
+        "options": {}
+    },
+    "suggestion": {
+        "name": "suggestion",
+        "description": "Suggère une musique au bot",
+        "options": {
+            "url": {
+                "name": "url",
+                "description": "URL de la vidéo que vous voulez suggérer"
+            }
+        }
+    },
+    "switch": {
+        "name": "changer",
+        "description": "Change de station de musique",
+        "options":{
+            "station": {
+                "name": "station",
+                "description": "Station que vous voulez jouer"
+            }
+        }
+    },
+    "volume": {
+        "name": "volume",
+        "description": "Change le volume de la musique",
+        "options": {
+            "volume": {
+                "name": "volume",
+                "description": "Volume"
+            }
+        }
+    },
+    "guide": {
+        "name": "guide",
+        "description": "Affiche le guide d'utilisation du bot",
+        "options": {}
     }
 }

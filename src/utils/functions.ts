@@ -1,8 +1,9 @@
-import { ActionRowBuilder, AnyComponentBuilder, ButtonBuilder, Client, VoiceChannel } from 'discord.js';
+import { ActionRowBuilder, AnyComponentBuilder, BaseInteraction, ButtonBuilder, Client, VoiceChannel } from 'discord.js';
 import { station } from '../typings/station';
 import { stations, emojis, recommendation, testers } from './configs.json';
 import { loops } from './maps';
 import { tester } from '../typings/tester';
+import { Langs, localizationBuilder, localizationsType } from '../langs/Manager';
 
 export const getStationByUrl = (value?: string, getRandomIfNotProvided?: boolean): station => {
     if ((!value || value === 'random') && getRandomIfNotProvided !== false)
@@ -27,7 +28,7 @@ export const checkForDuplicates = (): station[] => {
 export const inviteLink = (client: Client) => {
     return `https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=2184464640&scope=bot%20applications.commands`;
 };
-export const formatTime = (timeInSeconds: number): string => {
+export const formatTime = (timeInSeconds: number, interaction: BaseInteraction): string => {
     let seconds = 0;
     let minutes = 0;
     let hours = 0;
@@ -46,9 +47,9 @@ export const formatTime = (timeInSeconds: number): string => {
     let res = '';
     const values: string[] = [];
     [
-        { x: hours, y: 'hours' },
-        { x: minutes, y: 'minutes' },
-        { x: seconds, y: 'seconds' }
+        { x: hours, y: interaction.client.langs.getText(interaction, 'formatTime', 'hours') },
+        { x: minutes, y: interaction.client.langs.getText(interaction, 'formatTime', 'minutes') },
+        { x: seconds, y: interaction.client.langs.getText(interaction, 'formatTime', 'seconds') }
     ]
         .filter((x) => x.x > 0)
         .forEach((x) => {
@@ -60,7 +61,7 @@ export const formatTime = (timeInSeconds: number): string => {
         const next = values[i + 1];
         if (!next) return;
         const dnext = values[i + 2];
-        let sep = dnext ? ',' : ' and';
+        let sep = dnext ? ',' : ' ' + interaction.client.langs.getText(interaction, 'formatTime', 'joiner');
         res += sep + ' ';
     });
     return res;
@@ -117,3 +118,7 @@ export const resizeStr = (str: string, size?: number) => {
     if (str.length <= max) return str;
     return str.substring(0, size - 3) + '...';
 };
+export const buildLocalizations = <Key extends keyof localizationsType<'commands'>>(command: Key): localizationBuilder<Key> => {
+    const langs = new Langs();
+    return langs.buildLocalizations(command)
+}

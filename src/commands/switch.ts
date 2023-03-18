@@ -2,8 +2,9 @@ import { AmethystCommand, preconditions } from 'amethystjs';
 import { ApplicationCommandOptionType } from 'discord.js';
 import adminIfNotAlone from '../preconditions/adminIfNotAlone';
 import playing from '../preconditions/playing';
-import { getStationByUrl } from '../utils/functions';
+import { buildLocalizations, getStationByUrl } from '../utils/functions';
 
+const locals = buildLocalizations('switch');
 export default new AmethystCommand({
     name: 'switch',
     description: 'Switch to another music station',
@@ -14,9 +15,13 @@ export default new AmethystCommand({
             description: 'Station to switch',
             required: false,
             type: ApplicationCommandOptionType.String,
-            autocomplete: true
+            autocomplete: true,
+            nameLocalizations: locals.options.station.name,
+            descriptionLocalizations: locals.options.station.description
         }
-    ]
+    ],
+    nameLocalizations: locals.name,
+    descriptionLocalizations: locals.description
 }).setChatInputRun(async ({ interaction, options }) => {
     await interaction.deferReply();
     const station = getStationByUrl(options.getString('station'));
@@ -25,7 +30,7 @@ export default new AmethystCommand({
         requestedBy: interaction.user
     });
     if (!tracks || tracks.tracks.length === 0)
-        return interaction.editReply(`:x: | Music station not found`).catch(() => {});
+        return interaction.editReply(interaction.client.langs.getText(interaction, 'utils', 'stationNotFound')).catch(() => {});
 
     const queue = interaction.client.player.nodes.get(interaction.guild);
     if (queue.tracks.size > 0) {
@@ -36,5 +41,5 @@ export default new AmethystCommand({
     }
     queue.node.skip();
 
-    interaction.editReply(`🎧 | Switched to [${station.emoji} ${station.name}](<${station.url}>)`).catch(() => {});
+    interaction.editReply(interaction.client.langs.getText(interaction, 'switch', 'switched', { stationName: station.name, stationEmoji: station.emoji, stationUrl: station.url })).catch(() => {});
 });

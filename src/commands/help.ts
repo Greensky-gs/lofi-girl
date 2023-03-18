@@ -1,7 +1,8 @@
 import { AmethystCommand } from 'amethystjs';
 import { ApplicationCommandOptionType, EmbedBuilder } from 'discord.js';
-import { boolEmojis } from '../utils/functions';
+import { boolEmojis, buildLocalizations } from '../utils/functions';
 
+const locals = buildLocalizations('help');
 export default new AmethystCommand({
     name: 'help',
     description: 'Displays help page',
@@ -11,10 +12,14 @@ export default new AmethystCommand({
             description: 'Command to show help',
             required: false,
             autocomplete: true,
-            type: ApplicationCommandOptionType.String
+            type: ApplicationCommandOptionType.String,
+            nameLocalizations: locals.options.command.name,
+            descriptionLocalizations: locals.options.command.description
         }
     ],
-    cooldown: 5
+    cooldown: 5,
+    nameLocalizations: locals.name,
+    descriptionLocalizations: locals.description
 }).setChatInputRun(({ interaction, options }) => {
     const cmd: AmethystCommand = interaction.client.chatInputCommands.find(
         (x) => x.options.name === options.getString('command')
@@ -23,18 +28,18 @@ export default new AmethystCommand({
         return interaction.reply({
             embeds: [
                 new EmbedBuilder()
-                    .setTitle(`${cmd.options.name} command`)
-                    .setDescription(cmd.options.description)
+                    .setTitle(interaction.client.langs.getText(interaction, 'help', 'commandEmbedTitle', { commandName: locals.name[interaction.locale] ?? cmd.options.name }))
+                    .setDescription(locals.description[interaction.locale] ?? cmd.options.description)
                     .setFields(
                         {
-                            name: 'Permissions',
+                            name: interaction.client.langs.getText(interaction, 'help', 'permissionsName'),
                             value: cmd.options.preconditions?.find((x) => x.name === 'adminIfNotAlone')
-                                ? 'Administrator if user is not alone in the channel'
+                                ? interaction.client.langs.getText(interaction, 'help', 'adminIfNotAlone')
                                 : '',
                             inline: false
                         },
                         {
-                            name: 'Usable in direct messages',
+                            name: interaction.client.langs.getText(interaction, 'help', 'GuildOnly'),
                             value: boolEmojis(
                                 !(cmd.options.preconditions?.find((x) => x.name === 'GuildOnly') ?? false)
                             ),
@@ -49,16 +54,16 @@ export default new AmethystCommand({
     const commands = interaction.client.chatInputCommands.map((x) => x.options);
 
     const embed = new EmbedBuilder()
-        .setTitle('Help page')
+        .setTitle(interaction.client.langs.getText(interaction, 'help', 'help'))
         .setDescription(
-            `Here is the list of my commands :\n${commands.map((c) => `\`/${c.name}\` : ${c.description}`).join('\n')}`
+            interaction.client.langs.getText(interaction, 'help', 'description', { list: commands.map((c) => `${c.nameLocalizations[interaction.locale] ?? c.name}\` : ${c.descriptionLocalizations[interaction.locale] ?? c.description}`).join('\n') })
         )
         .setThumbnail(interaction.client.user.displayAvatarURL())
         .setColor(interaction.client.user.hexAccentColor ?? 'Orange')
         .setTimestamp()
         .addFields({
-            name: 'More help',
-            value: `If you need more help, use the command \`/guide\``,
+            name: interaction.client.langs.getText(interaction, 'help', 'more'),
+            value: interaction.client.langs.getText(interaction, 'help', 'moreValue'),
             inline: false
         });
 

@@ -2,9 +2,10 @@ import { AmethystCommand, preconditions } from 'amethystjs';
 import { ApplicationCommandOptionType, GuildMember } from 'discord.js';
 import adminIfNotAlone from '../preconditions/adminIfNotAlone';
 import connected from '../preconditions/connected';
-import { getStationByUrl } from '../utils/functions';
+import { buildLocalizations, getStationByUrl } from '../utils/functions';
 import { queuesUsers } from '../utils/maps';
 
+const locals = buildLocalizations('play')
 export default new AmethystCommand({
     name: 'play',
     description: 'Plays a lofi music',
@@ -15,9 +16,13 @@ export default new AmethystCommand({
             description: 'Station to play',
             required: false,
             autocomplete: true,
-            type: ApplicationCommandOptionType.String
+            type: ApplicationCommandOptionType.String,
+            nameLocalizations: locals.options.station.name,
+            descriptionLocalizations: locals.options.station.description
         }
-    ]
+    ],
+    nameLocalizations: locals.name,
+    descriptionLocalizations: locals.description
 }).setChatInputRun(async ({ interaction, options }) => {
     const station = getStationByUrl(options.getString('station'));
 
@@ -26,12 +31,12 @@ export default new AmethystCommand({
         requestedBy: interaction.user
     });
 
-    if (!search || search.tracks.length === 0) return interaction.editReply(`:x: | Station not found`);
+    if (!search || search.tracks.length === 0) return interaction.editReply(interaction.client.langs.getText(interaction, 'utils', 'stationNotFound'));
     await interaction
         .editReply(
-            `🎧 | Playing [${station.emoji} ${station.name}](<${station.url}>) in <#${
-                (interaction.member as GuildMember).voice.channel.id
-            }>`
+            interaction.client.langs.getText(interaction, 'play', 'reply', {
+                stationName: station.name, stationEmoji: station.emoji, stationUrl: station.url, channelId: (interaction.member as GuildMember).voice.channel.id
+            })
         )
         .catch(() => {});
     if (interaction.client.player.nodes.get(interaction.guild.id)) {
@@ -60,7 +65,7 @@ export default new AmethystCommand({
     if (!queue)
         return interaction
             .editReply(
-                `:x: | An error occured while connecting to the voice channel. Please try again later. If the error keeps showing, contact my support server`
+                interaction.client.langs.getText(interaction, 'play', 'errored')
             )
             .catch(() => {});
     if (!queue.connection) queue.connect((interaction.member as GuildMember).voice.channel);

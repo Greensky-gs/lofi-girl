@@ -7,7 +7,7 @@ export default new Precondition('isNotAdded').setButtonRun(({ message, button })
             ok: false,
             message: 'Station already exists',
             metadata: {
-                message: ':x: | This station already exists'
+                message: button.client.langs.getText(button, 'preconditions', 'isNotAdded')
             },
             button,
             isChatInput: false,

@@ -2,9 +2,10 @@ import { AmethystCommand } from 'amethystjs';
 import { ApplicationCommandOptionType, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js';
 import { station } from '../typings/station';
 import { stations, recommendation } from '../utils/configs.json';
-import { formatTime, getStationByUrl, getTester, inviteLink, row } from '../utils/functions';
+import { buildLocalizations, formatTime, getStationByUrl, getTester, inviteLink, row } from '../utils/functions';
 import { TesterButtons } from '../typings/tester';
 
+const locals = buildLocalizations('info');
 export default new AmethystCommand({
     name: 'info',
     description: "Display's informations",
@@ -12,11 +13,15 @@ export default new AmethystCommand({
         {
             name: 'bot',
             description: "Display bot's informations",
-            type: ApplicationCommandOptionType.Subcommand
+            type: ApplicationCommandOptionType.Subcommand,
+            nameLocalizations: locals.options.bot.name,
+            descriptionLocalizations: locals.options.bot.description
         },
         {
             name: 'station',
             description: 'Displays a station informations',
+            nameLocalizations: locals.options.station.name,
+            descriptionLocalizations: locals.options.station.description,
             type: ApplicationCommandOptionType.Subcommand,
             options: [
                 {
@@ -24,11 +29,15 @@ export default new AmethystCommand({
                     autocomplete: true,
                     required: true,
                     type: ApplicationCommandOptionType.String,
-                    description: 'Station to display'
+                    description: 'Station to display',
+                    nameLocalizations: locals.options.stationOption.name,
+                    descriptionLocalizations: locals.options.stationOption.description
                 }
             ]
         }
-    ]
+    ],
+    nameLocalizations: locals.name,
+    descriptionLocalizations: locals.description
 }).setChatInputRun(async ({ interaction, options }) => {
     const cmd = options.getSubcommand();
     if (cmd === 'bot') {
@@ -38,17 +47,17 @@ export default new AmethystCommand({
         const embed = new EmbedBuilder()
             .setTimestamp()
             .setThumbnail(interaction.client.user.displayAvatarURL({ forceStatic: true }))
-            .setTitle('Bot informations')
+            .setTitle(interaction.client.langs.getText(interaction, 'infoBot', 'title'))
             .setColor('Orange')
-            .setDescription(`I'm a bot that can play lofi music in your server`)
+            .setDescription(interaction.client.langs.getText(interaction, 'infoBot', 'description'))
             .setFields(
                 {
-                    name: 'Servers',
+                    name: interaction.client.langs.getText(interaction, 'infoBot', 'servers'),
                     value: interaction.client.guilds.cache.size.toString(),
                     inline: true
                 },
                 {
-                    name: 'Members',
+                    name: interaction.client.langs.getText(interaction, 'infoBot', 'members'),
                     value: interaction.client.guilds.cache
                         .map((x) => x.memberCount)
                         .reduce((a, b) => a + b)
@@ -56,20 +65,18 @@ export default new AmethystCommand({
                     inline: true
                 },
                 {
-                    name: 'Playing in',
-                    value: interaction.client.player.queues.cache.filter((x) => x.node.isPlaying()).size + ' servers',
+                    name: interaction.client.langs.getText(interaction, 'infoBot', 'playingIn'),
+                    value: interaction.client.langs.getText(interaction, 'infoBot', 'playingInContent', { count: interaction.client.player.queues.cache.filter((x) => x.node.isPlaying()).size }),
                     inline: true
                 },
                 {
-                    name: 'Stations',
+                    name: interaction.client.langs.getText(interaction, 'infoBot', 'stations'),
                     value: stations.length.toString(),
                     inline: false
                 },
                 {
-                    name: 'Links',
-                    value: `[Invite me](${inviteLink(
-                        interaction.client
-                    )})\n[Lofi Girl channel](https://youtube.com/c/LofiGirl)\n[Source code](https://github.com/Greensky-gs/lofi-girl)\n[Top.gg](https://top.gg/bot/1037028318404419596/)`,
+                    name: interaction.client.langs.getText(interaction, 'infoBot', 'links'),
+                    value: interaction.client.langs.getText(interaction, 'infoBot', 'linksContent', { topgg: 'https://top.gg/bot/1037028318404419596/', lofigirl: inviteLink(interaction.client) }),
                     inline: false
                 }
             );
@@ -77,7 +84,7 @@ export default new AmethystCommand({
         if (recommendation && Object.keys(recommendation).length === 4) {
             const { name, url, emoji } = recommendation as station;
             embed.addFields({
-                name: '❤️ Recommendation of the day',
+                name: interaction.client.langs.getText(interaction, 'infoBot', 'recommendation'),
                 value: `[${name} ${emoji}](${url})`,
                 inline: false
             });
@@ -92,7 +99,7 @@ export default new AmethystCommand({
             .setTitle(`${station.emoji} ${station.name}`)
             .setColor('Orange')
             .setFields({
-                name: '🔗 Link',
+                name: interaction.client.langs.getText(interaction, 'infoStation', 'linkName'),
                 value: `[${station.name}](${station.url})`,
                 inline: true
             })
@@ -105,13 +112,13 @@ export default new AmethystCommand({
                           Math.floor(Math.random() * station.feedbacks.filter((x) => x.comments).length)
                       ].comments + '\n'
                     : '') +
-                    "People's opinion: " +
+                    interaction.client.langs.getText(interaction, 'infoStation', 'peoplesOpinion') +
                     [...new Set(station.feedbacks.map((x) => x.keywords).flat())].join(', ')
             );
         }
         if (recommendation && Object.keys(recommendation).length > 0 && station.url === recommendation.url)
             embed.setFooter({
-                text: 'Recommendation of the day',
+                text: interaction.client.langs.getText(interaction, 'infoStation', 'recommendationOfTheDay'),
                 iconURL: interaction.client.user.displayAvatarURL()
             });
         interaction.reply({ embeds: [embed] }).catch(() => {});
@@ -125,8 +132,8 @@ export default new AmethystCommand({
         if (video.thumbnail)
             embed.setImage(video.thumbnail ?? interaction.client.user.displayAvatarURL({ forceStatic: true }));
         embed.addFields({
-            name: '🎧 Duration',
-            value: station.type === 'radio' ? 'Live' : `${formatTime(Math.floor(video.durationMS / 1000))}`,
+            name: interaction.client.langs.getText(interaction, 'infoStation', 'duration'),
+            value: station.type === 'radio' ? interaction.client.langs.getText(interaction, 'infoStation', 'durationTypeLive') : `${formatTime(Math.floor(video.durationMS / 1000), interaction)}`,
             inline: true
         });
 

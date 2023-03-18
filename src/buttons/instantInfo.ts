@@ -26,22 +26,22 @@ export default new ButtonHandler({
         .editReply({
             embeds: [
                 new EmbedBuilder()
-                    .setTitle('Instant informations')
-                    .setDescription(`Instant informations about <@${button.client.user.id}>`)
+                    .setTitle(button.client.langs.getText(button, 'instantInfo', 'title'))
+                    .setDescription(button.client.langs.getText(button, 'instantInfo', 'description', { clientId: button.client.user.id }))
                     .setFields(
                         {
-                            name: 'Uptime',
-                            value: `Online <t:${data.uptime}:R> ( <t:${data.uptime}:F> )`,
+                            name: button.client.langs.getText(button, 'instantInfo', 'uptimeName'),
+                            value: button.client.langs.getText(button, 'instantInfo', 'uptimeValue', { uptime: data.uptime }),
                             inline: true
                         },
                         {
-                            name: 'Membercount',
-                            value: `${data.memberCount} members in ${data.guildSize} guilds`,
+                            name: button.client.langs.getText(button, 'instantInfo', 'memberCountName'),
+                            value: button.client.langs.getText(button, 'instantInfo', 'memberCountValue', { membercount: data.memberCount, guilds: data.guildSize }),
                             inline: true
                         },
                         {
-                            name: 'Playing in',
-                            value: `${data.playingIn} servers`,
+                            name: button.client.langs.getText(button, 'instantInfo', 'playingInName'),
+                            value: button.client.langs.getText(button, 'instantInfo', 'playingInValue', { guilds: data.playingIn }),
                             inline: true
                         },
                         {
@@ -50,18 +50,16 @@ export default new ButtonHandler({
                             inline: false
                         },
                         {
-                            name: 'Stations',
-                            value: `${data.stationsCount} stations, ${data.testerCount} testers and ${data.keywords} keywords`,
+                            name: button.client.langs.getText(button, 'instantInfo', 'stationsName'),
+                            value: button.client.langs.getText(button, 'instantInfo', 'stationsValue', { stationsCount: data.stationsCount, testerCount: data.testerCount, keywords: data.keywords }),
                             inline: true
                         },
                         {
-                            name: 'Ping',
-                            value: `Websocket: \`${button.client.ws.ping}ms\`\nResponse to this interaction: \`${
-                                Date.now() - received
-                            }ms\``
+                            name: button.client.langs.getText(button, 'instantInfo', 'pingName'),
+                            value: button.client.langs.getText(button, 'instantInfo', 'pingValue', { websocket: button.client.ws.ping, response: Date.now() - received })
                         },
                         {
-                            name: 'Memory',
+                            name: button.client.langs.getText(button, 'instantInfo', 'memory'),
                             value: '```json\n' + JSON.stringify(process.memoryUsage(), null, 4) + '\n```',
                             inline: false
                         }

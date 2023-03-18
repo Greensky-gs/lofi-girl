@@ -6,8 +6,8 @@ type command = {
     description: string;
     options?: Record<string, { name: string; description: string; }>
 };
-type localizationsType<Key extends keyof typeof imports.fr & keyof typeof imports.en> = typeof imports.fr[Key] & typeof imports.en[Key]
-type localizationBuilder<Command extends keyof localizationsType<'commands'>, Locales extends string = keyof typeof imports> = {
+export type localizationsType<Key extends keyof typeof imports.fr & keyof typeof imports.en> = typeof imports.fr[Key] & typeof imports.en[Key]
+export type localizationBuilder<Command extends keyof localizationsType<'commands'>, Locales extends string = keyof typeof imports> = {
     name: Record<Locales, string>,
     description: Record<Locales, string>,
     options: Record<keyof localizationsType<'commands'>[Command]['options'], {
@@ -34,10 +34,10 @@ export class Langs {
     public getCommand(locale: keyof typeof imports, key: keyof localizationsType<'commands'>): command {
         return (this.langs[locale] ?? this.langs[this.default]).commands[key];
     }
-    public getText<Command extends keyof localizationsType<'texts'>, Text extends keyof localizationsType<'texts'>[Command]>(interaction: BaseInteraction, command: Command, text: Text, keys: Record<string, string | number>): string {
+    public getText<Command extends keyof localizationsType<'texts'>, Text extends keyof localizationsType<'texts'>[Command]>(interaction: BaseInteraction, command: Command, text: Text, keys?: Record<string, string | number>): string {
         let content = (this.langs[interaction.locale] ?? this.langs[this.default]).texts[command][text as string];
 
-        Object.keys(keys).forEach((key) => {
+        if (keys) Object.keys(keys).forEach((key) => {
             content = content.replace(new RegExp(`{{${key}}}`, 'g'), keys[key].toString())
         })
 

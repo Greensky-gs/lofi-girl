@@ -1,2 +1,152 @@
 {
+    "stationAutocomplete": {
+        "recommendationName": "recommendation",
+        "recommendationContent": "get the recommendation of the day",
+        "randomName": "random",
+        "randomContent": "get a random station"
+    },
+    "testerEditComment": {
+        "modalTitle": "Comment",
+        "modalTextInputName": "Comment",
+        "modalPlaceholder": "Edit your comment about {{stationEmoji}} {{stationName}} here",
+        "commentFieldName": "Comment"
+    },
+    "testerButtonNames": {
+        "editComment": "Edit comment",
+        "deleteComment": "Delete comment",
+        "keywords": "Keywords",
+        "sendFeedback": "Send",
+        "cancel": "Cancel"
+    },
+    "instantInfo": {
+        "title": "Instant informations",
+        "description": "Instant informations about <@{{clientId}}>",
+        "uptimeName": "Uptime",
+        "uptimeValue": "Online <t:{{uptime}}:R> ( <t:{{uptime}}:F> )",
+        "memberCountName": "Membercount",
+        "memberCountValue": "{{membercount}} members in {{guilds}} guilds",
+        "playingInName": "Playing in",
+        "playingInValue": "{{guilds}} servers",
+        "stationsName": "Stations",
+        "stationsValue": "{{stationsCount}} stations, {{testerCount}} testers and {{keywords}} keywords",
+        "pingName": "Ping",
+        "pingValue": "Websocket: `{{websocket}}ms`\nResponse to this interaction: `{{response}}ms`",
+        "memory": "Memory"
+    },
+    "utils": {
+        "notAllowedToInteract": ":x: | You're not allowed to interact with this message",
+        "stationNotFound": ":x: | Music not found",
+        "stationTypeStation": "station",
+        "stationTypeRadio": "radio"
+    },
+    "addCommand": {
+        "addAtEndOfRadio": ":x: | You can't add a station after a never-ending station",
+        "added": "🎧 | Add [{{stationEmoji}} {{stationName}}](<{{stationUrl}}>) to the queue"
+    },
+    "autoAdd": {
+        "positive": "enabled",
+        "negative": "disabled",
+        "reply": "🎧 | The loop has been **{{state}}**"
+    },
+    "findCommand": {
+        "noStation": "No station",
+        "noStationDescription": "I'm sorry, I didn't find any station that match your research.",
+        "testerPromotion": "\nSome stations haven't been tested yet. If you want to, you can participate to our program by becoming a song tester.\nUse the `/guide` command to get more informations",
+        "matching": "Stations",
+        "matchingDescription": "I found {{availableLength}}** stations matching your research",
+        "pickedUp": ". I picked up **{{selectorOptionsLength}}** of them"
+    },
+    "guide": {
+        "title": "Lofi Girl bot's guide",
+        "intro": "This is the guide of Lofi Girl bot.",
+        "playMusic": "**Play a music**\nTo play a music on Lofi Girl, use the command {{play}} followed by the song you want to listen. This option is optionnal. In case you don't provide a song, a random one is picked up.",
+        "recommendation": "**Recommendation system**\nEvery day, my creator puts a song that he likes on the bot and you can listen to it by using the {{play}} command.\nTo get the recommendation, start typing `recommendation` in the text input.\nAn option called `❤️ recommendation - get the recommendation of the day` will pop up. Click on it to play the recommendation",
+        "songAddition": "**Song addition :**\nWhen you've started to listen to a music, you can add other songs that will be played once the first one is finished. Use the command {{add}} to add a song.",
+        "autoadd": "**Auto-addition song system :**\nWhen you've started to listen to a music, you may want to listen lofi music forever, so use the command {{autoadd}} to toggle this mode.",
+        "protip": "💡 *pro-tip*\nWhen you are listening to a music, you can use the {{playing}} command to see what's played",
+        "feedback": "**Feedback system :**\nIf you want to get a feedback about a song, you can see it by using the {{info}} command (using `station` subcommand), or the {{playing}} command, if a feedback has been sent, it will appear.\nIf you want to make your own, you can become a song tester by contacting my owner. You can do it by joining the [support server]({{support}}), or getting to the support by our [top.gg page]({{topgg}})",
+        "suggestionsName": "Suggestions",
+        "suggestions": "If you have a suggestion of a Lofi music (from the [Lofi Channel]({{lofi}}), you can submit it to us.\nUse the command {{suggestion}} to submit a song"
+    },
+    "help": {
+        "commandEmbedTitle": "{{commandName}} command",
+        "permissionsName": "Pemrissions",
+        "adminIfNotAlone": "Administrator if user is not alone in the channel",
+        "GuildOnly": "Usable in direct messages",
+        "help": "Help page",
+        "description": "Here is the list of my commands :\n{{list}}",
+        "more": "More help",
+        "moreValue": "If you need more help, use the command `guide`"
+    },
+    "infoBot": {
+        "title": "Bot informations",
+        "description": "I'm a bot that can play lofi music in your server",
+        "servers": "Servers",
+        "members": "Members",
+        "playingIn": "Playing in",
+        "playingInContent": "{{count}} servers",
+        "stations": "Stations",
+        "links": "Links",
+        "linksContent": "[Invite me]({{lofigirl}})\n[Lofi Girl Channel](https://youtube.com/c/LofiGirl)\n[Source code](https://github.com/Greensky-gs/lofi-girl)\n[Top.gg]({{topgg}})",
+        "recommendation": "❤️ Recommendation of the day"
+    },
+    "infoStation": {
+        "linkName": "🔗 Link",
+        "peoplesOpinion": "People's opinion: ",
+        "recommendationOfTheDay": "recommendation of the day",
+        "duration": "🎧 Duration",
+        "durationTypeStation": "station",
+        "durationTypeLive": "Live"
+    },
+    "leave": {
+        "reply": "🎧 | I left the voice channel"
+    },
+    "play": {
+        "reply": "🎧 | Playing [{{stationEmoji}} {{stationName}}]({{stationUrl}}) in <#{{channelId}}>",
+        "errored": "❌ | An error occured while connecting to the voice channel. Please try again later. If the error keeps showing, contact my support server."
+    },
+    "playing": {
+        "description": "You are listening to [{{stationEmoji}} {{stationName}}]({{stationUrl}})",
+        "duration": "{{emoji}} Duration",
+        "volume": "🎧 Volume",
+        "following": "🎹 Following",
+        "followingValue": "{{size}} following{{optionalS}}",
+        "loopName": "🔁 Loop",
+        "loopValue": "Auto add is **enabled**"
+    },
+    "suggest": {
+        "invalidVideo": "❌ | This is not a valid video url",
+        "onlyFromLofi": "❌ | You can suggest only videos from [Lofi Girl](https://youtube.com/c/LofiGirl) or [Lofi Records](https://youtube.com/@LofiRecords) channel",
+        "alreadyExists": "{{stationEmoji}} | This song already exists in my song list",
+        "errorOccured": "❌ | An error happened while sending the message to the owner",
+        "sended": "🎧 | Your [suggestion]({{url}}) has been sent to the bot owner"
+    },
+    "switch": {
+        "switched": "🎧 | Switched to [{{stationEmoji}} {{stationName}}]({{stationUrl}})"
+    },
+    "volume": {
+        "reply": "🔊 | Volume set to **{{amount}}%**"
+    },
+    "commandDenied": {
+        "GuildOnly": "This command is not usable in direct messages",
+        "underCooldown": "You have a cooldown of {{cooldown}} seconds on this command",
+        "userMissingPerms": "You need {{required}} permissions to run this command. You have {{has}}",
+        "clientMissingPerms": "I need {{required}} permissions to run this command. I have {{has}}"
+    },
+    "preconditions": {
+        "adminIfNotAlone": "❌ | Since you're not alone, you need the `administrator` permission to run this command",
+        "botOwner": "❌ | You are not allowed to interact with this message",
+        "connected": "❌ | You are not connected to a voice channel",
+        "connectedSameChannel": "❌ | You are not connected in the same channel than me",
+        "isNotAdded": "❌ | This station already exists",
+        "playing": "❌ | I'm not playing music",
+        "suggestChannel": "⚙️ | Suggest channel is not configured by the bot owner",
+        "waitTwenty": "{{emoji}} | Please wait **20 seconds** before deleting this message"
+    },
+    "formatTime": {
+        "hours": "hours",
+        "minutes": "minutes",
+        "seconds": "seconds",
+        "joiner": "and"
+    }
 }

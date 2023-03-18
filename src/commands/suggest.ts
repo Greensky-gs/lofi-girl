@@ -10,8 +10,9 @@ import {
 import { getBasicInfo, getVideoID, validateURL, videoInfo } from 'ytdl-core';
 import suggestChannel from '../preconditions/suggestChannel';
 import { lofiGirlID } from '../utils/configs.json';
-import { boolEmojis, getStationByUrl } from '../utils/functions';
+import { boolEmojis, buildLocalizations, getStationByUrl } from '../utils/functions';
 
+const locals = buildLocalizations('suggestion');
 export default new AmethystCommand({
     name: 'suggestion',
     description: 'Suggest a lofi music to the bot owner',
@@ -21,14 +22,18 @@ export default new AmethystCommand({
             name: 'url',
             description: 'Url of the Lofi video you want to suggest',
             required: true,
-            type: ApplicationCommandOptionType.String
+            type: ApplicationCommandOptionType.String,
+            nameLocalizations: locals.options.url.name,
+            descriptionLocalizations: locals.options.url.description
         }
-    ]
+    ],
+    nameLocalizations: locals.name,
+    descriptionLocalizations: locals.description
 }).setChatInputRun(async ({ interaction, options }) => {
     const url = options.getString('url');
     await interaction.deferReply();
 
-    if (!validateURL(url)) return interaction.editReply(`:x: | This is not a valid video url`).catch(() => {});
+    if (!validateURL(url)) return interaction.editReply(interaction.client.langs.getText(interaction, 'suggest', 'invalidVideo')).catch(() => {});
     const id = getVideoID(url);
     const roboURL = `https://www.youtube.com/watch?v=${id}`;
     const info = (await getBasicInfo(roboURL).catch(() => {})) as videoInfo;
@@ -36,13 +41,13 @@ export default new AmethystCommand({
     if (!info || !['UCuw1VDsmOWOldKGLYq6AkVg', lofiGirlID].includes(info.videoDetails.author.id))
         return interaction
             .editReply(
-                `:x: | You can suggest only videos from [Lofi Girl](https://youtube.com/c/LofiGirl) or [Lofi Records](https://www.youtube.com/@LofiRecords) channel`
+                interaction.client.langs.getText(interaction, 'suggest', 'onlyFromLofi')
             )
             .catch(() => {});
 
     const station = getStationByUrl(url, false);
     if (station)
-        return interaction.editReply(`${station.emoji} | This song already exists in my song list`).catch(() => {});
+        return interaction.editReply(interaction.client.langs.getText(interaction, 'suggest', 'alreadyExists', { stationEmoji: station.emoji })).catch(() => {});
 
     const channel = (await interaction.client.channels.fetch(process.env.suggestChannel)) as TextChannel;
     const s = await channel
@@ -86,8 +91,8 @@ export default new AmethystCommand({
     interaction
         .editReply(
             !s
-                ? `:x: | An error happened while sending the message to the bot owner`
-                : `🎧 | Your [suggestion](${roboURL}) has been sent to the bot owner`
+                ? interaction.client.langs.getText(interaction, 'suggest', 'errorOccured')
+                : interaction.client.langs.getText(interaction, 'suggest', 'sended', { url: roboURL })
         )
         .catch(() => {});
 });

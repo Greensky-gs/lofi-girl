@@ -11,7 +11,7 @@ export default new Precondition('inVoiceChannel').setChatInputRun(({ interaction
             isChatInput: true,
             interaction,
             metadata: {
-                message: ':x: | You are not connected to a voice channel'
+                message: interaction.client.langs.getText(interaction, 'preconditions', 'connected')
             }
         };
     if (
@@ -25,7 +25,7 @@ export default new Precondition('inVoiceChannel').setChatInputRun(({ interaction
             isChatInput: true,
             interaction,
             metadata: {
-                message: ':x: | You are not connected to a voice channel'
+                message: interaction.client.langs.getText(interaction, 'preconditions', 'connected')
             }
         };
     return {

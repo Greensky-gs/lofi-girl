@@ -1,2 +1,152 @@
 {
+    "stationAutocomplete": {
+        "recommendationName": "recommendation",
+        "recommendationContent": "recommendation du jour",
+        "randomName": "aléatoire",
+        "randomContent": "musique aléatoire"
+    },
+    "testerEditComment": {
+        "modalTitle": "Commentaire",
+        "modalTextInputName": "Commentaire",
+        "modalPlaceholder": "Modifiez votre commentaire sur {{stationEmoji}} {{stationName}}",
+        "commentFieldName": "Commentaire"
+    },
+    "testerButtonNames": {
+        "editComment": "Modifier le commentaire",
+        "deleteComment": "Supprimer le commentaire",
+        "keywords": "Mots-clés",
+        "sendFeedback": "Envoyer",
+        "cancel": "Annuler"
+    },
+    "instantInfo": {
+        "title": "Informations instantannées",
+        "description": "Voici les informations instantannées concernant <@{{clientId}}>",
+        "uptimeName": "Uptime",
+        "uptimeValue": "En ligne <t:{{uptime}}:R> ( <t:{{uptime}}:F> )",
+        "memberCountName": "Membres",
+        "memberCountValue": "{{membercount}} membres dans {{guilds}} serveurs",
+        "playingInName": "En train de jouer dans",
+        "playingInValue": "{{guilds}} serveurs",
+        "stationsName": "Stations",
+        "stationsValue": "{{stationsCount}} stations, {{testerCount}} testeurs et {{keywords}} mots-clés",
+        "pingName": "Ping",
+        "pingValue": "Websocket : `{{websocket}}ms`\nRéponse à cette interaction : `{{response}}ms`",
+        "memory": "Mémoire"
+    },
+    "utils": {
+        "notAllowedToInteract": "❌ | Vous ne pouvez pas interagir avec ce message",
+        "stationNotFound": "❌ | Musique introuvable",
+        "stationTypeStation": "station",
+        "stationTypeRadio": "radio"
+    },
+    "addCommand": {
+        "addAtEndOfRadio": "❌ | Vous ne pouvez pas ajouter de station après une radio",
+        "added": "🎧 | Station [{{stationEmoji}} {{stationName}}](<{{stationUrl}}>) ajoutée à la liste"
+    },
+    "autoAdd": {
+        "positive": "activée",
+        "negative": "désactivée",
+        "reply": "🎧 | La boucle a été **{{state}}**"
+    },
+    "findCommand": {
+        "noStation": "Pas de station",
+        "noStationDescription": "Je suis désolée, je n'ai trouvé aucune station qui correspond à votre recherche",
+        "testerPromotion": "\nCertaines stations n'ont pas encore été testées. SI vous voulez, vous pouvez participer à notre programme de test en devenant un testeur de musiques.\nUtilisez la commande `guide` pour plus d'informations",
+        "matching": "Stations",
+        "matchingDescription": "J'ai trouvé **{{availableLength}}** stations qui correspondent à votre recherche",
+        "pickedUp": ". J'ai choisit **{{selectorOptionsLength}}** d'entre elles"
+    },
+    "guide": {
+        "title": "Guide du bot Lofi Girl",
+        "intro": "Voici le guide d'utilisation du bot Lofi Girl.",
+        "playMusic": "**Jouer une musique**\nPour jouer une musique avec Lofi Girl, utilisez la commande {{play}} suivie de la musique que vous voulez écouter. La musique est optionnelle. Au cas où vous ne fournissiez aucune station, une musique aléatoire est jouée.",
+        "recommendation": "**Système de recommendations**\nChaque jour, mon créateur met une musique qu'il a aimé en recommendation, que vous pouvez écouter en utilisant la commande {{play}}.\nPour jouer la recommendation, commencez à taper `recommendation` dans la barre de texte.\nUne option appelée `❤️ recommendation - recommendation du jour` va apparaitre. Cliquez dessus pour jouer la recommendation.",
+        "songAddition": "**Ajout de musiques :**\nQuand vous commencez à écouter de la musique, vous pouvez ajouter d'autres musiques qui seront jouées quand la première sera finie. Utilisez la commande {{add}}, suivie de la musique souhaitée.",
+        "autoadd": "**Système d'auto-ajout :**\nQuand vous avez commencé à écouter de la musique, vous pouvez avoir envie d'en écouter sans arrêt, utilisez la command {{autoadd}} pour activer le système d'auto-ajout de musiques.",
+        "protip": "💡 *conseil de pro*\nQuand vous écoutez une musique, vous pouvez utiliser la command {{playing}} pour savoir ce que vous écoutez",
+        "feedback": "**Système d'avis :**\nSi vous voulez avoir un retour sur une musique, vous pouvez voir ses avis en utilisant la command {{info}} (en sélectionnant la sous-option `station`), ou la commande {{playing}}, si un avis a été envoyé, il apparaitra.\nSi vous voulez soumettre le votre, vous pouvez devenir un testeur de musiques en contactant mon créateur. Vous pouvez rejoindre le [serveur de support]({{support}}), ou obtenir le lien de puis notre [page top.gg]({{topgg}})",
+        "suggestionsName": "Suggestions",
+        "suggestions": "Si vous avez des suggestions de musiques (de la chaine [Lofi Girl]({{lofi}}), Vous pouvez nous l'envoyer une utilisant la commande {{suggestion}}."
+    },
+    "help": {
+        "commandEmbedTitle": "Commande {{commandName}}",
+        "permissionsName": "Permissions",
+        "adminIfNotAlone": "Administrateur si l'utilisateur est tout seul dans le salon",
+        "GuildOnly": "Utilisable en messages directs",
+        "help": "Page d'aide",
+        "description": "Voici la liste des mes commandes :\n{{list}}",
+        "more": "Plus d'aide",
+        "modeValue": "Si vous avez besoin de plus d'aide, utilisez la commande `/guide`"
+    },
+    "infoBot": {
+        "title": "Informations bot",
+        "description": "Je suis un bot qui peut jouer de la musique lofi dans votre serveur",
+        "servers": "Serveurs",
+        "members": "Membres",
+        "playingIn": "En train de jouer dans",
+        "playingInContent": "{{count}} servers",
+        "stations": "Stations",
+        "links": "Liens",
+        "linksContent": "[Invitation]({{lofigirl}}\n[Lofi Girl](https://youtube.com/c/LofiGirl)\n[Code source](https://github.com/Greensky-gs/lofi-girl)\n[Top.gg]({{topgg}})",
+        "recommendation": "❤️ Recommendation"
+    },
+    "infoStation": {
+        "linkName": "🔗 Lien",
+        "peoplesOpinion": "Avis :",
+        "recommendationOfTheDay": "recommendation du jour",
+        "duration": "🎧 Durée",
+        "durationTypeStation": "station",
+        "durationTypeLive": "Live"
+    },
+    "leave": {
+        "reply": "🎧 | J'ai quitté le salon vocal"
+    },
+    "play": {
+        "reply": "🎧 | Écoute de [{{stationEmoji}} {{stationName}}]({{stationUrl}}) dans <#{{channelId}}>",
+        "errored": "❌ | Une erreur a eu lieu lors de la connection au salon vocal. Veuillez réessayer plus tard. Si l'erreur persiste, contactez mon serveur de support"
+    },
+    "playing": {
+        "description": "Vous êtes en train d'écouter [{{stationEmoji}} {{stationName}}]({{stationurl}})",
+        "duration": "{{emoji}} Durée",
+        "volume": "🎧 Volume",
+        "following": "🎹 À suivre",
+        "followingValue": "{{size}} station{{optionalS}} à suivre",
+        "loopName": "🔁 Boucle",
+        "loopValue": "La boucle est **activée**"
+    },
+    "suggest": {
+        "invalidVideo": "❌ | Ce n'est pas une url de vidéo valide",
+        "onlyFromLofi": "❌ | Vous ne pouvez suggérer que des vidéos de la chaine [Lofi Girl](https://youtube.com/c/LofiGirl)",
+        "alreadyExists": "{{stationEmoji}} | Cette musique est déjà dans ma liste de musiques",
+        "errorOccured": "❌ | Une erreur a eu lieu lors de l'envoi de votre suggestion",
+        "sended": "🎧 | Votre [suggestion]({{url}}) a été envoyée"
+    },
+    "switch": {
+        "switched": "🎧 | Écoute de la musique [{{stationEmoji}} {{stationName}}]({{stationUrl}})"
+    },
+    "volume": {
+        "reply": "🔊 | Volume configuré sur **{{amount}}%**"
+    },
+    "commandDenied": {
+        "GuildOnly": "Cette commande n'est pas utilisable en messages directs",
+        "underCooldown": "Vous avez un cooldown de {{cooldown}} secondes sur cette commande",
+        "userMissingPerms": "Vous avez besoin de {{required}} permissions pour exécuter cette commande. Vous en avez {{has}}",
+        "clientMissingPerms": "J'ai besoin de {{required}} permissions pour exécuter cette commande. J'en ai {{has}}"
+    },
+    "preconditions": {
+        "adminIfNotAlone": "❌ | Depuis que vous n'êtes plus tout seul dans le salon vocal, vous avez besoin de la permission `administrateur` pour exécuter cette commande",
+        "botOwner": "❌ | Vous n'êtes pas autorisé à interagir avec ce message",
+        "connected": "❌ | Vous n'êtes pas connecté dans un salon vocal",
+        "connectedSameChannel": "❌ | Vous n'êtes pas connecté dans le même salon que moi",
+        "isNotAdded": "❌ | Cette musique existe déjà dans ma liste",
+        "playing": "❌ | Je ne suis pas en train de jouer de musique",
+        "suggestChannel": "⚙️ | Le salon des suggestions n'a pas été configuré par mon propriéatire",
+        "waitTwenty": "{{emoji}} | Veuillez patienter **20 secondes** avant de supprimer ce message"
+    },
+    "formatTime": {
+        "hours": "heures",
+        "minutes": "minutes",
+        "seconds": "secondes",
+        "joiner": "et"
+    }
 }
