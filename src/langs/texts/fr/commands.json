@@ -1,0 +1,12 @@
+{
+    "play": {
+        "name": "jouer",
+        "description": "Joue une musique lofi",
+        "options": {
+            "station": {
+                "name": "station",
+                "description": "Musique à jouer"
+            }
+        }
+    }
+}
