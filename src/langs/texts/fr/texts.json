@@ -76,7 +76,7 @@
         "help": "Page d'aide",
         "description": "Voici la liste des mes commandes :\n{{list}}",
         "more": "Plus d'aide",
-        "modeValue": "Si vous avez besoin de plus d'aide, utilisez la commande `/guide`"
+        "moreValue": "Si vous avez besoin de plus d'aide, utilisez la commande `/guide`"
     },
     "infoBot": {
         "title": "Informations bot",
