@@ -15,5 +15,11 @@ export default new AmethystCommand({
     const state = !getLoopState(interaction.guild.id);
     setLoopState(interaction.guild.id, state);
 
-    interaction.reply(interaction.client.langs.getText(interaction, 'autoAdd', 'reply', { state: interaction.client.langs.getText(interaction, 'autoAdd', state ? 'positive' : 'negative') })).catch(() => {});
+    interaction
+        .reply(
+            interaction.client.langs.getText(interaction, 'autoAdd', 'reply', {
+                state: interaction.client.langs.getText(interaction, 'autoAdd', state ? 'positive' : 'negative')
+            })
+        )
+        .catch(() => {});
 });

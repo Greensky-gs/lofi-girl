@@ -2,7 +2,7 @@ import { AmethystCommand } from 'amethystjs';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js';
 import { buildLocalizations } from '../utils/functions';
 
-const locals = buildLocalizations('guide')
+const locals = buildLocalizations('guide');
 export default new AmethystCommand({
     name: 'guide',
     description: 'Display the guide of the bot',
@@ -19,17 +19,32 @@ export default new AmethystCommand({
         .setTitle(interaction.client.langs.getText(interaction, 'guide', 'title'))
         .setColor('Orange')
         .setDescription(
-            `${interaction.client.langs.getText(interaction, 'guide', 'intro')}\n\n${interaction.client.langs.getText(interaction, 'guide', 'playMusic', { play: getCmd('play') })}\n\n${interaction.client.langs.getText(interaction, 'guide', 'recommendation', { play: getCmd('play') })}\n\n${interaction.client.langs.getText(interaction, 'guide', 'songAddition', { add: getCmd('add') })}\n\n${interaction.client.langs.getText(interaction, 'guide', 'autoadd', { autoadd: getCmd('autoadd') })}\n\n${interaction.client.langs.getText(interaction, 'guide', 'protip', { playing: getCmd('playing') })}\n\n${interaction.client.langs.getText(interaction, 'guide', 'feedback', { 
-                support: "https://discord.gg/fHyN5w84g6",
-                topgg
-                : 'https://top.gg/bot/1037028318404419596',
+            `${interaction.client.langs.getText(interaction, 'guide', 'intro')}\n\n${interaction.client.langs.getText(
+                interaction,
+                'guide',
+                'playMusic',
+                { play: getCmd('play') }
+            )}\n\n${interaction.client.langs.getText(interaction, 'guide', 'recommendation', {
+                play: getCmd('play')
+            })}\n\n${interaction.client.langs.getText(interaction, 'guide', 'songAddition', {
+                add: getCmd('add')
+            })}\n\n${interaction.client.langs.getText(interaction, 'guide', 'autoadd', {
+                autoadd: getCmd('autoadd')
+            })}\n\n${interaction.client.langs.getText(interaction, 'guide', 'protip', {
+                playing: getCmd('playing')
+            })}\n\n${interaction.client.langs.getText(interaction, 'guide', 'feedback', {
+                support: 'https://discord.gg/fHyN5w84g6',
+                topgg: 'https://top.gg/bot/1037028318404419596',
                 playing: getCmd('playing'),
                 info: getCmd('info')
-             })}`
+            })}`
         )
         .addFields({
             name: interaction.client.langs.getText(interaction, 'guide', 'suggestionsName'),
-            value: interaction.client.langs.getText(interaction, 'guide', 'suggestions', { lofi: 'https://youtube.com/c/LofiGirl', suggestion: getCmd('suggestion') }),
+            value: interaction.client.langs.getText(interaction, 'guide', 'suggestions', {
+                lofi: 'https://youtube.com/c/LofiGirl',
+                suggestion: getCmd('suggestion')
+            }),
             inline: false
         })
         .setThumbnail(interaction.client.user.displayAvatarURL());
@@ -39,7 +54,10 @@ export default new AmethystCommand({
             embeds: [embed],
             components: [
                 new ActionRowBuilder().setComponents(
-                    interaction.client.langs.getButton(interaction, 'deleteMessage', { style: 'Danger', id: 'delete-message' })
+                    interaction.client.langs.getButton(interaction, 'deleteMessage', {
+                        style: 'Danger',
+                        id: 'delete-message'
+                    })
                 ) as ActionRowBuilder<ButtonBuilder>
             ]
         })

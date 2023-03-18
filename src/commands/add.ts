@@ -27,15 +27,28 @@ export default new AmethystCommand({
     const queue = interaction.client.player.nodes.get(interaction.guild);
 
     if (queue.currentTrack.duration === '0:00' || queue.tracks.filter((x) => x.duration === '0:00').length > 0)
-        return interaction.reply(interaction.client.langs.getText(interaction, 'addCommand', 'addAtEndOfRadio')).catch(() => {});
+        return interaction
+            .reply(interaction.client.langs.getText(interaction, 'addCommand', 'addAtEndOfRadio'))
+            .catch(() => {});
 
     await interaction.deferReply();
     const search = await interaction.client.player.search(station.url, {
         requestedBy: interaction.user
     });
 
-    if (!search || search.tracks.length === 0) return interaction.editReply(interaction.client.langs.getText(interaction, 'utils', 'stationNotFound')).catch(() => {});
+    if (!search || search.tracks.length === 0)
+        return interaction
+            .editReply(interaction.client.langs.getText(interaction, 'utils', 'stationNotFound'))
+            .catch(() => {});
 
-    interaction.editReply(interaction.client.langs.getText(interaction, 'addCommand', 'added', { stationName: station.name, stationEmoji: station.emoji, stationUrl: station.url })).catch(() => {});
+    interaction
+        .editReply(
+            interaction.client.langs.getText(interaction, 'addCommand', 'added', {
+                stationName: station.name,
+                stationEmoji: station.emoji,
+                stationUrl: station.url
+            })
+        )
+        .catch(() => {});
     queue.addTrack(search.tracks[0]);
 });

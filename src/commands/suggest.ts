@@ -33,21 +33,28 @@ export default new AmethystCommand({
     const url = options.getString('url');
     await interaction.deferReply();
 
-    if (!validateURL(url)) return interaction.editReply(interaction.client.langs.getText(interaction, 'suggest', 'invalidVideo')).catch(() => {});
+    if (!validateURL(url))
+        return interaction
+            .editReply(interaction.client.langs.getText(interaction, 'suggest', 'invalidVideo'))
+            .catch(() => {});
     const id = getVideoID(url);
     const roboURL = `https://www.youtube.com/watch?v=${id}`;
     const info = (await getBasicInfo(roboURL).catch(() => {})) as videoInfo;
 
     if (!info || !['UCuw1VDsmOWOldKGLYq6AkVg', lofiGirlID].includes(info.videoDetails.author.id))
         return interaction
-            .editReply(
-                interaction.client.langs.getText(interaction, 'suggest', 'onlyFromLofi')
-            )
+            .editReply(interaction.client.langs.getText(interaction, 'suggest', 'onlyFromLofi'))
             .catch(() => {});
 
     const station = getStationByUrl(url, false);
     if (station)
-        return interaction.editReply(interaction.client.langs.getText(interaction, 'suggest', 'alreadyExists', { stationEmoji: station.emoji })).catch(() => {});
+        return interaction
+            .editReply(
+                interaction.client.langs.getText(interaction, 'suggest', 'alreadyExists', {
+                    stationEmoji: station.emoji
+                })
+            )
+            .catch(() => {});
 
     const channel = (await interaction.client.channels.fetch(process.env.suggestChannel)) as TextChannel;
     const s = await channel

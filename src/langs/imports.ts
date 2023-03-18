@@ -4,7 +4,7 @@ import frButtons from './texts/fr/buttons.json';
 import frSelectors from './texts/fr/selectors.json';
 
 import enCommands from './texts/en/commands.json';
-import enTexts from './texts/en/texts.json'
+import enTexts from './texts/en/texts.json';
 import enButtons from './texts/en/buttons.json';
 import enSelectors from './texts/en/selectors.json';
 
@@ -21,4 +21,4 @@ export default {
         buttons: enButtons,
         selectors: enSelectors
     }
-}
+};

@@ -1,4 +1,11 @@
-import { ActionRowBuilder, AnyComponentBuilder, BaseInteraction, ButtonBuilder, Client, VoiceChannel } from 'discord.js';
+import {
+    ActionRowBuilder,
+    AnyComponentBuilder,
+    BaseInteraction,
+    ButtonBuilder,
+    Client,
+    VoiceChannel
+} from 'discord.js';
 import { station } from '../typings/station';
 import { stations, emojis, recommendation, testers } from './configs.json';
 import { loops } from './maps';
@@ -118,7 +125,9 @@ export const resizeStr = (str: string, size?: number) => {
     if (str.length <= max) return str;
     return str.substring(0, size - 3) + '...';
 };
-export const buildLocalizations = <Key extends keyof localizationsType<'commands'>>(command: Key): localizationBuilder<Key> => {
+export const buildLocalizations = <Key extends keyof localizationsType<'commands'>>(
+    command: Key
+): localizationBuilder<Key> => {
     const langs = new Langs();
-    return langs.buildLocalizations(command)
-}
+    return langs.buildLocalizations(command);
+};

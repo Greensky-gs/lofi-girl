@@ -66,7 +66,9 @@ export default new AmethystCommand({
                 },
                 {
                     name: interaction.client.langs.getText(interaction, 'infoBot', 'playingIn'),
-                    value: interaction.client.langs.getText(interaction, 'infoBot', 'playingInContent', { count: interaction.client.player.queues.cache.filter((x) => x.node.isPlaying()).size }),
+                    value: interaction.client.langs.getText(interaction, 'infoBot', 'playingInContent', {
+                        count: interaction.client.player.queues.cache.filter((x) => x.node.isPlaying()).size
+                    }),
                     inline: true
                 },
                 {
@@ -76,7 +78,10 @@ export default new AmethystCommand({
                 },
                 {
                     name: interaction.client.langs.getText(interaction, 'infoBot', 'links'),
-                    value: interaction.client.langs.getText(interaction, 'infoBot', 'linksContent', { topgg: 'https://top.gg/bot/1037028318404419596/', lofigirl: inviteLink(interaction.client) }),
+                    value: interaction.client.langs.getText(interaction, 'infoBot', 'linksContent', {
+                        topgg: 'https://top.gg/bot/1037028318404419596/',
+                        lofigirl: inviteLink(interaction.client)
+                    }),
                     inline: false
                 }
             );
@@ -133,7 +138,10 @@ export default new AmethystCommand({
             embed.setImage(video.thumbnail ?? interaction.client.user.displayAvatarURL({ forceStatic: true }));
         embed.addFields({
             name: interaction.client.langs.getText(interaction, 'infoStation', 'duration'),
-            value: station.type === 'radio' ? interaction.client.langs.getText(interaction, 'infoStation', 'durationTypeLive') : `${formatTime(Math.floor(video.durationMS / 1000), interaction)}`,
+            value:
+                station.type === 'radio'
+                    ? interaction.client.langs.getText(interaction, 'infoStation', 'durationTypeLive')
+                    : `${formatTime(Math.floor(video.durationMS / 1000), interaction)}`,
             inline: true
         });
 

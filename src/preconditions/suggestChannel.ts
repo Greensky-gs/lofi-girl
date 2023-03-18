@@ -24,7 +24,8 @@ export default new Precondition('suggestChannel')
             button.client.debug(`ENV suggestChannel variable is not configured`, DebugImportance.Critical);
             button
                 .reply({
-                    ephemeral: true,content: button.client.langs.getText(button, 'preconditions', 'suggestChannel')
+                    ephemeral: true,
+                    content: button.client.langs.getText(button, 'preconditions', 'suggestChannel')
                 })
                 .catch(() => {});
             return {

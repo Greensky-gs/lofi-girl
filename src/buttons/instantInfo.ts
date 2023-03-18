@@ -27,21 +27,32 @@ export default new ButtonHandler({
             embeds: [
                 new EmbedBuilder()
                     .setTitle(button.client.langs.getText(button, 'instantInfo', 'title'))
-                    .setDescription(button.client.langs.getText(button, 'instantInfo', 'description', { clientId: button.client.user.id }))
+                    .setDescription(
+                        button.client.langs.getText(button, 'instantInfo', 'description', {
+                            clientId: button.client.user.id
+                        })
+                    )
                     .setFields(
                         {
                             name: button.client.langs.getText(button, 'instantInfo', 'uptimeName'),
-                            value: button.client.langs.getText(button, 'instantInfo', 'uptimeValue', { uptime: data.uptime }),
+                            value: button.client.langs.getText(button, 'instantInfo', 'uptimeValue', {
+                                uptime: data.uptime
+                            }),
                             inline: true
                         },
                         {
                             name: button.client.langs.getText(button, 'instantInfo', 'memberCountName'),
-                            value: button.client.langs.getText(button, 'instantInfo', 'memberCountValue', { membercount: data.memberCount, guilds: data.guildSize }),
+                            value: button.client.langs.getText(button, 'instantInfo', 'memberCountValue', {
+                                membercount: data.memberCount,
+                                guilds: data.guildSize
+                            }),
                             inline: true
                         },
                         {
                             name: button.client.langs.getText(button, 'instantInfo', 'playingInName'),
-                            value: button.client.langs.getText(button, 'instantInfo', 'playingInValue', { guilds: data.playingIn }),
+                            value: button.client.langs.getText(button, 'instantInfo', 'playingInValue', {
+                                guilds: data.playingIn
+                            }),
                             inline: true
                         },
                         {
@@ -51,12 +62,19 @@ export default new ButtonHandler({
                         },
                         {
                             name: button.client.langs.getText(button, 'instantInfo', 'stationsName'),
-                            value: button.client.langs.getText(button, 'instantInfo', 'stationsValue', { stationsCount: data.stationsCount, testerCount: data.testerCount, keywords: data.keywords }),
+                            value: button.client.langs.getText(button, 'instantInfo', 'stationsValue', {
+                                stationsCount: data.stationsCount,
+                                testerCount: data.testerCount,
+                                keywords: data.keywords
+                            }),
                             inline: true
                         },
                         {
                             name: button.client.langs.getText(button, 'instantInfo', 'pingName'),
-                            value: button.client.langs.getText(button, 'instantInfo', 'pingValue', { websocket: button.client.ws.ping, response: Date.now() - received })
+                            value: button.client.langs.getText(button, 'instantInfo', 'pingValue', {
+                                websocket: button.client.ws.ping,
+                                response: Date.now() - received
+                            })
                         },
                         {
                             name: button.client.langs.getText(button, 'instantInfo', 'memory'),

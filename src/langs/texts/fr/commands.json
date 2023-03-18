@@ -85,7 +85,7 @@
     "switch": {
         "name": "changer",
         "description": "Change de station de musique",
-        "options":{
+        "options": {
             "station": {
                 "name": "station",
                 "description": "Station que vous voulez jouer"

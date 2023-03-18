@@ -28,7 +28,11 @@ export default new AmethystCommand({
         return interaction.reply({
             embeds: [
                 new EmbedBuilder()
-                    .setTitle(interaction.client.langs.getText(interaction, 'help', 'commandEmbedTitle', { commandName: locals.name[interaction.locale] ?? cmd.options.name }))
+                    .setTitle(
+                        interaction.client.langs.getText(interaction, 'help', 'commandEmbedTitle', {
+                            commandName: locals.name[interaction.locale] ?? cmd.options.name
+                        })
+                    )
                     .setDescription(locals.description[interaction.locale] ?? cmd.options.description)
                     .setFields(
                         {
@@ -56,7 +60,16 @@ export default new AmethystCommand({
     const embed = new EmbedBuilder()
         .setTitle(interaction.client.langs.getText(interaction, 'help', 'help'))
         .setDescription(
-            interaction.client.langs.getText(interaction, 'help', 'description', { list: commands.map((c) => `${c.nameLocalizations[interaction.locale] ?? c.name}\` : ${c.descriptionLocalizations[interaction.locale] ?? c.description}`).join('\n') })
+            interaction.client.langs.getText(interaction, 'help', 'description', {
+                list: commands
+                    .map(
+                        (c) =>
+                            `${c.nameLocalizations[interaction.locale] ?? c.name}\` : ${
+                                c.descriptionLocalizations[interaction.locale] ?? c.description
+                            }`
+                    )
+                    .join('\n')
+            })
         )
         .setThumbnail(interaction.client.user.displayAvatarURL())
         .setColor(interaction.client.user.hexAccentColor ?? 'Orange')

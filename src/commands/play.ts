@@ -5,7 +5,7 @@ import connected from '../preconditions/connected';
 import { buildLocalizations, getStationByUrl } from '../utils/functions';
 import { queuesUsers } from '../utils/maps';
 
-const locals = buildLocalizations('play')
+const locals = buildLocalizations('play');
 export default new AmethystCommand({
     name: 'play',
     description: 'Plays a lofi music',
@@ -31,11 +31,15 @@ export default new AmethystCommand({
         requestedBy: interaction.user
     });
 
-    if (!search || search.tracks.length === 0) return interaction.editReply(interaction.client.langs.getText(interaction, 'utils', 'stationNotFound'));
+    if (!search || search.tracks.length === 0)
+        return interaction.editReply(interaction.client.langs.getText(interaction, 'utils', 'stationNotFound'));
     await interaction
         .editReply(
             interaction.client.langs.getText(interaction, 'play', 'reply', {
-                stationName: station.name, stationEmoji: station.emoji, stationUrl: station.url, channelId: (interaction.member as GuildMember).voice.channel.id
+                stationName: station.name,
+                stationEmoji: station.emoji,
+                stationUrl: station.url,
+                channelId: (interaction.member as GuildMember).voice.channel.id
             })
         )
         .catch(() => {});
@@ -63,11 +67,7 @@ export default new AmethystCommand({
     ).queue;
 
     if (!queue)
-        return interaction
-            .editReply(
-                interaction.client.langs.getText(interaction, 'play', 'errored')
-            )
-            .catch(() => {});
+        return interaction.editReply(interaction.client.langs.getText(interaction, 'play', 'errored')).catch(() => {});
     if (!queue.connection) queue.connect((interaction.member as GuildMember).voice.channel);
 
     queuesUsers.set(interaction.guild.id, interaction.user);

@@ -3,7 +3,8 @@ import {
     ApplicationCommandOptionType,
     ButtonBuilder,
     ButtonStyle,
-    EmbedBuilder, StringSelectMenuBuilder
+    EmbedBuilder,
+    StringSelectMenuBuilder
 } from 'discord.js';
 import { stations, recommendation } from '../utils/configs.json';
 import { TesterButtons } from '../typings/tester';
@@ -91,7 +92,10 @@ export default new AmethystCommand({
             embed.setImage(video.thumbnail ?? interaction.client.user.displayAvatarURL({ forceStatic: true }));
         embed.addFields({
             name: interaction.client.langs.getText(interaction, 'infoStation', 'duration'),
-            value: station.type === 'station' ? interaction.client.langs.getText(interaction, 'infoStation', 'durationTypeLive') : `${formatTime(Math.floor(video.durationMS / 1000), interaction)}`,
+            value:
+                station.type === 'station'
+                    ? interaction.client.langs.getText(interaction, 'infoStation', 'durationTypeLive')
+                    : `${formatTime(Math.floor(video.durationMS / 1000), interaction)}`,
             inline: true
         });
 
@@ -138,8 +142,14 @@ export default new AmethystCommand({
                 new EmbedBuilder()
                     .setTitle(interaction.client.langs.getText(interaction, 'findCommand', 'matching'))
                     .setDescription(
-                        `${interaction.client.langs.getText(interaction, 'findCommand', 'matchingDescription', { availableLength: available.length })}${
-                            available.length <= 25 ? '' : interaction.client.langs.getText(interaction, 'findCommand', 'pickedUp', { selectorOptionsLength: selector.options.length })
+                        `${interaction.client.langs.getText(interaction, 'findCommand', 'matchingDescription', {
+                            availableLength: available.length
+                        })}${
+                            available.length <= 25
+                                ? ''
+                                : interaction.client.langs.getText(interaction, 'findCommand', 'pickedUp', {
+                                      selectorOptionsLength: selector.options.length
+                                  })
                         }`
                     )
                     .setColor('DarkOrange')

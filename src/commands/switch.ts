@@ -30,7 +30,9 @@ export default new AmethystCommand({
         requestedBy: interaction.user
     });
     if (!tracks || tracks.tracks.length === 0)
-        return interaction.editReply(interaction.client.langs.getText(interaction, 'utils', 'stationNotFound')).catch(() => {});
+        return interaction
+            .editReply(interaction.client.langs.getText(interaction, 'utils', 'stationNotFound'))
+            .catch(() => {});
 
     const queue = interaction.client.player.nodes.get(interaction.guild);
     if (queue.tracks.size > 0) {
@@ -41,5 +43,13 @@ export default new AmethystCommand({
     }
     queue.node.skip();
 
-    interaction.editReply(interaction.client.langs.getText(interaction, 'switch', 'switched', { stationName: station.name, stationEmoji: station.emoji, stationUrl: station.url })).catch(() => {});
+    interaction
+        .editReply(
+            interaction.client.langs.getText(interaction, 'switch', 'switched', {
+                stationName: station.name,
+                stationEmoji: station.emoji,
+                stationUrl: station.url
+            })
+        )
+        .catch(() => {});
 });

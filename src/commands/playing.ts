@@ -4,7 +4,7 @@ import playingPrecondition from '../preconditions/playing';
 import { buildLocalizations, getLoopState, getStationByUrl, getTester, row } from '../utils/functions';
 import { TesterButtons } from '../typings/tester';
 
-const locals = buildLocalizations('playing')
+const locals = buildLocalizations('playing');
 export default new AmethystCommand({
     name: 'playing',
     description: 'Shows the current music',
@@ -21,13 +21,22 @@ export default new AmethystCommand({
         .setThumbnail(interaction.client.user.displayAvatarURL({ forceStatic: true }))
         .setImage(playing.thumbnail ?? null)
         .setTitle(`${station.emoji} ${station.name}`)
-        .setDescription(interaction.client.langs.getText(interaction, 'playing', 'description', { stationName: station.name, stationEmoji: station.emoji, stationUrl: station.url }))
+        .setDescription(
+            interaction.client.langs.getText(interaction, 'playing', 'description', {
+                stationName: station.name,
+                stationEmoji: station.emoji,
+                stationUrl: station.url
+            })
+        )
         .setColor(Colors.Orange)
         .setURL(station.url)
         .setFields(
             {
                 name: interaction.client.langs.getText(interaction, 'playing', 'duration', { emoji: station.emoji }),
-                value: station.type === 'radio' ? interaction.client.langs.getText(interaction, 'infoStation', 'durationTypeLive') : queue.node.createProgressBar(),
+                value:
+                    station.type === 'radio'
+                        ? interaction.client.langs.getText(interaction, 'infoStation', 'durationTypeLive')
+                        : queue.node.createProgressBar(),
                 inline: true
             },
             {
@@ -39,7 +48,10 @@ export default new AmethystCommand({
     if (queue.tracks.size > 0)
         embed.addFields({
             name: interaction.client.langs.getText(interaction, 'playing', 'following'),
-            value: interaction.client.langs.getText(interaction, 'playing', 'followingValue', { size: queue.tracks.size, optionalS: queue.tracks.size !== 1 ? 's' : '' }),
+            value: interaction.client.langs.getText(interaction, 'playing', 'followingValue', {
+                size: queue.tracks.size,
+                optionalS: queue.tracks.size !== 1 ? 's' : ''
+            }),
             inline: true
         });
     if (!!getLoopState(interaction.guild.id))

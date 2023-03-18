@@ -22,12 +22,19 @@ export default new ButtonHandler({
                     .setComponents(
                         row<TextInputBuilder>(
                             new TextInputBuilder()
-                                .setLabel(button.client.langs.getText(button, 'testerEditComment', 'modalTextInputName'))
+                                .setLabel(
+                                    button.client.langs.getText(button, 'testerEditComment', 'modalTextInputName')
+                                )
                                 .setStyle(TextInputStyle.Paragraph)
                                 .setMaxLength(1000)
                                 .setRequired(true)
                                 .setPlaceholder(
-                                    resizeStr(button.client.langs.getText(button, 'testerEditComment', 'modalPlaceholder', { stationEmoji: station.emoji, stationName: station.name }))
+                                    resizeStr(
+                                        button.client.langs.getText(button, 'testerEditComment', 'modalPlaceholder', {
+                                            stationEmoji: station.emoji,
+                                            stationName: station.name
+                                        })
+                                    )
                                 )
                                 .setCustomId('comment')
                         )
