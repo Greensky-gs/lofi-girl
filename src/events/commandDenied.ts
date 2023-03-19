@@ -13,15 +13,15 @@ export default new AmethystEvent('commandDenied', (command, reason) => {
         {
             x: commandDeniedCode.UserMissingPerms,
             y: command.interaction.client.langs.getText(command.interaction, 'commandDenied', 'userMissingPerms', {
-                required: reason.metadata.permissions?.need?.length,
-                has: reason.metadata.permissions?.got?.length
+                required: reason.metadata.permissions?.need?.length ?? 0,
+                has: reason.metadata.permissions?.got?.length ?? 0
             })
         },
         {
             x: commandDeniedCode.ClientMissingPerms,
             y: command.interaction.client.langs.getText(command.interaction, 'commandDenied', 'clientMissingPerms', {
-                required: reason.metadata.permissions?.need?.length,
-                has: reason.metadata.permissions?.got?.length
+                required: reason.metadata.permissions?.need?.length ?? 0,
+                has: reason.metadata.permissions?.got?.length ?? 0
             })
         }
     ];
