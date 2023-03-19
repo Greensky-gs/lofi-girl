@@ -20,7 +20,7 @@
         }
     },
     "autoadd": {
-        "name": "autoajout",
+        "name": "boucle",
         "description": "Active l'ajout automatique de musique",
         "options": {}
     },
