@@ -1,0 +1,110 @@
+{
+    "play": {
+        "name": "play",
+        "description": "Play a Lofi Music",
+        "options": {
+            "station": {
+                "name": "station",
+                "description": "Station to play"
+            }
+        }
+    },
+    "add": {
+        "name": "add",
+        "description": "Add a station to the queue",
+        "options": {
+            "station": {
+                "name": "station",
+                "description": "Station to add to the queue"
+            }
+        }
+    },
+    "autoadd": {
+        "name": "autoadd",
+        "description": "Toggle auto music adding at the end of a music",
+        "options": {}
+    },
+    "find": {
+        "name": "find",
+        "description": "Find some stations that you like using tags",
+        "options": {
+            "tags": {
+                "name": "tags",
+                "description": "Tags you want to search with"
+            }
+        }
+    },
+    "help": {
+        "name": "help",
+        "description": "Displays help page",
+        "options": {
+            "command": {
+                "name": "command",
+                "description": "Commant to show help"
+            }
+        }
+    },
+    "info": {
+        "name": "info",
+        "description": "Displays informations",
+        "options": {
+            "bot": {
+                "name": "bot",
+                "description": "Displays bot's informations"
+            },
+            "station": {
+                "name": "station",
+                "description": "Displays a station's informations"
+            },
+            "stationOption": {
+                "name": "station",
+                "description": "Station to display"
+            }
+        }
+    },
+    "leave": {
+        "name": "leave",
+        "description": "Leave the voice channel",
+        "options": {}
+    },
+    "playing": {
+        "name": "playing",
+        "description": "Show the current music",
+        "options": {}
+    },
+    "suggestion": {
+        "name": "suggestion",
+        "description": "Suggest a lofi music to the bot",
+        "options": {
+            "url": {
+                "name": "url",
+                "description": "Url of the video you want to suggest"
+            }
+        }
+    },
+    "switch": {
+        "name": "switch",
+        "description": "Switch to another music station",
+        "options": {
+            "station": {
+                "name": "station",
+                "description": "Station to switch with"
+            }
+        }
+    },
+    "volume": {
+        "name": "volume",
+        "description": "Set the volume of the music player",
+        "options": {
+            "volume": {
+                "name": "volume",
+                "description": "Amount of the volume"
+            }
+        }
+    },
+    "guide": {
+        "name": "guide",
+        "description": "Displays Lofi Girl bot's guide",
+        "options": {}
+    }
+}

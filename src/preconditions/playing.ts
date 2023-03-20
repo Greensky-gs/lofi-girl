@@ -11,7 +11,7 @@ export default new Precondition('playing').setChatInputRun(({ interaction }) => 
             isChatInput: true,
             interaction,
             metadata: {
-                message: ":x: | I'm not playing music"
+                message: interaction.client.langs.getText(interaction, 'preconditions', 'playing')
             }
         };
     }

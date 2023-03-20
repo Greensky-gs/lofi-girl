@@ -24,7 +24,7 @@ export default new AmethystEvent('stringSelectInteraction', async (selector) => 
             return selector
                 .reply({
                     ephemeral: true,
-                    content: `:x: | You are not allowed to interact with this message`
+                    content: selector.client.langs.getText(selector, 'utils', 'notAllowedToInteract')
                 })
                 .catch(() => {});
         const station = getStationByUrl(selector.values[0]);
@@ -34,7 +34,7 @@ export default new AmethystEvent('stringSelectInteraction', async (selector) => 
             .setTitle(`${station.emoji} ${station.name}`)
             .setColor('Orange')
             .setFields({
-                name: '🔗 Link',
+                name: selector.client.langs.getText(selector, 'infoStation', 'linkName'),
                 value: `[${station.name}](${station.url})`,
                 inline: true
             })
@@ -48,7 +48,7 @@ export default new AmethystEvent('stringSelectInteraction', async (selector) => 
                           Math.floor(Math.random() * station.feedbacks.filter((x) => x.comments).length)
                       ].comments + '\n'
                     : '') +
-                    "People's opinion: " +
+                    selector.client.langs.getText(selector, 'infoStation', 'peoplesOpinion') +
                     [...new Set(station.feedbacks.map((x) => x.keywords).flat())].join(', ')
             );
         }
@@ -64,8 +64,8 @@ export default new AmethystEvent('stringSelectInteraction', async (selector) => 
         if (video.thumbnail)
             embed.setImage(video.thumbnail ?? selector.client.user.displayAvatarURL({ forceStatic: true }));
         embed.addFields({
-            name: '🎧 Duration',
-            value: station.type === 'radio' ? 'Live' : `${formatTime(Math.floor(video.durationMS / 1000))}`,
+            name: selector.client.langs.getText(selector, 'infoStation', 'duration'),
+            value: station.type === 'radio' ? selector.client.langs.getText(selector, 'infoStation', 'durationTypeLive') : `${formatTime(Math.floor(video.durationMS / 1000), selector)}`,
             inline: true
         });
 

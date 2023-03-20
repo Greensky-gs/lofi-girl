@@ -5,16 +5,22 @@ import { stations, recommendation } from '../utils/configs.json';
 export default new AutocompleteListener({
     commandName: [{ commandName: 'info' }, { commandName: 'play' }, { commandName: 'switch' }, { commandName: 'add' }],
     listenerName: 'station',
-    run: ({ options }) => {
+    run: ({ options, interaction }) => {
         const name = options.getFocused().toLowerCase();
 
         const concatenated: station[] = [
-            { name: 'random', type: 'get a random station', url: 'random', emoji: '🎲', feedbacks: [] }
+            {
+                name: interaction.client.langs.getText(interaction, 'stationAutocomplete', 'randomName'),
+                type: 'get a random station',
+                url: 'random',
+                emoji: '🎲',
+                feedbacks: []
+            }
         ];
 
         if (Object.keys(recommendation).length > 0) {
             concatenated.push({
-                name: 'recommendation',
+                name: interaction.client.langs.getText(interaction, 'stationAutocomplete', 'recommendationName'),
                 type: 'get the recommendation of the day',
                 emoji: '❤️',
                 url: 'recommendation',
@@ -32,7 +38,17 @@ export default new AutocompleteListener({
                     name.includes(x.type.toLowerCase())
             );
 
-        if (list.length <= 25) return list.map((x) => ({ name: `${x.emoji} ${x.name} - ${x.type}`, value: x.url }));
+        if (list.length <= 25)
+            return list.map((x) => ({
+                name: `${x.emoji} ${x.name} - ${
+                    x.type === 'get the recommendation of the day'
+                        ? interaction.client.langs.getText(interaction, 'stationAutocomplete', 'recommendationContent')
+                        : x.type === 'get a random station'
+                        ? interaction.client.langs.getText(interaction, 'stationAutocomplete', 'randomContent')
+                        : x.type
+                }`,
+                value: x.url
+            }));
         // Here we randomise the result
 
         const returned: station[] = [];
@@ -41,6 +57,15 @@ export default new AutocompleteListener({
             const available = list.filter((x) => !returned.includes(x));
             returned.push(available[Math.floor(Math.random() * available.length)]);
         }
-        return returned.map((x) => ({ name: `${x.emoji} ${x.name} - ${x.type}`, value: x.url }));
+        return returned.map((x) => ({
+            name: `${x.emoji} ${x.name} - ${
+                x.type === 'get the recommendation of the day'
+                    ? interaction.client.langs.getText(interaction, 'stationAutocomplete', 'recommendationContent')
+                    : x.type === 'get a random station'
+                    ? interaction.client.langs.getText(interaction, 'stationAutocomplete', 'randomContent')
+                    : x.type
+            }`,
+            value: x.url
+        }));
     }
 });

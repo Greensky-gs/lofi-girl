@@ -9,7 +9,7 @@ export default new Precondition('adminIfNotAlone').setChatInputRun(({ interactio
         return {
             ok: false,
             metadata: {
-                message: ":x: | Since you're not alone, you need the `administrator` permission to run this command"
+                message: interaction.client.langs.getText(interaction, 'preconditions', 'adminIfNotAlone')
             },
             isChatInput: true,
             interaction

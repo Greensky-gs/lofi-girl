@@ -9,9 +9,7 @@ import {
     EmbedBuilder,
     Message,
     ModalBuilder,
-    StringSelectMenuBuilder,
-    TextChannel,
-    TextInputBuilder,
+    StringSelectMenuBuilder, TextInputBuilder,
     TextInputStyle
 } from 'discord.js';
 import confs from '../utils/configs.json';
@@ -46,16 +44,16 @@ export default new ButtonHandler({
     };
     await button.showModal(
         new ModalBuilder()
-            .setTitle('Station')
+            .setTitle(button.client.langs.getText(button, 'manageFeedback', 'stationNameModalTitle'))
             .setCustomId('station-selection')
             .setComponents(
                 row<TextInputBuilder>(
                     new TextInputBuilder()
                         .setCustomId('stationName')
-                        .setLabel('Station name')
+                        .setLabel(button.client.langs.getText(button, 'manageFeedback', 'stationNameModalLabel'))
                         .setStyle(TextInputStyle.Short)
                         .setRequired(true)
-                        .setPlaceholder('Please enter a station name')
+                        .setPlaceholder(button.client.langs.getText(button, 'manageFeedback', 'stationNameModalPlaceholder'))
                         .setMaxLength(100)
                 )
             )
@@ -75,7 +73,7 @@ export default new ButtonHandler({
         ? ((await stationName
               .reply({
                   fetchReply: true,
-                  content: `...thinking`
+                  content: button.client.langs.getText(button, 'manageFeedback', 'thiking')
               })
               .catch(() => {})) as Message<true>)
         : undefined;
@@ -87,7 +85,7 @@ export default new ButtonHandler({
     if (stations.length === 0) {
         reedit();
         msg.edit({
-            content: `:x: | Cannot find a matching station`
+            content: button.client.langs.getText(button, 'manageFeedback', 'cannotFindStation')
         }).catch(() => {});
         return setTimeout(() => {
             msg.delete().catch(() => {});
@@ -96,11 +94,11 @@ export default new ButtonHandler({
     if (stations.length > 1) {
         await msg
             .edit({
-                content: `I found **${stations.length}** matching stations`,
+                content: button.client.langs.getText(button, 'manageFeedback', 'foundMultipleStations', { stationsCount: stations.length }),
                 components: [
                     row<StringSelectMenuBuilder>(
                         new StringSelectMenuBuilder()
-                            .setPlaceholder('Choose a station')
+                            .setPlaceholder(button.client.langs.getText(button, 'manageFeedback', 'chooseAStationLabel'))
                             .setCustomId('station.selector')
                             .setMaxValues(1)
                             .setOptions(
@@ -109,14 +107,14 @@ export default new ButtonHandler({
                                     .map((st) => ({
                                         label: st.name[0].toUpperCase() + st.name.slice(1),
                                         value: st.url,
-                                        description: `Station ${st.name}`,
+                                        description: button.client.langs.getText(button, 'manageFeedback', 'chooseStationMapping', { stationName: st.name }),
                                         emoji: st.emoji
                                     }))
                                     .concat([
                                         {
-                                            label: 'Cancel',
+                                            label: button.client.langs.getText(button, 'manageFeedback', 'cancelChooseLabel'),
                                             value: 'cancel',
-                                            description: 'Cancel the selection',
+                                            description: button.client.langs.getText(button, 'manageFeedback', 'cancelChooseDescription'),
                                             emoji: '❌'
                                         }
                                     ])
@@ -134,7 +132,7 @@ export default new ButtonHandler({
         if (!stationSelection || stationSelection.values[0] === 'cancel') {
             reedit();
             msg.edit({
-                content: `Canceled`,
+                content: button.client.langs.getText(button, 'utils', 'actionCanceled'),
                 components: []
             }).catch(() => {});
             return setTimeout(() => {
@@ -149,7 +147,7 @@ export default new ButtonHandler({
     if (station.feedbacks.length === 0) {
         reedit();
         msg.edit({
-            content: `:x: | The station [${station.emoji} ${station.name}](${station.url}) has no feedback`,
+            content: button.client.langs.getText(button, 'manageFeedback', 'hasNoFeedback', { stationEmoji: station.emoji, stationName: station.name, stationUrl: station.url }),
             components: []
         }).catch(() => {});
         return setTimeout(() => {
@@ -160,19 +158,19 @@ export default new ButtonHandler({
     if (feedbacks.length > 1) {
         await msg
             .edit({
-                content: `With wich comment do you want to work with ?`,
+                content: button.client.langs.getText(button, 'manageFeedback', 'commentSelectionText'),
                 components: [
                     row<StringSelectMenuBuilder>(
                         new StringSelectMenuBuilder()
-                            .setPlaceholder('Select a comment')
+                            .setPlaceholder(button.client.langs.getText(button, 'manageFeedback', 'commentSelectionPlaceholder'))
                             .setMaxValues(1)
                             .setOptions(
                                 feedbacks.map((x) => ({
-                                    label: `By ${x.user_id}`,
+                                    label: button.client.langs.getText(button, 'manageFeedback', 'commentMappingLabel', { userId: x.user_id }),
                                     value: x.user_id,
                                     description:
                                         x.comments.length > 0
-                                            ? `Starting by ${resizeStr(x.comments, 50)}`
+                                            ? button.client.langs.getText(button, 'manageFeedback', 'commentMappingDescription', { start: resizeStr(x.comments, 50) })
                                             : x.keywords.splice(0, 5).join(' ')
                                 }))
                             )
@@ -188,7 +186,7 @@ export default new ButtonHandler({
         if (!commentSelection) {
             reedit();
             msg.edit({
-                content: 'Canceled',
+                content: button.client.langs.getText(button, 'utils', 'actionCanceled'),
                 components: []
             }).catch(() => {});
             return setTimeout(() => {
@@ -209,7 +207,7 @@ export default new ButtonHandler({
         DeleteKeywords: 'deleteKeywords',
         RemoveKeyword: 'removeKeyword',
         Cancel: 'cancel',
-        NoComment: 'No comment',
+        NoComment: button.client.langs.getText(button, 'manageFeedback', 'commentFieldDefault'),
         NoKeywords: 'No keywords',
         Save: 'saveFeedback'
     };
@@ -218,27 +216,27 @@ export default new ButtonHandler({
             row(
                 ...[
                     new ButtonBuilder()
-                        .setLabel('Add comment')
+                        .setLabel(button.client.langs.getText(button, 'manageFeedbackButtons', 'addComment'))
                         .setCustomId(ids.AddComment)
                         .setStyle(ButtonStyle.Success)
                         .setDisabled(feedback.comments !== ids.NoComment),
                     new ButtonBuilder()
-                        .setLabel('Edit comment')
+                        .setLabel(button.client.langs.getText(button, 'manageFeedbackButtons', 'editComment'))
                         .setCustomId(ids.EditComment)
                         .setStyle(ButtonStyle.Primary)
                         .setDisabled(feedback.comments === ids.NoComment),
                     new ButtonBuilder()
-                        .setLabel('Add keywords')
+                        .setLabel(button.client.langs.getText(button, 'manageFeedbackButtons', 'addKeywords'))
                         .setCustomId(ids.AddKeywords)
                         .setStyle(ButtonStyle.Secondary)
                         .setDisabled(feedback.keywords.length === 25),
                     new ButtonBuilder()
-                        .setLabel('Remove a keyword')
+                        .setLabel(button.client.langs.getText(button, 'manageFeedbackButtons', 'RemoveKeyword'))
                         .setStyle(ButtonStyle.Secondary)
                         .setCustomId(ids.RemoveKeyword)
                         .setDisabled(feedback.keywords.length === 0),
                     new ButtonBuilder()
-                        .setLabel('Delete keywords')
+                        .setLabel(button.client.langs.getText(button, 'manageFeedbackButtons', 'deleteKeywords'))
                         .setStyle(ButtonStyle.Danger)
                         .setCustomId(ids.DeleteKeywords)
                         .setDisabled(feedback.keywords.length === 0)
@@ -247,37 +245,37 @@ export default new ButtonHandler({
             row(
                 ...[
                     new ButtonBuilder()
-                        .setLabel('Delete comment')
+                        .setLabel(button.client.langs.getText(button, 'manageFeedbackButtons', 'deleteComment'))
                         .setCustomId(ids.DeleteComment)
                         .setStyle(ButtonStyle.Primary)
                         .setDisabled(feedback.comments === ids.NoComment),
                     new ButtonBuilder()
-                        .setLabel('Delete feedback')
+                        .setLabel(button.client.langs.getText(button, 'manageFeedbackButtons', 'deleteFeedback'))
                         .setCustomId(ids.DeleteFeedback)
                         .setStyle(ButtonStyle.Danger)
                         .setDisabled(feedback.comments === ids.NoComment && feedback.keywords.length === 0),
-                    new ButtonBuilder().setLabel('Cancel').setStyle(ButtonStyle.Danger).setCustomId(ids.Cancel),
-                    new ButtonBuilder().setLabel('Save').setStyle(ButtonStyle.Success).setCustomId(ids.Save)
+                    new ButtonBuilder().setLabel(button.client.langs.getText(button, 'manageFeedbackButtons', 'cancel')).setStyle(ButtonStyle.Danger).setCustomId(ids.Cancel),
+                    new ButtonBuilder().setLabel(button.client.langs.getText(button, 'manageFeedbackButtons', 'save')).setStyle(ButtonStyle.Success).setCustomId(ids.Save)
                 ].map((x) => (!!allDisabled === true ? x.setDisabled(true) : x))
             )
         ];
     };
     const embed = () => {
         return new EmbedBuilder()
-            .setTitle(`Feedback modification`)
+            .setTitle(button.client.langs.getText(button, 'manageFeedback', 'feedbackModificationTitle'))
             .setURL(station.url)
             .setDescription(
-                `You are editing the feedback by <@${feedback.user_id}> on the [${station.emoji} ${station.name}](${station.url}) station`
+                button.client.langs.getText(button, 'manageFeedback', 'feedbackModificationDescription', { stationName: station.name, stationEmoji: station.emoji, stationUrl: station.url, userId: feedback.user_id })
             )
             .setColor(message.guild.members.me.displayHexColor)
             .setFields(
                 {
-                    name: 'Comment',
+                    name: button.client.langs.getText(button, 'manageFeedback', 'commentFieldName'),
                     value: feedback.comments ?? ids.NoComment,
                     inline: false
                 },
                 {
-                    name: 'Keywords',
+                    name: button.client.langs.getText(button, 'manageFeedback', 'commentKeywordsDefault'),
                     value: feedback.keywords.length > 0 ? feedback.keywords.join(', ') : ids.NoKeywords,
                     inline: false
                 }
@@ -285,7 +283,7 @@ export default new ButtonHandler({
     };
     await msg
         .edit({
-            content: `What do you want to do with the [${station.emoji} ${station.name}](<${station.url}>) station ?`,
+            content: button.client.langs.getText(button, 'panelKeywords', 'actionContent'),
             components: buttons(),
             embeds: [embed()]
         })
@@ -298,7 +296,7 @@ export default new ButtonHandler({
         if (interaction.user.id !== user.id) {
             interaction
                 .reply({
-                    content: `:x: | You cannot interact with this message`,
+                    content: button.client.langs.getText(interaction, 'utils', 'notAllowedToInteract'),
                     ephemeral: true
                 })
                 .catch(() => {});
@@ -311,13 +309,13 @@ export default new ButtonHandler({
             await interaction
                 .showModal(
                     new ModalBuilder()
-                        .setTitle('Comment adding')
+                        .setTitle(button.client.langs.getText(button, 'manageFeedback', 'addCommentModalTitle'))
                         .setCustomId('feedback.add.comment')
                         .setComponents(
                             row<TextInputBuilder>(
                                 new TextInputBuilder()
-                                    .setLabel('Comment')
-                                    .setPlaceholder('Write the comment here')
+                                    .setLabel(button.client.langs.getText(button, 'manageFeedback', 'addCommentModalLabel'))
+                                    .setPlaceholder(button.client.langs.getText(button, 'manageFeedback', 'addCommentModalPlaceholder'))
                                     .setCustomId('comment')
                                     .setMaxLength(1000)
                                     .setStyle(TextInputStyle.Paragraph)
@@ -353,7 +351,7 @@ export default new ButtonHandler({
             if (confs.testKeywords.filter((x) => !feedback.keywords.includes(x)).length === 0) {
                 interaction
                     .reply({
-                        content: `:x: | There is no keyword to add`
+                        content: button.client.langs.getText(button, 'manageFeedback', 'noKeywordsToAdd')
                     })
                     .catch(() => {});
                 setTimeout(() => {
@@ -370,15 +368,15 @@ export default new ButtonHandler({
                 .setOptions(
                     confs.testKeywords
                         .filter((x) => !feedback.keywords.includes(x))
-                        .map((k) => ({ label: k[0].toUpperCase() + k.slice(1), value: k, description: `Keyword ${k}` }))
+                        .map((k) => ({ label: k[0].toUpperCase() + k.slice(1), value: k, description: button.client.langs.getText(button, 'manageFeedback', 'keywordMapping', { keyword: k }) }))
                         .concat({
-                            label: 'Cancel',
+                            label: button.client.langs.getText(button, 'manageFeedback', 'keywordsCancelLabel'),
                             value: 'cancel',
-                            description: 'Cancel the selection'
+                            description: button.client.langs.getText(button, 'manageFeedback', 'keywordsCancelDesc')
                         })
                 );
             const ctx = await interaction.reply({
-                content: `Wich keywords do you want to add ?`,
+                content: button.client.langs.getText(button, 'manageFeedback', 'keywordsSelectionContent'),
                 components: [row<StringSelectMenuBuilder>(selector)],
                 fetchReply: true
             });
@@ -415,16 +413,16 @@ export default new ButtonHandler({
             await interaction
                 .showModal(
                     new ModalBuilder()
-                        .setTitle('Comment edition')
+                        .setTitle(button.client.langs.getText(button, 'manageFeedback', 'commentEditModalTitle'))
                         .setCustomId('comment.edition')
                         .setComponents(
                             row<TextInputBuilder>(
                                 new TextInputBuilder()
-                                    .setLabel('Comment')
+                                    .setLabel(button.client.langs.getText(button, 'manageFeedback', 'commentEditModalName'))
                                     .setMaxLength(1000)
                                     .setCustomId('comment')
                                     .setRequired(true)
-                                    .setPlaceholder('Write your comment here')
+                                    .setPlaceholder(button.client.langs.getText(button, 'manageFeedback', 'commentEditModalPlaceholder'))
                                     .setStyle(TextInputStyle.Paragraph)
                             )
                         )
@@ -452,7 +450,7 @@ export default new ButtonHandler({
 
             const keywordSelection = (await interaction
                 .reply({
-                    content: `Wich keyword(s) do you want to remove ?`,
+                    content: button.client.langs.getText(button, 'manageFeedback', 'keywordsRemoveContent'),
                     components: [
                         row<StringSelectMenuBuilder>(
                             new StringSelectMenuBuilder()
@@ -462,12 +460,12 @@ export default new ButtonHandler({
                                         .map((k) => ({
                                             label: k[0].toUpperCase() + k.slice(1),
                                             value: k,
-                                            description: `Remove the keyword ${k}`
+                                            description: button.client.langs.getText(button, 'manageFeedback', 'removeKeywordsDescription', { keyword: k })
                                         }))
                                         .concat({
-                                            label: 'Cancel',
+                                            label: button.client.langs.getText(button, 'manageFeedback', 'keywordsCancelLabel'),
                                             value: 'cancel',
-                                            description: 'Cancel the selection'
+                                            description: button.client.langs.getText(button, 'manageFeedback', 'keywordsCancelDesc')
                                         })
                                 )
                                 .setMaxValues(feedback.keywords.length + 1)
@@ -504,9 +502,12 @@ export default new ButtonHandler({
             stations.splice(0, stations.indexOf(stations.find((x) => x.url === station.url)), station);
 
             msg.edit({
-                content: `${boolEmojis(true)} | The station [${station.emoji} ${station.name}](<${
-                    station.url
-                }>) has been edited`,
+                content: button.client.langs.getText(button, 'manageFeedback', 'saved', {
+                    stationName: station.name,
+                    stationUrl: station.url,
+                    stationEmoji: station.emoji,
+                    emoji: boolEmojis(true)
+                }),
                 embeds: [],
                 components: []
             }).catch(() => {});
@@ -523,7 +524,7 @@ export default new ButtonHandler({
         if (reason === 'canceled') {
             reedit();
             msg.edit({
-                content: `Canceled`,
+                content: button.client.langs.getText(button, 'utils', 'commandCanceled'),
                 components: [],
                 embeds: []
             }).catch(() => {});

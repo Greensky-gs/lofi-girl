@@ -13,6 +13,11 @@ export default new AutocompleteListener({
                     x.options.description.includes(focused)
             )
             .splice(0, 25)
-            .map((x) => ({ name: x.options.name, value: x.options.name }));
+            .map((x) => ({
+                name:
+                    interaction.client.langs.buildLocalizations(x.options.name as any).name[interaction.locale] ??
+                    x.options.name,
+                value: x.options.name
+            }));
     }
 });

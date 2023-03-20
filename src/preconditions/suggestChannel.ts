@@ -9,7 +9,7 @@ export default new Precondition('suggestChannel')
                 isChatInput: true,
                 interaction,
                 metadata: {
-                    message: '⚙️ | Suggest channel is not configured by the bot owner'
+                    message: interaction.client.langs.getText(interaction, 'preconditions', 'suggestChannel')
                 }
             };
         }
@@ -25,7 +25,7 @@ export default new Precondition('suggestChannel')
             button
                 .reply({
                     ephemeral: true,
-                    content: '⚙️ | Suggest channel is not configured by the bot owner'
+                    content: button.client.langs.getText(button, 'preconditions', 'suggestChannel')
                 })
                 .catch(() => {});
             return {

@@ -4,8 +4,11 @@ import { station } from '../typings/station';
 import { stations, recommendation } from '../utils/configs.json';
 import { row } from '../utils/functions';
 import { PanelIds } from '../typings/bot';
+import { Langs } from '../langs/Manager';
 
 export default new AmethystEvent('ready', async (client) => {
+    client.langs = new Langs();
+
     const statuses: (() => Promise<ActivityOptions>)[] = [
         async () => {
             return {

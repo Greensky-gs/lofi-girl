@@ -15,6 +15,7 @@ import {
 } from './utils/functions';
 import { TesterButtons } from './typings/tester';
 import { queuesUsers } from './utils/maps';
+import { Langs } from './langs/Manager';
 
 config();
 
@@ -115,6 +116,7 @@ client.start({});
 declare module 'discord.js' {
     interface Client {
         player: Player;
+        langs: Langs;
     }
 }
 declare module 'amethystjs' {

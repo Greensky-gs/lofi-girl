@@ -17,17 +17,17 @@ export default new ButtonHandler({
         button
             .showModal(
                 new ModalBuilder()
-                    .setTitle('Comment')
+                    .setTitle(button.client.langs.getText(button, 'addComment', 'modalName'))
                     .setCustomId('modal-comment')
                     .setComponents(
                         row<TextInputBuilder>(
                             new TextInputBuilder()
-                                .setLabel('Comment')
+                                .setLabel(button.client.langs.getText(button, 'addComment', 'commentName'))
                                 .setStyle(TextInputStyle.Paragraph)
                                 .setMaxLength(1000)
                                 .setRequired(true)
                                 .setPlaceholder(
-                                    resizeStr(`Write your comment about ${station.emoji} ${station.name} here`)
+                                    resizeStr(button.client.langs.getText(button, 'addComment', 'placeholder', { stationEmoji: station.emoji, stationName: station.name }))
                                 )
                                 .setCustomId('comment')
                         )
@@ -49,7 +49,7 @@ export default new ButtonHandler({
         modal.deferUpdate().catch(() => {});
         const embed = new EmbedBuilder(message.embeds[0].toJSON());
         embed.spliceFields(1, 1, {
-            name: 'Comment',
+            name: button.client.langs.getText(button, 'addComment', 'fieldName'),
             value: modal.fields.getTextInputValue('comment'),
             inline: false
         });
@@ -59,23 +59,23 @@ export default new ButtonHandler({
                 components: [
                     row(
                         new ButtonBuilder()
-                            .setLabel('Edit comment')
+                            .setLabel(button.client.langs.getText(button, 'testerButtonNames', 'editComment'))
                             .setCustomId(TesterButtons.EditComment)
                             .setStyle(ButtonStyle.Primary),
                         new ButtonBuilder()
-                            .setLabel('Delete comment')
+                            .setLabel(button.client.langs.getText(button, 'testerButtonNames', 'deleteComment'))
                             .setCustomId(TesterButtons.RemoveComment)
                             .setStyle(ButtonStyle.Secondary),
                         new ButtonBuilder()
-                            .setLabel('Keywords')
+                            .setLabel(button.client.langs.getText(button, 'testerButtonNames', 'keywords'))
                             .setCustomId(TesterButtons.KeywordsButton)
                             .setStyle(ButtonStyle.Secondary),
                         new ButtonBuilder()
-                            .setLabel('Send')
+                            .setLabel(button.client.langs.getText(button, 'testerButtonNames', 'sendFeedback'))
                             .setCustomId(TesterButtons.TesterValidate)
                             .setStyle(ButtonStyle.Success),
                         new ButtonBuilder()
-                            .setLabel('Cancel')
+                            .setLabel(button.client.langs.getText(button, 'testerButtonNames', 'cancel'))
                             .setCustomId(TesterButtons.TesterCancel)
                             .setStyle(ButtonStyle.Danger)
                     )

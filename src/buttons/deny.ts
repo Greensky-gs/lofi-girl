@@ -4,11 +4,10 @@ import {
     ButtonBuilder,
     ButtonStyle,
     Message,
-    ComponentType,
-    SelectMenuBuilder,
-    ModalBuilder,
+    ComponentType, ModalBuilder,
     TextInputBuilder,
-    TextInputStyle
+    TextInputStyle,
+    StringSelectMenuBuilder
 } from 'discord.js';
 import botOwner from '../preconditions/botOwner';
 import { refuseTemplates } from '../utils/configs.json';
@@ -16,21 +15,21 @@ import { refuseTemplates } from '../utils/configs.json';
 export default new ButtonHandler({
     customId: 'refuse',
     preconditions: [botOwner]
-}).setRun(async ({ button, message, user }) => {
+}).setRun(async ({ button, user }) => {
     const msg = (await button
         .reply({
             fetchReply: true,
             ephemeral: true,
-            content: `❓ | What do you want to use ?`,
+            content: button.client.langs.getText(button, 'denyButton', 'usageQuestion'),
             components: [
                 new ActionRowBuilder({
                     components: [
                         new ButtonBuilder({
-                            label: 'Template',
+                            label: button.client.langs.getText(button, 'denyButton', 'templateName'),
                             customId: 'template',
                             style: ButtonStyle.Secondary
                         }),
-                        new ButtonBuilder({ label: 'Custom', customId: 'custom', style: ButtonStyle.Secondary })
+                        new ButtonBuilder({ label: button.client.langs.getText(button, 'denyButton', 'customName'), customId: 'custom', style: ButtonStyle.Secondary })
                     ]
                 }) as ActionRowBuilder<ButtonBuilder>
             ]
@@ -44,17 +43,17 @@ export default new ButtonHandler({
         whoCanReact: 'useronly'
     });
 
-    if (!mode) return msg.edit({ content: `:bulb: | Command canceled`, components: [] }).catch(() => {});
+    if (!mode) return msg.edit({ content: button.client.langs.getText(button, 'utils', 'commandCanceled'), components: [] }).catch(() => {});
     let reply: string;
 
     if (mode.customId === 'template') {
         await mode.deferUpdate();
         await button.editReply({
-            content: `❓ | Choose a template`,
+            content: button.client.langs.getText(button, 'denyButton', 'templateQuestion'),
             components: [
                 new ActionRowBuilder({
                     components: [
-                        new SelectMenuBuilder({ type: ComponentType.StringSelect })
+                        new StringSelectMenuBuilder({ type: ComponentType.StringSelect })
                             .setCustomId('template-selector')
                             .setMaxValues(1)
                             .setOptions(
@@ -65,7 +64,7 @@ export default new ButtonHandler({
                                 }))
                             )
                     ]
-                }) as ActionRowBuilder<SelectMenuBuilder>
+                }) as ActionRowBuilder<StringSelectMenuBuilder>
             ]
         });
 
@@ -78,25 +77,25 @@ export default new ButtonHandler({
         if (!template)
             return msg
                 .edit({
-                    content: `:bulb: | Command canceled`,
+                    content: button.client.langs.getText(button, 'utils', 'commandCanceled'),
                     components: []
                 })
                 .catch(() => {});
         reply = refuseTemplates.find((t) => t.label === template.values[0]).reply;
         await button.editReply({
-            content: `:white_check_mark: | Template used`,
+            content: button.client.langs.getText(button, 'denyButton', 'templateUsed'),
             components: []
         });
     } else {
         const modal = new ModalBuilder()
-            .setTitle('Reply')
+            .setTitle(button.client.langs.getText(button, 'denyButton', 'replyName'))
             .setCustomId('reply-input-modal')
             .setComponents(
                 new ActionRowBuilder({
                     components: [
                         new TextInputBuilder()
-                            .setLabel('Reply content')
-                            .setPlaceholder('Enter your reply content here')
+                            .setLabel(button.client.langs.getText(button, 'denyButton', 'replyLabel'))
+                            .setPlaceholder(button.client.langs.getText(button, 'denyButton', 'replyPlaceholder'))
                             .setRequired(true)
                             .setStyle(TextInputStyle.Paragraph)
                             .setCustomId('reply-input-content')
@@ -113,7 +112,7 @@ export default new ButtonHandler({
 
         if (!modalResult)
             return msg.edit({
-                content: `:bulb: | Command canceled`,
+                content: button.client.langs.getText(button, 'utils', 'commandCanceled'),
                 components: []
             });
         modalResult.deferUpdate();
@@ -125,11 +124,11 @@ export default new ButtonHandler({
     button.message
         .edit({
             components: [],
-            content: `:x: | Suggesstion refused`
+            content: button.client.langs.getText(button, 'denyButton', 'suggestionRefused')
         })
         .catch(() => {});
     button.editReply({
         components: [],
-        content: ':x: | Suggestion refused'
+        content: button.client.langs.getText(button, 'denyButton', 'suggestionRefused')
     });
 });

@@ -9,7 +9,7 @@ export default new ButtonHandler({
         button
             .reply({
                 ephemeral: true,
-                content: `:x: | I can't delete this message`
+                content: button.client.langs.getText(button, 'deleteMessage', 'errored')
             })
             .catch(() => {});
     message.delete().catch(() => {});

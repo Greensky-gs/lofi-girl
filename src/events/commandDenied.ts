@@ -6,17 +6,23 @@ export default new AmethystEvent('commandDenied', (command, reason) => {
         { x: commandDeniedCode.GuildOnly, y: 'This command is not usable in direct messages' },
         {
             x: commandDeniedCode.UnderCooldown,
-            y: `You have a cooldown of ${Math.floor(
-                (reason.metadata?.remainingCooldownTime ?? 1000) / 1000
-            )} seconds on this command`
+            y: command.interaction.client.langs.getText(command.interaction, 'commandDenied', 'underCooldown', {
+                cooldown: Math.floor((reason.metadata?.remainingCooldownTime ?? 1000) / 1000)
+            })
         },
         {
             x: commandDeniedCode.UserMissingPerms,
-            y: `You need ${reason.metadata.permissions?.need?.length} permissions to run this command. You have ${reason.metadata?.permissions?.got?.length}`
+            y: command.interaction.client.langs.getText(command.interaction, 'commandDenied', 'userMissingPerms', {
+                required: reason.metadata.permissions?.need?.length ?? 0,
+                has: reason.metadata.permissions?.got?.length ?? 0
+            })
         },
         {
             x: commandDeniedCode.ClientMissingPerms,
-            y: `I need ${reason.metadata.permissions?.need?.length} permissions to run this command. I have ${reason.metadata.permissions?.got?.length}`
+            y: command.interaction.client.langs.getText(command.interaction, 'commandDenied', 'clientMissingPerms', {
+                required: reason.metadata.permissions?.need?.length ?? 0,
+                has: reason.metadata.permissions?.got?.length ?? 0
+            })
         }
     ];
     const fnt = command.interaction.replied ? 'editReply' : 'reply';

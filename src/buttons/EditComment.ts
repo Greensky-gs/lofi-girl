@@ -7,7 +7,7 @@ import { ButtonBuilder, ButtonStyle, EmbedBuilder, ModalBuilder, TextInputBuilde
 export default new ButtonHandler({
     customId: TesterButtons.EditComment,
     preconditions: [isTester]
-}).setRun(async ({ button, user, message }) => {
+}).setRun(async ({ button, message }) => {
     const station = getStationByUrl(message.embeds[0].url);
 
     const components = message.components;
@@ -17,17 +17,24 @@ export default new ButtonHandler({
         button
             .showModal(
                 new ModalBuilder()
-                    .setTitle('Comment')
+                    .setTitle(button.client.langs.getText(button, 'testerEditComment', 'modalTitle'))
                     .setCustomId('modal-comment')
                     .setComponents(
                         row<TextInputBuilder>(
                             new TextInputBuilder()
-                                .setLabel('Comment')
+                                .setLabel(
+                                    button.client.langs.getText(button, 'testerEditComment', 'modalTextInputName')
+                                )
                                 .setStyle(TextInputStyle.Paragraph)
                                 .setMaxLength(1000)
                                 .setRequired(true)
                                 .setPlaceholder(
-                                    resizeStr(`Edit your comment about ${station.emoji} ${station.name} here`)
+                                    resizeStr(
+                                        button.client.langs.getText(button, 'testerEditComment', 'modalPlaceholder', {
+                                            stationEmoji: station.emoji,
+                                            stationName: station.name
+                                        })
+                                    )
                                 )
                                 .setCustomId('comment')
                         )
@@ -49,7 +56,7 @@ export default new ButtonHandler({
         modal.deferUpdate().catch(() => {});
         const embed = new EmbedBuilder(message.embeds[0].toJSON());
         embed.spliceFields(1, 1, {
-            name: 'Comment',
+            name: button.client.langs.getText(button, 'testerEditComment', 'commentFieldName'),
             value: modal.fields.getTextInputValue('comment'),
             inline: false
         });

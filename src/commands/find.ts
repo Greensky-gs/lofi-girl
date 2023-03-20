@@ -4,14 +4,14 @@ import {
     ButtonBuilder,
     ButtonStyle,
     EmbedBuilder,
-    Message,
     StringSelectMenuBuilder
 } from 'discord.js';
 import { stations, recommendation } from '../utils/configs.json';
 import { TesterButtons } from '../typings/tester';
-import { formatTime, getTester, row } from '../utils/functions';
+import { buildLocalizations, formatTime, getTester, row } from '../utils/functions';
 import { ButtonIds } from '../typings/bot';
 
+const locals = buildLocalizations('find');
 export default new AmethystCommand({
     name: 'find',
     description: 'Find some stations that you like using tags',
@@ -21,9 +21,13 @@ export default new AmethystCommand({
             description: 'Tags you want to search with',
             autocomplete: true,
             type: ApplicationCommandOptionType.String,
-            required: true
+            required: true,
+            nameLocalizations: locals.options.tags.name,
+            descriptionLocalizations: locals.options.tags.description
         }
-    ]
+    ],
+    nameLocalizations: locals.name,
+    descriptionLocalizations: locals.description
 }).setChatInputRun(async ({ interaction, options }) => {
     const tags = options.getString('tags').split('.');
     const available = stations.filter((x) => x.feedbacks.some((f) => f.keywords.some((k) => tags.includes(k))));
@@ -33,11 +37,11 @@ export default new AmethystCommand({
             .reply({
                 embeds: [
                     new EmbedBuilder()
-                        .setTitle('No station')
+                        .setTitle(interaction.client.langs.getText(interaction, 'findCommand', 'noStation'))
                         .setDescription(
-                            `I'm sorry, I didn't find any station that match your research.${
+                            `${interaction.client.langs.getText(interaction, 'findCommand', 'noStationDescription')}${
                                 stations.filter((x) => x.feedbacks.length === 0).length > 2
-                                    ? `\nSome stations haven't been tested yet. If you want to, you can participate to our tester program by becoming a song tester.\nUse the \`/guide\` command to get more informations`
+                                    ? interaction.client.langs.getText(interaction, 'findCommand', 'testerPromotion')
                                     : ''
                             }`
                         )
@@ -54,7 +58,7 @@ export default new AmethystCommand({
             .setTitle(`${station.emoji} ${station.name}`)
             .setColor('Orange')
             .setFields({
-                name: '🔗 Link',
+                name: interaction.client.langs.getText(interaction, 'infoStation', 'linkName'),
                 value: `[${station.name}](${station.url})`,
                 inline: true
             })
@@ -67,13 +71,13 @@ export default new AmethystCommand({
                           Math.floor(Math.random() * station.feedbacks.filter((x) => x.comments).length)
                       ].comments + '\n'
                     : '') +
-                    "People's opinion: " +
+                    interaction.client.langs.getText(interaction, 'infoStation', 'peoplesOpinion') +
                     [...new Set(station.feedbacks.map((x) => x.keywords).flat())].join(', ')
             );
         }
         if (recommendation && Object.keys(recommendation).length > 0 && station.url === recommendation.url)
             embed.setFooter({
-                text: 'Recommendation of the day',
+                text: interaction.client.langs.getText(interaction, 'infoStation', 'recommendationOfTheDay'),
                 iconURL: interaction.client.user.displayAvatarURL()
             });
         interaction.reply({ embeds: [embed] }).catch(() => {});
@@ -87,8 +91,11 @@ export default new AmethystCommand({
         if (video.thumbnail)
             embed.setImage(video.thumbnail ?? interaction.client.user.displayAvatarURL({ forceStatic: true }));
         embed.addFields({
-            name: '🎧 Duration',
-            value: station.type === 'station' ? 'Live' : `${formatTime(Math.floor(video.durationMS / 1000))}`,
+            name: interaction.client.langs.getText(interaction, 'infoStation', 'duration'),
+            value:
+                station.type === 'station'
+                    ? interaction.client.langs.getText(interaction, 'infoStation', 'durationTypeLive')
+                    : `${formatTime(Math.floor(video.durationMS / 1000), interaction)}`,
             inline: true
         });
 
@@ -133,10 +140,16 @@ export default new AmethystCommand({
             components: [row<StringSelectMenuBuilder>(selector)],
             embeds: [
                 new EmbedBuilder()
-                    .setTitle('Stations')
+                    .setTitle(interaction.client.langs.getText(interaction, 'findCommand', 'matching'))
                     .setDescription(
-                        `I found ${available.length} stations matching your research${
-                            available.length <= 25 ? '' : `. I picked up **${selectorOptions.length}** of them`
+                        `${interaction.client.langs.getText(interaction, 'findCommand', 'matchingDescription', {
+                            availableLength: available.length
+                        })}${
+                            available.length <= 25
+                                ? ''
+                                : interaction.client.langs.getText(interaction, 'findCommand', 'pickedUp', {
+                                      selectorOptionsLength: selector.options.length
+                                  })
                         }`
                     )
                     .setColor('DarkOrange')

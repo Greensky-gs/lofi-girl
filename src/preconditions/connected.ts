@@ -11,13 +11,13 @@ export default new Precondition('inVoiceChannel').setChatInputRun(({ interaction
             isChatInput: true,
             interaction,
             metadata: {
-                message: ':x: | You are not connected to a voice channel'
+                message: interaction.client.langs.getText(interaction, 'preconditions', 'connected')
             }
         };
     if (
-        !(interaction.member as GuildMember).voice?.channel &&
-        interaction.client.player.nodes.get(interaction.guild) &&
-        interaction.guild.members.me?.voice?.channel?.members?.filter((x) => !x.user.bot).size === 0
+        !(interaction.member as GuildMember).voice?.channel || (
+            interaction.client.player.nodes.get(interaction.guild) &&
+            interaction.guild.members.me?.voice?.channel?.members?.filter((x) => x.user.id === interaction.user.id).size === 0)
     )
         return {
             ok: false,
@@ -25,7 +25,7 @@ export default new Precondition('inVoiceChannel').setChatInputRun(({ interaction
             isChatInput: true,
             interaction,
             metadata: {
-                message: ':x: | You are not connected to a voice channel'
+                message: interaction.client.langs.getText(interaction, 'preconditions', 'connected')
             }
         };
     return {

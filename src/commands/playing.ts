@@ -1,13 +1,16 @@
 import { AmethystCommand, preconditions } from 'amethystjs';
 import { ButtonBuilder, ButtonStyle, Colors, EmbedBuilder } from 'discord.js';
 import playingPrecondition from '../preconditions/playing';
-import { getLoopState, getStationByUrl, getTester, row } from '../utils/functions';
+import { buildLocalizations, getLoopState, getStationByUrl, getTester, row } from '../utils/functions';
 import { TesterButtons } from '../typings/tester';
 
+const locals = buildLocalizations('playing');
 export default new AmethystCommand({
     name: 'playing',
     description: 'Shows the current music',
-    preconditions: [preconditions.GuildOnly, playingPrecondition]
+    preconditions: [preconditions.GuildOnly, playingPrecondition],
+    nameLocalizations: locals.name,
+    descriptionLocalizations: locals.description
 }).setChatInputRun(async ({ interaction }) => {
     const queue = interaction.client.player.nodes.get(interaction.guild);
 
@@ -18,31 +21,43 @@ export default new AmethystCommand({
         .setThumbnail(interaction.client.user.displayAvatarURL({ forceStatic: true }))
         .setImage(playing.thumbnail ?? null)
         .setTitle(`${station.emoji} ${station.name}`)
-        .setDescription(`You are listening to [${station.emoji} ${station.name}](${station.url})`)
+        .setDescription(
+            interaction.client.langs.getText(interaction, 'playing', 'description', {
+                stationName: station.name,
+                stationEmoji: station.emoji,
+                stationUrl: station.url
+            })
+        )
         .setColor(Colors.Orange)
         .setURL(station.url)
         .setFields(
             {
-                name: station.emoji + ' Duration',
-                value: station.type === 'radio' ? 'Live' : queue.node.createProgressBar(),
+                name: interaction.client.langs.getText(interaction, 'playing', 'duration', { emoji: station.emoji }),
+                value:
+                    station.type === 'radio'
+                        ? interaction.client.langs.getText(interaction, 'infoStation', 'durationTypeLive')
+                        : queue.node.createProgressBar(),
                 inline: true
             },
             {
-                name: '🎧 Volume',
+                name: interaction.client.langs.getText(interaction, 'playing', 'volume'),
                 value: `${queue.node.volume}%`,
                 inline: true
             }
         );
     if (queue.tracks.size > 0)
         embed.addFields({
-            name: '🎹 Following',
-            value: `${queue.tracks.size} following${queue.tracks.size > 1 ? 's' : ''}`,
+            name: interaction.client.langs.getText(interaction, 'playing', 'following'),
+            value: interaction.client.langs.getText(interaction, 'playing', 'followingValue', {
+                size: queue.tracks.size,
+                optionalS: queue.tracks.size !== 1 ? 's' : ''
+            }),
             inline: true
         });
-    if (getLoopState(interaction.guild.id))
+    if (!!getLoopState(interaction.guild.id))
         embed.addFields({
-            name: '🔁 Loop',
-            value: 'Auto add is **enabled**',
+            name: interaction.client.langs.getText(interaction, 'playing', 'loopName'),
+            value: interaction.client.langs.getText(interaction, 'playing', 'loopValue'),
             inline: false
         });
 
@@ -70,7 +85,7 @@ export default new AmethystCommand({
                           Math.floor(Math.random() * station.feedbacks.filter((x) => x.comments).length)
                       ].comments + '\n'
                     : '') +
-                "People's opinion: " +
+                interaction.client.langs.getText(interaction, 'infoStation', 'peoplesOpinion') +
                 [...new Set(station.feedbacks.map((x) => x.keywords).flat())].join(', ')
         );
     }

@@ -12,7 +12,7 @@ export default new Precondition('waitTwentySeconds').setButtonRun(({ button, mes
             isButton: true,
             message: 'Wait twenty seconds',
             metadata: {
-                message: emoji + ' | Please wait **20 seconds** before deleting this message'
+                message: button.client.langs.getText(button, 'preconditions', 'waitTwenty', { emoji })
             },
             button
         };
