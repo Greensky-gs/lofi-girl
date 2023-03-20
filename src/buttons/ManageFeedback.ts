@@ -9,7 +9,8 @@ import {
     EmbedBuilder,
     Message,
     ModalBuilder,
-    StringSelectMenuBuilder, TextInputBuilder,
+    StringSelectMenuBuilder,
+    TextInputBuilder,
     TextInputStyle
 } from 'discord.js';
 import confs from '../utils/configs.json';
@@ -53,7 +54,9 @@ export default new ButtonHandler({
                         .setLabel(button.client.langs.getText(button, 'manageFeedback', 'stationNameModalLabel'))
                         .setStyle(TextInputStyle.Short)
                         .setRequired(true)
-                        .setPlaceholder(button.client.langs.getText(button, 'manageFeedback', 'stationNameModalPlaceholder'))
+                        .setPlaceholder(
+                            button.client.langs.getText(button, 'manageFeedback', 'stationNameModalPlaceholder')
+                        )
                         .setMaxLength(100)
                 )
             )
@@ -94,11 +97,15 @@ export default new ButtonHandler({
     if (stations.length > 1) {
         await msg
             .edit({
-                content: button.client.langs.getText(button, 'manageFeedback', 'foundMultipleStations', { stationsCount: stations.length }),
+                content: button.client.langs.getText(button, 'manageFeedback', 'foundMultipleStations', {
+                    stationsCount: stations.length
+                }),
                 components: [
                     row<StringSelectMenuBuilder>(
                         new StringSelectMenuBuilder()
-                            .setPlaceholder(button.client.langs.getText(button, 'manageFeedback', 'chooseAStationLabel'))
+                            .setPlaceholder(
+                                button.client.langs.getText(button, 'manageFeedback', 'chooseAStationLabel')
+                            )
                             .setCustomId('station.selector')
                             .setMaxValues(1)
                             .setOptions(
@@ -107,14 +114,27 @@ export default new ButtonHandler({
                                     .map((st) => ({
                                         label: st.name[0].toUpperCase() + st.name.slice(1),
                                         value: st.url,
-                                        description: button.client.langs.getText(button, 'manageFeedback', 'chooseStationMapping', { stationName: st.name }),
+                                        description: button.client.langs.getText(
+                                            button,
+                                            'manageFeedback',
+                                            'chooseStationMapping',
+                                            { stationName: st.name }
+                                        ),
                                         emoji: st.emoji
                                     }))
                                     .concat([
                                         {
-                                            label: button.client.langs.getText(button, 'manageFeedback', 'cancelChooseLabel'),
+                                            label: button.client.langs.getText(
+                                                button,
+                                                'manageFeedback',
+                                                'cancelChooseLabel'
+                                            ),
                                             value: 'cancel',
-                                            description: button.client.langs.getText(button, 'manageFeedback', 'cancelChooseDescription'),
+                                            description: button.client.langs.getText(
+                                                button,
+                                                'manageFeedback',
+                                                'cancelChooseDescription'
+                                            ),
                                             emoji: '❌'
                                         }
                                     ])
@@ -147,7 +167,11 @@ export default new ButtonHandler({
     if (station.feedbacks.length === 0) {
         reedit();
         msg.edit({
-            content: button.client.langs.getText(button, 'manageFeedback', 'hasNoFeedback', { stationEmoji: station.emoji, stationName: station.name, stationUrl: station.url }),
+            content: button.client.langs.getText(button, 'manageFeedback', 'hasNoFeedback', {
+                stationEmoji: station.emoji,
+                stationName: station.name,
+                stationUrl: station.url
+            }),
             components: []
         }).catch(() => {});
         return setTimeout(() => {
@@ -162,15 +186,27 @@ export default new ButtonHandler({
                 components: [
                     row<StringSelectMenuBuilder>(
                         new StringSelectMenuBuilder()
-                            .setPlaceholder(button.client.langs.getText(button, 'manageFeedback', 'commentSelectionPlaceholder'))
+                            .setPlaceholder(
+                                button.client.langs.getText(button, 'manageFeedback', 'commentSelectionPlaceholder')
+                            )
                             .setMaxValues(1)
                             .setOptions(
                                 feedbacks.map((x) => ({
-                                    label: button.client.langs.getText(button, 'manageFeedback', 'commentMappingLabel', { userId: x.user_id }),
+                                    label: button.client.langs.getText(
+                                        button,
+                                        'manageFeedback',
+                                        'commentMappingLabel',
+                                        { userId: x.user_id }
+                                    ),
                                     value: x.user_id,
                                     description:
                                         x.comments.length > 0
-                                            ? button.client.langs.getText(button, 'manageFeedback', 'commentMappingDescription', { start: resizeStr(x.comments, 50) })
+                                            ? button.client.langs.getText(
+                                                  button,
+                                                  'manageFeedback',
+                                                  'commentMappingDescription',
+                                                  { start: resizeStr(x.comments, 50) }
+                                              )
                                             : x.keywords.splice(0, 5).join(' ')
                                 }))
                             )
@@ -254,8 +290,14 @@ export default new ButtonHandler({
                         .setCustomId(ids.DeleteFeedback)
                         .setStyle(ButtonStyle.Danger)
                         .setDisabled(feedback.comments === ids.NoComment && feedback.keywords.length === 0),
-                    new ButtonBuilder().setLabel(button.client.langs.getText(button, 'manageFeedbackButtons', 'cancel')).setStyle(ButtonStyle.Danger).setCustomId(ids.Cancel),
-                    new ButtonBuilder().setLabel(button.client.langs.getText(button, 'manageFeedbackButtons', 'save')).setStyle(ButtonStyle.Success).setCustomId(ids.Save)
+                    new ButtonBuilder()
+                        .setLabel(button.client.langs.getText(button, 'manageFeedbackButtons', 'cancel'))
+                        .setStyle(ButtonStyle.Danger)
+                        .setCustomId(ids.Cancel),
+                    new ButtonBuilder()
+                        .setLabel(button.client.langs.getText(button, 'manageFeedbackButtons', 'save'))
+                        .setStyle(ButtonStyle.Success)
+                        .setCustomId(ids.Save)
                 ].map((x) => (!!allDisabled === true ? x.setDisabled(true) : x))
             )
         ];
@@ -265,7 +307,12 @@ export default new ButtonHandler({
             .setTitle(button.client.langs.getText(button, 'manageFeedback', 'feedbackModificationTitle'))
             .setURL(station.url)
             .setDescription(
-                button.client.langs.getText(button, 'manageFeedback', 'feedbackModificationDescription', { stationName: station.name, stationEmoji: station.emoji, stationUrl: station.url, userId: feedback.user_id })
+                button.client.langs.getText(button, 'manageFeedback', 'feedbackModificationDescription', {
+                    stationName: station.name,
+                    stationEmoji: station.emoji,
+                    stationUrl: station.url,
+                    userId: feedback.user_id
+                })
             )
             .setColor(message.guild.members.me.displayHexColor)
             .setFields(
@@ -314,8 +361,16 @@ export default new ButtonHandler({
                         .setComponents(
                             row<TextInputBuilder>(
                                 new TextInputBuilder()
-                                    .setLabel(button.client.langs.getText(button, 'manageFeedback', 'addCommentModalLabel'))
-                                    .setPlaceholder(button.client.langs.getText(button, 'manageFeedback', 'addCommentModalPlaceholder'))
+                                    .setLabel(
+                                        button.client.langs.getText(button, 'manageFeedback', 'addCommentModalLabel')
+                                    )
+                                    .setPlaceholder(
+                                        button.client.langs.getText(
+                                            button,
+                                            'manageFeedback',
+                                            'addCommentModalPlaceholder'
+                                        )
+                                    )
                                     .setCustomId('comment')
                                     .setMaxLength(1000)
                                     .setStyle(TextInputStyle.Paragraph)
@@ -368,7 +423,13 @@ export default new ButtonHandler({
                 .setOptions(
                     confs.testKeywords
                         .filter((x) => !feedback.keywords.includes(x))
-                        .map((k) => ({ label: k[0].toUpperCase() + k.slice(1), value: k, description: button.client.langs.getText(button, 'manageFeedback', 'keywordMapping', { keyword: k }) }))
+                        .map((k) => ({
+                            label: k[0].toUpperCase() + k.slice(1),
+                            value: k,
+                            description: button.client.langs.getText(button, 'manageFeedback', 'keywordMapping', {
+                                keyword: k
+                            })
+                        }))
                         .concat({
                             label: button.client.langs.getText(button, 'manageFeedback', 'keywordsCancelLabel'),
                             value: 'cancel',
@@ -418,11 +479,19 @@ export default new ButtonHandler({
                         .setComponents(
                             row<TextInputBuilder>(
                                 new TextInputBuilder()
-                                    .setLabel(button.client.langs.getText(button, 'manageFeedback', 'commentEditModalName'))
+                                    .setLabel(
+                                        button.client.langs.getText(button, 'manageFeedback', 'commentEditModalName')
+                                    )
                                     .setMaxLength(1000)
                                     .setCustomId('comment')
                                     .setRequired(true)
-                                    .setPlaceholder(button.client.langs.getText(button, 'manageFeedback', 'commentEditModalPlaceholder'))
+                                    .setPlaceholder(
+                                        button.client.langs.getText(
+                                            button,
+                                            'manageFeedback',
+                                            'commentEditModalPlaceholder'
+                                        )
+                                    )
                                     .setStyle(TextInputStyle.Paragraph)
                             )
                         )
@@ -460,12 +529,25 @@ export default new ButtonHandler({
                                         .map((k) => ({
                                             label: k[0].toUpperCase() + k.slice(1),
                                             value: k,
-                                            description: button.client.langs.getText(button, 'manageFeedback', 'removeKeywordsDescription', { keyword: k })
+                                            description: button.client.langs.getText(
+                                                button,
+                                                'manageFeedback',
+                                                'removeKeywordsDescription',
+                                                { keyword: k }
+                                            )
                                         }))
                                         .concat({
-                                            label: button.client.langs.getText(button, 'manageFeedback', 'keywordsCancelLabel'),
+                                            label: button.client.langs.getText(
+                                                button,
+                                                'manageFeedback',
+                                                'keywordsCancelLabel'
+                                            ),
                                             value: 'cancel',
-                                            description: button.client.langs.getText(button, 'manageFeedback', 'keywordsCancelDesc')
+                                            description: button.client.langs.getText(
+                                                button,
+                                                'manageFeedback',
+                                                'keywordsCancelDesc'
+                                            )
                                         })
                                 )
                                 .setMaxValues(feedback.keywords.length + 1)

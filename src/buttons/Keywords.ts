@@ -30,7 +30,9 @@ export default new ButtonHandler({
                         .setOptions(
                             testKeywords.map((k) => ({
                                 label: k[0].toUpperCase() + k.slice(1),
-                                description: button.client.langs.getText(button, 'keywords', 'addKKeyword', { keyword: k }),
+                                description: button.client.langs.getText(button, 'keywords', 'addKKeyword', {
+                                    keyword: k
+                                }),
                                 value: k
                             }))
                         )

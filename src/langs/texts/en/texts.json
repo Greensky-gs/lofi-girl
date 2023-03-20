@@ -78,7 +78,8 @@
         "help": "Help page",
         "description": "Here is the list of my commands :\n{{list}}",
         "more": "More help",
-        "moreValue": "If you need more help, use the command `guide`"
+        "moreValue": "If you need more help, use the command `guide`",
+        "noPermission": "No permissions required"
     },
     "infoBot": {
         "title": "Bot informations",

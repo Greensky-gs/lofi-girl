@@ -44,7 +44,10 @@ export default new ButtonHandler({
             content: button.client.langs.getText(button, 'panelKeywords', 'actionContent'),
             components: [
                 row(
-                    new ButtonBuilder().setLabel(button.client.langs.getText(button, 'panelKeywords', 'add')).setCustomId(PanelIds.AddKeyword).setStyle(ButtonStyle.Primary),
+                    new ButtonBuilder()
+                        .setLabel(button.client.langs.getText(button, 'panelKeywords', 'add'))
+                        .setCustomId(PanelIds.AddKeyword)
+                        .setStyle(ButtonStyle.Primary),
                     new ButtonBuilder()
                         .setLabel(button.client.langs.getText(button, 'panelKeywords', 'list'))
                         .setStyle(ButtonStyle.Secondary)
@@ -53,7 +56,10 @@ export default new ButtonHandler({
                         .setLabel(button.client.langs.getText(button, 'panelKeywords', 'remove'))
                         .setStyle(ButtonStyle.Secondary)
                         .setCustomId(PanelIds.RemoveKeyword),
-                    new ButtonBuilder().setLabel(button.client.langs.getText(button, 'panelKeywords', 'cancel')).setCustomId('cancel').setStyle(ButtonStyle.Danger)
+                    new ButtonBuilder()
+                        .setLabel(button.client.langs.getText(button, 'panelKeywords', 'cancel'))
+                        .setCustomId('cancel')
+                        .setStyle(ButtonStyle.Danger)
                 )
             ]
         })
@@ -135,9 +141,7 @@ export default new ButtonHandler({
         msg.edit({
             content: button.client.langs.getText(button, 'panelKeywords', 'added'),
             components: [
-                row(
-                    button.client.langs.getButton(button, 'deleteMessage', { id: 'delete-message', style: 'Danger' })
-                )
+                row(button.client.langs.getButton(button, 'deleteMessage', { id: 'delete-message', style: 'Danger' }))
             ]
         }).catch(() => {});
         return;
@@ -152,9 +156,7 @@ export default new ButtonHandler({
             .setDescription(
                 button.client.langs.getText(button, 'panelKeywords', 'listDescription', {
                     listLength: configs.testKeywords.length.toLocaleString(button.locale),
-                    list: configs.testKeywords
-                    .map((x) => `\`${x}\``)
-                    .join(' ')
+                    list: configs.testKeywords.map((x) => `\`${x}\``).join(' ')
                 })
             );
 
@@ -162,9 +164,7 @@ export default new ButtonHandler({
         msg.edit({
             embeds: [embed],
             components: [
-                row(
-                    button.client.langs.getButton(button, 'deleteMessage', { id: 'delete-message', style: 'Danger' })
-                )
+                row(button.client.langs.getButton(button, 'deleteMessage', { id: 'delete-message', style: 'Danger' }))
             ],
             content: button.client.langs.getText(button, 'panelKeywords', 'listContent')
         }).catch(() => {});
@@ -181,7 +181,12 @@ export default new ButtonHandler({
                             .setOptions(
                                 configs.testKeywords.map((x) => ({
                                     label: x[0].toUpperCase() + x.slice(1),
-                                    description: button.client.langs.getText(button, 'panelKeywords', 'deleteDescription', { keyword: x }),
+                                    description: button.client.langs.getText(
+                                        button,
+                                        'panelKeywords',
+                                        'deleteDescription',
+                                        { keyword: x }
+                                    ),
                                     value: x
                                 }))
                             )
@@ -204,7 +209,9 @@ export default new ButtonHandler({
         await reply.deferUpdate().catch(() => {});
         await msg
             .edit({
-                content: button.client.langs.getText(button, 'panelKeywords', 'confirmationContent', { keyword: reply.values.map((x) => `\`${x}\``).join(' ') }),
+                content: button.client.langs.getText(button, 'panelKeywords', 'confirmationContent', {
+                    keyword: reply.values.map((x) => `\`${x}\``).join(' ')
+                }),
                 components: [
                     row(
                         button.client.langs.getButton(button, 'yes', { id: 'yes', style: 'Success' }),
@@ -228,9 +235,10 @@ export default new ButtonHandler({
 
         msg.edit({
             components: [],
-            content: button.client.langs.getText(button, 'panelKeywords', 'deleted', { emoji: boolEmojis(true), list: reply.values
-                .map((x) => `\`${x}\``)
-                .join(' ') })
+            content: button.client.langs.getText(button, 'panelKeywords', 'deleted', {
+                emoji: boolEmojis(true),
+                list: reply.values.map((x) => `\`${x}\``).join(' ')
+            })
         }).catch(() => {});
         reedit();
         setTimeout(() => {

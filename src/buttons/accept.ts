@@ -35,7 +35,10 @@ export default new ButtonHandler({
                     new TextInputBuilder()
                         .setCustomId('a.author')
                         .setLabel(button.client.langs.getText(button, 'acceptButton', 'authorName'))
-                        .setValue(data.title.split('-')[0] ?? button.client.langs.getText(button, 'acceptButton', 'authorNotFound'))
+                        .setValue(
+                            data.title.split('-')[0] ??
+                                button.client.langs.getText(button, 'acceptButton', 'authorNotFound')
+                        )
                         .setRequired(true)
                         .setStyle(TextInputStyle.Short)
                 ]
@@ -59,7 +62,10 @@ export default new ButtonHandler({
                         .setLabel(button.client.langs.getText(button, 'acceptButton', 'emojiName'))
                         .setRequired(true)
                         .setStyle(TextInputStyle.Short)
-                        .setValue(findEmoji(data.title) ?? button.client.langs.getText(button, 'acceptButton', 'emojiDefaultValue'))
+                        .setValue(
+                            findEmoji(data.title) ??
+                                button.client.langs.getText(button, 'acceptButton', 'emojiDefaultValue')
+                        )
                 ]
             })
         );
@@ -107,5 +113,7 @@ export default new ButtonHandler({
             .send(`🎧 | Your [suggestion](${data.url}) has been accepted !\nThank you for submitting a music`)
             .catch(() => {});
 
-    message.edit({ components: [], content: button.client.langs.getText(button, 'acceptButton', 'addedData') }).catch(() => {});
+    message
+        .edit({ components: [], content: button.client.langs.getText(button, 'acceptButton', 'addedData') })
+        .catch(() => {});
 });
