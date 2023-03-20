@@ -30,16 +30,16 @@ export default new AmethystCommand({
                 new EmbedBuilder()
                     .setTitle(
                         interaction.client.langs.getText(interaction, 'help', 'commandEmbedTitle', {
-                            commandName: locals.name[interaction.locale] ?? cmd.options.name
+                            commandName: cmd.options.nameLocalizations[interaction.locale] ?? cmd.options.name
                         })
                     )
-                    .setDescription(locals.description[interaction.locale] ?? cmd.options.description)
+                    .setDescription(cmd.options.descriptionLocalizations[interaction.locale] ?? cmd.options.description)
                     .setFields(
                         {
                             name: interaction.client.langs.getText(interaction, 'help', 'permissionsName'),
                             value: cmd.options.preconditions?.find((x) => x.name === 'adminIfNotAlone')
                                 ? interaction.client.langs.getText(interaction, 'help', 'adminIfNotAlone')
-                                : '',
+                                : interaction.client.langs.getText(interaction, 'help', 'noPermission'),
                             inline: false
                         },
                         {
