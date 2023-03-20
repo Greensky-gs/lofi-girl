@@ -15,19 +15,19 @@ export default new ButtonHandler({
         return button
             .reply({
                 ephemeral: true,
-                content: `:x: | The tester isn't cached. Please try again later`
+                content: button.client.langs.getText(button, 'ownerRejects', 'testerNotCached')
             })
             .catch(() => {});
     await button
         .showModal(
             new ModalBuilder()
-                .setTitle('Rejection')
+                .setTitle(button.client.langs.getText(button, 'ownerRejects', 'modalTitle'))
                 .setCustomId('modal-rejection')
                 .setComponents(
                     row<TextInputBuilder>(
                         new TextInputBuilder()
-                            .setLabel('Reason')
-                            .setPlaceholder('Reason for the rejection')
+                            .setLabel(button.client.langs.getText(button, 'ownerRejects', 'reasonLabel'))
+                            .setPlaceholder(button.client.langs.getText(button, 'ownerRejects', 'reasonPlaceholder'))
                             .setStyle(TextInputStyle.Paragraph)
                             .setRequired(true)
                             .setCustomId('reason')
@@ -54,7 +54,7 @@ export default new ButtonHandler({
     message
         .edit({
             components: [],
-            content: `Feedback rejected`
+            content: button.client.langs.getText(button, 'ownerRejects', 'feedbackRejected')
         })
         .catch(() => {});
 });

@@ -1,5 +1,11 @@
 {
     "deleteMessage": {
         "label": "Delete this message"
+    },
+    "yes": {
+        "label": "Yes"
+    },
+    "no": {
+        "label": "No"
     }
 }

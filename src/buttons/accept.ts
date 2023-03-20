@@ -18,13 +18,13 @@ export default new ButtonHandler({
     const beats = data.title.split(/lofi {0,}hip {0,}hop {0,}\//i)[1] ?? 'no beats found)';
     const modal = new ModalBuilder()
         .setCustomId('accept-modal')
-        .setTitle('Station data')
+        .setTitle(button.client.langs.getText(button, 'acceptButton', 'modalTitle'))
         .setComponents(
             new ActionRowBuilder({
                 components: [
                     new TextInputBuilder()
                         .setCustomId('a.name')
-                        .setLabel('Name')
+                        .setLabel(button.client.langs.getText(button, 'acceptButton', 'nameName'))
                         .setStyle(TextInputStyle.Short)
                         .setValue((data.title.split('-')[1] ?? data.title).split('[')[0] ?? data.title)
                         .setRequired(true)
@@ -34,8 +34,8 @@ export default new ButtonHandler({
                 components: [
                     new TextInputBuilder()
                         .setCustomId('a.author')
-                        .setLabel('Music author(s)')
-                        .setValue(data.title.split('-')[0] ?? 'No author found')
+                        .setLabel(button.client.langs.getText(button, 'acceptButton', 'authorName'))
+                        .setValue(data.title.split('-')[0] ?? button.client.langs.getText(button, 'acceptButton', 'authorNotFound'))
                         .setRequired(true)
                         .setStyle(TextInputStyle.Short)
                 ]
@@ -44,7 +44,7 @@ export default new ButtonHandler({
                 components: [
                     new TextInputBuilder()
                         .setCustomId('a.beats')
-                        .setLabel('Beats')
+                        .setLabel(button.client.langs.getText(button, 'acceptButton', 'beatsName'))
                         .setRequired(true)
                         .setStyle(TextInputStyle.Short)
                         .setValue(
@@ -56,10 +56,10 @@ export default new ButtonHandler({
                 components: [
                     new TextInputBuilder()
                         .setCustomId('a.emoji')
-                        .setLabel('Emoji')
+                        .setLabel(button.client.langs.getText(button, 'acceptButton', 'emojiName'))
                         .setRequired(true)
                         .setStyle(TextInputStyle.Short)
-                        .setValue(findEmoji(data.title) ?? 'Emoji')
+                        .setValue(findEmoji(data.title) ?? button.client.langs.getText(button, 'acceptButton', 'emojiDefaultValue'))
                 ]
             })
         );
@@ -97,7 +97,7 @@ export default new ButtonHandler({
 
     reply
         .reply({
-            content: `🎧 | Music added`,
+            content: button.client.langs.getText(button, 'acceptButton', 'added'),
             ephemeral: true
         })
         .catch(() => {});
@@ -107,5 +107,5 @@ export default new ButtonHandler({
             .send(`🎧 | Your [suggestion](${data.url}) has been accepted !\nThank you for submitting a music`)
             .catch(() => {});
 
-    message.edit({ components: [], content: `Music added` }).catch(() => {});
+    message.edit({ components: [], content: button.client.langs.getText(button, 'acceptButton', 'addedData') }).catch(() => {});
 });

@@ -41,19 +41,19 @@ export default new ButtonHandler({
     const msg = (await button
         .reply({
             fetchReply: true,
-            content: `What action do you want to do ?`,
+            content: button.client.langs.getText(button, 'panelKeywords', 'actionContent'),
             components: [
                 row(
-                    new ButtonBuilder().setLabel('Add').setCustomId(PanelIds.AddKeyword).setStyle(ButtonStyle.Primary),
+                    new ButtonBuilder().setLabel(button.client.langs.getText(button, 'panelKeywords', 'add')).setCustomId(PanelIds.AddKeyword).setStyle(ButtonStyle.Primary),
                     new ButtonBuilder()
-                        .setLabel('List')
+                        .setLabel(button.client.langs.getText(button, 'panelKeywords', 'list'))
                         .setStyle(ButtonStyle.Secondary)
                         .setCustomId(PanelIds.KeywordsList),
                     new ButtonBuilder()
-                        .setLabel('Remove')
+                        .setLabel(button.client.langs.getText(button, 'panelKeywords', 'remove'))
                         .setStyle(ButtonStyle.Secondary)
                         .setCustomId(PanelIds.RemoveKeyword),
-                    new ButtonBuilder().setLabel('Cancel').setCustomId('cancel').setStyle(ButtonStyle.Danger)
+                    new ButtonBuilder().setLabel(button.client.langs.getText(button, 'panelKeywords', 'cancel')).setCustomId('cancel').setStyle(ButtonStyle.Danger)
                 )
             ]
         })
@@ -81,20 +81,20 @@ export default new ButtonHandler({
         if (configs.testKeywords.length === 25) {
             reedit();
             msg.edit({
-                content: `:x: | You can't add more keywords, because there are already 25 keywords, wich is the maximum available`,
+                content: button.client.langs.getText(button, 'panelKeywords', 'cantAddMoreKeywords'),
                 components: []
             }).catch(() => {});
             return;
         }
         await rep.showModal(
             new ModalBuilder()
-                .setTitle('Keyword')
+                .setTitle(button.client.langs.getText(button, 'panelKeywords', 'addTitle'))
                 .setCustomId('keywordModal')
                 .setComponents(
                     row<TextInputBuilder>(
                         new TextInputBuilder()
-                            .setLabel('Keyword')
-                            .setPlaceholder('Keyword you want to add')
+                            .setLabel(button.client.langs.getText(button, 'panelKeywords', 'addLabel'))
+                            .setPlaceholder(button.client.langs.getText(button, 'panelKeywords', 'addPlaceholder'))
                             .setRequired(true)
                             .setStyle(TextInputStyle.Short)
                             .setCustomId('keyword')
@@ -115,14 +115,14 @@ export default new ButtonHandler({
         const word = keyword.fields.getTextInputValue('keyword').split(/ +/)[0];
         if (!word) {
             reedit();
-            msg.edit(`:x: | No keyword found`).catch(() => {});
+            msg.edit(button.client.langs.getText(button, 'panelKeywords', 'keywordNotFound')).catch(() => {});
             return setTimeout(() => {
                 msg.delete().catch(() => {});
             }, 5000);
         }
         if (configs.testKeywords.includes(word.toLowerCase())) {
             reedit();
-            msg.edit(`:x: | Already exists`).catch(() => {});
+            msg.edit(button.client.langs.getText(button, 'panelKeywords', 'alreadyExists')).catch(() => {});
             return setTimeout(() => {
                 msg.delete().catch(() => {});
             }, 5000);
@@ -133,13 +133,10 @@ export default new ButtonHandler({
 
         reedit();
         msg.edit({
-            content: `${boolEmojis(true)} | Keyword added`,
+            content: button.client.langs.getText(button, 'panelKeywords', 'added'),
             components: [
                 row(
-                    new ButtonBuilder()
-                        .setLabel('Delete message')
-                        .setStyle(ButtonStyle.Danger)
-                        .setCustomId('delete-message')
+                    button.client.langs.getButton(button, 'deleteMessage', { id: 'delete-message', style: 'Danger' })
                 )
             ]
         }).catch(() => {});
@@ -148,23 +145,28 @@ export default new ButtonHandler({
     if (rep.customId === PanelIds.KeywordsList) {
         reedit();
         const embed = new EmbedBuilder()
-            .setTitle('Keyword')
+            .setTitle(button.client.langs.getText(button, 'panelKeywords', 'listTitle'))
             .setThumbnail(message.client.user.displayAvatarURL())
             .setTimestamp()
             .setColor(message.guild.members.me.displayHexColor)
             .setDescription(
-                `There are **${configs.testKeywords.length.toLocaleString()}** keywords :\n${configs.testKeywords
+                button.client.langs.getText(button, 'panelKeywords', 'listDescription', {
+                    listLength: configs.testKeywords.length.toLocaleString(button.locale),
+                    list: configs.testKeywords
                     .map((x) => `\`${x}\``)
-                    .join(' ')}`
+                    .join(' ')
+                })
             );
 
         rep.deferUpdate().catch(() => {});
         msg.edit({
             embeds: [embed],
             components: [
-                row(new ButtonBuilder().setLabel('Delete').setCustomId('delete-message').setStyle(ButtonStyle.Danger))
+                row(
+                    button.client.langs.getButton(button, 'deleteMessage', { id: 'delete-message', style: 'Danger' })
+                )
             ],
-            content: `Keywords`
+            content: button.client.langs.getText(button, 'panelKeywords', 'listContent')
         }).catch(() => {});
         return;
     }
@@ -179,14 +181,14 @@ export default new ButtonHandler({
                             .setOptions(
                                 configs.testKeywords.map((x) => ({
                                     label: x[0].toUpperCase() + x.slice(1),
-                                    description: `Delete keyword ${x}`,
+                                    description: button.client.langs.getText(button, 'panelKeywords', 'deleteDescription', { keyword: x }),
                                     value: x
                                 }))
                             )
                             .setMaxValues(configs.testKeywords.length)
                     )
                 ],
-                content: `Wich keyword(s) do you want to delete ?`
+                content: button.client.langs.getText(button, 'panelKeywords', 'deleteContent')
             })
             .catch(() => {});
 
@@ -202,11 +204,11 @@ export default new ButtonHandler({
         await reply.deferUpdate().catch(() => {});
         await msg
             .edit({
-                content: `Are you sure that you want to delete ${reply.values.map((x) => `\`${x}\``).join(' ')} ?`,
+                content: button.client.langs.getText(button, 'panelKeywords', 'confirmationContent', { keyword: reply.values.map((x) => `\`${x}\``).join(' ') }),
                 components: [
                     row(
-                        new ButtonBuilder().setLabel('Yes').setStyle(ButtonStyle.Success).setCustomId('yes'),
-                        new ButtonBuilder().setLabel('No').setStyle(ButtonStyle.Danger).setCustomId('no')
+                        button.client.langs.getButton(button, 'yes', { id: 'yes', style: 'Success' }),
+                        button.client.langs.getButton(button, 'no', { id: 'no', style: 'Danger' })
                     )
                 ]
             })
@@ -226,9 +228,9 @@ export default new ButtonHandler({
 
         msg.edit({
             components: [],
-            content: `${boolEmojis(true)} | The keyword(s) ${reply.values
+            content: button.client.langs.getText(button, 'panelKeywords', 'deleted', { emoji: boolEmojis(true), list: reply.values
                 .map((x) => `\`${x}\``)
-                .join(' ')} have been removed`
+                .join(' ') })
         }).catch(() => {});
         reedit();
         setTimeout(() => {

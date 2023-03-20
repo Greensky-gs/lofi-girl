@@ -37,7 +37,9 @@
         "notAllowedToInteract": ":x: | You're not allowed to interact with this message",
         "stationNotFound": ":x: | Music not found",
         "stationTypeStation": "station",
-        "stationTypeRadio": "radio"
+        "stationTypeRadio": "radio",
+        "commandCanceled": "💡 | Command canceled",
+        "actionCanceled": "💡 | Action canceled"
     },
     "addCommand": {
         "addAtEndOfRadio": ":x: | You can't add a station after a never-ending station",
@@ -148,5 +150,118 @@
         "minutes": "minutes",
         "seconds": "seconds",
         "joiner": "and"
+    },
+    "acceptButton": {
+        "modalTitle": "Station data",
+        "nameName": "Name",
+        "authorName": "Music author(s)",
+        "authorNotFound": "No author found",
+        "beatsName": "Beats",
+        "emojiName": "Emoji",
+        "emojiDefaultValue": "Emoji",
+        "added": "🎧 | Music added",
+        "addedData": "Music added"
+    },
+    "addComment": {
+        "modalName": "Comment",
+        "commentName": "Comment",
+        "placeholder": "Write your comment about {{stationEmoji}} {{stationName}} here",
+        "fieldName": "Comment"
+    },
+    "deleteMessage": {
+        "errored": "❌ | I can't delete this message"
+    },
+    "denyButton": {
+        "usageQuestion": "❓ | What do you want to use ?",
+        "templateName": "Template",
+        "customName": "Custom",
+        "templateQuestion": "❓ | Choose a template",
+        "templateUsed": "✅ | Template used",
+        "replyName": "Reply",
+        "replyLabel": "Reply content",
+        "replyPlaceholder": "Enter your reply content here",
+        "suggestionRefused": "❌ | Suggestion refused"
+    },
+    "keywords": {
+        "addKKeyword": "Add {{keyword}} keyword",
+        "fieldName": "Keywords"
+    },
+    "manageFeedback": {
+        "stationNameModalTitle": "Station",
+        "stationNameModalPlaceholder": "Please enter a station name",
+        "stationNameModalLabel": "Station name",
+        "thinking": "...thinking",
+        "cannotFindStation": "❌ | I cannot find a matching station",
+        "foundMultipleStations": "I found **{{stationsCount}}** matching stations",
+        "chooseAStationLabel": "Choose a station",
+        "chooseStationMapping": "Station {{stationName}}",
+        "cancelChooseLabel": "Cancel",
+        "cancelChooseDescription": "Cancel the selection",
+        "hasNoFeedback": "❌ | The station [{{stationEmoji}} {{stationName}}]({{stationUrl}}) has no feedback",
+        "commentSelectionText": "With wich comment do you work with ?",
+        "commentSelectionPlaceholder": "Select a comment",
+        "commentMappingLabel": "By {{userId}}",
+        "commentMappingDescription": "Starting by {{start}}",
+        "feedbackModificationTitle": "Feedback modification",
+        "feedbackModificationDescription": "You are editing the feedback by <@{{userId}}> on the [{{stationEmoji}} {{stationName}}]({{stationUrl}}) station",
+        "commentFieldName": "Comment",
+        "keywordsFieldName": "Keywords",
+        "commentFieldDefault": "No comment",
+        "commentKeywordsDefault": "No keywords",
+        "addCommentModalTitle": "Comment adding",
+        "addCommentModalLabel": "Comment",
+        "addCommentModalPlaceholder": "Write the comment here",
+        "noKeywordsToAdd": "❌ | There is no keyword to add",
+        "keywordMapping": "Keyword {{keyword}}",
+        "keywordsCancelLabel": "Cancel",
+        "keywordsCancelDesc": "Cancel the selection",
+        "keywordsSelectionContent": "❓ | Wich keywords to you want to add",
+        "commentEditModalTitle": "Comment edition",
+        "commentEditModalPlaceholder": "Write your comment here",
+        "keywordsRemoveContent": "❓ | Wich keyword(s) do you want to remove ?",
+        "removeKeywordsDescription": "Remove the keyword {{keyword}}",
+        "saved": "{{emoji}} | The station [{{stationEmoji}} {{stationName}}](<{{stationUrl}}>) has been edited"
+    },
+    "manageFeedbackButtons": {
+        "deleteFeedback": "Delete Feedback",
+        "editComment": "Edit comment",
+        "deleteComment": "Delete comment",
+        "addComment": "Add comment",
+        "addKeywords": "Add keywords",
+        "deleteKeywords": "Delete keywords",
+        "RemoveKeyword": "Remove a keyword",
+        "cancel": "Cancel",
+        "save": "Save feedback"
+    },
+    "ownerRejects": {
+        "testerNotCached": "❌ | The tester isn't cached. Please try again later",
+        "modalTitle": "Rejection",
+        "reasonLabel": "Reason",
+        "reasonPlaceholder": "Reason for the rejection",
+        "feedbackRejected": "❌ | Feedback rejected"
+    },
+    "ownerValidate": {
+        "feedbackAdded": "✅ | Feedback added"
+    },
+    "panelKeywords": {
+        "actionContent": "❓ | What action do you want to do ?",
+        "add": "Add",
+        "list": "List",
+        "remove": "Remove",
+        "cancel": "Cancel",
+        "cantAddMoreKeywords": "❌ | You can't add more keywords, because there are already 25 keywords, wich is the maximum available",
+        "addTitle": "Keywords",
+        "addLabel": "Keyword",
+        "addPlaceholder": "Keyword you want to add",
+        "keywordNotFound": "❌ | No keyword found",
+        "alreadyExists": "❌ | Already exists",
+        "added": "✅ | Keyword added",
+        "listTitle": "Keywords",
+        "listDescription": "There are **{{listLength}}** keywords :\n{{list}}",
+        "listContent": "Keywords",
+        "deleteContent": "❓ | Wich keyword(s) do you want to delete ?",
+        "deleteDescription": "Delete keyword {{keyword}}",
+        "confirmationContent": "❓ | Are you sure you want to delete {{keyword}} ?",
+        "deleted": "{{emoji}} | The keywords {{list}} have been removed"
     }
 }

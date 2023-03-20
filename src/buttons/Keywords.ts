@@ -30,7 +30,7 @@ export default new ButtonHandler({
                         .setOptions(
                             testKeywords.map((k) => ({
                                 label: k[0].toUpperCase() + k.slice(1),
-                                description: `Add ${k} keyword`,
+                                description: button.client.langs.getText(button, 'keywords', 'addKKeyword', { keyword: k }),
                                 value: k
                             }))
                         )
@@ -48,7 +48,7 @@ export default new ButtonHandler({
         whoCanReact: 'useronly',
         replies: {
             everyone: {
-                content: `You're not allowed to interact with this message`,
+                content: button.client.langs.getText(button, 'utils', 'notAllowedToInteract'),
                 ephemeral: true
             }
         }
@@ -66,7 +66,7 @@ export default new ButtonHandler({
 
     const keywords = reply.values;
     embed.spliceFields(0, 1, {
-        name: 'Keywords',
+        name: button.client.langs.getText(button, 'keywords', 'fieldName'),
         value: keywords.join(' '),
         inline: true
     });

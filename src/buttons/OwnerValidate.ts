@@ -17,7 +17,7 @@ export default new ButtonHandler({
         return button
             .reply({
                 ephemeral: true,
-                content: `:x: | The tester isn't cached. Please try again later`
+                content: button.client.langs.getText(button, 'ownerRejects', 'testerNotCached')
             })
             .catch(() => {});
 
@@ -38,7 +38,7 @@ export default new ButtonHandler({
     writeFileSync('./dist/utils/configs.json', JSON.stringify(confs, null, 4));
     message
         .edit({
-            content: `Feedback added`,
+            content: button.client.langs.getText(button, 'ownerValidate', 'feedbackAdded'),
             components: []
         })
         .catch(() => {});

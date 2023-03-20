@@ -37,7 +37,9 @@
         "notAllowedToInteract": "❌ | Vous ne pouvez pas interagir avec ce message",
         "stationNotFound": "❌ | Musique introuvable",
         "stationTypeStation": "station",
-        "stationTypeRadio": "radio"
+        "stationTypeRadio": "radio",
+        "commandCanceled": "💡 | Commande annulée",
+        "actionCanceled": "💡 | Action annulée"
     },
     "addCommand": {
         "addAtEndOfRadio": "❌ | Vous ne pouvez pas ajouter de station après une radio",
@@ -148,5 +150,118 @@
         "minutes": "minutes",
         "seconds": "secondes",
         "joiner": "et"
+    },
+    "acceptButton": {
+        "modalTitle": "Informations",
+        "nameName": "Nom",
+        "authorName": "Auteur(s)",
+        "authorNotFound": "Pas d'auteur trouvé",
+        "beatsName": "Beats",
+        "emojiName": "Émoji",
+        "emojiDefaultValue": "Émoji",
+        "added": "🎧 | Musique ajoutée",
+        "addedData": "Musique ajoutée"
+    },
+    "addComment": {
+        "modalName": "Commentaire",
+        "commentName": "Contenu",
+        "placeholder": "Écrivez votre commentaire à propos de {{stationEmoji}} {{stationName}}",
+        "fieldName": "Commentaire"
+    },
+    "deleteMessage": {
+        "errored": "❌ | Je ne peux pas supprimer ce message"
+    },
+    "denyButton": {
+        "usageQuestion": "❓ | Que voulez-vous utiliser ?",
+        "templateName": "Modèle",
+        "customName": "Personnalisé",
+        "templateQuestion": "❓ | Choisissez un modèle",
+        "templateUsed": "✅ | Modèle utilisé",
+        "replyName": "Réponse",
+        "replyLabel": "Contenu",
+        "replyPlaceholder": "Entrez votre réponse",
+        "suggestionRefused": "❌ | Suggestion refusée"
+    },
+    "keywords": {
+        "addKKeyword": "Ajouter le mot-clé {{keyword}}",
+        "fieldName": "Mots-clés"
+    },
+    "manageFeedback": {
+        "stationNameModalTitle": "Station",
+        "stationNameModalPlaceholder": "Entrez un nom de station",
+        "stationNameModalLabel": "Nom de la station",
+        "thiking": "...je réfléchis",
+        "cannotFindStation": "❌ | Je n'ai pas pu trouver de station correspondante",
+        "foundMultipleStations": "J'ai trouvé **{{stationsCount}}** stations correspondantes",
+        "chooseAStationLabel": "Choisissez une station",
+        "chooseStationMapping": "Station {{stationName}}",
+        "cancelChooseLabel": "Annuler",
+        "cancelChooseDescription": "Annuler la sélection",
+        "hasNoFeedback": "❌ | La station [{{stationEmoji}} {{stationName}}]({{stationUrl}}) n'a pas d'avis",
+        "commentSelectionText": "Quel commentaire voulez-vous utiliser ?",
+        "commentSelectionPlaceholder": "Choisissez un commentaire",
+        "commentMappingLabel": "Par {{userId}}",
+        "commentMappingDescription": "Commence par {{start}}",
+        "feedbackModificationTitle": "Modification",
+        "feedbackModificationDescription": "Vous êtes en train de modifier l'avis par <@{{userOd}}> sur la station [{{stationEmoji}} {{stationName}}]({{stationUrl}})",
+        "commentFieldName": "Commentaire",
+        "keywordsFieldName": "Mots-clés",
+        "commentFieldDefault": "Pas de commentaire",
+        "commentKeywordsDefault": "Pas de mots-clés",
+        "addCommentModalTitle": "Ajout de commentaire",
+        "addCommentModalLabel": "Commentaire",
+        "addCommentModalPlaceholder": "Écrivez votre commentaire",
+        "noKeywordsToAdd": "❌ | Il n'y a aucun commentaire à ajouter",
+        "keywordMapping": "Mot-clé {{keyword}}",
+        "keywordsCancelLabel": "Annuler",
+        "keywordsCancelDesc": "Annuler la sélection",
+        "keywordsSelectionContent": "❓ | Quel mot-clé souhaitez-vous ajouter ?",
+        "commentEditModalName": "Modification de commentaire",
+        "commentEditModalPlaceholder": "Écrivez votre commentaire",
+        "keywordsRemoveContent": "❓ | Quel mot(s)-clés voulez-voulez retirer ?",
+        "removeKeywordsDescription": "Retirer le mot clé {{keyword}}",
+        "saved": "{{emoji}} | La station [{{stationEmoji}} {{stationName}}](<{{stationUrl}}>) a été modifiée"
+    },
+    "manageFeedbackButtons": {
+        "deleteFeedback": "Supprimer l'avis",
+        "editComment": "Modifier le commentaire",
+        "deleteComment": "Supprimer le commentaire",
+        "addComment": "Ajouter un commentaire",
+        "addKeywords": "Ajouter des mots-clés",
+        "deleteKeywords": "Supprimer les mots-clés",
+        "RemoveKeyword": "Supprimer un mot-clé",
+        "cancel": "Annuler",
+        "save": "Sauvegarder"
+    },
+    "ownerRejects": {
+        "testerNotCached": "❌ | Le tester n'est pas dans le cache. Merci de réessayer plus tard",
+        "modalTitle": "Refus",
+        "reasonLabel": "Raison",
+        "reasonPlaceholder": "Raison du refus",
+        "feedbackRejected": "❌ | Avis refusé"
+    },
+    "ownerValidate": {
+        "feedbackAdded": "✅ | Avis ajouté"
+    },
+    "panelKeywords": {
+        "actionContent": "❓ | Que voulez-vous faire ?",
+        "add": "Ajouter",
+        "list": "Liste",
+        "remove": "Retirer",
+        "cancel": "Annuler",
+        "cantAddMoreKeywords": "❌ | Vous ne pouvez pas ajouter plus de mots-clés, car vous avez atteint la limite (25)",
+        "addTitle": "Mots-clés",
+        "addLabel": "Mot-clé",
+        "addPlaceholder": "Mot-clé que vous voulez ajouter",
+        "keywordNotFound": "❌ | Pas de mot-clé trouvé",
+        "alreadyExists": "❌ | Ce mot-clé existe déjà",
+        "added": "✅ | Mot-clé ajouté",
+        "listTitle": "Mots-clés",
+        "listDescription": "Il y a **{{listLength}}** mots-clés :\n{{list}}",
+        "listContent": "Mots-clés",
+        "deleteContent": "❓ | Quels mots-clés voulez-vous supprimer ?",
+        "deleteDescription": "Supprimer le mot-clé {{keyword}}",
+        "confirmationContent": "❓ | Êtes-vous sûr de supprimer le(s) mot(s)-clé {{keyword}} ?",
+        "deleted": "{{emoji}} | Le(s) mot(s)-clés {{list}} a(ont) été supprimé(s)"
     }
 }
