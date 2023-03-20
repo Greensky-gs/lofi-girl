@@ -27,7 +27,12 @@ export default new ButtonHandler({
                                 .setMaxLength(1000)
                                 .setRequired(true)
                                 .setPlaceholder(
-                                    resizeStr(button.client.langs.getText(button, 'addComment', 'placeholder', { stationEmoji: station.emoji, stationName: station.name }))
+                                    resizeStr(
+                                        button.client.langs.getText(button, 'addComment', 'placeholder', {
+                                            stationEmoji: station.emoji,
+                                            stationName: station.name
+                                        })
+                                    )
                                 )
                                 .setCustomId('comment')
                         )

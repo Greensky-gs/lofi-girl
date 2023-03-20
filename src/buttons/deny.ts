@@ -4,7 +4,8 @@ import {
     ButtonBuilder,
     ButtonStyle,
     Message,
-    ComponentType, ModalBuilder,
+    ComponentType,
+    ModalBuilder,
     TextInputBuilder,
     TextInputStyle,
     StringSelectMenuBuilder
@@ -29,7 +30,11 @@ export default new ButtonHandler({
                             customId: 'template',
                             style: ButtonStyle.Secondary
                         }),
-                        new ButtonBuilder({ label: button.client.langs.getText(button, 'denyButton', 'customName'), customId: 'custom', style: ButtonStyle.Secondary })
+                        new ButtonBuilder({
+                            label: button.client.langs.getText(button, 'denyButton', 'customName'),
+                            customId: 'custom',
+                            style: ButtonStyle.Secondary
+                        })
                     ]
                 }) as ActionRowBuilder<ButtonBuilder>
             ]
@@ -43,7 +48,10 @@ export default new ButtonHandler({
         whoCanReact: 'useronly'
     });
 
-    if (!mode) return msg.edit({ content: button.client.langs.getText(button, 'utils', 'commandCanceled'), components: [] }).catch(() => {});
+    if (!mode)
+        return msg
+            .edit({ content: button.client.langs.getText(button, 'utils', 'commandCanceled'), components: [] })
+            .catch(() => {});
     let reply: string;
 
     if (mode.customId === 'template') {
