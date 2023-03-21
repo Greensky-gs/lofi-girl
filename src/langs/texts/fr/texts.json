@@ -109,7 +109,7 @@
         "errored": "❌ | Une erreur a eu lieu lors de la connection au salon vocal. Veuillez réessayer plus tard. Si l'erreur persiste, contactez mon serveur de support"
     },
     "playing": {
-        "description": "Vous êtes en train d'écouter [{{stationEmoji}} {{stationName}}]({{stationurl}})",
+        "description": "Vous êtes en train d'écouter [{{stationEmoji}} {{stationName}}]({{stationUrl}})",
         "duration": "{{emoji}} Durée",
         "volume": "🎧 Volume",
         "following": "🎹 À suivre",
