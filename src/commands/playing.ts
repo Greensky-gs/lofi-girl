@@ -29,9 +29,12 @@ export default new AmethystCommand({
 
         const timestamps = {};
         songs.forEach((song) => {
+            console.log(song)
             const splitedSong = song.split(' ');
-            const tm = splitedSong.shift();
+            console.log(splitedSong);
 
+            const tm = splitedSong.shift();
+            console.log(tm);
             const t = tm.slice(1, tm.length - 1);
             timestamps[t] = splitedSong.join(' ');
         })
