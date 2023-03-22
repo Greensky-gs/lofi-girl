@@ -17,15 +17,45 @@ export default new AmethystCommand({
     const playing = queue.currentTrack;
     const station = getStationByUrl(playing.url);
 
+            
+    const extractTracks = () => {
+        const description = playing.raw.description
+        const splited = description.split(/tracklist/gim);
+        const tracks = splited.find(x => x.includes('['));
+        if (!tracks) return {};
+
+        const timestampRegex = /\[((\d\d?):?)?\d\d:\d\d\]/;
+        const songs = tracks.split('\n').filter(x => timestampRegex.test(x))
+
+        const timestamps = {};
+        songs.forEach((song) => {
+            const splitedSong = song.split(' ');
+            const tm = splitedSong.shift();
+
+            const t = tm.slice(1, tm.length - 1);
+            timestamps[t] = splitedSong.join(' ');
+        })
+
+        return timestamps;
+    }
+    const tracks = extractTracks();
+    const formatTime = (key: string) => key.split(':').length === 2 ? (parseInt(key.split(':')[0]) * 60 + parseInt(key.split(':')[1])) : (parseInt(key.split(':')[0]) * 36000 + parseInt(key.split(':')[1]) * 60 + parseInt(key.split(':')[2]));
+
+    const formated = Object.keys(extractTracks()).map(formatTime);
+    const actual = formated.filter(x => x <= formatTime(queue.node.getTimestamp().current.label));
+
+    const playingTrack = tracks[Object.keys(tracks)[actual.length - 1]];
+
     const embed = new EmbedBuilder()
         .setThumbnail(interaction.client.user.displayAvatarURL({ forceStatic: true }))
         .setImage(playing.thumbnail ?? null)
         .setTitle(`${station.emoji} ${station.name}`)
         .setDescription(
-            interaction.client.langs.getText(interaction, 'playing', 'description', {
+            interaction.client.langs.getText(interaction, 'playing', playingTrack ? 'descriptionWithTrack' : 'description', {
                 stationName: station.name,
                 stationEmoji: station.emoji,
-                stationUrl: station.url
+                stationUrl: station.url,
+                trackName: (playingTrack ? (playingTrack.includes('-') ? playingTrack.split('-')[1] : playingTrack) : '')
             })
         )
         .setColor(Colors.Orange)
@@ -89,5 +119,6 @@ export default new AmethystCommand({
                 [...new Set(station.feedbacks.map((x) => x.keywords).flat())].join(', ')
         );
     }
-    interaction.reply({ embeds: [embed], components }).catch(() => {});
+
+    await interaction.reply({ embeds: [embed], components }).catch(() => {});
 });

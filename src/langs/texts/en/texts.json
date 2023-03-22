@@ -110,6 +110,7 @@
     },
     "playing": {
         "description": "You are listening to [{{stationEmoji}} {{stationName}}]({{stationUrl}})",
+        "descriptionWithTrack": "Vous êtes en train d'écouter [{{stationEmoji}} {{stationName}}]({{stationUrl}}) ( {{trackName}} )",
         "duration": "{{emoji}} Duration",
         "volume": "🎧 Volume",
         "following": "🎹 Following",
