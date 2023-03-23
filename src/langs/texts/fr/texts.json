@@ -90,7 +90,7 @@
         "playingInContent": "{{count}} servers",
         "stations": "Stations",
         "links": "Liens",
-        "linksContent": "[Invitation]({{lofigirl}}\n[Lofi Girl](https://youtube.com/c/LofiGirl)\n[Code source](https://github.com/Greensky-gs/lofi-girl)\n[Top.gg]({{topgg}})",
+        "linksContent": "[Invitation]({{lofigirl}})\n[Lofi Girl](https://youtube.com/c/LofiGirl)\n[Code source](https://github.com/Greensky-gs/lofi-girl)\n[Top.gg]({{topgg}})",
         "recommendation": "❤️ Recommendation"
     },
     "infoStation": {
