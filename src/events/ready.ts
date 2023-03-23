@@ -128,7 +128,11 @@ export default new AmethystEvent('ready', async (client) => {
                         .setLabel('Recommendation')
                         .setEmoji('❤️')
                         .setStyle(ButtonStyle.Secondary)
-                        .setCustomId(PanelIds.Recommendation)
+                        .setCustomId(PanelIds.Recommendation),
+                    new ButtonBuilder()
+                        .setLabel('Config file')
+                        .setCustomId(PanelIds.ConfigFile)
+                        .setStyle(ButtonStyle.Secondary)
                 )
             ]
         })
