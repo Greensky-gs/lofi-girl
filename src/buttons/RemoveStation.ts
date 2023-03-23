@@ -76,7 +76,7 @@ export default new ButtonHandler({
                             .setCustomId('selector')
                             .setMaxValues(1)
                             .setPlaceholder('Choose the correct one')
-                            .setOptions(choice.map((x) => ({ label: resizeStr(x.name), emoji: x.emoji, value: x.url })))
+                            .setOptions([... new Set(choice.map(x => x.url))].map(x => getStationByUrl(x)).map((x) => ({ label: resizeStr(x.name), emoji: x.emoji, value: x.url })))
                     )
                 ]
             })
