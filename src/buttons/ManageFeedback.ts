@@ -480,7 +480,7 @@ export default new ButtonHandler({
                             row<TextInputBuilder>(
                                 new TextInputBuilder()
                                     .setLabel(
-                                        button.client.langs.getText(button, 'manageFeedback', 'commentEditModalName')
+                                        button.client.langs.getText(button, 'manageFeedback', 'commentEditModalTitle')
                                     )
                                     .setMaxLength(1000)
                                     .setCustomId('comment')
