@@ -87,7 +87,7 @@
         "servers": "Serveurs",
         "members": "Membres",
         "playingIn": "En train de jouer dans",
-        "playingInContent": "{{count}} servers",
+        "playingInContent": "{{count}} serveurs",
         "stations": "Stations",
         "links": "Liens",
         "linksContent": "[Invitation]({{lofigirl}})\n[Lofi Girl](https://youtube.com/c/LofiGirl)\n[Code source](https://github.com/Greensky-gs/lofi-girl)\n[Top.gg]({{topgg}})",
