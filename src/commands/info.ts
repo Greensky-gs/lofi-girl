@@ -53,7 +53,7 @@ export default new AmethystCommand({
             .setFields(
                 {
                     name: interaction.client.langs.getText(interaction, 'infoBot', 'servers'),
-                    value: interaction.client.guilds.cache.size.toString(),
+                    value: interaction.client.guilds.cache.size.toLocaleString(interaction.locale),
                     inline: true
                 },
                 {
@@ -61,7 +61,7 @@ export default new AmethystCommand({
                     value: interaction.client.guilds.cache
                         .map((x) => x.memberCount)
                         .reduce((a, b) => a + b)
-                        .toString(),
+                        .toLocaleString(interaction.locale),
                     inline: true
                 },
                 {
@@ -73,7 +73,7 @@ export default new AmethystCommand({
                 },
                 {
                     name: interaction.client.langs.getText(interaction, 'infoBot', 'stations'),
-                    value: stations.length.toString(),
+                    value: stations.length.toLocaleString(interaction.locale),
                     inline: false
                 },
                 {

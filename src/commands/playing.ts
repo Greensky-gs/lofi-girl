@@ -90,7 +90,7 @@ export default new AmethystCommand({
         embed.addFields({
             name: interaction.client.langs.getText(interaction, 'playing', 'following'),
             value: interaction.client.langs.getText(interaction, 'playing', 'followingValue', {
-                size: queue.tracks.size,
+                size: queue.tracks.size.toLocaleString(interaction.locale),
                 optionalS: queue.tracks.size !== 1 ? 's' : ''
             }),
             inline: true

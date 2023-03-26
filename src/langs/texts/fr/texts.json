@@ -95,7 +95,7 @@
     },
     "infoStation": {
         "linkName": "🔗 Lien",
-        "peoplesOpinion": "Avis :",
+        "peoplesOpinion": "Avis : ",
         "recommendationOfTheDay": "recommendation du jour",
         "duration": "🎧 Durée",
         "durationTypeStation": "station",
