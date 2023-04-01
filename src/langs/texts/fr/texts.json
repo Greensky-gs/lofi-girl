@@ -107,7 +107,7 @@
         "reply": "🎧 | J'ai quitté le salon vocal"
     },
     "play": {
-        "reply": "🎧 | Écoute de [{{stationEmoji}} {{stationName}}]({{stationUrl}}) dans <#{{channelId}}>",
+        "reply": "🎧 | Écoute de [{{stationEmoji}} {{stationName}}](<{{stationUrl}}>) dans <#{{channelId}}>",
         "errored": "❌ | Une erreur a eu lieu lors de la connection au salon vocal. Veuillez réessayer plus tard. Si l'erreur persiste, contactez mon serveur de support"
     },
     "playing": {

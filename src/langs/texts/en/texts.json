@@ -107,7 +107,7 @@
         "reply": "🎧 | I left the voice channel"
     },
     "play": {
-        "reply": "🎧 | Playing [{{stationEmoji}} {{stationName}}]({{stationUrl}}) in <#{{channelId}}>",
+        "reply": "🎧 | Playing [{{stationEmoji}} {{stationName}}](<{{stationUrl}}>) in <#{{channelId}}>",
         "errored": "❌ | An error occured while connecting to the voice channel. Please try again later. If the error keeps showing, contact my support server."
     },
     "playing": {
