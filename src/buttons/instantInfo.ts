@@ -21,8 +21,8 @@ export default new ButtonHandler({
         stationsCount: stations.length,
         testerCount: testers.length,
         keywords: testKeywords.length,
-        tested: stations.filter(x => x.feedbacks.length > 0).length,
-        testedPercent: Math.floor(stations.filter(x => x.feedbacks.length > 0).length * 100 / stations.length)
+        tested: stations.filter((x) => x.feedbacks.length > 0).length,
+        testedPercent: Math.floor((stations.filter((x) => x.feedbacks.length > 0).length * 100) / stations.length)
     };
     await button
         .editReply({
@@ -73,7 +73,10 @@ export default new ButtonHandler({
                         },
                         {
                             name: button.client.langs.getText(button, 'instantInfo', 'testedName'),
-                            value: button.client.langs.getText(button, 'instantInfo', 'testedValue', { percent: data.testedPercent, count: data.tested }),
+                            value: button.client.langs.getText(button, 'instantInfo', 'testedValue', {
+                                percent: data.testedPercent,
+                                count: data.tested
+                            }),
                             inline: true
                         },
                         {
