@@ -31,7 +31,9 @@
         "stationsValue": "{{stationsCount}} stations, {{testerCount}} testeurs et {{keywords}} mots-clés",
         "pingName": "Ping",
         "pingValue": "Websocket : `{{websocket}}ms`\nRéponse à cette interaction : `{{response}}ms`",
-        "memory": "Mémoire"
+        "memory": "Mémoire",
+        "testedName": "Stations testées",
+        "testedValue": "{{count}} stations ont été testées (environ {{percent}}%)"
     },
     "utils": {
         "notAllowedToInteract": "❌ | Vous ne pouvez pas interagir avec ce message",

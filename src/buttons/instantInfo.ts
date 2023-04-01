@@ -20,7 +20,9 @@ export default new ButtonHandler({
         playingIn: button.client.player.nodes.cache.size,
         stationsCount: stations.length,
         testerCount: testers.length,
-        keywords: testKeywords.length
+        keywords: testKeywords.length,
+        tested: stations.filter(x => x.feedbacks.length > 0).length,
+        testedPercent: Math.floor(stations.filter(x => x.feedbacks.length > 0).length * 100 / stations.length)
     };
     await button
         .editReply({
@@ -67,6 +69,11 @@ export default new ButtonHandler({
                                 testerCount: data.testerCount,
                                 keywords: data.keywords
                             }),
+                            inline: true
+                        },
+                        {
+                            name: button.client.langs.getText(button, 'instantInfo', 'testedName'),
+                            value: button.client.langs.getText(button, 'instantInfo', 'testedValue', { percent: data.testedPercent, count: data.tested }),
                             inline: true
                         },
                         {

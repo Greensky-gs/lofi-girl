@@ -31,7 +31,9 @@
         "stationsValue": "{{stationsCount}} stations, {{testerCount}} testers and {{keywords}} keywords",
         "pingName": "Ping",
         "pingValue": "Websocket: `{{websocket}}ms`\nResponse to this interaction: `{{response}}ms`",
-        "memory": "Memory"
+        "memory": "Memory",
+        "testedName": "Tested stations",
+        "testedValue": "{{count}} stations have been tested (about {{percent}}%)"
     },
     "utils": {
         "notAllowedToInteract": ":x: | You're not allowed to interact with this message",
