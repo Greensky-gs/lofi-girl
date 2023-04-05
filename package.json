@@ -35,6 +35,6 @@
     "tsc": "^2.0.4",
     "typescript": "^4.9.3",
     "youtube-sr": "4.x",
-    "ytdl-core": "4.x"
+    "ytdl-core": "4.10.0"
   }
 }
