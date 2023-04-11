@@ -15,6 +15,13 @@
             "feedbacks": []
         },
         {
+            "url": "https://www.youtube.com/watch?v=MVPTGNGiI-4",
+            "name": "Lofi synthwave radio - beats to chill/game to",
+            "type": "radio",
+            "emoji": "🌌",
+            "feedbacks": []
+        },
+        {
             "url": "https://www.youtube.com/watch?v=lTRiuFIWV54",
             "name": "1 A.M Study session (lofi hip hop/chill beats)",
             "type": "playlist",
@@ -75,7 +82,18 @@
             "name": "Purrple Cat - Distant worlds (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🪐",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A chill music by Purrple cat to enjoy a day with a relaxing and quiet music",
+                    "keywords": [
+                        "long",
+                        "quiet",
+                        "chill",
+                        "relax"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=gnZImHvA0ME",
@@ -1762,7 +1780,18 @@
             "name": "Dr. Dundiff - Winter Love (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "❄️",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A calm music to play to relax and chill",
+                    "keywords": [
+                        "quiet",
+                        "week-end",
+                        "chill",
+                        "calm"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=BOHa1EfnGlg",
@@ -2662,6 +2691,13 @@
                     ]
                 }
             ]
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=6LCAUA9BJ6E",
+            "name": "Phlocalyst - End Of The Road (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌲",
+            "feedbacks": []
         }
     ],
     "emojis": {
@@ -2687,19 +2723,19 @@
         }
     ],
     "recommendation": {
-        "url": "https://www.youtube.com/watch?v=vLqTRzobidk",
-        "name": "Kupla - Melody Mountain (lofi hip hop/relaxing beats)",
+        "url": "https://www.youtube.com/watch?v=gnNGvAMCxqE",
+        "name": "Dr. Dundiff - Winter Love (lofi hip hop/relaxing beats)",
         "type": "playlist",
         "emoji": "❄️",
         "feedbacks": [
             {
                 "user_id": "386479065307152384",
-                "comments": "Amazing music, I love the song that reminds me the cold winter and the incredible moments spent in snowy mountains (especially the song \"Under the bridge\")",
+                "comments": "A calm music to play to relax and chill",
                 "keywords": [
+                    "quiet",
+                    "week-end",
                     "chill",
-                    "calm",
-                    "long",
-                    "relax"
+                    "calm"
                 ]
             }
         ]
@@ -2731,6 +2767,7 @@
         "loud",
         "quiet",
         "memories",
-        "week-end"
+        "week-end",
+        "short"
     ]
 }
