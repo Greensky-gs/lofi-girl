@@ -6,8 +6,8 @@ type command = {
     description: string;
     options?: Record<string, { name: string; description: string }>;
 };
-export type localizationsType<Key extends keyof typeof imports.fr & keyof typeof imports.en> = typeof imports.fr[Key] &
-    typeof imports.en[Key];
+export type localizationsType<Key extends keyof typeof imports.fr & keyof typeof imports.en> =
+    (typeof imports.fr)[Key] & (typeof imports.en)[Key];
 export type localizationBuilder<
     Command extends keyof localizationsType<'commands'>,
     Locales extends string = keyof typeof imports
