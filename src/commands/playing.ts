@@ -101,7 +101,13 @@ export default new AmethystCommand({
             value: interaction.client.langs.getText(interaction, 'playing', 'loopValue'),
             inline: false
         });
+    if (embed.data.fields.length > 1) {
+        const fields = embed.data.fields;
+        embed.spliceFields(0, 3);
 
+        const bar = fields.shift();
+        embed.addFields(...[ ...fields.map(f => ({ ...f, inline: true })), ({ ...bar, inline: false }) ])
+    }
     const components = [];
     if (
         getTester(interaction.user.id) &&
