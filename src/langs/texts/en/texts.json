@@ -92,7 +92,7 @@
         "playingInContent": "{{count}} servers",
         "stations": "Stations",
         "links": "Links",
-        "linksContent": "[Invite me]({{lofigirl}})\n[Lofi Girl Channel](https://youtube.com/c/LofiGirl)\n[Source code](https://github.com/Greensky-gs/lofi-girl)\n[Top.gg]({{topgg}})",
+        "linksContent": "[Invite me]({{lofigirl}})\n[Lofi Girl Channel](https://youtube.com/c/LofiGirl)\n[Source code](https://github.com/Greensky-gs/lofi-girl)\n[Top.gg]({{topgg}})\n[Instagram](https://www.instagram.com/draverindustries/)",
         "recommendation": "❤️ Recommendation of the day"
     },
     "infoStation": {
