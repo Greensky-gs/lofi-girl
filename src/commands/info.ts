@@ -80,7 +80,7 @@ export default new AmethystCommand({
                     name: interaction.client.langs.getText(interaction, 'infoBot', 'links'),
                     value: interaction.client.langs.getText(interaction, 'infoBot', 'linksContent', {
                         topgg: 'https://top.gg/bot/1037028318404419596/',
-                        lofigirl: inviteLink(interaction.client)
+                        lofigirl: interaction.client.user.id === '1037028318404419596' ? 'https://discord.com/api/oauth2/authorize?client_id=1096671831022387250&permissions=2150910208&scope=bot%20applications.commands' : inviteLink(interaction.client)
                     }),
                     inline: false
                 }

@@ -70,7 +70,8 @@
         "protip": "💡 *pro-tip*\nWhen you are listening to a music, you can use the {{playing}} command to see what's played",
         "feedback": "**Feedback system :**\nIf you want to get a feedback about a song, you can see it by using the {{info}} command (using `station` subcommand), or the {{playing}} command, if a feedback has been sent, it will appear.\nIf you want to make your own, you can become a song tester by contacting my owner. You can do it by joining the [support server]({{support}}), or getting to the support by our [top.gg page]({{topgg}})",
         "suggestionsName": "Suggestions",
-        "suggestions": "If you have a suggestion of a Lofi music (from the [Lofi Channel]({{lofi}}), you can submit it to us.\nUse the command {{suggestion}} to submit a song"
+        "suggestions": "If you have a suggestion of a Lofi music (from the [Lofi Channel]({{lofi}}), you can submit it to us.\nUse the command {{suggestion}} to submit a song",
+        "lofiGirlsSister": "In case you want to add the bot, you can add [Lofi Girl's sister]({{link}})"
     },
     "help": {
         "commandEmbedTitle": "{{commandName}} command",
