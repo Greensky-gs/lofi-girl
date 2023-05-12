@@ -52,8 +52,10 @@ export default new AmethystCommand({
     if (interaction.client.user.id === '1037028318404419596') {
         embed.addFields({
             name: "Lofi Girl's sister",
-            value: interaction.client.langs.getText(interaction, 'guide', 'lofiGirlsSister', { link: 'https://discord.com/api/oauth2/authorize?client_id=1096671831022387250&permissions=2150910208&scope=bot%20applications.commands' })
-        })
+            value: interaction.client.langs.getText(interaction, 'guide', 'lofiGirlsSister', {
+                link: 'https://discord.com/api/oauth2/authorize?client_id=1096671831022387250&permissions=2150910208&scope=bot%20applications.commands'
+            })
+        });
     }
     interaction
         .editReply({
