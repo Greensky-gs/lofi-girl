@@ -41,11 +41,6 @@ export default new AmethystCommand({
     const roboURL = `https://www.youtube.com/watch?v=${id}`;
     const info = (await getBasicInfo(roboURL).catch(() => {})) as videoInfo;
 
-    if (!info || !['UCuw1VDsmOWOldKGLYq6AkVg', lofiGirlID].includes(info.videoDetails.author.id))
-        return interaction
-            .editReply(interaction.client.langs.getText(interaction, 'suggest', 'onlyFromLofi'))
-            .catch(() => {});
-
     const station = getStationByUrl(url, false);
     if (station)
         return interaction

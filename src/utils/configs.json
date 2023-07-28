@@ -2757,6 +2757,11 @@
             "label": "Too short",
             "value": "The music playlist is too short to be added",
             "reply": "Hello, you've suggested a music to add it in my songs, unfortunately, I think that this music is too short to be added.\nYou always can try to resubmit it, maybe my owner will accept it.\nI hope you to have a good day !"
+        },
+        {
+            "label": "Invalid author",
+            "value": "The author is not a lofi girl video",
+            "reply": "Hi, your suggestion is not a video from Lofi Girl video, you can suggest videos only from lofi girl channels"
         }
     ],
     "recommendation": {
