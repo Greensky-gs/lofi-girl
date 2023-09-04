@@ -11,7 +11,12 @@ export default new AutocompleteListener({
             splited.some((y) => x.toLowerCase().includes(y.toLowerCase()) || y.toLowerCase().includes(x.toLowerCase()))
         );
 
+        const valids: typeof filtered = [];
+        filtered.forEach((flt) => {
+            if ((valids.join('.').length + flt.length + 1) < 100) valids.push(flt)
+        })
+
         if (filtered.length === 0) return [];
-        return [{ name: resizeStr(filtered.join(' ')), value: filtered.join('.') }];
+        return [{ name: resizeStr(valids.join(' ')), value: valids.join('.') }];
     }
 });
