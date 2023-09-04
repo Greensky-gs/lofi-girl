@@ -499,7 +499,18 @@
             "name": "Mondo loops x Aiguille - Nature's beauty (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🎹",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "Calm music to chill and relax. you can think about your memories while listening to it",
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "calm",
+                        "memories"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=7vj4HLszl4w",
@@ -627,7 +638,18 @@
             "name": "Purrple Cat - Distant worlds II (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🪐",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A good song from Purrple Cat, it follows the first chapter of Distant Worlds and offers good and vibing songs",
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "sleep",
+                        "quiet"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=J1BJScem0l4",
@@ -1635,7 +1657,18 @@
             "name": "Pointy Features x Kanisan x Softy - Shine On (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🌙",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "It's a relaxing music with some enrolling beats",
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "calm",
+                        "background"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=TKSH6bFa7FQ",
@@ -2080,7 +2113,19 @@
             "name": "Kanisan ft. Dario Lessing x Claudia Lessing - Edda (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🌓",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "Really nice song, it is inspiring and the beats are relaxing",
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "calm",
+                        "memories",
+                        "week-end"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=Hmq7Nvd-g84",
@@ -2641,7 +2686,18 @@
             "name": "Lofi Girl - Best of lofi hip hop 2022 (lofi hip hop/relax beats)",
             "type": "playlist",
             "emoji": "🎆",
-            "feedbacks": []
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A good summary of Lofi music 2022, containing some of the best ones",
+                    "keywords": [
+                        "chill",
+                        "calm",
+                        "long",
+                        "memories"
+                    ]
+                }
+            ]
         },
         {
             "url": "https://www.youtube.com/watch?v=1k8h_gB2qII",
@@ -2734,6 +2790,84 @@
             "name": "xander. - Sleepwalking (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🍄",
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "Relaxing beats, I personnaly enjoyed them while working, it's a good background",
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "work",
+                        "background"
+                    ]
+                }
+            ]
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=k4Q3Txhwhcw",
+            "name": "Virtua x Akraa - Aether (lofi hip hop/synthwave beats)",
+            "type": "playlist",
+            "emoji": "🌌",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=1bvbsx-hpFc",
+            "name": "Lofi Girl - Best of summer 2023 (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "☀",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=ldDtjQkLsss",
+            "name": "various authors - Blissful Dreams (lofi hip hop/sleep beats)",
+            "type": "playlist",
+            "emoji": "💤",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=eYQQrdQ4_w0",
+            "name": "Elijah Lee x Casiio - Phantasm (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🎹",
+            "feedbacks": [
+                {
+                    "user_id": "386479065307152384",
+                    "comments": "A chill music to listen when you want to be calm, like during the night or a hot afternoon",
+                    "keywords": [
+                        "chill",
+                        "relax",
+                        "calm",
+                        "slow"
+                    ]
+                }
+            ]
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=l8E0AZ2wJc0",
+            "name": "Living room - Dreamcatcher (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🍃",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=L_CDJ_4OKdA",
+            "name": "Krynoze - Take A Paws (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🐾",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=7plCEb5k7OU",
+            "name": "HoKø x Damien Fleau - Jazz in Tokyo (lofi hip hop/jazz beats)",
+            "type": "playlist",
+            "emoji": "🎷",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=TjX-bp1I6Y8",
+            "name": "Pierson Booth - The Beginning (lofi hip hop/sleepy beats)",
+            "type": "playlist",
+            "emoji": "🌑",
             "feedbacks": []
         }
     ],
@@ -2765,11 +2899,22 @@
         }
     ],
     "recommendation": {
-        "url": "https://www.youtube.com/watch?v=gl5DYoxkI20",
-        "name": "a[way] - frosen roses (lofi hip hop/relaxing beats)",
+        "url": "https://www.youtube.com/watch?v=pxPdsqrQByM",
+        "name": "Purrple Cat - Distant worlds II (lofi hip hop/relaxing beats)",
         "type": "playlist",
-        "emoji": "🌹",
-        "feedbacks": []
+        "emoji": "🪐",
+        "feedbacks": [
+            {
+                "user_id": "386479065307152384",
+                "comments": "A good song from Purrple Cat, it follows the first chapter of Distant Worlds and offers good and vibing songs",
+                "keywords": [
+                    "chill",
+                    "relax",
+                    "sleep",
+                    "quiet"
+                ]
+            }
+        ]
     },
     "testers": [
         {
