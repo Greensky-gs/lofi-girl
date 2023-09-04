@@ -5,8 +5,7 @@ export default new Precondition('botOwner')
         if (user.id !== process.env.botOwner)
             return {
                 ok: false,
-                isChatInput: false,
-                isButton: true,
+                type: 'button',
                 button,
                 message: 'Bot owner only',
                 metadata: {
@@ -15,8 +14,7 @@ export default new Precondition('botOwner')
             };
         return {
             ok: true,
-            isChatInput: false,
-            isButton: true,
+            type: 'button',
             button
         };
     })
@@ -24,8 +22,7 @@ export default new Precondition('botOwner')
         if (message.author.id !== process.env.botOwner) {
             return {
                 ok: false,
-                isChatInput: false,
-                isButton: false,
+                type: 'message',
                 channelMessage: message,
                 message: 'Bot owner only',
                 metadata: {
@@ -35,8 +32,7 @@ export default new Precondition('botOwner')
         }
         return {
             ok: true,
-            isButton: false,
-            isChatInput: false,
+            type: 'message',
             channelMessage: message
         };
     });

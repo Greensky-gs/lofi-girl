@@ -10,12 +10,11 @@ export default new Precondition('isNotAdded').setButtonRun(({ message, button })
                 message: button.client.langs.getText(button, 'preconditions', 'isNotAdded')
             },
             button,
-            isChatInput: false,
-            isButton: true
+            type: 'button'
         };
     return {
         ok: true,
-        isChatInput: false,
+        type: 'button',
         button
     };
 });

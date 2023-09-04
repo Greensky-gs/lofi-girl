@@ -3,12 +3,12 @@ import { GuildMember } from 'discord.js';
 
 export default new Precondition('inVoiceChannel').setChatInputRun(({ interaction }) => {
     if (interaction.replied || interaction.deferred)
-        return { ok: false, message: 'Already handled', isChatInput: true, interaction };
+        return { ok: false, message: 'Already handled', type: 'chatInput', interaction };
     if (!interaction.guild)
         return {
             ok: false,
             message: 'Not connected to a voice channel',
-            isChatInput: true,
+            type: 'chatInput',
             interaction,
             metadata: {
                 message: interaction.client.langs.getText(interaction, 'preconditions', 'connected')
@@ -23,7 +23,7 @@ export default new Precondition('inVoiceChannel').setChatInputRun(({ interaction
         return {
             ok: false,
             message: 'Not connected to a voice channel',
-            isChatInput: true,
+            type: 'chatInput',
             interaction,
             metadata: {
                 message: interaction.client.langs.getText(interaction, 'preconditions', 'connected')
@@ -31,7 +31,7 @@ export default new Precondition('inVoiceChannel').setChatInputRun(({ interaction
         };
     return {
         ok: true,
-        isChatInput: true,
+        type: 'chatInput',
         interaction
     };
 });

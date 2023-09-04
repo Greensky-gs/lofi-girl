@@ -6,7 +6,7 @@ export default new Precondition('suggestChannel')
             interaction.client.debug(`ENV suggestChannel variable is not configured`, DebugImportance.Critical);
             return {
                 ok: false,
-                isChatInput: true,
+                type: 'chatInput',
                 interaction,
                 metadata: {
                     message: interaction.client.langs.getText(interaction, 'preconditions', 'suggestChannel')
@@ -15,7 +15,7 @@ export default new Precondition('suggestChannel')
         }
         return {
             ok: true,
-            isChatInput: true,
+            type: 'chatInput',
             interaction
         };
     })
@@ -30,13 +30,13 @@ export default new Precondition('suggestChannel')
                 .catch(() => {});
             return {
                 ok: false,
-                isChatInput: false,
-                isButton: true
+                type: 'button',
+                button
             };
         }
         return {
             ok: true,
-            isChatInput: false,
-            isButton: true
+            type: 'button',
+            button
         };
     });

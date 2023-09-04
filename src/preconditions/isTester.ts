@@ -6,13 +6,13 @@ export default new Precondition('isTester').setButtonRun(({ button, user }) => {
         button.deferUpdate().catch(() => {});
         return {
             ok: false,
-            isChatInput: false,
-            isButton: true
+            type: 'button',
+            button
         };
     }
     return {
         ok: true,
-        isChatInput: false,
-        isButton: true
+        type: 'button',
+        button
     };
 });

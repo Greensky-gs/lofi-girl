@@ -8,8 +8,7 @@ export default new Precondition('waitTwentySeconds').setButtonRun(({ button, mes
 
         return {
             ok: false,
-            isChatInput: false,
-            isButton: true,
+            type: 'button',
             message: 'Wait twenty seconds',
             metadata: {
                 message: button.client.langs.getText(button, 'preconditions', 'waitTwenty', { emoji })
@@ -19,8 +18,7 @@ export default new Precondition('waitTwentySeconds').setButtonRun(({ button, mes
     }
     return {
         ok: true,
-        isChatInput: false,
-        isButton: true,
+        type: 'button',
         button
     };
 });

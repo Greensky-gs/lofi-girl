@@ -11,13 +11,13 @@ export default new Precondition('adminIfNotAlone').setChatInputRun(({ interactio
             metadata: {
                 message: interaction.client.langs.getText(interaction, 'preconditions', 'adminIfNotAlone')
             },
-            isChatInput: true,
+            type: 'chatInput',
             interaction
         };
     }
     return {
         ok: true,
-        isChatInput: true,
+        type: 'chatInput',
         interaction
     };
 });

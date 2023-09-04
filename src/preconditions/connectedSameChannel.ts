@@ -9,12 +9,12 @@ export default new Precondition('connectedSameChannel').setChatInputRun(({ inter
             metadata: {
                 message: interaction.client.langs.getText(interaction, 'preconditions', 'connectedSameChannel')
             },
-            isChatInput: true,
+            type: 'chatInput',
             interaction
         };
     return {
         ok: true,
-        isChatInput: true,
+        type: 'chatInput',
         interaction
     };
 });
