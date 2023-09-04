@@ -1,7 +1,7 @@
-import { writeFileSync } from "node:fs";
-import { ApiEvent } from "../structures/APIEvent";
+import { writeFileSync } from 'node:fs';
+import { ApiEvent } from '../structures/APIEvent';
 import confs from '../utils/configs.json';
-import { getStationByUrl } from "../utils/functions";
+import { getStationByUrl } from '../utils/functions';
 
 export default new ApiEvent('stationAdd', (change) => {
     if (!!getStationByUrl(change.url, false)) return;
@@ -13,5 +13,5 @@ export default new ApiEvent('stationAdd', (change) => {
         feedbacks: []
     });
 
-    writeFileSync('./dist/utils/configs', JSON.stringify(confs, null, 4))
-})
+    writeFileSync('./dist/utils/configs', JSON.stringify(confs, null, 4));
+});

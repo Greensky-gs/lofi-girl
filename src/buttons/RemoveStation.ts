@@ -148,7 +148,7 @@ export default new ButtonHandler({
         emitterId: '',
         url: station.url,
         userId: user.id
-    })
+    });
     writeFileSync('./dist/utils/configs.json', JSON.stringify(confs, null, 4));
 
     stationName

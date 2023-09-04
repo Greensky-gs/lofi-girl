@@ -13,8 +13,8 @@ export default new AutocompleteListener({
 
         const valids: typeof filtered = [];
         filtered.forEach((flt) => {
-            if ((valids.join('.').length + flt.length + 1) < 100) valids.push(flt)
-        })
+            if (valids.join('.').length + flt.length + 1 < 100) valids.push(flt);
+        });
 
         if (filtered.length === 0) return [];
         return [{ name: resizeStr(valids.join(' ')), value: valids.join('.') }];

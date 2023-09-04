@@ -607,7 +607,7 @@ export default new ButtonHandler({
                     comment: feedback.comments,
                     keywords: feedback.keywords
                 }
-            })
+            });
             writeFileSync('./dist/utils/configs.json', JSON.stringify(confs, null, 4));
         }
     });

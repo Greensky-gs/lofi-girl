@@ -43,7 +43,7 @@ export default new ButtonHandler({
             keywords: data.keywords,
             userId: tester.id
         }
-    })
+    });
     writeFileSync('./dist/utils/configs.json', JSON.stringify(confs, null, 4));
     message
         .edit({

@@ -18,10 +18,10 @@ export default new AmethystEvent('ready', async (client) => {
 
     const events = new ApiEvents();
     client.api.onReceive((type, change) => {
-        const event = events.getEvent(type)
-        if (event) event.call(change)
-        else client.debug(`There is no API Event handler for ${type}`, DebugImportance.Unexpected)
-    })
+        const event = events.getEvent(type);
+        if (event) event.call(change);
+        else client.debug(`There is no API Event handler for ${type}`, DebugImportance.Unexpected);
+    });
 
     const statuses: (() => Promise<ActivityOptions>)[] = [
         async () => {
