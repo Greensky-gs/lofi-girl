@@ -30,6 +30,7 @@
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^5.1.0",
     "fs": "^0.0.1-security",
+    "lofi-girl-api-wrapper": "^0.1.0",
     "soundcloud-scraper": "5.x",
     "spotify-url-info": "3.x",
     "tsc": "^2.0.4",
