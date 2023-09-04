@@ -1,6 +1,6 @@
 import { AmethystClient } from 'amethystjs';
 import { GuildQueue, Player } from 'discord-player';
-import { ButtonBuilder, ButtonStyle, EmbedBuilder, Partials } from 'discord.js';
+import { ButtonBuilder, ButtonStyle, Client, EmbedBuilder, Partials } from 'discord.js';
 import { config } from 'dotenv';
 import {
     boolEmojis,
@@ -16,6 +16,7 @@ import {
 import { TesterButtons } from './typings/tester';
 import { queuesUsers } from './utils/maps';
 import { Langs } from './langs/Manager';
+import { Wrapper } from 'lofi-girl-api-wrapper';
 
 config();
 
@@ -50,7 +51,7 @@ export const client = new AmethystClient(
     }
 );
 
-client.player = new Player(client, {
+client.player = new Player(client as unknown as Client, {
     ytdlOptions: {
         filter: 'audioonly',
         quality: 'highestaudio',
@@ -117,10 +118,6 @@ declare module 'discord.js' {
     interface Client {
         player: Player;
         langs: Langs;
-    }
-}
-declare module 'amethystjs' {
-    interface AmethystClient {
-        player: Player;
+        api: Wrapper;
     }
 }

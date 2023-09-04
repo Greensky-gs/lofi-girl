@@ -9,7 +9,7 @@ import { findEmoji } from '../utils/functions';
 export default new ButtonHandler({
     customId: 'accept',
     preconditions: [botOwner, isNotAdded]
-}).setRun(async ({ button, message }) => {
+}).setRun(async ({ button, message, client }) => {
     const data = {
         title: button.message.embeds[0].title,
         url: button.message.embeds[0].url
@@ -89,9 +89,10 @@ export default new ButtonHandler({
     const emoji = g('emoji');
     const authors = g('author');
 
+    const stationName = `${authors} - ${title} ${beatsV}`.replace(/ +/g, ' ');
     confs.stations.push({
         url: data.url,
-        name: `${authors} - ${title} ${beatsV}`.replace(/ +/g, ' '),
+        name: stationName,
         type: 'playlist',
         emoji,
         feedbacks: []
@@ -100,6 +101,13 @@ export default new ButtonHandler({
         `./${__filename.endsWith('.ts') ? 'src' : 'dist'}/utils/configs.json`,
         JSON.stringify(confs, null, 4)
     );
+    client.api.update('stationAdd', {
+        name: stationName,
+        emitterId: '',
+        emoji,
+        url: data.url,
+        type: 'playlist'
+    });
 
     reply
         .reply({

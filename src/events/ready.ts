@@ -1,13 +1,27 @@
-import { AmethystEvent } from 'amethystjs';
+import { AmethystEvent, DebugImportance } from 'amethystjs';
 import { ActivityOptions, ActivityType, ButtonBuilder, ButtonStyle, EmbedBuilder, TextChannel } from 'discord.js';
 import { station } from '../typings/station';
 import { stations, recommendation } from '../utils/configs.json';
 import { row } from '../utils/functions';
 import { PanelIds } from '../typings/bot';
 import { Langs } from '../langs/Manager';
+import { Wrapper } from 'lofi-girl-api-wrapper';
+import { ApiEvents } from '../structures/ApiEvents';
 
 export default new AmethystEvent('ready', async (client) => {
     client.langs = new Langs();
+    client.api = new Wrapper({
+        apiPort: process.env.apiPort,
+        port: process.env.apiSelfPort,
+        id: client.token
+    });
+
+    const events = new ApiEvents();
+    client.api.onReceive((type, change) => {
+        const event = events.getEvent(type)
+        if (event) event.call(change)
+        else client.debug(`There is no API Event handler for ${type}`, DebugImportance.Unexpected)
+    })
 
     const statuses: (() => Promise<ActivityOptions>)[] = [
         async () => {

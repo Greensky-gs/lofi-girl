@@ -8,6 +8,8 @@ declare global {
             beta_token?: string;
             botPrefix?: string;
             panelChannel: string;
+            apiPort: string;
+            apiSelfPort: string;
         }
     }
 }

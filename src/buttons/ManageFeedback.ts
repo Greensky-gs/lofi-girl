@@ -19,7 +19,7 @@ import { writeFileSync } from 'fs';
 export default new ButtonHandler({
     customId: PanelIds.ManageFeedback,
     preconditions: [botOwner]
-}).setRun(async ({ button, message, user }) => {
+}).setRun(async ({ button, message, user, client }) => {
     const rows = [];
     message.components.forEach((component) => {
         const actionRow = row();
@@ -599,6 +599,15 @@ export default new ButtonHandler({
             reedit();
             collector.stop('saved');
 
+            client.api.update('commentUpdate', {
+                url: station.url,
+                emitterId: '',
+                comment: {
+                    userId: feedback.user_id,
+                    comment: feedback.comments,
+                    keywords: feedback.keywords
+                }
+            })
             writeFileSync('./dist/utils/configs.json', JSON.stringify(confs, null, 4));
         }
     });

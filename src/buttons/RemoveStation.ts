@@ -19,7 +19,7 @@ import { writeFileSync } from 'fs';
 export default new ButtonHandler({
     customId: PanelIds.RemoveStation,
     preconditions: [botOwner]
-}).setRun(async ({ button, message, user }) => {
+}).setRun(async ({ button, message, user, client }) => {
     const random = getRandomStation();
     await button.showModal(
         new ModalBuilder()
@@ -144,6 +144,11 @@ export default new ButtonHandler({
         })
         .catch(() => {});
     confs.stations.splice(confs.stations.indexOf(station), 1);
+    client.api.update('commentDelete', {
+        emitterId: '',
+        url: station.url,
+        userId: user.id
+    })
     writeFileSync('./dist/utils/configs.json', JSON.stringify(confs, null, 4));
 
     stationName

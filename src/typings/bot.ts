@@ -1,3 +1,5 @@
+import { changeType, change } from "lofi-girl-api-wrapper";
+
 export enum PanelIds {
     Reboot = 'panel.reboot',
     InstantInfo = 'panel.instant-info',
@@ -18,3 +20,4 @@ export enum PanelIds {
 export enum ButtonIds {
     FindStationSelector = 'find.station.selector'
 }
+export type apiCallback<T extends changeType> = (change: change<T>) => unknown

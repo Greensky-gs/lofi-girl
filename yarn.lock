@@ -267,14 +267,13 @@ ajv@^6.10.0, ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-amethystjs@^1.4.0:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/amethystjs/-/amethystjs-1.4.1.tgz#2e800601d152e159ba2d1703e8db4575287d4bbf"
-  integrity sha512-WDAl3FD3hnQ/z9XDEWthsZFkNuG+n7Ljlsqt1LfAzC6lPVW27oUv2UEJxSTOphvzXSrjbO95z88fcxFyySwU7w==
+amethystjs@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/amethystjs/-/amethystjs-1.7.1.tgz#21f4889549bc58dac331432da23fc6563eadd694"
+  integrity sha512-qDIFVhVseQOCyv6RII59TJijrsAOIPfNMtDJDab1XaR5b/Tq1eupWBfheh4niynfnP8ooO58eW/WROpwVjJ5PQ==
   dependencies:
     discord.js "^14.8.0"
     dsc-pagination "^1.0.3"
-    fs "^0.0.1-security"
 
 ansi-regex@^5.0.1:
   version "5.0.1"
@@ -1903,11 +1902,6 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
-
-typescript@^4.9.3:
-  version "4.9.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
-  integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
 typescript@^5.2.2:
   version "5.2.2"

@@ -9,7 +9,7 @@ import { writeFileSync } from 'fs';
 export default new ButtonHandler({
     customId: TesterButtons.OwnerValidate,
     preconditions: [botOwner]
-}).setRun(async ({ button, message, user }) => {
+}).setRun(async ({ button, message, client }) => {
     const station = getStationByUrl(message.embeds[0].url);
     const tester = message.client.users.cache.get(message.components[0].components[2].customId);
 
@@ -35,6 +35,15 @@ export default new ButtonHandler({
         keywords: data.keywords
     } as feedback);
 
+    client.api.update('commentUpdate', {
+        url: station.url,
+        emitterId: '',
+        comment: {
+            comment: data.comment,
+            keywords: data.keywords,
+            userId: tester.id
+        }
+    })
     writeFileSync('./dist/utils/configs.json', JSON.stringify(confs, null, 4));
     message
         .edit({
