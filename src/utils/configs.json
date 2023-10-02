@@ -1220,13 +1220,6 @@
             "feedbacks": []
         },
         {
-            "url": "https://www.youtube.com/watch?v=Zw_dR6my7rc",
-            "name": "Hoogway x softy  - Alley Of Trees (lofi hip hop/relaxing beats)",
-            "type": "playlist",
-            "emoji": "🍂",
-            "feedbacks": []
-        },
-        {
             "url": "https://www.youtube.com/watch?v=ucRQph70hmc",
             "name": "Hoogway x softy  - Alley Of Trees (lofi hip hop/relaxing beats)",
             "type": "playlist",
@@ -2895,6 +2888,55 @@
             "name": "Kinissue - The Realization (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🎵",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=r8_u5eKt8sA",
+            "name": "Dimension 32 - The Legend Of Orpheus (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🎸",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=Zw_dR6my7rc",
+            "name": "BVG - A Spirit's Tale (asian lofi hip hop)",
+            "type": "playlist",
+            "emoji": "🌃",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=lNT4uV9gL7M",
+            "name": "Chau Sara - Down Hill (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🗻",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=KxekTWP632M",
+            "name": "Tin. x seeyouthere - Palette (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🎨",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=KxekTWP632M",
+            "name": "Tin. x seeyouthere - Palette (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🎨",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=etMNbfS1DZg",
+            "name": "HoKø x Lucie Cravero - Blue Note (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "⛅",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=ULQhvIGG27Q",
+            "name": "Halloween lofi radio - spooky beats to get chills to",
+            "type": "radio",
+            "emoji": "🎃",
             "feedbacks": []
         }
     ],
