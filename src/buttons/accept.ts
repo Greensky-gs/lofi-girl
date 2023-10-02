@@ -1,5 +1,5 @@
 import { ButtonHandler } from 'amethystjs';
-import { ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle } from 'discord.js';
+import { ModalBuilder, TextInputBuilder, TextInputStyle } from 'discord.js';
 import { writeFileSync } from 'fs';
 import botOwner from '../preconditions/botOwner';
 import isNotAdded from '../preconditions/isNotAdded';
@@ -18,56 +18,50 @@ export default new ButtonHandler({
     const beats = data.title.split(/lofi {0,}hip {0,}hop {0,}\//i)[1] ?? 'no beats found)';
     const modal = new ModalBuilder()
         .setCustomId('accept-modal')
-        .setTitle(button.client.langs.getText(button, 'acceptButton', 'modalTitle'))
+        .setTitle(client.langs.getText(button, 'acceptButton', 'modalTitle'))
         .setComponents(
-            new ActionRowBuilder({
-                components: [
+            row(
                     new TextInputBuilder()
                         .setCustomId('a.name')
-                        .setLabel(button.client.langs.getText(button, 'acceptButton', 'nameName'))
+                        .setLabel(client.langs.getText(button, 'acceptButton', 'nameName'))
                         .setStyle(TextInputStyle.Short)
                         .setValue((data.title.split('-')[1] ?? data.title).split('[')[0] ?? data.title)
                         .setRequired(true)
-                ]
-            }),
-            new ActionRowBuilder({
-                components: [
+              
+            ),
+            row(
                     new TextInputBuilder()
                         .setCustomId('a.author')
-                        .setLabel(button.client.langs.getText(button, 'acceptButton', 'authorName'))
+                        .setLabel(client.langs.getText(button, 'acceptButton', 'authorName'))
                         .setValue(
                             data.title.split('-')[0] ??
-                                button.client.langs.getText(button, 'acceptButton', 'authorNotFound')
+                                client.langs.getText(button, 'acceptButton', 'authorNotFound')
                         )
                         .setRequired(true)
                         .setStyle(TextInputStyle.Short)
-                ]
-            }),
-            new ActionRowBuilder({
-                components: [
+                ),
+                row(
                     new TextInputBuilder()
                         .setCustomId('a.beats')
-                        .setLabel(button.client.langs.getText(button, 'acceptButton', 'beatsName'))
+                        .setLabel(client.langs.getText(button, 'acceptButton', 'beatsName'))
                         .setRequired(true)
                         .setStyle(TextInputStyle.Short)
                         .setValue(
                             beats.substring(0, beats.length - 1).split(' ')[0] ?? beats.substring(0, beats.length - 1)
                         )
-                ]
-            }),
-            new ActionRowBuilder({
-                components: [
+            ),
+            row(
                     new TextInputBuilder()
                         .setCustomId('a.emoji')
-                        .setLabel(button.client.langs.getText(button, 'acceptButton', 'emojiName'))
+                        .setLabel(client.langs.getText(button, 'acceptButton', 'emojiName'))
                         .setRequired(true)
                         .setStyle(TextInputStyle.Short)
                         .setValue(
                             findEmoji(data.title) ??
-                                button.client.langs.getText(button, 'acceptButton', 'emojiDefaultValue')
+                                client.langs.getText(button, 'acceptButton', 'emojiDefaultValue')
                         )
-                ]
-            }),
+                
+            ),
             row(new TextInputBuilder()
                 .setCustomId('a.type')
                 .setLabel(client.langs.getText(button, 'acceptButton', 'stationType'))
@@ -119,17 +113,17 @@ export default new ButtonHandler({
 
     reply
         .reply({
-            content: button.client.langs.getText(button, 'acceptButton', 'added'),
+            content: client.langs.getText(button, 'acceptButton', 'added'),
             ephemeral: true
         })
         .catch(() => {});
-    const sender = button.client.users.cache.get(button.message?.components[0]?.components[2]?.customId);
+    const sender = client.users.cache.get(button.message?.components[0]?.components[2]?.customId);
     if (sender)
         sender
             .send(`🎧 | Your [suggestion](${data.url}) has been accepted !\nThank you for submitting a music`)
             .catch(() => {});
 
     message
-        .edit({ components: [], content: button.client.langs.getText(button, 'acceptButton', 'addedData') })
+        .edit({ components: [], content: client.langs.getText(button, 'acceptButton', 'addedData') })
         .catch(() => {});
 });
