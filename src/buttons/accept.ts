@@ -21,53 +21,50 @@ export default new ButtonHandler({
         .setTitle(client.langs.getText(button, 'acceptButton', 'modalTitle'))
         .setComponents(
             row(
-                    new TextInputBuilder()
-                        .setCustomId('a.name')
-                        .setLabel(client.langs.getText(button, 'acceptButton', 'nameName'))
-                        .setStyle(TextInputStyle.Short)
-                        .setValue((data.title.split('-')[1] ?? data.title).split('[')[0] ?? data.title)
-                        .setRequired(true)
-              
+                new TextInputBuilder()
+                    .setCustomId('a.name')
+                    .setLabel(client.langs.getText(button, 'acceptButton', 'nameName'))
+                    .setStyle(TextInputStyle.Short)
+                    .setValue((data.title.split('-')[1] ?? data.title).split('[')[0] ?? data.title)
+                    .setRequired(true)
             ),
             row(
-                    new TextInputBuilder()
-                        .setCustomId('a.author')
-                        .setLabel(client.langs.getText(button, 'acceptButton', 'authorName'))
-                        .setValue(
-                            data.title.split('-')[0] ??
-                                client.langs.getText(button, 'acceptButton', 'authorNotFound')
-                        )
-                        .setRequired(true)
-                        .setStyle(TextInputStyle.Short)
-                ),
-                row(
-                    new TextInputBuilder()
-                        .setCustomId('a.beats')
-                        .setLabel(client.langs.getText(button, 'acceptButton', 'beatsName'))
-                        .setRequired(true)
-                        .setStyle(TextInputStyle.Short)
-                        .setValue(
-                            beats.substring(0, beats.length - 1).split(' ')[0] ?? beats.substring(0, beats.length - 1)
-                        )
+                new TextInputBuilder()
+                    .setCustomId('a.author')
+                    .setLabel(client.langs.getText(button, 'acceptButton', 'authorName'))
+                    .setValue(
+                        data.title.split('-')[0] ?? client.langs.getText(button, 'acceptButton', 'authorNotFound')
+                    )
+                    .setRequired(true)
+                    .setStyle(TextInputStyle.Short)
             ),
             row(
-                    new TextInputBuilder()
-                        .setCustomId('a.emoji')
-                        .setLabel(client.langs.getText(button, 'acceptButton', 'emojiName'))
-                        .setRequired(true)
-                        .setStyle(TextInputStyle.Short)
-                        .setValue(
-                            findEmoji(data.title) ??
-                                client.langs.getText(button, 'acceptButton', 'emojiDefaultValue')
-                        )
-                
+                new TextInputBuilder()
+                    .setCustomId('a.beats')
+                    .setLabel(client.langs.getText(button, 'acceptButton', 'beatsName'))
+                    .setRequired(true)
+                    .setStyle(TextInputStyle.Short)
+                    .setValue(
+                        beats.substring(0, beats.length - 1).split(' ')[0] ?? beats.substring(0, beats.length - 1)
+                    )
             ),
-            row(new TextInputBuilder()
-                .setCustomId('a.type')
-                .setLabel(client.langs.getText(button, 'acceptButton', 'stationType'))
-                .setRequired(false)
-                .setStyle(TextInputStyle.Short)
-                .setPlaceholder(client.langs.getText(button, 'acceptButton', 'stationTypePlaceholder'))
+            row(
+                new TextInputBuilder()
+                    .setCustomId('a.emoji')
+                    .setLabel(client.langs.getText(button, 'acceptButton', 'emojiName'))
+                    .setRequired(true)
+                    .setStyle(TextInputStyle.Short)
+                    .setValue(
+                        findEmoji(data.title) ?? client.langs.getText(button, 'acceptButton', 'emojiDefaultValue')
+                    )
+            ),
+            row(
+                new TextInputBuilder()
+                    .setCustomId('a.type')
+                    .setLabel(client.langs.getText(button, 'acceptButton', 'stationType'))
+                    .setRequired(false)
+                    .setStyle(TextInputStyle.Short)
+                    .setPlaceholder(client.langs.getText(button, 'acceptButton', 'stationTypePlaceholder'))
             )
         );
 
@@ -89,7 +86,7 @@ export default new ButtonHandler({
             : `(lofi hip hop/${g('beats')} beats)`;
     const emoji = g('emoji');
     const authors = g('author');
-    const type = g('type') === 'radio' ? 'radio' : 'playlist'
+    const type = g('type') === 'radio' ? 'radio' : 'playlist';
 
     const stationName = `${authors} - ${title} ${beatsV}`.replace(/ +/g, ' ');
     confs.stations.push({
