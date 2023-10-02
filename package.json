@@ -10,7 +10,8 @@
     "start": "node dist/index.js",
     "duplicates": "tsc -b && node dist/utils/duplicates.js",
     "full": "rmdir /s /q dist && yarn launch",
-    "launch": "yarn install && yarn build && yarn start"
+    "launch": "yarn install && yarn build && yarn start",
+    "gitlint": "yarn prettier && git add . && git commit -m \"refactor: ♻️ Run prettier\" && git push"
   },
   "keywords": [],
   "author": "",
