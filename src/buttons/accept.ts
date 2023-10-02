@@ -4,7 +4,7 @@ import { writeFileSync } from 'fs';
 import botOwner from '../preconditions/botOwner';
 import isNotAdded from '../preconditions/isNotAdded';
 import confs from '../utils/configs.json';
-import { findEmoji } from '../utils/functions';
+import { findEmoji, row } from '../utils/functions';
 
 export default new ButtonHandler({
     customId: 'accept',
@@ -67,7 +67,14 @@ export default new ButtonHandler({
                                 button.client.langs.getText(button, 'acceptButton', 'emojiDefaultValue')
                         )
                 ]
-            })
+            }),
+            row(new TextInputBuilder()
+                .setCustomId('a.type')
+                .setLabel(client.langs.getText(button, 'acceptButton', 'stationType'))
+                .setRequired(false)
+                .setStyle(TextInputStyle.Short)
+                .setPlaceholder(client.langs.getText(button, 'acceptButton', 'stationTypePlaceholder'))
+            )
         );
 
     await button.showModal(modal).catch(() => {});
@@ -88,12 +95,13 @@ export default new ButtonHandler({
             : `(lofi hip hop/${g('beats')} beats)`;
     const emoji = g('emoji');
     const authors = g('author');
+    const type = g('type') === 'radio' ? 'radio' : 'playlist'
 
     const stationName = `${authors} - ${title} ${beatsV}`.replace(/ +/g, ' ');
     confs.stations.push({
         url: data.url,
         name: stationName,
-        type: 'playlist',
+        type,
         emoji,
         feedbacks: []
     });
@@ -106,7 +114,7 @@ export default new ButtonHandler({
         emitterId: '',
         emoji,
         url: data.url,
-        type: 'playlist'
+        type
     });
 
     reply

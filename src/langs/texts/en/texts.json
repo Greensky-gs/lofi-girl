@@ -165,7 +165,9 @@
         "emojiName": "Emoji",
         "emojiDefaultValue": "Emoji",
         "added": "🎧 | Music added",
-        "addedData": "Music added"
+        "addedData": "Music added",
+        "stationType": "Station type",
+        "stationTypePlaceholder": "radio (default: playlist)"
     },
     "addComment": {
         "modalName": "Comment",
