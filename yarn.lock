@@ -1813,25 +1813,12 @@ soundcloud.ts@^0.5.2:
   dependencies:
     undici "^5.22.1"
 
-spotify-uri@~3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/spotify-uri/-/spotify-uri-3.0.3.tgz#d09ae7e013f12fe2c22eed06cda2463be220597b"
-  integrity sha512-mMstJ4dAMki6GbUjg94kp/h9ZH+7T7+ro/KUC00WVh+WKoLgMRrTKLkWMIwCZNO53Xa8DRHQw/6jwYtRZrVI3g==
-
 spotify-uri@~4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/spotify-uri/-/spotify-uri-4.0.0.tgz#a56d034146726d4f43630151a497efbf4c4230db"
   integrity sha512-ZAJKcnfx73glWG+3SCDRvW4nkVMzA2hqZwJtSDZ/o87EoGawh/CZ8YkqZIoVcLkg94suicEa/ZOiBFSz1MJ6Pg==
 
-spotify-url-info@3.x:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/spotify-url-info/-/spotify-url-info-3.2.3.tgz#915b8e07d5d12a4527df7e4be5f01023d19f2bc3"
-  integrity sha512-h7LCEM86kE68uWWAW0+NbKP+33qPC00SsbdJXzvmzNc18aIA/NukTi8gKZKEwHBENusLX0VRsHfIhyKDg7Fong==
-  dependencies:
-    himalaya "~1.1.0"
-    spotify-uri "~3.0.3"
-
-spotify-url-info@^3.2.6:
+spotify-url-info@3.x, spotify-url-info@^3.2.6:
   version "3.2.9"
   resolved "https://registry.yarnpkg.com/spotify-url-info/-/spotify-url-info-3.2.9.tgz#8ab9edd8f7b389517ba5947d96e40fd1ad9fe313"
   integrity sha512-e/hXlXMecNKtxQLLr2MOoQD3m8VVTru+L0zQk5oTMvXhRrnIGK1JFSUqay7GNyEn8dQgBpwH/lZ5aJ3uzoU0Cw==
