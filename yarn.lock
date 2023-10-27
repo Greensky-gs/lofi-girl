@@ -319,9 +319,9 @@ ajv@^6.12.4:
     uri-js "^4.2.2"
 
 amethystjs@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/amethystjs/-/amethystjs-1.7.1.tgz#21f4889549bc58dac331432da23fc6563eadd694"
-  integrity sha512-qDIFVhVseQOCyv6RII59TJijrsAOIPfNMtDJDab1XaR5b/Tq1eupWBfheh4niynfnP8ooO58eW/WROpwVjJ5PQ==
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/amethystjs/-/amethystjs-1.7.3.tgz#c2581147056a7b65ca829bf4fe46ce79ac1bac14"
+  integrity sha512-i64Y3kjdH7wo3KRSXCzoQaiIQd2Sd0xNnGnaQu7q8ep5pkqPfCdFi6nveIimRebnetGu70nYQvHFadU16Wl2gA==
   dependencies:
     discord.js "^14.8.0"
     dsc-pagination "^1.0.3"
@@ -649,7 +649,7 @@ discord-player@^6.0.0:
     "@discordjs/voice" latest
     libsodium-wrappers "^0.7.10"
 
-discord.js@^14.8.0:
+discord.js@^14.13.0, discord.js@^14.8.0:
   version "14.13.0"
   resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-14.13.0.tgz#e7a00bdba70adb9e266a06884ca1acaf9a0b5c20"
   integrity sha512-Kufdvg7fpyTEwANGy9x7i4od4yu5c6gVddGi5CKm4Y5a6sF0VBODObI3o0Bh7TGCj0LfNT8Qp8z04wnLFzgnbA==
@@ -712,11 +712,11 @@ dotenv@^16.0.3, dotenv@^16.3.1:
   integrity sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==
 
 dsc-pagination@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/dsc-pagination/-/dsc-pagination-1.0.3.tgz#162d1ee463aee7aa3801867ea1b8cc571277770d"
-  integrity sha512-QYpblmyPaSJJJzrf8qruL5M5CqVpxDeDwgcIA8BjtE2ilc19dnVkIEztc40oNC9FNovNyVDD5xq5WLDWOC4R3g==
+  version "1.0.21"
+  resolved "https://registry.yarnpkg.com/dsc-pagination/-/dsc-pagination-1.0.21.tgz#91ba3dfe533f53d2b88d42afe94b3f34828957a2"
+  integrity sha512-af958JZG1xXH/wZwqZPhpbkeDuChp5XFaclVandBszRzC5tKGN3b6iiG4IU2YC6TrGB5+wDyUeAJvku1mAUBfA==
   dependencies:
-    discord.js "^14.8.0"
+    discord.js "^14.13.0"
 
 ee-first@1.1.1:
   version "1.1.1"
