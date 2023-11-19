@@ -59,13 +59,16 @@ export default new AutocompleteListener({
             returned.push(available[Math.floor(Math.random() * available.length)]);
         }
         return returned.slice(0, 25).map((x) => ({
-            name: resizeStr(`${x.emoji} ${x.name} - ${
-                x.type === 'get the recommendation of the day'
-                    ? interaction.client.langs.getText(interaction, 'stationAutocomplete', 'recommendationContent')
-                    : x.type === 'get a random station'
-                    ? interaction.client.langs.getText(interaction, 'stationAutocomplete', 'randomContent')
-                    : x.type
-            }`, 100),
+            name: resizeStr(
+                `${x.emoji} ${x.name} - ${
+                    x.type === 'get the recommendation of the day'
+                        ? interaction.client.langs.getText(interaction, 'stationAutocomplete', 'recommendationContent')
+                        : x.type === 'get a random station'
+                        ? interaction.client.langs.getText(interaction, 'stationAutocomplete', 'randomContent')
+                        : x.type
+                }`,
+                100
+            ),
             value: x.url
         }));
     }
