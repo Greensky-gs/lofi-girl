@@ -1,6 +1,7 @@
 import { AutocompleteListener } from 'amethystjs';
 import { station } from '../typings/station';
 import { stations, recommendation } from '../utils/configs.json';
+import { resizeStr } from '../utils/functions';
 
 export default new AutocompleteListener({
     commandName: [{ commandName: 'info' }, { commandName: 'play' }, { commandName: 'switch' }, { commandName: 'add' }],
@@ -57,14 +58,14 @@ export default new AutocompleteListener({
             const available = list.filter((x) => !returned.includes(x));
             returned.push(available[Math.floor(Math.random() * available.length)]);
         }
-        return returned.map((x) => ({
-            name: `${x.emoji} ${x.name} - ${
+        return returned.slice(0, 25).map((x) => ({
+            name: resizeStr(`${x.emoji} ${x.name} - ${
                 x.type === 'get the recommendation of the day'
                     ? interaction.client.langs.getText(interaction, 'stationAutocomplete', 'recommendationContent')
                     : x.type === 'get a random station'
                     ? interaction.client.langs.getText(interaction, 'stationAutocomplete', 'randomContent')
                     : x.type
-            }`,
+            }`, 100),
             value: x.url
         }));
     }
