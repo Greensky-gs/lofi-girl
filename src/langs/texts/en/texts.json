@@ -141,7 +141,7 @@
         "clientMissingPerms": "I need {{required}} permissions to run this command. I have {{has}}"
     },
     "preconditions": {
-        "adminIfNotAlone": "❌ | Since you're not alone, you need the `administrator` permission to run this command",
+        "adminIfNotAlone": "❌ | Since you're not alone, you need the `administrator` permission, or a role named `lofi` to run this command",
         "botOwner": "❌ | You are not allowed to interact with this message",
         "connected": "❌ | You are not connected to a voice channel",
         "connectedSameChannel": "❌ | You are not connected in the same channel than me",

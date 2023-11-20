@@ -141,7 +141,7 @@
         "clientMissingPerms": "J'ai besoin de {{required}} permissions pour exécuter cette commande. J'en ai {{has}}"
     },
     "preconditions": {
-        "adminIfNotAlone": "❌ | Depuis que vous n'êtes plus tout seul dans le salon vocal, vous avez besoin de la permission `administrateur` pour exécuter cette commande",
+        "adminIfNotAlone": "❌ | Depuis que vous n'êtes plus tout seul dans le salon vocal, vous avez besoin de la permission `administrateur` ou d'un rôle nommé `lofi` pour exécuter cette commande",
         "botOwner": "❌ | Vous n'êtes pas autorisé à interagir avec ce message",
         "connected": "❌ | Vous n'êtes pas connecté dans un salon vocal",
         "connectedSameChannel": "❌ | Vous n'êtes pas connecté dans le même salon que moi",

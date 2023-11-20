@@ -4,6 +4,7 @@ import {
     BaseInteraction,
     ButtonBuilder,
     Client,
+    GuildMember,
     VoiceChannel
 } from 'discord.js';
 import { station } from '../typings/station';
@@ -125,6 +126,7 @@ export const resizeStr = (str: string, size?: number) => {
     if (str.length <= max) return str;
     return str.substring(0, size - 3) + '...';
 };
+export const isLofIManager = (member: GuildMember) => member.roles.cache.some(x => x.name === 'lofi')
 export const buildLocalizations = <Key extends keyof localizationsType<'commands'>>(
     command: Key
 ): localizationBuilder<Key> => {
