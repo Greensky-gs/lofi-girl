@@ -40,7 +40,7 @@ export default new ButtonHandler({
             )
             .catch(() => {}),
         message.edit({
-            components: [row(...buttons.map((x) => new ButtonBuilder(x.toJSON()).setDisabled(true)))]
+            components: [row(...buttons.map((x) => new ButtonBuilder(x.toJSON() as unknown).setDisabled(true)))]
         })
     ]);
 
@@ -91,7 +91,7 @@ export default new ButtonHandler({
     } else {
         message
             .edit({
-                components: [row(...buttons.map((x) => new ButtonBuilder(x).setDisabled(false)))]
+                components: [row(...buttons.map((x) => new ButtonBuilder(x as unknown).setDisabled(false)))]
             })
             .catch(() => {});
     }

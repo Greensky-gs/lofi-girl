@@ -11,7 +11,7 @@ export default new ButtonHandler({
 }).setRun(async ({ button, message, user }) => {
     const station = getStationByUrl(message.embeds[0].url);
     const embed = new EmbedBuilder(message.embeds[0]);
-    const buttons = message.components[0].components.map((x) => new ButtonBuilder(x.toJSON()));
+    const buttons = message.components[0].components.map((x) => new ButtonBuilder(x.toJSON() as unknown));
 
     await message
         .edit({

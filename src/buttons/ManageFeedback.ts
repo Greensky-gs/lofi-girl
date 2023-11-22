@@ -24,7 +24,7 @@ export default new ButtonHandler({
     message.components.forEach((component) => {
         const actionRow = row();
         component.components.forEach((components) => {
-            actionRow.addComponents(new ButtonBuilder(components.data));
+            actionRow.addComponents(new ButtonBuilder(components.data as unknown));
         });
         rows.push(actionRow);
     });
