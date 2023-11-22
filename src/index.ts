@@ -58,6 +58,7 @@ client.player = new Player(client as unknown as Client, {
         highWaterMark: 1 << 30
     }
 });
+client.player.extractors.loadDefault();
 client.player.events.on('emptyQueue', async (queue: GuildQueue) => {
     if (!getLoopState(queue.guild.id)) return;
 
