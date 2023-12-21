@@ -26,7 +26,7 @@
     "@discordjs/opus": "^0.9.0",
     "amethystjs": "^1.7.1",
     "avconv": "^3.1.0",
-    "discord-player": "^6.0.0",
+    "discord-player": "^6.6.6",
     "discord.js": "^14.8.0",
     "dotenv": "^16.0.3",
     "ffmpeg": "^0.0.4",
