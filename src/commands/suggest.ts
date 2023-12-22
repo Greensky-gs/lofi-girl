@@ -7,7 +7,7 @@ import {
     EmbedBuilder,
     TextChannel
 } from 'discord.js';
-import { getBasicInfo, getVideoID, validateURL, videoInfo } from 'ytdl-core';
+import { video_info, extractID, yt_validate, InfoData } from 'play-dl'
 import suggestChannel from '../preconditions/suggestChannel';
 import { lofiGirlID } from '../utils/configs.json';
 import { boolEmojis, buildLocalizations, getStationByUrl } from '../utils/functions';
@@ -33,13 +33,13 @@ export default new AmethystCommand({
     const url = options.getString('url');
     await interaction.deferReply();
 
-    if (!validateURL(url))
+    if (!yt_validate(url))
         return interaction
             .editReply(interaction.client.langs.getText(interaction, 'suggest', 'invalidVideo'))
             .catch(() => {});
-    const id = getVideoID(url);
+    const id = extractID(url);
     const roboURL = `https://www.youtube.com/watch?v=${id}`;
-    const info = (await getBasicInfo(roboURL).catch(() => {})) as videoInfo;
+    const info = (await video_info(roboURL).catch(() => {})) as InfoData;
 
     const station = getStationByUrl(url, false);
     if (station)
@@ -56,11 +56,11 @@ export default new AmethystCommand({
         .send({
             embeds: [
                 new EmbedBuilder()
-                    .setTitle(info.videoDetails.title)
-                    .setThumbnail(info.thumbnail_url ?? interaction.client.user.displayAvatarURL({ forceStatic: true }))
+                    .setTitle(info.video_details.title)
+                    .setThumbnail(info.video_details.thumbnails[0]?.url ?? interaction.client.user.displayAvatarURL({ forceStatic: true }))
                     .setURL(roboURL)
                     .setDescription(
-                        `${interaction.user.username} suggested a video : [${info.videoDetails.title}](${roboURL})`
+                        `${interaction.user.username} suggested a video : [${info.video_details.title}](${roboURL})`
                     )
                     .setColor('DarkGreen')
             ],

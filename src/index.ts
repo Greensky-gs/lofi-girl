@@ -17,6 +17,7 @@ import { TesterButtons } from './typings/tester';
 import { queuesUsers } from './utils/maps';
 import { Langs } from './langs/Manager';
 import { Wrapper } from 'lofi-girl-api-wrapper';
+import { VoiceConnectionStatus } from '@discordjs/voice'
 
 config();
 
@@ -59,6 +60,7 @@ client.player = new Player(client as unknown as Client, {
     }
 });
 client.player.extractors.loadDefault();
+
 client.player.events.on('emptyQueue', async (queue: GuildQueue) => {
     if (!getLoopState(queue.guild.id)) return;
 
