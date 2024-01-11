@@ -13,9 +13,9 @@
   integrity sha512-71UAepYMbHTg2QQLXQAgyuXYHrgAYpJDxjg9dRWfTUNf+zfOAlyJEiRRk/WFhQyGu6m23iLR/H/JxgF4AW8Csg==
 
 "@discord-player/extractor@^4.4.5":
-  version "4.4.5"
-  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.4.5.tgz#66ba3c2c030e89e117369be74b04436fb5393faa"
-  integrity sha512-xy4PXrjYRF2VwLkxYFEB++Q6jutvAeLv58fHTW2HI2wbyiNYI8F6+dka1X0qd7ubKl8meE+bsfkmvJssAhsmyA==
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.4.6.tgz#87eb9dc198f44a77cceb1b7f8dbbe0b6605c6772"
+  integrity sha512-jo511D+YOnBptfC+mp775kVXKuCfoWulqOhk82PBmRmwNLPfzBEyPQM+vOlzrNsmoRD1p3mBBXEOnFnuyE9o3w==
   dependencies:
     file-type "^16.5.4"
     genius-lyrics "^4.4.6"
@@ -1488,9 +1488,9 @@ node-fetch@^3.2.0:
     formdata-polyfill "^4.0.10"
 
 node-html-parser@^6.1.4, node-html-parser@^6.1.9:
-  version "6.1.11"
-  resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-6.1.11.tgz#387378111348c001a5c5fbebb7f478fdf65610aa"
-  integrity sha512-FAgwwZ6h0DSDWxfD0Iq1tsDcBCxdJB1nXpLPPxX8YyVWzbfCjKWEzaynF4gZZ/8hziUmp7ZSaKylcn0iKhufUQ==
+  version "6.1.12"
+  resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-6.1.12.tgz#6138f805d0ad7a6b5ef415bcd91bca07374bf575"
+  integrity sha512-/bT/Ncmv+fbMGX96XG9g05vFt43m/+SYKIs9oAemQVYyVcZmDAI2Xq/SbNcpOA35eF0Zk2av3Ksf+Xk8Vt8abA==
   dependencies:
     css-select "^5.1.0"
     he "1.2.0"
@@ -1859,9 +1859,9 @@ soundcloud.ts@^0.5.2:
     undici "^5.22.1"
 
 spotify-uri@~4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/spotify-uri/-/spotify-uri-4.0.0.tgz#a56d034146726d4f43630151a497efbf4c4230db"
-  integrity sha512-ZAJKcnfx73glWG+3SCDRvW4nkVMzA2hqZwJtSDZ/o87EoGawh/CZ8YkqZIoVcLkg94suicEa/ZOiBFSz1MJ6Pg==
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/spotify-uri/-/spotify-uri-4.0.1.tgz#15a853883aca59a05338db03ea55d6ad37067ded"
+  integrity sha512-dEt8UN5fSsZpcPk8HOEHkv29U71kefKjcYt2dopsShrkIZhXtDXe9Xse4xq0GW6831LnEZFry5mpzm1HV/TNLw==
 
 spotify-url-info@3.x, spotify-url-info@^3.2.6:
   version "3.2.10"
@@ -2007,9 +2007,9 @@ undici@5.27.2:
     "@fastify/busboy" "^2.0.0"
 
 undici@^5.22.1, undici@^5.24.0:
-  version "5.27.0"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-5.27.0.tgz#789f2e40ce982b5507899abc2c2ddeb2712b4554"
-  integrity sha512-l3ydWhlhOJzMVOYkymLykcRRXqbUaQriERtR70B9LzNkZ4bX52Fc8wbTDneMiwo8T+AemZXvXaTx+9o5ROxrXg==
+  version "5.28.2"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-5.28.2.tgz#fea200eac65fc7ecaff80a023d1a0543423b4c91"
+  integrity sha512-wh1pHJHnUeQV5Xa8/kyQhO7WFa8M34l026L5P/+2TYiakvGy5Rdc8jWZVyG7ieht/0WgJLEd3kcU5gKx+6GC8w==
   dependencies:
     "@fastify/busboy" "^2.0.0"
 
@@ -2046,9 +2046,9 @@ vary@~1.1.2:
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
 web-streams-polyfill@^3.0.3:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.2.1.tgz#71c2718c52b45fd49dbeee88634b3a60ceab42a6"
-  integrity sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.3.2.tgz#32e26522e05128203a7de59519be3c648004343b"
+  integrity sha512-3pRGuxRF5gpuZc0W+EpwQRmCD7gRqcDOMt688KmdlDAgAyaB1XlN0zq2njfDNm44XVdIouE7pZ6GzbdyH47uIQ==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"
