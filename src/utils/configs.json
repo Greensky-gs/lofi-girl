@@ -3137,6 +3137,55 @@
             "type": "playlist",
             "emoji": "🍁",
             "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=dZKlnbQMv-A",
+            "name": "Late Night Tones - Midnight In Nashville (lofi hip hop/sleepy beats)",
+            "type": "playlist",
+            "emoji": "🌃",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=mmKguZohAck",
+            "name": "Lofi Girl - Best of lofi hip hop 2023 (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🎉",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=f0HOQGTfkcs",
+            "name": "Virtua - The Last Descent (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "☄️",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=f0HOQGTfkcs",
+            "name": "Virtua - The Last Descent (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "☄️",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=5wvsCmLL15Y",
+            "name": "xander. - Timeless Melodies (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🍄",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=6oVKsAlr_nY",
+            "name": "Protocols - Planetarium 🪐 (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🪐",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=frjHflEon0M",
+            "name": "Solar Body - The Otherworld🌲 (lofi hip hop/spooky beats)",
+            "type": "playlist",
+            "emoji": "🌲",
+            "feedbacks": []
         }
     ],
     "emojis": {
@@ -3167,11 +3216,23 @@
         }
     ],
     "recommendation": {
-        "url": "https://www.youtube.com/watch?v=pb39n_bEHyA",
-        "name": "Gerardo Millán - Quantum Serenity (lofi hip hop/relaxing beats)",
+        "url": "https://www.youtube.com/watch?v=OYfO6NnT6w4",
+        "name": "Kanisan ft. Dario Lessing x Claudia Lessing - Edda (lofi hip hop/relaxing beats)",
         "type": "playlist",
-        "emoji": "🪐",
-        "feedbacks": []
+        "emoji": "🌓",
+        "feedbacks": [
+            {
+                "user_id": "386479065307152384",
+                "comments": "Really nice song, it is inspiring and the beats are relaxing",
+                "keywords": [
+                    "chill",
+                    "relax",
+                    "calm",
+                    "memories",
+                    "week-end"
+                ]
+            }
+        ]
     },
     "testers": [
         {
