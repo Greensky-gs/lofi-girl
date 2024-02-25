@@ -12,7 +12,8 @@
     "full": "rmdir /s /q dist && yarn launch",
     "launch": "yarn install && yarn build && yarn start",
     "gitlint": "yarn prettier && git add . && git commit -m \"refactor: ♻️ Run prettier\" && git push",
-    "update": "git fetch && git pull && yarn build"
+    "update": "git fetch && git pull && yarn build",
+    "synced": "git add src/utils/configs.json && git commit -m \"chore(stations): Sync config file\""
   },
   "keywords": [],
   "author": "",
@@ -32,7 +33,7 @@
     "dotenv": "^16.0.3",
     "ffmpeg": "^0.0.4",
     "fs": "^0.0.1-security",
-    "lofi-girl-api-wrapper": "^0.1.0",
+    "lofi-girl-api-wrapper": "^0.1.2",
     "play-dl": "^1.9.7",
     "soundcloud-scraper": "5.x",
     "spotify-url-info": "3.x",

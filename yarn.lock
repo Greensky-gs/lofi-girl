@@ -1317,10 +1317,10 @@ lodash@^4.17.21:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-lofi-girl-api-wrapper@^0.1.0:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/lofi-girl-api-wrapper/-/lofi-girl-api-wrapper-0.1.1.tgz#ec93ae25452bb58998b7b7765390c4c3f8c82747"
-  integrity sha512-0mPIz8MFl6t4K83wXBQOW7oA9c3105jwPNr1MxAWwsaouOsVlCmzf2iu6SWHpQqb9gx9kD1ojiE7Oq9KNnh3Bg==
+lofi-girl-api-wrapper@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/lofi-girl-api-wrapper/-/lofi-girl-api-wrapper-0.1.2.tgz#2c73cbc9e68f359d02f4447d9da1c8c863623d0a"
+  integrity sha512-q07hznllj+Kl8xwqLp8kRGO77++23+UCINi7MbrHr0bJhm+k1WgIkGAKiTDwceCbe/bOZdpKOQwSBs0/Bq8rig==
   dependencies:
     axios "^1.5.0"
     dotenv "^16.3.1"

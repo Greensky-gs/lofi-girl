@@ -3160,13 +3160,6 @@
             "feedbacks": []
         },
         {
-            "url": "https://www.youtube.com/watch?v=f0HOQGTfkcs",
-            "name": "Virtua - The Last Descent (lofi hip hop/relaxing beats)",
-            "type": "playlist",
-            "emoji": "☄️",
-            "feedbacks": []
-        },
-        {
             "url": "https://www.youtube.com/watch?v=5wvsCmLL15Y",
             "name": "xander. - Timeless Melodies (lofi hip hop/relaxing beats)",
             "type": "playlist",
@@ -3183,6 +3176,69 @@
         {
             "url": "https://www.youtube.com/watch?v=frjHflEon0M",
             "name": "Solar Body - The Otherworld🌲 (lofi hip hop/spooky beats)",
+            "type": "playlist",
+            "emoji": "🌲",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=jOOjT1VRqOE",
+            "name": "Tibeauthetraveler - Nocturnal Reveries (lofi hip hop/sleepy beats)",
+            "type": "playlist",
+            "emoji": "🌒",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=bUUvfCeTSYI",
+            "name": "Team Astro - Is This It? (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "☀",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=BbplYz09568",
+            "name": "Laffey - inner guidance (lofi hip hop/calm beats)",
+            "type": "playlist",
+            "emoji": "🌃",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=jioZjpRSL_U",
+            "name": "Goson x softy - Garden of Serenity (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🍃",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=gB6iEVFXPeE",
+            "name": "Juliàn - Unwind (lofi hip hop/sleepy beats)",
+            "type": "playlist",
+            "emoji": "🌙",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=IKYfx79BQJA",
+            "name": "Cosmic Koala x Lucid Keys - When All Was Lost (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "🌪️",
+            "feedbacks": []
+        },
+        {
+            "name": "Phlocalyst x Viktor Minsky - Motifs (lofi hip hop/jazzy beats)",
+            "emoji": "🎻",
+            "url": "https://www.youtube.com/watch?v=zxUZ_XtwVZo",
+            "type": "playlist",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=QybKeaQUGGw",
+            "name": "So.Lo x Goson - QuietPath Vol 2 (lofi hip hop/relaxing beats)",
+            "type": "playlist",
+            "emoji": "❄️",
+            "feedbacks": []
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=tTQwdyYR8iw",
+            "name": "Dontcry x cxlt. - Growing Older (lofi hip hop/relaxing beats)",
             "type": "playlist",
             "emoji": "🌲",
             "feedbacks": []

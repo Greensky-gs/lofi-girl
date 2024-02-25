@@ -16,7 +16,7 @@ import { writeFileSync } from 'fs';
 export default new ButtonHandler({
     customId: PanelIds.Recommendation,
     preconditions: [botOwner]
-}).setRun(async ({ button, message, user }) => {
+}).setRun(async ({ button, client, user }) => {
     const random = getRandomStation();
     await button
         .showModal(
@@ -123,6 +123,10 @@ export default new ButtonHandler({
     setTimeout(() => {
         modal.deleteReply().catch(() => {});
     }, 5000);
+
+    client.api.update('recommendation', {
+        url: station.url
+    } as never)
 
     configs.recommendation = station;
     writeFileSync('./dist/utils/configs.json', JSON.stringify(configs, null, 4));
