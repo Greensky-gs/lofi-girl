@@ -124,7 +124,7 @@ export default new ButtonHandler({
         modal.deleteReply().catch(() => {});
     }, 5000);
 
-    client.api.update('recommendation', {
+    client.api.update('recommendation' as any, {
         url: station.url
     } as never)
 
