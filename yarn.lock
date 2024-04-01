@@ -13,9 +13,9 @@
   integrity sha512-71UAepYMbHTg2QQLXQAgyuXYHrgAYpJDxjg9dRWfTUNf+zfOAlyJEiRRk/WFhQyGu6m23iLR/H/JxgF4AW8Csg==
 
 "@discord-player/extractor@^4.4.5":
-  version "4.4.6"
-  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.4.6.tgz#87eb9dc198f44a77cceb1b7f8dbbe0b6605c6772"
-  integrity sha512-jo511D+YOnBptfC+mp775kVXKuCfoWulqOhk82PBmRmwNLPfzBEyPQM+vOlzrNsmoRD1p3mBBXEOnFnuyE9o3w==
+  version "4.4.7"
+  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.4.7.tgz#dde75ce69e07f30b33958ba5e491da4a82d02bb4"
+  integrity sha512-XHG9Y45rQVWk3quf0IJqAj1ybTqiRgAy6vr5hnlaDZeaxXlsHRlDSzmSYl+teFVw2G9bjzR0jIvm8a4BW9hCBw==
   dependencies:
     file-type "^16.5.4"
     genius-lyrics "^4.4.6"
@@ -175,9 +175,9 @@
   integrity sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==
 
 "@fastify/busboy@^2.0.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@fastify/busboy/-/busboy-2.1.0.tgz#0709e9f4cb252351c609c6e6d8d6779a8d25edff"
-  integrity sha512-+KpH+QxZU7O4675t3mnkQKcZZg56u+K/Ct2K+N2AZYNVK8kyeo/bI18tI8aPm3tvNNRyTWfj6s5tnGNlcbQRsA==
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@fastify/busboy/-/busboy-2.1.1.tgz#b9da6a878a371829a0502c9b6c1c143ef6663f4d"
+  integrity sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==
 
 "@humanwhocodes/config-array@^0.11.14":
   version "0.11.14"
@@ -2001,9 +2001,9 @@ type-is@~1.6.18:
     mime-types "~2.1.24"
 
 typescript@^5.2.2, typescript@^5.3.2:
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.3.tgz#b3ce6ba258e72e6305ba66f5c9b452aaee3ffe37"
-  integrity sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==
+  version "5.4.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.3.tgz#5c6fedd4c87bee01cd7a528a30145521f8e0feff"
+  integrity sha512-KrPd3PKaCLr78MalgiwJnA25Nm8HAmdwN3mYUYZgG/wizIo9EainNVQI9/yDavtVFRN2h3k8uf3GLHuhDMgEHg==
 
 undici-types@~5.26.4:
   version "5.26.5"
