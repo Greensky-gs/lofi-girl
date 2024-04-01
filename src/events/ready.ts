@@ -2,7 +2,7 @@ import { AmethystEvent, DebugImportance } from 'amethystjs';
 import { ActivityOptions, ActivityType, ButtonBuilder, ButtonStyle, EmbedBuilder, TextChannel } from 'discord.js';
 import { station } from '../typings/station';
 import { stations, recommendation } from '../utils/configs.json';
-import { row } from '../utils/functions';
+import { row, setDumpClock } from '../utils/functions';
 import { PanelIds } from '../typings/bot';
 import { Langs } from '../langs/Manager';
 import { Wrapper } from 'lofi-girl-api-wrapper';
@@ -153,6 +153,7 @@ export default new AmethystEvent('ready', async (client) => {
         .catch(() => {});
 
     if (panel) panel.pin().catch(() => {});
+    setDumpClock(client)
     const embed = () => {
         return new EmbedBuilder().setTitle('Error').setTimestamp().setColor('#ff0000');
     };

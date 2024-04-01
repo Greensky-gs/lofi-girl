@@ -10,6 +10,7 @@ declare global {
             panelChannel: string;
             apiPort: string;
             apiSelfPort: string;
+            dumpChannel?: string;
         }
     }
 }

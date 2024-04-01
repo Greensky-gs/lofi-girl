@@ -1,10 +1,12 @@
 import {
     ActionRowBuilder,
     AnyComponentBuilder,
+    AttachmentBuilder,
     BaseInteraction,
     ButtonBuilder,
     Client,
     GuildMember,
+    TextChannel,
     VoiceChannel
 } from 'discord.js';
 import { station } from '../typings/station';
@@ -12,6 +14,7 @@ import { stations, emojis, recommendation, testers } from './configs.json';
 import { loops } from './maps';
 import { tester } from '../typings/tester';
 import { Langs, localizationBuilder, localizationsType } from '../langs/Manager';
+import { log4js } from 'amethystjs';
 
 export const getStationByUrl = (value?: string, getRandomIfNotProvided?: boolean): station => {
     if ((!value || value === 'random') && getRandomIfNotProvided !== false)
@@ -127,6 +130,35 @@ export const resizeStr = (str: string, size?: number) => {
     return str.substring(0, size - 3) + '...';
 };
 export const isLofIManager = (member: GuildMember) => member.roles.cache.some(x => x.name === 'lofi')
+export const autoDump = async(client: Client) => {
+    const now = new Date();
+    const date = `${now.getFullYear()}/${now.getMonth()}/${now.getDate()}:${now.getHours()}:${now.getMinutes()}`
+
+    const file = new AttachmentBuilder('./dist/utils/configs.json')
+        .setName('configs.json')
+        .setDescription(`From ${date}`);
+
+    const channel = await client.channels.fetch(process.env.dumpChannel)?.catch(log4js.trace) as TextChannel
+    if (!channel) return
+
+    channel.send({
+        content: `✅ | Dump config\nConfig file from ${date}`,
+        files: [file]
+    }).catch(log4js.trace)
+}
+export const setDumpClock = (client: Client) => {
+    const midnight = new Date(new Date().setHours(0, 0, 0, 0) + 86400000)
+    const diff = midnight.getTime() - Date.now()
+
+    setTimeout(() => {
+        autoDump(client)
+
+        setInterval(() => {
+            autoDump(client)
+        }, 86400000)
+    }, diff)
+
+}
 export const buildLocalizations = <Key extends keyof localizationsType<'commands'>>(
     command: Key
 ): localizationBuilder<Key> => {
