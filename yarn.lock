@@ -248,9 +248,9 @@
   integrity sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==
 
 "@types/node@*":
-  version "20.11.20"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.11.20.tgz#f0a2aee575215149a62784210ad88b3a34843659"
-  integrity sha512-7/rR21OS+fq8IyHTgtLkDK949uzsa6n8BkziAKtPVpugIkO6D+/ooXMvzXxDnZrmtXVfjb1bKQafYpb8s89LOg==
+  version "20.12.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.2.tgz#9facdd11102f38b21b4ebedd9d7999663343d72e"
+  integrity sha512-zQ0NYO87hyN6Xrclcqp7f8ZbXNbRfoGWNcMvHTPQp9UUrwI0mI7XBz+cu7/W6/VClYo2g63B0cjull/srU7LgQ==
   dependencies:
     undici-types "~5.26.4"
 
@@ -620,21 +620,21 @@ discord-api-types@0.37.61:
   integrity sha512-o/dXNFfhBpYHpQFdT6FWzeO7pKc838QeeZ9d91CfVAtpr5XLK4B/zYxQbYgPdoMiTDvJfzcsLW5naXgmHGDNXw==
 
 discord-api-types@^0.37.50:
-  version "0.37.70"
-  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.70.tgz#81083c8a2eb01d0c94169c4bdf446a19ed70ba72"
-  integrity sha512-8EtfZR0KwOK+yP5q/llWILdUAPmGmF1LmcVUYf7+gtGigz2pu6WR38ZN+IWtMzohY1Ujl2u3KOdbFvrEz9EC8w==
+  version "0.37.78"
+  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.78.tgz#85a531c40cc62479064045635cc554e94bc7edf1"
+  integrity sha512-IJdyOPhq7r9Gw5/4X9u4vG8rX7+AwOtX7flUSQyQ1vAZzlnN452GGElUPmjQJIo8gB5VwMesbA9eMW+f0NMWVA==
 
 discord-player@^6.6.6:
-  version "6.6.7"
-  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-6.6.7.tgz#01e645f34712fa0fb459a1e1e0dd3f6b69b72da2"
-  integrity sha512-8y5TBJTF3vut4WJZFfrc8m7yXIkOr0WNbdKiU5I3MADWZQUlRaMBTGS4NO03Vq13nZZfK0c4XVUZuqtydIKp4w==
+  version "6.6.8"
+  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-6.6.8.tgz#11259e68b2f978360869d8efb91581dd5d7597ca"
+  integrity sha512-aZQxtWbHaQPYs0KWU3XObxQLabWg7RWvLlytEitVsqbyfoBFKv2KMYX4swq0/I6eBbu2755z80pbvwU7ycjmsw==
   dependencies:
     "@discord-player/equalizer" "^0.2.3"
     "@discord-player/ffmpeg" "^0.1.0"
     "@discord-player/utils" "^0.2.2"
     discord-voip "^0.1.3"
     ip "^1.1.8"
-    libsodium-wrappers "^0.7.10"
+    libsodium-wrappers "^0.7.13"
 
 discord-voip@^0.1.3:
   version "0.1.3"
@@ -1303,7 +1303,7 @@ levn@^0.4.1:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
 
-libsodium-wrappers@^0.7.10:
+libsodium-wrappers@^0.7.13:
   version "0.7.13"
   resolved "https://registry.yarnpkg.com/libsodium-wrappers/-/libsodium-wrappers-0.7.13.tgz#83299e06ee1466057ba0e64e532777d2929b90d3"
   integrity sha512-kasvDsEi/r1fMzKouIDv7B8I6vNmknXwGiYodErGuESoFTohGSKZplFtVxZqHaoQ217AynyIFgnOVRitpHs0Qw==
