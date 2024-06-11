@@ -243,9 +243,9 @@
   integrity sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==
 
 "@types/node@*":
-  version "20.14.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.14.0.tgz#49ceec7b34f8621470cff44677fa9d461a477f17"
-  integrity sha512-5cHBxFGJx6L4s56Bubp4fglrEpmyJypsqI6RgzMfBHWUJQGWAAi8cWcgetEbZXHYXo9C2Fa4EEds/uSyS4cxmA==
+  version "20.14.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.14.2.tgz#a5f4d2bcb4b6a87bffcaa717718c5a0f208f4a18"
+  integrity sha512-xyu6WAMVwv6AKFLB+e/7ySZVr/0zLCzOa7rSpq6jNwpqOrUbcACDWC+53d4n2QHOnDou0fbIsg8wZu/sxrnI4Q==
   dependencies:
     undici-types "~5.26.4"
 
@@ -260,6 +260,11 @@
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/@vladfrangu/async_event_emitter/-/async_event_emitter-2.2.4.tgz#d3537432c6db6444680a596271dff8ea407343b3"
   integrity sha512-ButUPz9E9cXMLgvAW8aLAKKJJsPu1dY1/l/E8xzLFuysowXygs6GBcyunK9rnGC4zTsnIc2mQo71rGw9U+Ykug==
+
+"@web-scrobbler/metadata-filter@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@web-scrobbler/metadata-filter/-/metadata-filter-3.1.0.tgz#0295b15f2eb6becd8625c5a8317e76a6201429eb"
+  integrity sha512-3VLxdrcfRZ/jac7VV3v5s3R+HUQ/o4gp8vqZoojGhrvyrYyrjsyuJGaoSiFLoYmwYNAjeqJ/tnvIeJt8DSi4sg==
 
 abbrev@1:
   version "1.1.1"
@@ -610,18 +615,19 @@ discord-api-types@0.37.83:
   integrity sha512-urGGYeWtWNYMKnYlZnOnDHm8fVRffQs3U0SpE8RHeiuLKb/u92APS8HoQnPTFbnXmY1vVnXjXO4dOxcAn3J+DA==
 
 discord-api-types@^0.37.50:
-  version "0.37.85"
-  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.85.tgz#302f7ee8e4880b41eff84ce1dc1c210247434b81"
-  integrity sha512-T75aB9JEw9X0rlMChEMHbr9JlXMqdmdKiZVjBeKs91cJo28IuAIldj+VZoC+I+Q9gCaRjHlwRkcksy2XZY6c3A==
+  version "0.37.87"
+  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.87.tgz#10169b42f156f149997b8eae964cbf96e387442f"
+  integrity sha512-9KfluFS1J22RuezzouGs2t5X/Yu3jNpmRJrG+dvu1R9R+wfxlhq1RXr/OjjVL6d4rr7Ez92yNWiImf/qX3GV1g==
 
 discord-player@^6.6.6:
-  version "6.6.9"
-  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-6.6.9.tgz#d188d43b22d521ee02e47327b2ff4dd7c52e41ed"
-  integrity sha512-NHPfDZKgz16xyxZIirTeP1TbLXLF7/9c0FsobImi5aTG+rE1Br3Pbt7KdHeoUsnZwsiFdO6w+2QlfTOGogCBGg==
+  version "6.6.10"
+  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-6.6.10.tgz#88eac7fa45bcde8ed9ccd5feaaf1c3f2f92dc360"
+  integrity sha512-AOZnJYXOoe2hF2OENwKUIaKJ2H5U8VfxcoMKDXE++9Rnbzd7qD8MQr9Am01T1UiiPf2BWjyHin97EUm1nrTJKA==
   dependencies:
     "@discord-player/equalizer" "^0.2.3"
     "@discord-player/ffmpeg" "^0.1.0"
     "@discord-player/utils" "^0.2.2"
+    "@web-scrobbler/metadata-filter" "^3.1.0"
     discord-voip "^0.1.3"
     ip "^2.0.1"
     libsodium-wrappers "^0.7.13"
@@ -1949,10 +1955,15 @@ tsc@^2.0.4:
   resolved "https://registry.yarnpkg.com/tsc/-/tsc-2.0.4.tgz#5f6499146abea5dca4420b451fa4f2f9345238f5"
   integrity sha512-fzoSieZI5KKJVBYGvwbVZs/J5za84f2lSTLPYf6AGiIf43tZ3GNrI1QzTLcjtyDDP4aLxd46RTZq1nQxe7+k5Q==
 
-tslib@2.6.2, tslib@^2.6.1, tslib@^2.6.2:
+tslib@2.6.2, tslib@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
   integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
+
+tslib@^2.6.1:
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.3.tgz#0438f810ad7a9edcde7a241c3d80db693c8cbfe0"
+  integrity sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==
 
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"
