@@ -8,9 +8,9 @@
   integrity sha512-71UAepYMbHTg2QQLXQAgyuXYHrgAYpJDxjg9dRWfTUNf+zfOAlyJEiRRk/WFhQyGu6m23iLR/H/JxgF4AW8Csg==
 
 "@discord-player/extractor@^4.4.5":
-  version "4.4.7"
-  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.4.7.tgz#dde75ce69e07f30b33958ba5e491da4a82d02bb4"
-  integrity sha512-XHG9Y45rQVWk3quf0IJqAj1ybTqiRgAy6vr5hnlaDZeaxXlsHRlDSzmSYl+teFVw2G9bjzR0jIvm8a4BW9hCBw==
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.5.0.tgz#1f8dec6dd7badc0014a9e01915a0a867a8a4a9f6"
+  integrity sha512-7yCvNNMbRIkFewli/ILcbFe9FX8DaTFTajn6ouJ/+76NzjoPsPNGRNmDT6eP69t/DJJrZFhsghyGGmxDKNBo6A==
   dependencies:
     file-type "^16.5.4"
     genius-lyrics "^4.4.6"
@@ -182,11 +182,6 @@
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@eslint/object-schema/-/object-schema-2.1.4.tgz#9e69f8bb4031e11df79e03db09f9dbbae1740843"
   integrity sha512-BsWiH1yFGjXXS2yvrf5LyuoSIIbPrGUWob917o+BTKuZ7qJdxX8aJLRxs1fS9n6r7vESrq1OUqb68dANcFXuQQ==
-
-"@fastify/busboy@^2.0.0":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@fastify/busboy/-/busboy-2.1.1.tgz#b9da6a878a371829a0502c9b6c1c143ef6663f4d"
-  integrity sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==
 
 "@humanwhocodes/module-importer@^1.0.1":
   version "1.0.1"
@@ -1036,12 +1031,12 @@ gauge@^3.0.0:
     wide-align "^1.1.2"
 
 genius-lyrics@^4.4.6:
-  version "4.4.6"
-  resolved "https://registry.yarnpkg.com/genius-lyrics/-/genius-lyrics-4.4.6.tgz#b3d755152dc64008f4cbfb039e1ada2c740adfc4"
-  integrity sha512-TeSF4qXwLm+Nl8wUX+WUTJlEhPBanMw9EWpIHE2a/Qs4y2NBK99AHYfZJc73H1HVkZj4zPfscuGWlkQbbh0pDA==
+  version "4.4.7"
+  resolved "https://registry.yarnpkg.com/genius-lyrics/-/genius-lyrics-4.4.7.tgz#aa3551eb8e73aaa383d4ea3fa0d7bca3d933a02c"
+  integrity sha512-cgO5nSeFqtLZAUyWB+8XWMRBIRzPUSUC42N3CoDGRgKX1anGAyDUhM6/RVIJXCNnQa6XHZHswKcKgHaRiyl+GQ==
   dependencies:
-    node-html-parser "^6.1.9"
-    undici "^5.24.0"
+    node-html-parser "^6.1.13"
+    undici "^6.11.1"
 
 get-intrinsic@^1.1.3, get-intrinsic@^1.2.3, get-intrinsic@^1.2.4:
   version "1.2.4"
@@ -1475,10 +1470,10 @@ node-fetch@^3.2.0:
     fetch-blob "^3.1.4"
     formdata-polyfill "^4.0.10"
 
-node-html-parser@^6.1.4, node-html-parser@^6.1.9:
-  version "6.1.12"
-  resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-6.1.12.tgz#6138f805d0ad7a6b5ef415bcd91bca07374bf575"
-  integrity sha512-/bT/Ncmv+fbMGX96XG9g05vFt43m/+SYKIs9oAemQVYyVcZmDAI2Xq/SbNcpOA35eF0Zk2av3Ksf+Xk8Vt8abA==
+node-html-parser@^6.1.13, node-html-parser@^6.1.4:
+  version "6.1.13"
+  resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-6.1.13.tgz#a1df799b83df5c6743fcd92740ba14682083b7e4"
+  integrity sha512-qIsTMOY4C/dAa5Q5vsobRpOOvPfC4pB61UVW2uSwZNUp0QU/jCekTal1vMmbO0DgdHeLUJpv/ARmDqErVxA3Sg==
   dependencies:
     css-select "^5.1.0"
     he "1.2.0"
@@ -1843,11 +1838,11 @@ soundcloud-scraper@5.x:
     node-fetch "^2.6.1"
 
 soundcloud.ts@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/soundcloud.ts/-/soundcloud.ts-0.5.2.tgz#60660b889afb31c0e504f089002228fbf576b298"
-  integrity sha512-/pc72HWYJpSpup+mJBE9pT31JsrMcxJGBlip3Vem+0Fsscg98xh1/7I2nCpAKuMAeV6MVyrisI8TfjO6T7qKJg==
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/soundcloud.ts/-/soundcloud.ts-0.5.3.tgz#598daf40e1c2654408a7072fdea8f7f77778ba74"
+  integrity sha512-ZMH6gG5e7WqJrIYXTv14MNArPhx3WzfrL1Ij/2qBDW8mVbNJc8lxOQOc4kLvrfvDl5TkCdZa7zXOiwD6ESXq+g==
   dependencies:
-    undici "^5.22.1"
+    undici "^6.17.0"
 
 spotify-uri@~4.1.0:
   version "4.1.0"
@@ -1995,12 +1990,10 @@ undici@6.13.0:
   resolved "https://registry.yarnpkg.com/undici/-/undici-6.13.0.tgz#7edbf4b7f3aac5f8a681d515151bf55cb3589d72"
   integrity sha512-Q2rtqmZWrbP8nePMq7mOJIN98M0fYvSgV89vwl/BQRT4mDOeY2GXZngfGpcBBhtky3woM7G24wZV3Q304Bv6cw==
 
-undici@^5.22.1, undici@^5.24.0:
-  version "5.28.3"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-5.28.3.tgz#a731e0eff2c3fcfd41c1169a869062be222d1e5b"
-  integrity sha512-3ItfzbrhDlINjaP0duwnNsKpDQk3acHI3gVJ1z4fmwMK31k5G9OVIAMLSIaP6w4FaGkaAkN6zaQO9LUvZ1t7VA==
-  dependencies:
-    "@fastify/busboy" "^2.0.0"
+undici@^6.11.1, undici@^6.17.0:
+  version "6.19.2"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-6.19.2.tgz#231bc5de78d0dafb6260cf454b294576c2f3cd31"
+  integrity sha512-JfjKqIauur3Q6biAtHJ564e3bWa8VvT+7cSiOJHFbX4Erv6CLGDpg8z+Fmg/1OI/47RA+GI2QZaF48SSaLvyBA==
 
 unfetch@^5.0.0:
   version "5.0.0"
@@ -2096,12 +2089,7 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-youtube-sr@4.x:
+youtube-sr@4.x, youtube-sr@^4.3.9:
   version "4.3.11"
   resolved "https://registry.yarnpkg.com/youtube-sr/-/youtube-sr-4.3.11.tgz#626663ba03c9a81edf82bd03541234ca59073a6c"
   integrity sha512-3oHiS2x7PpMiDRW7Cq8nz1bkAIBOJHoOwkPl/oncM/+A9/3xxMDgMLGW2dsBEP1DHFyRXYTVABgfbdwHF8sXXQ==
-
-youtube-sr@^4.3.9:
-  version "4.3.10"
-  resolved "https://registry.yarnpkg.com/youtube-sr/-/youtube-sr-4.3.10.tgz#6e0fdc5c1c1c23b6476cb480825b3df8eff0f895"
-  integrity sha512-YTpIWy2c1XLN4VpsUuZTDNXpJ2sLZQyG0kX1vq3nymHhDKro2SoeODey3pZazW+6AjfmNxoSnI8pCSzPrEa3jw==
