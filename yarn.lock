@@ -238,11 +238,11 @@
   integrity sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==
 
 "@types/node@*":
-  version "20.14.11"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.14.11.tgz#09b300423343460455043ddd4d0ded6ac579b74b"
-  integrity sha512-kprQpL8MMeszbz6ojB5/tU8PLN4kesnN8Gjzw349rDlNgsSzg90lAVj3llK99Dh7JON+t9AuscPPFW6mPbTnSA==
+  version "22.0.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.0.0.tgz#04862a2a71e62264426083abe1e27e87cac05a30"
+  integrity sha512-VT7KSYudcPOzP5Q0wfbowyNLaVR8QWUdw+088uFWwfvpY6uCWaXpqV6ieLAu9WBcnTa7H4Z5RLK8I5t2FuOcqw==
   dependencies:
-    undici-types "~5.26.4"
+    undici-types "~6.11.1"
 
 "@types/ws@^8.5.10":
   version "8.5.10"
@@ -252,9 +252,9 @@
     "@types/node" "*"
 
 "@types/ws@^8.5.5":
-  version "8.5.11"
-  resolved "https://registry.yarnpkg.com/@types/ws/-/ws-8.5.11.tgz#90ad17b3df7719ce3e6bc32f83ff954d38656508"
-  integrity sha512-4+q7P5h3SpJxaBft0Dzpbr6lmMaqh0Jr2tbhJZ/luAwvD7ohSCniYkwz/pLxuT2h0EOa6QADgJj1Ko+TzRfZ+w==
+  version "8.5.12"
+  resolved "https://registry.yarnpkg.com/@types/ws/-/ws-8.5.12.tgz#619475fe98f35ccca2a2f6c137702d85ec247b7e"
+  integrity sha512-3tPRkv1EtkDpzlgyKyI8pGsGZAGPEaXeu0DOj5DI25Ja91bdAYddYHbADRYVrZMRbfW+1l5YwXVDKohDJNQxkQ==
   dependencies:
     "@types/node" "*"
 
@@ -617,21 +617,20 @@ discord-api-types@0.37.83:
   integrity sha512-urGGYeWtWNYMKnYlZnOnDHm8fVRffQs3U0SpE8RHeiuLKb/u92APS8HoQnPTFbnXmY1vVnXjXO4dOxcAn3J+DA==
 
 discord-api-types@^0.37.50:
-  version "0.37.92"
-  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.92.tgz#e8c4823ed278ef2060a4e793f28218b203335fc6"
-  integrity sha512-7xnedbQRLRef/O+4jKPyIFwl6YqoyihOG3OSneiRmVJMBk30ph2YuZGcHjeX1Kk/a3yQWeyCKe4RZJB3iECcxg==
+  version "0.37.93"
+  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.93.tgz#fd2d34738ec2984cc5f904fe245dccf1cc35ffcd"
+  integrity sha512-M5jn0x3bcXk8EI2c6F6V6LeOWq10B/cJf+YJSyqNmg7z4bdXK+Z7g9zGJwHS0h9Bfgs0nun2LQISFOzwck7G9A==
 
 discord-player@^6.6.6:
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-6.7.0.tgz#9c654f91b2f3e6bcf27693662f7267c0f5314a70"
-  integrity sha512-ioSDZo3IreTi9B5ZRKca0Vh2FPbHjM25D4RoXTwhf6ULaGJEMMpi+GAyDPtzFGHbvIO0Fs/pnNcKtehICsODzg==
+  version "6.7.1"
+  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-6.7.1.tgz#9e703a1e42da8a28a3aafed102191640f4290a4f"
+  integrity sha512-ScQmChpZebpVzs+RMsSkCXSORUIXUR3aHsEssGZSLKrbWnregt3jVc39emftTt6EfarZ2TvTK262mXeAYPzpcQ==
   dependencies:
     "@discord-player/equalizer" "^0.2.3"
     "@discord-player/ffmpeg" "^0.1.0"
     "@discord-player/utils" "^0.2.2"
     "@web-scrobbler/metadata-filter" "^3.1.0"
     discord-voip "^0.1.3"
-    ip "^2.0.1"
     libsodium-wrappers "^0.7.13"
 
 discord-voip@^0.1.3:
@@ -1202,11 +1201,6 @@ inherits@2, inherits@2.0.4, inherits@^2.0.3:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
-
-ip@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/ip/-/ip-2.0.1.tgz#e8f3595d33a3ea66490204234b77636965307105"
-  integrity sha512-lJUL9imLTNi1ZfXT+DU6rBBdbiKGBuay9B6xGSPVjUeQwaH1RIGqef8RZkUtHioLmSNpPR5M4HVKJGm1j8FWVQ==
 
 ipaddr.js@1.9.1:
   version "1.9.1"
@@ -1987,10 +1981,10 @@ typescript@^5.2.2, typescript@^5.3.2:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.4.tgz#d9852d6c82bad2d2eda4fd74a5762a8f5909e9ba"
   integrity sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==
 
-undici-types@~5.26.4:
-  version "5.26.5"
-  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
-  integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
+undici-types@~6.11.1:
+  version "6.11.1"
+  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-6.11.1.tgz#432ea6e8efd54a48569705a699e62d8f4981b197"
+  integrity sha512-mIDEX2ek50x0OlRgxryxsenE5XaQD4on5U2inY7RApK3SOJpofyw7uW2AyfMKkhAxXIceo2DeWGVGwyvng1GNQ==
 
 undici@6.13.0:
   version "6.13.0"
