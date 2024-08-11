@@ -8,9 +8,9 @@
   integrity sha512-71UAepYMbHTg2QQLXQAgyuXYHrgAYpJDxjg9dRWfTUNf+zfOAlyJEiRRk/WFhQyGu6m23iLR/H/JxgF4AW8Csg==
 
 "@discord-player/extractor@^4.4.5":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.5.0.tgz#1f8dec6dd7badc0014a9e01915a0a867a8a4a9f6"
-  integrity sha512-7yCvNNMbRIkFewli/ILcbFe9FX8DaTFTajn6ouJ/+76NzjoPsPNGRNmDT6eP69t/DJJrZFhsghyGGmxDKNBo6A==
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.5.1.tgz#fc2132dc1d1931107baae860cce1d140d20abd86"
+  integrity sha512-krsgdHD7sx4SWHKkIFDPcgYXR21EfleW0bjI6WvnJQbvTg9TZ4aYw77G6UVw/HaF7i3u3WuyGPZp1UqG0FRHaw==
   dependencies:
     file-type "^16.5.4"
     genius-lyrics "^4.4.6"
@@ -1839,9 +1839,9 @@ soundcloud-scraper@5.x:
     node-fetch "^2.6.1"
 
 soundcloud.ts@^0.5.2:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/soundcloud.ts/-/soundcloud.ts-0.5.3.tgz#598daf40e1c2654408a7072fdea8f7f77778ba74"
-  integrity sha512-ZMH6gG5e7WqJrIYXTv14MNArPhx3WzfrL1Ij/2qBDW8mVbNJc8lxOQOc4kLvrfvDl5TkCdZa7zXOiwD6ESXq+g==
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/soundcloud.ts/-/soundcloud.ts-0.5.5.tgz#fcac1cc6f84fdee548d834acc5b74e4b6fc480a6"
+  integrity sha512-bygjhC1w/w26Nk0Y+4D4cWSEJ1TdxLaE6+w4pCazFzPF+J4mzuB62ggWmFa7BiwnirzNf9lgPbjzrQYGege4Ew==
   dependencies:
     undici "^6.17.0"
 
@@ -1992,9 +1992,9 @@ undici@6.13.0:
   integrity sha512-Q2rtqmZWrbP8nePMq7mOJIN98M0fYvSgV89vwl/BQRT4mDOeY2GXZngfGpcBBhtky3woM7G24wZV3Q304Bv6cw==
 
 undici@^6.11.1, undici@^6.17.0:
-  version "6.19.2"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-6.19.2.tgz#231bc5de78d0dafb6260cf454b294576c2f3cd31"
-  integrity sha512-JfjKqIauur3Q6biAtHJ564e3bWa8VvT+7cSiOJHFbX4Erv6CLGDpg8z+Fmg/1OI/47RA+GI2QZaF48SSaLvyBA==
+  version "6.19.7"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-6.19.7.tgz#7d4cf26dc689838aa8b6753a3c5c4288fc1e0216"
+  integrity sha512-HR3W/bMGPSr90i8AAp2C4DM3wChFdJPLrWYpIS++LxS8K+W535qftjt+4MyjNYHeWabMj1nvtmLIi7l++iq91A==
 
 unfetch@^5.0.0:
   version "5.0.0"
