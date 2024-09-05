@@ -238,9 +238,9 @@
   integrity sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==
 
 "@types/node@*":
-  version "22.5.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.5.2.tgz#e42344429702e69e28c839a7e16a8262a8086793"
-  integrity sha512-acJsPTEqYqulZS/Yp/S3GgeE6GZ0qYODUR8aVr/DkhHQ8l9nd4j5x1/ZJy9/gHrRlFMqkO6i0I3E27Alu4jjPg==
+  version "22.5.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.5.3.tgz#91a374e42c6e7ccb5893a87f1775f36ce1671d65"
+  integrity sha512-njripolh85IA9SQGTAqbmnNZTdxv7X/4OYGPz8tgy5JDr8MP+uDBa921GpYEoDDnwm0Hmn5ZPeJgiiSTPoOzkQ==
   dependencies:
     undici-types "~6.19.2"
 
@@ -302,9 +302,9 @@ ajv@^6.12.4:
     uri-js "^4.2.2"
 
 amethystjs@^1.7.1:
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/amethystjs/-/amethystjs-1.7.4.tgz#e384aea8df6afc798f3ec5a4596ac27221dd2754"
-  integrity sha512-+BgkkpcxGH7tN9mbEQk7sRT0MsPbZ7EXHHn56ntolmHga5VaUawvglSo3JBHXgYez1315x12w7BCESMTv1XumQ==
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/amethystjs/-/amethystjs-1.7.5.tgz#e3f5a4f05f998134f1dec189513411d7b27defe7"
+  integrity sha512-R2KO3qA0Y/Kq22ZxQ6jKoT85fl4+NC61EjNdK7Dmi9USAlgCN0zS8d+mfxdcKrSxpYU2RfJncUXMWW7aJWAspQ==
   dependencies:
     discord.js "^14.13.0"
     dsc-pagination "^1.0.21"
