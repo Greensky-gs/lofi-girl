@@ -245,9 +245,9 @@
   integrity sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==
 
 "@types/node@*":
-  version "22.5.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.5.3.tgz#91a374e42c6e7ccb5893a87f1775f36ce1671d65"
-  integrity sha512-njripolh85IA9SQGTAqbmnNZTdxv7X/4OYGPz8tgy5JDr8MP+uDBa921GpYEoDDnwm0Hmn5ZPeJgiiSTPoOzkQ==
+  version "22.5.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.5.4.tgz#83f7d1f65bc2ed223bdbf57c7884f1d5a4fa84e8"
+  integrity sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==
   dependencies:
     undici-types "~6.19.2"
 
@@ -652,9 +652,9 @@ discord-voip@^0.1.3:
     ws "^8.13.0"
 
 discord.js@^14.13.0, discord.js@^14.8.0:
-  version "14.16.1"
-  resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-14.16.1.tgz#9499c71093bdba9541c77806c4cb43576c863299"
-  integrity sha512-/diX4shp3q1F3EySGQbQl10el+KIpffLSOJdtM35gGV7zw2ED7rKbASKJT7UIR9L/lTd0KtNenZ/h739TN7diA==
+  version "14.16.2"
+  resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-14.16.2.tgz#c878977b5a377cf41eaed0b1901115f8faec9852"
+  integrity sha512-VGNi9WE2dZIxYM8/r/iatQQ+3LT8STW4hhczJOwm+DBeHq66vsKDCk8trChNCB01sMO9crslYuEMeZl2d7r3xw==
   dependencies:
     "@discordjs/builders" "^1.9.0"
     "@discordjs/collection" "1.5.3"
