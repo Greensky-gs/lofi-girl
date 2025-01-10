@@ -7,19 +7,17 @@
   resolved "https://registry.yarnpkg.com/@discord-player/equalizer/-/equalizer-0.2.3.tgz#a5a00150479db71d28d85ed162cf4954341e325a"
   integrity sha512-71UAepYMbHTg2QQLXQAgyuXYHrgAYpJDxjg9dRWfTUNf+zfOAlyJEiRRk/WFhQyGu6m23iLR/H/JxgF4AW8Csg==
 
-"@discord-player/extractor@^4.4.5":
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.5.1.tgz#fc2132dc1d1931107baae860cce1d140d20abd86"
-  integrity sha512-krsgdHD7sx4SWHKkIFDPcgYXR21EfleW0bjI6WvnJQbvTg9TZ4aYw77G6UVw/HaF7i3u3WuyGPZp1UqG0FRHaw==
+"@discord-player/extractor@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-7.0.0.tgz#747828db212ab2d65d1f5ee24d3a6454cb913227"
+  integrity sha512-OAodbCQdL289wu4CGSp/noJxMJQ9VvzF0K1+HLWiMuKNOaBKiLpdY/kNsR56jFw1N+i+cHrkK6k7DmbfHhmHWw==
   dependencies:
     file-type "^16.5.4"
-    genius-lyrics "^4.4.6"
     isomorphic-unfetch "^4.0.2"
     node-html-parser "^6.1.4"
     reverbnation-scraper "^2.0.0"
     soundcloud.ts "^0.5.2"
     spotify-url-info "^3.2.6"
-    youtube-sr "^4.3.9"
 
 "@discord-player/ffmpeg@^0.1.0":
   version "0.1.0"
@@ -1070,14 +1068,6 @@ gauge@^3.0.0:
     strip-ansi "^6.0.1"
     wide-align "^1.1.2"
 
-genius-lyrics@^4.4.6:
-  version "4.4.7"
-  resolved "https://registry.yarnpkg.com/genius-lyrics/-/genius-lyrics-4.4.7.tgz#aa3551eb8e73aaa383d4ea3fa0d7bca3d933a02c"
-  integrity sha512-cgO5nSeFqtLZAUyWB+8XWMRBIRzPUSUC42N3CoDGRgKX1anGAyDUhM6/RVIJXCNnQa6XHZHswKcKgHaRiyl+GQ==
-  dependencies:
-    node-html-parser "^6.1.13"
-    undici "^6.11.1"
-
 get-intrinsic@^1.1.3, get-intrinsic@^1.2.3, get-intrinsic@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.2.4.tgz#e385f5a4b5227d449c3eabbad05494ef0abbeadd"
@@ -1500,7 +1490,7 @@ node-fetch@^3.2.0:
     fetch-blob "^3.1.4"
     formdata-polyfill "^4.0.10"
 
-node-html-parser@^6.1.13, node-html-parser@^6.1.4:
+node-html-parser@^6.1.4:
   version "6.1.13"
   resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-6.1.13.tgz#a1df799b83df5c6743fcd92740ba14682083b7e4"
   integrity sha512-qIsTMOY4C/dAa5Q5vsobRpOOvPfC4pB61UVW2uSwZNUp0QU/jCekTal1vMmbO0DgdHeLUJpv/ARmDqErVxA3Sg==
@@ -1998,7 +1988,7 @@ undici@6.19.8:
   resolved "https://registry.yarnpkg.com/undici/-/undici-6.19.8.tgz#002d7c8a28f8cc3a44ff33c3d4be4d85e15d40e1"
   integrity sha512-U8uCCl2x9TK3WANvmBavymRzxbfFYG+tAu+fgx3zxQy3qdagQqBLwJVrdyO1TBfUXvfKveMKJZhpvUYoOjM+4g==
 
-undici@^6.11.1, undici@^6.17.0:
+undici@^6.17.0:
   version "6.19.7"
   resolved "https://registry.yarnpkg.com/undici/-/undici-6.19.7.tgz#7d4cf26dc689838aa8b6753a3c5c4288fc1e0216"
   integrity sha512-HR3W/bMGPSr90i8AAp2C4DM3wChFdJPLrWYpIS++LxS8K+W535qftjt+4MyjNYHeWabMj1nvtmLIi7l++iq91A==
@@ -2097,7 +2087,7 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-youtube-sr@4.x, youtube-sr@^4.3.9:
+youtube-sr@4.x:
   version "4.3.11"
   resolved "https://registry.yarnpkg.com/youtube-sr/-/youtube-sr-4.3.11.tgz#626663ba03c9a81edf82bd03541234ca59073a6c"
   integrity sha512-3oHiS2x7PpMiDRW7Cq8nz1bkAIBOJHoOwkPl/oncM/+A9/3xxMDgMLGW2dsBEP1DHFyRXYTVABgfbdwHF8sXXQ==
