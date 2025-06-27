@@ -30,7 +30,7 @@
     "avconv": "^3.1.0",
     "discord-player": "^7.0.0",
     "discord.js": "^14.8.0",
-    "dotenv": "^16.0.3",
+    "dotenv": "^17.0.0",
     "ffmpeg": "^0.0.4",
     "fs": "^0.0.1-security",
     "lofi-girl-api-wrapper": "^0.1.2",
