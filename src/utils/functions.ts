@@ -10,32 +10,13 @@ import {
     VoiceChannel
 } from 'discord.js';
 import { station } from '../typings/station';
-import { stations, emojis, recommendation, testers } from './configs.json';
+import { stations, emojis, testers } from './configs.json';
 import { loops } from './maps';
 import { tester } from '../typings/tester';
 import { Langs, localizationBuilder, localizationsType } from '../langs/Manager';
 import { log4js } from 'amethystjs';
 
-export const getStationByUrl = (value?: string, getRandomIfNotProvided?: boolean): station => {
-    if ((!value || value === 'random') && getRandomIfNotProvided !== false)
-        return (stations as station[])[Math.floor(Math.random() * stations.length)];
 
-    if (value === 'recommendation') return recommendation as station;
-    return (stations as station[]).find((x) => x.url === value);
-};
-export const checkForDuplicates = (): station[] => {
-    const urls = [];
-    const duplicatedURLS: string[] = [];
-
-    stations.forEach((st: station) => {
-        if (urls.includes(st.url)) {
-            duplicatedURLS.push(st.url);
-        } else {
-            urls.push(st.url);
-        }
-    });
-    return (stations as station[]).filter((x) => duplicatedURLS.includes(x.url));
-};
 export const inviteLink = (client: Client) => {
     return `https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=2184464640&scope=bot%20applications.commands`;
 };

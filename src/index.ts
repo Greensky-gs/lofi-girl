@@ -52,13 +52,7 @@ export const client = new AmethystClient(
     }
 );
 
-client.player = new Player(client as unknown as Client, {
-    ytdlOptions: {
-        filter: 'audioonly',
-        quality: 'highestaudio',
-        highWaterMark: 1 << 30
-    }
-});
+client.player = new Player(client as unknown as Client)
 client.player.extractors.loadDefault();
 
 client.player.events.on('emptyQueue', async (queue: GuildQueue) => {
