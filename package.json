@@ -27,17 +27,13 @@
     "@discordjs/opus": "^0.10.0",
     "@discordjs/voice": "^0.18.0",
     "amethystjs": "^1.8.21",
-    "avconv": "^3.1.0",
     "discord-player": "^7.1.0",
     "discord.js": "^14.21.0",
     "dotenv": "^16.0.3",
     "ffmpeg": "^0.0.4",
-    "lofi-girl-api-wrapper": "^0.1.2",
+    "firebase": "^11.9.1",
     "play-dl": "^1.9.7",
-    "soundcloud-scraper": "5.x",
-    "spotify-url-info": "3.x",
     "tsc": "^2.0.4",
-    "typescript": "^5.3.2",
-    "youtube-sr": "4.x"
+    "typescript": "^5.3.2"
   }
 }
