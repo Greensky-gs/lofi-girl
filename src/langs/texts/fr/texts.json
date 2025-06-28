@@ -68,10 +68,7 @@
         "songAddition": "**Ajout de musiques :**\nQuand vous commencez à écouter de la musique, vous pouvez ajouter d'autres musiques qui seront jouées quand la première sera finie. Utilisez la commande {{add}}, suivie de la musique souhaitée.",
         "autoadd": "**Système d'auto-ajout :**\nQuand vous avez commencé à écouter de la musique, vous pouvez avoir envie d'en écouter sans arrêt, utilisez la command {{autoadd}} pour activer le système d'auto-ajout de musiques.",
         "protip": "💡 *conseil de pro*\nQuand vous écoutez une musique, vous pouvez utiliser la command {{playing}} pour savoir ce que vous écoutez",
-        "feedback": "**Système d'avis :**\nSi vous voulez avoir un retour sur une musique, vous pouvez voir ses avis en utilisant la command {{info}} (en sélectionnant la sous-option `station`), ou la commande {{playing}}, si un avis a été envoyé, il apparaitra.\nSi vous voulez soumettre le votre, vous pouvez devenir un testeur de musiques en contactant mon créateur. Vous pouvez rejoindre le [serveur de support]({{support}}), ou obtenir le lien de puis notre [page top.gg]({{topgg}})",
-        "suggestionsName": "Suggestions",
-        "suggestions": "Si vous avez des suggestions de musiques (de la chaine [Lofi Girl]({{lofi}}), Vous pouvez nous l'envoyer une utilisant la commande {{suggestion}}.",
-        "lofiGirlsSister": "Au cas ou vous voudriez ajouter le bot, vous pouvez ajouter [Lofi Girl's sister]({{link}})"
+        "feedback": "**Système d'avis :**\nSi vous voulez avoir un retour sur une musique, vous pouvez voir ses avis en utilisant la command {{info}} (en sélectionnant la sous-option `station`), ou la commande {{playing}}, si un avis a été envoyé, il apparaitra.\nSi vous voulez soumettre le votre, vous pouvez devenir un testeur de musiques en contactant mon créateur. Vous pouvez rejoindre le [serveur de support]({{support}}), ou obtenir le lien de puis notre [page top.gg]({{topgg}})"
     },
     "help": {
         "commandEmbedTitle": "Commande {{commandName}}",

@@ -28,7 +28,7 @@ export default new AmethystCommand({
     ]
 }).setChatInputRun(async({ interaction, client, options }) => {
     const station = options.getString('station', false);
-    const object = station === 'random' ? getRandomStation() : stations[station];
+    const object = stations[station] ?? getRandomStation();
 
     if (!object) return interaction.reply(client.langs.getText(interaction, 'utils', 'stationNotFound')).catch(log4js.trace);
     await interaction.deferReply().catch(log4js.trace);

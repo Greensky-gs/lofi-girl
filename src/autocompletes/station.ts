@@ -5,7 +5,7 @@ import { resizeStr } from "../utils/functions";
 
 export default new AutocompleteListener({
     listenerName: 'station',
-    commandName: [{ commandName: 'play' }],
+    commandName: [{ commandName: 'play' }, { commandName: 'switch' }],
     run: ({ options, interaction, client }) => {
         const name = options.getFocused().toLowerCase();
 
