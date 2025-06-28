@@ -1,10 +1,11 @@
 import { Precondition } from 'amethystjs';
+import { players } from '../cache/players';
 
 export default new Precondition('playing').setChatInputRun(({ interaction }) => {
     if (interaction.replied || interaction.deferred)
         return { ok: false, message: 'Already handled', type: 'chatInput', interaction };
-    const queue = interaction.client.player.nodes.get(interaction.guild);
-    if (!interaction.guild || !interaction.guild.members.me?.voice?.channel || !queue || !queue.isPlaying()) {
+    const queue = players.has(interaction.guild.id);
+    if (!interaction.guild || !interaction.guild.members.me?.voice?.channel || !queue) {
         return {
             ok: false,
             message: 'Not playing',

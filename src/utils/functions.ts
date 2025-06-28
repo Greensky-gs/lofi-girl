@@ -9,12 +9,12 @@ import {
     TextChannel,
     VoiceChannel
 } from 'discord.js';
-import { station } from '../typings/station';
-import { stations, emojis, testers } from './configs.json';
+import { emojis } from './configs.json';
 import { loops } from './maps';
-import { tester } from '../typings/tester';
 import { Langs, localizationBuilder, localizationsType } from '../langs/Manager';
 import { log4js } from 'amethystjs';
+import { stations } from '../cache/stations';
+import { stationType } from '../typings/firebase';
 
 
 export const inviteLink = (client: Client) => {
@@ -93,13 +93,6 @@ export const getLoopState = (guildId: string) => {
 export const setLoopState = (guildId: string, state: boolean) => {
     return loops.set(guildId, state);
 };
-export const getRandomStation = (): station => {
-    const availables = stations.filter((x) => x.type !== 'radio');
-    return availables[Math.floor(Math.random() * availables.length)] as station;
-};
-export const getTester = (userId: string): tester => {
-    return testers.find((x) => x.id === userId) as tester;
-};
 export const row = <T extends AnyComponentBuilder = ButtonBuilder>(...components: T[]) => {
     return new ActionRowBuilder({
         components: components
@@ -140,9 +133,42 @@ export const setDumpClock = (client: Client) => {
     }, diff)
 
 }
-export const buildLocalizations = <Key extends keyof localizationsType<'commands'>>(
-    command: Key
-): localizationBuilder<Key> => {
+export const getRandomStation = () => {
+    const keys = Object.keys(stations);
+    if (keys.length === 0) return null;
+    
+    const randomKey = keys[Math.floor(Math.random() * keys.length)];
+    return stations[randomKey];
+}
+export const convertTimestampToSeconds = (timestamp: string) => {
+    const parts = timestamp.split(':');
+    const integers = parts.map(x => parseInt(x))
+
+    if (parts.length === 3) {
+        return integers[0] * 3600 + integers[1] * 60 + integers[2];
+    }
+    if (parts.length === 2) {
+        return integers[0] * 60 + integers[1];
+    }
+    if (parts.length === 1) {
+        return integers[0];
+    }
+}
+export const convertSecondsToTimestamp = (seconds: number) => {
+    const hours = Math.floor(seconds / 3600);
+    seconds %= 3600;
+    const minutes = Math.floor(seconds / 60);
+    seconds %= 60;
+
+    const parts: string[] = [];
+    if (hours > 0) parts.push(hours.toString().padStart(2, '0'));
+    parts.push(minutes.toString().padStart(2, '0'));
+    parts.push(seconds.toString().padStart(2, '0'));
+
+    return parts.join(':');
+}
+export const resolveName = (station: stationType<false>) => `${station.authors.join(' x ')} - ${station.title} ${station.beats}`.trim();
+export const buildLocalizations = <Key extends keyof localizationsType<'commands'>>(command: Key): localizationBuilder<Key> => {
     const langs = new Langs();
     return langs.buildLocalizations(command);
 };

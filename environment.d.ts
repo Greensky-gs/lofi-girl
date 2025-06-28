@@ -3,6 +3,8 @@ declare global {
         interface ProcessEnv {
             token: string;
             beta_token?: string;
+            dbUrl: string;
+            bucketUrl: string;
         }
     }
 }

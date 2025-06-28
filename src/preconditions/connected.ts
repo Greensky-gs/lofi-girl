@@ -1,5 +1,6 @@
 import { Precondition } from 'amethystjs';
 import { GuildMember } from 'discord.js';
+import { players } from '../cache/players';
 
 export default new Precondition('inVoiceChannel').setChatInputRun(({ interaction }) => {
     if (interaction.replied || interaction.deferred)
@@ -16,7 +17,7 @@ export default new Precondition('inVoiceChannel').setChatInputRun(({ interaction
         };
     if (
         !(interaction.member as GuildMember).voice?.channel ||
-        (interaction.client.player.nodes.get(interaction.guild) &&
+        (players.has(interaction.guild.id) &&
             interaction.guild.members.me?.voice?.channel?.members?.filter((x) => x.user.id === interaction.user.id)
                 .size === 0)
     )
