@@ -3,7 +3,7 @@
 
 [Lofi girl](https://bit.ly/430zKch) bot's source code
 
-This repository is the source code of an Amateur [Lofi Girl](https://bit.ly/430zKch) bot, **not affiliated in any way with [Lofi Girl](https://youtube.com/c/LofiGirl)
+This repository is the source code of an Amateur [Lofi Girl](https://bit.ly/430zKch) bot, **not affiliated in any way with [Lofi Girl](https://youtube.com/c/LofiGirl)**
 The bot uses [Amethyst JS framework](https://npmjs.com/package/amethystjs)
 
 ## Links
